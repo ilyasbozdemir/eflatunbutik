@@ -1,0 +1,26 @@
+{
+  "name": "eflatunbutik",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd client && npm start",
+    "backend": "cd backend && npm start",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyasBozdemir/eflatunbutik.git"
+  },
+  "keywords": [],
+  "author": "Ilyas Bozdemir (https://eftatunbutik.com.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilyasBozdemir/eflatunbutik/issues"
+  },
+  "homepage": "https://github.com/ilyasBozdemir/eflatunbutik#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
