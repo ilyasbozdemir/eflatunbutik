@@ -8,8 +8,9 @@ const port = 4000
 var cors = require('cors')
 
 app.use(cors())
-
+app.set('title', 'My Site');
 app.get('/', (req, res) => {
+  res.title
   res.send('Hello World!')
 })
 

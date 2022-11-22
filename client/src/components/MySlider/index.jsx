@@ -41,13 +41,13 @@ function index() {
 
 
   return (
-    <Container maxW="container.xl">
+    <>
       <Slider {...settings}>
         {data.map((item) => (
           <SliderItem key={item.id} src={item.url} alt={item.alt} />
         ))}
       </Slider>
-    </Container>
+    </>
   );
 }
 

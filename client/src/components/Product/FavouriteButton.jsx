@@ -14,7 +14,7 @@ export const FavouriteButton = (props) => (
       }}
       sx={{
         ':hover > svg': {
-          transform: 'scale(1.1)',
+          transform: 'scale(1.2)',
         },
       }}
       transition="all 0.15s ease"
