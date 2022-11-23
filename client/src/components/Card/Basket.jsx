@@ -21,17 +21,7 @@ function Basket() {
           base: "3xl",
           lg: "7xl",
         }}
-        mx="auto"
-        px={{
-          base: "4",
-          md: "6",
-          lg: "8",
-        }}
-        py={{
-          base: "6",
-          md: "8",
-          lg: "10",
-        }}
+     
       >
         <Stack
           direction={{
@@ -53,7 +43,11 @@ function Basket() {
             }}
             flex="2"
           >
-            <Heading fontSize="2xl" fontWeight="extrabold" fontFamily={'corbel'}>
+            <Heading
+              fontSize="2xl"
+              fontWeight="extrabold"
+              fontFamily={"corbel"}
+            >
               Alışveriş Sepeti ({cartData.length} Ürün)
             </Heading>
 

@@ -62,7 +62,7 @@ export const CartOrderSummary = () => {
       <Text as="small">
       Alışverişi tamamla düğmesine tıklayarak,
         <Link to="/">
-          <Text color={"pink.500"}> Kullanım Koşulları </Text>
+          <Text color={"pink.500"}>Kullanım Koşulları</Text>
         </Link>
         'mızı kabul etmiş olursunuz.
       </Text>
