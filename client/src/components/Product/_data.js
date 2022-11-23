@@ -41,7 +41,6 @@ export const products = [
       "https://images.unsplash.com/photo-1602024242516-fbc9d4fda4b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
     rating: 4,
     ratingCount: 1,
-
     review: 4,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",

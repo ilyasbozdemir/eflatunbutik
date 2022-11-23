@@ -1,9 +1,17 @@
-import React from 'react'
+import { Box } from "@chakra-ui/react";
+import React, { Component } from "react";
+import CardWrapper  from "../components/Card/CardWrapper";
 
-function Basket() {
-  return (
-    <div>Basket</div>
-  )
+export class Basket extends Component {
+  render() {
+    return (
+      <>
+        <Box>
+          <CardWrapper/>
+        </Box>
+      </>
+    );
+  }
 }
 
-export default Basket
+export default Basket;

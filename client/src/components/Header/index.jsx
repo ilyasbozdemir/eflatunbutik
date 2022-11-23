@@ -46,9 +46,9 @@ function index({ onOpen, ...rest }) {
         <IconButton
           display={{ base: "flex", md: "none" }}
           onClick={onOpen}
-          variant="outline"
           aria-label="open menu"
           icon={<FiMenu />}
+          bg='transparent'
         />
 
         <Text

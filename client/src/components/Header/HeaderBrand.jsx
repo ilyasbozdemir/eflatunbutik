@@ -4,7 +4,7 @@ import {
   Spacer,
   Box,
   Heading,
-  ButtonGroup,
+  HStack,
   Button,
   useDisclosure as UseDisclosure,
   Icon,
@@ -20,9 +20,8 @@ import SearchBox from "./SearchBox";
 
 import { Link } from "react-router-dom";
 
-import UserMenu from './UserMenu'
+import UserMenu from "./UserMenu";
 function HeaderBrand() {
-
   const { isOpen, onOpen, onClose } = UseDisclosure();
   const [isFavoriShown, setIsFavoriShown] = React.useState(false);
   const [shoppingCartisShown, setShoppingCartIsShown] = React.useState(false);
@@ -44,36 +43,40 @@ function HeaderBrand() {
 
         <Spacer />
 
-        <ButtonGroup>
-          <UserMenu  isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+        <HStack>
+          <UserMenu isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
 
-          <Button
+          <Link
             bg={"transparent"}
             aria-label="product favorite"
             onMouseEnter={() => setIsFavoriShown(true)}
             onMouseLeave={() => setIsFavoriShown(false)}
-            className={"my-favorite-button"}
+            mx={1}
+            px={2}
           >
             {isFavoriShown ? (
               <Icon as={MdFavorite} fontSize={25} />
             ) : (
               <Icon as={MdOutlineFavoriteBorder} fontSize={25} />
             )}
-          </Button>
+          </Link>
 
-          <Button
+          <Link
             bg={"transparent"}
             aria-label="product basket button"
             onMouseEnter={() => setShoppingCartIsShown(true)}
             onMouseLeave={() => setShoppingCartIsShown(false)}
+            to="/sepetim/"
+            mx={1}
+            px={2}
           >
             {shoppingCartisShown ? (
               <Icon as={MdShoppingCart} fontSize={25} />
             ) : (
               <Icon as={MdOutlineShoppingCart} fontSize={25} />
             )}
-          </Button>
-        </ButtonGroup>
+          </Link>
+        </HStack>
       </Flex>
     </>
   );

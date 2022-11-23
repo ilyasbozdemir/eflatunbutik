@@ -1,19 +1,22 @@
-const express = require('express')
-const app = express()
-const port = 4000
+const express = require("express");
+const app = express();
+const port = 3200;
 
+var vhost = require("vhost");
 
+var cors = require("cors");
 
+app.use(cors());
 
-var cors = require('cors')
+//tests..
+app.get("/api", (req, res) => {
+  res.send("Status: 200");
+});
 
-app.use(cors())
-app.set('title', 'My Site');
-app.get('/', (req, res) => {
-  res.title
-  res.send('Hello World!')
-})
+app.get("/auth", (req, res) => {
+  res.send("Böyle bir kullanıcı yok");
+});
 
 app.listen(port, () => {
-  console.log(`Server is up on port ${port}`)
-})
+  console.log(`Server is up on port ${port}`);
+});

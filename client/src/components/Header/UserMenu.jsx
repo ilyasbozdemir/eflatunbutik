@@ -17,19 +17,18 @@ function UserMenu({ isOpen, onOpen, onClose }) {
   const userRef = React.useRef();
   return (
     <>
-
       <Menu isOpen={isOpen}>
         <MenuButton
           ref={userRef}
           mx={1}
-          py={[1, 2, 2]}
-          px={4}
+          px={2}
           borderRadius={5}
           _hover={{ bg: UseColorModeValue("gray.100", "gray.700") }}
           aria-label={"user button"}
           fontWeight="normal"
           onMouseEnter={onOpen}
           onMouseLeave={onClose}
+          bg={'transparent'}
         >
           <HStack>
             <Icon as={AiOutlineUser} fontSize={25} />
@@ -46,7 +45,6 @@ function UserMenu({ isOpen, onOpen, onClose }) {
           </Link>
         </MenuList>
       </Menu>
-      
     </>
   );
 }

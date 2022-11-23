@@ -6,7 +6,7 @@ import Highlights from "../components/Highlights";
 import Showcase from "../components/Showcase";
 import { Stack, HStack } from "@chakra-ui/react";
 
-import Product from "../components/Product";
+
 
 function Home() {
   return (
@@ -26,8 +26,6 @@ function Home() {
         <Showcase />
       </HStack>
 
-
-      <Product />
     </Stack>
   );
 }

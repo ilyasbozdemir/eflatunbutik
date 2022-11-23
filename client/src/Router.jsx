@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
+
+
+
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 import Basket from "./pages/Basket";
@@ -22,20 +25,21 @@ function Router() {
     <>
        <Routes>
        <Route exact path="/" element={<Home />}/>
-            <Route path="/sepetim" element={<Basket />} />
-            <Route path="/favorilerim" element={<Favorite />} />
-            <Route path="/iletisim" element={<Contact />} />
-            <Route path="/yeni-gelenler" element={<NewComers />} />
-            <Route path="/elbise" element={<Dress />} />
-            <Route path="/ust-giyim" element={<TopClothing />} />
-            <Route path="/alt-giyim" element={<BottomClothing />} />/
-            <Route path="/ic-giyim" element={<InnerClothing />} />
-            <Route path="/dis-giyim" element={<Outerwear />} />
-            <Route path="/outlet" element={<Outlet />} />
+
+            <Route exact path="/sepetim/" element={<Basket />} />
+            <Route path="/favorilerim/" element={<Favorite />} />
+            <Route path="/iletisim/" element={<Contact />} />
+            <Route path="/yeni-gelenler/" element={<NewComers />} />
+            <Route path="/elbise/" element={<Dress />} />
+            <Route path="/ust-giyim/" element={<TopClothing />} />
+            <Route path="/alt-giyim/" element={<BottomClothing />} />/
+            <Route path="/ic-giyim/" element={<InnerClothing />} />
+            <Route path="/dis-giyim/" element={<Outerwear />} />
+            <Route path="/outlet/" element={<Outlet />} />
             <Route path="/kombin" element={<CombineClothing />} />
-            <Route path="/indirim" element={<Discount />} />
-            <Route path="/giris" element={<Login />} />
-            <Route path="/uyelik" element={<Login />} />
+            <Route path="/indirim/" element={<Discount />} />
+            <Route path="/giris/" element={<Login />} />
+            <Route path="/uyelik/" element={<Login />} />
             <Route path="*" element={<Page404 />} />
       </Routes>
     </>
