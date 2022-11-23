@@ -2,7 +2,6 @@ import {
   Button,
   Flex,
   Heading,
-  Link,
   Stack,
   Text,
   useColorModeValue as mode,
@@ -10,6 +9,7 @@ import {
 import * as React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { formatPrice } from "./PriceTag";
+import { Link } from "react-router-dom";
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props;
   return (
@@ -28,23 +28,25 @@ export const CartOrderSummary = () => {
       <Heading size="md">Sipariş Özeti</Heading>
 
       <Stack spacing="6">
-        <OrderSummaryItem label="Ara Toplam" value={formatPrice(597)} />
-        <OrderSummaryItem label="Kdv Toplam">
-          <Link href="#" textDecor="underline">
-            Calculate shipping
-          </Link>
-        </OrderSummaryItem>
-        <OrderSummaryItem label="Coupon Code">
-          <Link href="#" textDecor="underline">
-            Add coupon code
+        <OrderSummaryItem
+          label="Ara Toplam"
+          value={formatPrice(190.99 + 290.99 + 390.99)}
+        />
+        <OrderSummaryItem label="Kdv Toplam" value="₺69,8376"></OrderSummaryItem>
+        <OrderSummaryItem label="Kargo" value="₺25"></OrderSummaryItem>
+        <OrderSummaryItem label="Kupon Kodu">
+          <Link>
+            <Text color={"pink.500"} textDecor="underline">
+              tanımla
+            </Text>
           </Link>
         </OrderSummaryItem>
         <Flex justify="space-between">
           <Text fontSize="lg" fontWeight="semibold">
-            Total
+            Toplam
           </Text>
           <Text fontSize="xl" fontWeight="extrabold">
-            {formatPrice(597)}
+            {formatPrice(190.99 + 290.99 + 390.99)}
           </Text>
         </Flex>
       </Stack>
@@ -54,8 +56,16 @@ export const CartOrderSummary = () => {
         fontSize="md"
         rightIcon={<FaArrowRight />}
       >
-        Ödeme
+        Alışverişi Tamamla
       </Button>
+
+      <Text as="small">
+      Alışverişi tamamla düğmesine tıklayarak,
+        <Link to="/">
+          <Text color={"pink.500"}> Kullanım Koşulları </Text>
+        </Link>
+        'mızı kabul etmiş olursunuz.
+      </Text>
     </Stack>
   );
 };

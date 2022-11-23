@@ -24,13 +24,13 @@ function Basket() {
         mx="auto"
         px={{
           base: "4",
-          md: "8",
-          lg: "12",
+          md: "6",
+          lg: "8",
         }}
         py={{
           base: "6",
           md: "8",
-          lg: "12",
+          lg: "10",
         }}
       >
         <Stack
