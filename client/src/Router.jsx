@@ -17,6 +17,7 @@ import Outerwear from "./pages/Outerwear";
 import Outlet from "./pages/Outlet";
 import CombineClothing from "./pages/CombineClothing";
 import Discount from "./pages/Discount";
+import Triko from "./pages/Triko";
 
 import Login from './pages/Login'
 
@@ -37,6 +38,7 @@ function Router() {
             <Route path="/dis-giyim/" element={<Outerwear />} />
             <Route path="/outlet/" element={<Outlet />} />
             <Route path="/kombin" element={<CombineClothing />} />
+            <Route path="/triko" element={<Triko />} />
             <Route path="/indirim/" element={<Discount />} />
             <Route path="/giris/" element={<Login />} />
             <Route path="/uyelik/" element={<Login />} />

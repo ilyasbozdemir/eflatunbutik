@@ -16,13 +16,7 @@ import { cartData } from "./_data";
 function Basket() {
   return (
     <>
-      <Box
-        maxW={{
-          base: "3xl",
-          lg: "7xl",
-        }}
-     
-      >
+      <Box maxW={{ base: "3xl", lg: "7xl" }}>
         <Stack
           direction={{
             base: "column",
@@ -46,9 +40,9 @@ function Basket() {
             <Heading
               fontSize="2xl"
               fontWeight="extrabold"
-              fontFamily={"corbel"}
+              fontFamily={"Open Sans"}
             >
-              Alışveriş Sepeti ({cartData.length} Ürün)
+              Alışveriş Sepeti ({ cartData.length} Ürün)
             </Heading>
 
             <Stack spacing="6">

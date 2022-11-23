@@ -6,7 +6,7 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 
 import { Link } from "react-router-dom";
 
-function InnerClothing() {
+function Triko() {
 
     const breadcrumb = (
       <Breadcrumb separator={<ChevronRightIcon color="gray.500" />}>
@@ -27,4 +27,4 @@ function InnerClothing() {
 
 }
 
-export default InnerClothing
+export default Triko

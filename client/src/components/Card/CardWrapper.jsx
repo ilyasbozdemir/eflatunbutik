@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, HStack, Spacer } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 import EmptyBasket from "./EmptyBasket";
 import Basket from "./Basket";

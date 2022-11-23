@@ -24,7 +24,7 @@ export const cartData = [
     price: 390.99,
     currency: 'TRY',
     name: 'Yeezy Sneakers',
-    description: 'Tan, 40mm',
+    description: 'Tan, 40mm,',
     quantity: 3,
     imageUrl:
       'https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80',

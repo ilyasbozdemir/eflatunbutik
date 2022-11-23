@@ -12,7 +12,6 @@ import {
   Text,
   Link,
   Box,
-  Spacer,
 } from "@chakra-ui/react";
 
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
@@ -99,12 +98,6 @@ function index() {
                   Hesabım
                 </Button>
                 <Button variant="link" color="blue.400">
-                  Siparişlerim
-                </Button>
-                <Button variant="link" color="blue.400">
-                  Alışveriş Sepetim
-                </Button>
-                <Button variant="link" color="blue.400">
                   Favorilerim
                 </Button>
                 <Button variant="link" color="blue.400">
@@ -154,6 +147,7 @@ function index() {
                 lg: "360px",
               }}
             >
+              
               <Input
                 placeholder="E-mail adresini giriniz"
                 type="email"
@@ -162,6 +156,7 @@ function index() {
               <Button color="blue.400" type="submit" flexShrink={0}>
                 Abone ol
               </Button>
+
             </Stack>
           </Stack>
         </Stack>
