@@ -30,9 +30,12 @@ function index({ onOpen, ...rest }) {
     onClose: onCloseSettingSidebar,
   } = UseDisclosure();
 
-  
   return (
     <>
+      <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
+        <HeaderTop />
+      </Stack>
+
       <Flex
         position="sticky"
         top="0"
@@ -48,7 +51,7 @@ function index({ onOpen, ...rest }) {
           onClick={onOpen}
           aria-label="open menu"
           icon={<FiMenu />}
-          bg='transparent'
+          bg="transparent"
         />
 
         <Text
@@ -65,12 +68,9 @@ function index({ onOpen, ...rest }) {
         <Spacer />
 
         {/*settings component*/}
-        <Box display={{ base: "block", md: "block",lg:'none' }}>
-         <SettingSidebarButton onOpen={onOpenSettingSidebar} />
+        <Box display={{ base: "block", md: "block", lg: "none" }}>
+          <SettingSidebarButton onOpen={onOpenSettingSidebar} />
         </Box>
-
-         
-        
 
         <SettingSidebar
           onOpen={onOpenSettingSidebar}
@@ -80,7 +80,6 @@ function index({ onOpen, ...rest }) {
         {/**/}
 
         <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
-          <HeaderTop />
           <HeaderBrand />
           <HeaderMenu />
         </Stack>
