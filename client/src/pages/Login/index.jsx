@@ -1,7 +1,7 @@
 import React from "react";
 
 import LogIn from "../../components/LogIn";
-import MemberShip from "../../components/MemberShip";
+import Register from "../../components/Register";
 
 import {
   Tabs,
@@ -18,12 +18,13 @@ import LoginMemberWrapper from "./LoginMemberWrapper";
 
 function index() {
   const pathname = window.location.pathname;
+  
 
   let tabIndex = 0;
 
-  if (pathname === "/giris") {
+  if (pathname === "/giris/") {
     tabIndex = 0;
-  } else if (pathname === "/uyelik") {
+  } else if (pathname === "/uyelik/") {
     tabIndex = 1;
   }
 
@@ -46,10 +47,10 @@ function index() {
         <Tabs index={tabIndex} onChange={handleTabsChange} variant="enclosed">
           <TabList>
             <Tab>
-              <Link to="/giris">Giriş Yap</Link>
+              <Link to="/giris/">Giriş Yap</Link>
             </Tab>
             <Tab>
-              <Link to="/uyelik">Üye Ol</Link>
+              <Link to="/uyelik/">Üye Ol</Link>
             </Tab>
           </TabList>
           <TabPanels>
@@ -60,7 +61,7 @@ function index() {
             </TabPanel>
             <TabPanel>
             <LoginMemberWrapper>
-               <MemberShip />
+               <Register />
             </LoginMemberWrapper>
             </TabPanel>
           </TabPanels>
