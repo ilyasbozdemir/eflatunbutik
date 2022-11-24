@@ -9,52 +9,49 @@ import {
   Stack,
   Text,
   Center,
-  useColorModeValue as UseColorModeValue,
-
+  useColorModeValue,
 } from "@chakra-ui/react";
-
-import React, { useState  } from "react";
+import * as React from "react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
-import { useFormik  } from "formik";
+import { useFormik } from "formik";
+import LoginButton from "./LoginButton";
 
-//import { register } from "../../firebase";
 
-function index() {
- // const [email, setEmail] = UseState("");
-//  const [password, setPassword] = UseState("");
 
-  const handledSubmit = async (e) => {
-    e.preventDefault()
-   // const user = await register(email,password);
-
-  };
+function LogIn() {
 
   return (
     <>
       <Stack spacing="6">
         <Stack spacing="5">
-          <form onSubmit={handledSubmit}>
+        <Center fontWeight={"semibold"}>Üye Ol</Center>
+          <form>
             <FormControl>
               <FormLabel htmlFor="email">E-Posta</FormLabel>
               <Input id="email" type="email" />
             </FormControl>
-            <PasswordField />
+            <PasswordField id="giris-yap-password" />
           </form>
         </Stack>
+        <HStack justify="space-between">
+          <Checkbox defaultChecked>Beni Hatırla</Checkbox>
+          <Button variant="link" colorScheme="blue" size="sm">
+            Şifremi Unuttum
+          </Button>
+        </HStack>
         <Stack spacing="6">
           <Button
             variant="primary"
             color={"white"}
-            bg={UseColorModeValue("gray.100", "gray.700")}
+            bg={useColorModeValue("gray.100", "gray.700")}
             bgGradient={"linear(to-l, #7928CA, #FF0080)"}
             _hover={{
-              bg: UseColorModeValue("gray.800", "gray.500"),
+              bg: useColorModeValue("gray.800", "gray.500"),
               bgGradient: "linear(to-r, #ac28ca, #ff1060)",
             }}
-            type="submit"
           >
-            Üye Ol
+            Giriş Yap
           </Button>
           <HStack>
             <Divider />
@@ -70,4 +67,4 @@ function index() {
   );
 }
 
-export default index;
+export default LogIn;

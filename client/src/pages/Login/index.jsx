@@ -1,7 +1,7 @@
 import React from "react";
 
-import LogIn from "../../components/LogIn";
-import Register from "../../components/Register";
+import LogIn from "../../components/LogIn/LogIn";
+import Register from "../../components/Register/Register";
 
 import {
   Tabs,
@@ -22,7 +22,7 @@ function index({pathname}) {
 
   if (pathname === "/giris/") {
     tabIndex = 0;
-  } else if (pathname === "/uyelik/") {
+  } else if (pathname === "/uye-ol/") {
     tabIndex = 1;
   }
 
@@ -48,7 +48,7 @@ function index({pathname}) {
               <Link to="/giris/">Giriş Yap</Link>
             </Tab>
             <Tab>
-              <Link to="/uyelik/">Üye Ol</Link>
+              <Link to="/uye-ol/">Üye Ol</Link>
             </Tab>
           </TabList>
           <TabPanels>
