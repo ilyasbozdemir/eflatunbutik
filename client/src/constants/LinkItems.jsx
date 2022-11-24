@@ -2,6 +2,9 @@ import { MdOutlineFiberNew } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
 import { CiDiscount1 } from "react-icons/ci";
 
+
+
+
 export const linkItems = [
   {
     label: "Yeni Gelenler",
@@ -168,3 +171,7 @@ export const linkItems = [
     childrens: [],
   },
 ];
+;
+
+
+  

@@ -12,7 +12,8 @@ import Logo from "../Logo";
 
 import NavLink from "./NavLink";
 
-import { linkItems } from "../../LinkItems";
+import { linkItems } from "../../constants/LinkItems";
+
 import { Link } from "react-router-dom";
 
 function index({ onClose, ...rest }) {

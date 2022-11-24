@@ -1,22 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 
-import Home from "./pages/Home";
-import Page404 from "./pages/ErrorPage/Page404";
-
-
-const routes = [
-  {
-    path: "*",
-    exact: true,
-    element: <Page404 />,
-  },
-  {
-    path: "/",
-    exact: true,
-    element: <Home />,
-  }
-];
+import {routes} from '../src/constants/routes'
 
 function Router() {
   return (
