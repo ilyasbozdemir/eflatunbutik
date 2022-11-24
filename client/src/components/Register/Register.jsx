@@ -1,10 +1,11 @@
-import React, { useState as UseState } from "react";
+import React from "react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
 import { useFormik } from "formik";
 import { register } from "../../firebase/auth";
 
 import * as Yup from "yup";
+
 import {
   Button,
   Divider,
@@ -43,17 +44,21 @@ function Register() {
     },
     validationSchema,
     onSubmit: async (values) => {
-      const user = await register(values.uyeOlEmail, values.uyeOlPassword);
-      if (user) {
+      alert(JSON.stringify(values, null, 2));
+      
+      // const user = await register(values.uyeOlEmail, values.uyeOlPassword);
+      //console.log(user);
+
+      /*if (user) {
         toast({
           title: "Üyelik Oluşturuldu",
-          position: 'bottom-right',
+          position: "bottom-right",
           description: "Anasayfaya yönlendiriliyorsunuz.",
           status: "success",
           duration: 9000,
           isClosable: true,
         });
-      }
+      }*/
     },
   });
 
