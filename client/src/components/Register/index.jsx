@@ -10,28 +10,37 @@ import {
   Text,
   Center,
   useColorModeValue as UseColorModeValue,
+
 } from "@chakra-ui/react";
-import React, { useState as UseState } from "react";
+
+import React, { useState  } from "react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
-import { useFormik as UseFormik } from "formik";
+import { useFormik  } from "formik";
 
-import { register } from "../../firebase";
+//import { register } from "../../firebase";
 
 function index() {
-  const [email, setEmail] = React.UseState("");
-  const [password, setPassword] = React.UseState("");
+ // const [email, setEmail] = UseState("");
+//  const [password, setPassword] = UseState("");
+
+  const handledSubmit = async (e) => {
+    e.preventDefault()
+   // const user = await register(email,password);
+
+  };
 
   return (
     <>
       <Stack spacing="6">
         <Stack spacing="5">
-          <Center>Beta</Center>
-          <FormControl>
-            <FormLabel htmlFor="email">E-Posta</FormLabel>
-            <Input id="email" type="email" />
-          </FormControl>
-          <PasswordField />
+          <form onSubmit={handledSubmit}>
+            <FormControl>
+              <FormLabel htmlFor="email">E-Posta</FormLabel>
+              <Input id="email" type="email" />
+            </FormControl>
+            <PasswordField />
+          </form>
         </Stack>
         <Stack spacing="6">
           <Button
@@ -43,6 +52,7 @@ function index() {
               bg: UseColorModeValue("gray.800", "gray.500"),
               bgGradient: "linear(to-r, #ac28ca, #ff1060)",
             }}
+            type="submit"
           >
             Üye Ol
           </Button>

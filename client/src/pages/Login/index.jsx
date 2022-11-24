@@ -16,9 +16,7 @@ import { Link } from "react-router-dom";
 
 import LoginMemberWrapper from "./LoginMemberWrapper";
 
-function index() {
-  const pathname = window.location.pathname;
-  
+function index({pathname}) {
 
   let tabIndex = 0;
 
