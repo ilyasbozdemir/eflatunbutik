@@ -18,7 +18,7 @@ import { login } from "../../firebase/auth";
 
 import * as Yup from "yup";
 
-function LogIn() {
+function LogInForm() {
   const toast = useToast();
 
   const validationSchema = Yup.object({
@@ -81,4 +81,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default LogInForm;

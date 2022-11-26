@@ -21,20 +21,26 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-const validationSchema = Yup.object({
+import { FcApproval } from "react-icons/fc";
+import { MdError } from "react-icons/md";
+
+const ErrorMessage = ({ children }) => {
+  return <Text>{children}</Text>;
+};
+const SuccessMessage = ({ children }) => {
+  return <Text>{children}</Text>;
+};
+
+const RegisterSchema = Yup.object().shape({
   uyeOlName: Yup.string().required("Zorunlu alan"),
   uyeOlSurname: Yup.string().required("Zorunlu alan"),
   uyeOlEmail: Yup.string()
     .email("Geçersiz e-mail adresi")
     .required("Zorunlu alan"),
-  uyeOlPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null])
-    .min(6, "En az 6 karakter olmalıdır."),
+  uyeOlPassword: Yup.string().min(6, "En az 6 karakter olmalıdır."),
 });
 
-function Register() {
-  const toast = useToast();
-
+function RegisterForm() {
   const formik = useFormik({
     initialValues: {
       uyeOlName: "",
@@ -42,10 +48,15 @@ function Register() {
       uyeOlEmail: "",
       uyeOlPassword: "",
     },
-    validationSchema,
+    validationSchema: RegisterSchema,
     onSubmit: async (values) => {
       alert(JSON.stringify(values, null, 2));
-      
+
+      values.uyeOlName = "";
+      values.uyeOlSurname = "";
+      values.uyeOlEmail = "";
+      values.uyeOlPassword = "";
+
       // const user = await register(values.uyeOlEmail, values.uyeOlPassword);
       //console.log(user);
 
@@ -62,6 +73,10 @@ function Register() {
     },
   });
 
+  const toast = useToast();
+
+  const [error, setError] = React.useState(false);
+
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
@@ -69,7 +84,7 @@ function Register() {
           <Center fontWeight={"semibold"}>Üye Ol</Center>
           <VStack spacing={4} align="flex-start">
             <HStack>
-              <FormControl>
+              <FormControl isRequired>
                 <FormLabel htmlFor="uyeOlName">Ad:</FormLabel>
                 <Input
                   id="uyeOlName"
@@ -77,9 +92,17 @@ function Register() {
                   type="uyeOlName"
                   onChange={formik.handleChange}
                   value={formik.values.uyeOlName}
+                  onBlur={formik.handleBlur}
+                  required
                 />
+                {formik.errors.uyeOlName && formik.touched.uyeOlName ? (
+                  <ErrorMessage>ErrorMessage</ErrorMessage>
+                ) : (
+                  <SuccessMessage>SuccessMessage</SuccessMessage>
+                )}
               </FormControl>
-              <FormControl>
+
+              <FormControl isRequired>
                 <FormLabel htmlFor="email">Soyad:</FormLabel>
                 <Input
                   id="uyeOlSurname"
@@ -87,11 +110,19 @@ function Register() {
                   type="uyeOlSurname"
                   onChange={formik.handleChange}
                   value={formik.values.uyeOlSurname}
+                  onBlur={formik.handleBlur}
+                  required
                 />
+
+                {formik.errors.uyeOlSurname && formik.touched.uyeOlSurname ? (
+                  <ErrorMessage>ErrorMessage</ErrorMessage>
+                ) : (
+                  <SuccessMessage>SuccessMessage</SuccessMessage>
+                )}
               </FormControl>
             </HStack>
 
-            <FormControl>
+            <FormControl isRequired>
               <FormLabel htmlFor="uyeOlEmail">Email:</FormLabel>
               <Input
                 id="uyeOlEmail"
@@ -99,13 +130,29 @@ function Register() {
                 type="email"
                 onChange={formik.handleChange}
                 value={formik.values.uyeOlEmail}
+                onBlur={formik.handleBlur}
+                required
               />
+              {formik.errors.uyeOlEmail && formik.touched.uyeOlEmail ? (
+                <ErrorMessage>ErrorMessage</ErrorMessage>
+              ) : (
+                <SuccessMessage>SuccessMessage</SuccessMessage>
+              )}
             </FormControl>
+
             <PasswordField
               id="uyeOlPassword"
               value={formik.values.uyeOlPassword}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isRequired
+              required
             />
+            {formik.errors.uyeOlPassword && formik.touched.uyeOlPassword ? (
+              <ErrorMessage>ErrorMessage</ErrorMessage>
+            ) : (
+              <SuccessMessage>SuccessMessage</SuccessMessage>
+            )}
           </VStack>
           <Stack spacing="6">
             <Button
@@ -136,4 +183,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterForm;

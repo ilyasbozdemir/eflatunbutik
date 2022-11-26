@@ -1,7 +1,7 @@
 import React from "react";
 
-import LogIn from "../../components/LogIn/LogIn";
-import Register from "../../components/Register/Register";
+import LogInForm from "../../components/LogIn/LogInForm";
+import RegisterForm from "../../components/Register/RegisterForm";
 
 import {
   Tabs,
@@ -54,12 +54,12 @@ function index({pathname}) {
           <TabPanels>
             <TabPanel>
               <LoginMemberWrapper>
-                  <LogIn />
+                  <LogInForm />
               </LoginMemberWrapper>
             </TabPanel>
             <TabPanel>
             <LoginMemberWrapper>
-               <Register />
+               <RegisterForm />
             </LoginMemberWrapper>
             </TabPanel>
           </TabPanels>

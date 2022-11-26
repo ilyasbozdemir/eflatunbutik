@@ -13,14 +13,17 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "./index";
+import { useToast } from "@chakra-ui/react";
 
-const googleProvide = new GoogleAuthProvider();
-const facebookProvide = new FacebookAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+
+
 
 export const facebookWithLogin = async (email, password) => {
-  facebookProvide.addScope("user_birthday");
+  facebookProvider.addScope("user_birthday");
   //kullanıcı doğum tarihini almak için
-  signInWithPopup(auth, facebookProvide)
+  signInWithPopup(auth, facebookProvider)
     .then((result) => {
       const user = result.user;
 
@@ -34,14 +37,13 @@ export const facebookWithLogin = async (email, password) => {
       const errorMessage = error.message;
       const email = error.customData.email;
       const credential = FacebookAuthProvider.credentialFromError(error);
-
     });
 };
 
 export const googleWithLogin = async (email, password) => {
-  googleProvide.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  GoogleAuthProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
-  signInWithPopup(auth, googleProvide)
+  signInWithPopup(auth, googleProvider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
