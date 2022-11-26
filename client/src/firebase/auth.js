@@ -13,12 +13,9 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "./index";
-import { useToast } from "@chakra-ui/react";
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
-
-
 
 export const facebookWithLogin = async (email, password) => {
   facebookProvider.addScope("user_birthday");
@@ -41,7 +38,9 @@ export const facebookWithLogin = async (email, password) => {
 };
 
 export const googleWithLogin = async (email, password) => {
-  GoogleAuthProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  GoogleAuthProvider.addScope(
+    "https://www.googleapis.com/auth/contacts.readonly"
+  );
 
   signInWithPopup(auth, googleProvider)
     .then((result) => {
@@ -60,13 +59,27 @@ export const googleWithLogin = async (email, password) => {
     });
 };
 
-export const register = async (email, password) => {
+export const register = async (email, password, name, lastName) => {
   try {
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
+
+    await updateProfile(auth.currentUser, {
+      displayName: name + " " + lastName,
+    }).then(
+      function () {
+      
+      },
+      function (error) {
+        
+      }
+    );
+
+    await sendUserEmailVerification(email)
+
 
     return user;
   } catch (error) {
@@ -78,11 +91,11 @@ export const register = async (email, password) => {
 export const login = async (email, password) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-
     return user;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
+    alert(errorMessage)
   }
 };
 
@@ -152,6 +165,11 @@ export const sendUserEmailVerification = async (email) => {
     // ...
   });
 };
+
+export const getCurrentUser = () => {
+  return auth.currentUser;
+};
+//
 
 export const updateUserPassword = async (newPassword) => {
   const user = auth.currentUser;

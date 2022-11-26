@@ -1,12 +1,17 @@
 import {
   Button,
-  Checkbox,
   Divider,
-  useToast,
-  Stack,
-  Center,
+  FormControl,
+  FormLabel,
   HStack,
+  Input,
+  Stack,
   Text,
+  VStack,
+  Center,
+  Icon,
+  Flex,
+  Checkbox,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
@@ -15,38 +20,51 @@ import { useFormik } from "formik";
 import LoginButton from "./LoginButton";
 
 import { login } from "../../firebase/auth";
+import { FcApproval } from "react-icons/fc";
+import { MdError } from "react-icons/md";
 
 import * as Yup from "yup";
 
-function LogInForm() {
-  const toast = useToast();
+const Message = ({ children, icon, color }) => {
+  return (
+    <Flex textAlign={"center"} justifyItems={"center"}>
+      <Text as="small">
+        <Icon color={color} as={icon} />
+        {children ? children : ""}
+      </Text>
+    </Flex>
+  );
+};
 
-  const validationSchema = Yup.object({
+const ErrorMessage = ({ children }) => {
+  return <Message icon={MdError} color={"red"} children={children} />;
+  //return <Message icon={MdError} color={"red"} children={children}>{children}</Message>;
+};
+
+const SuccessMessage = ({ children }) => {
+  return <Message icon={FcApproval} color={"green.500"} children={children} />;
+};
+
+function LogInForm() {
+  const loginSchema = Yup.object().shape({
     girisYapEmail: Yup.string()
       .email("Geçersiz e-mail adresi")
       .required("Zorunlu alan"),
-    girisYapPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null])
-      .min(6, "En az 6 karakter olmalıdır."),
+    girisYapPassword: Yup.string().min(6, "En az 6 karakter olmalıdır."),
   });
+
   const formik = useFormik({
     initialValues: {
       girisYapEmail: "",
       girisYapPassword: "",
     },
-    validationSchema,
+    validationSchema: loginSchema,
     onSubmit: async (values) => {
-      const user = await login(values.uyeOlEmail, values.uyeOlPassword);
+      alert(JSON.stringify(values, null, 2));
+      /*const user = await login(values.uyeOlEmail, values.uyeOlPassword);
       if (user) {
-        toast({
-          title: "Üyelik Oluşturuldu",
-          position: "bottom-right",
-          description: "Anasayfaya yönlendiriliyorsunuz.",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
+        alert("tmm");
+      }*/
     },
   });
 
@@ -56,6 +74,40 @@ function LogInForm() {
         <Stack spacing="6">
           <Stack spacing="5">
             <Center fontWeight={"semibold"}>Giriş Yap</Center>
+
+            <VStack spacing={4} align="flex-start">
+              <FormControl isRequired>
+                <FormLabel htmlFor="girisYapEmail">Email:</FormLabel>
+                <Input
+                  id="girisYapEmail"
+                  name="girisYapEmail"
+                  type="email"
+                  onChange={formik.handleChange}
+                  value={formik.values.girisYapEmail}
+                  onBlur={formik.handleBlur}
+                  required
+                />
+                {formik.errors.girisYapEmail && formik.touched.girisYapEmail ? (
+                  <ErrorMessage>{formik.errors.girisYapEmail}</ErrorMessage>
+                ) : (
+                  <SuccessMessage></SuccessMessage>
+                )}
+              </FormControl>
+
+              <PasswordField
+                id="girisYapPassword"
+                value={formik.values.girisYapPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.errors.girisYapPassword &&
+              formik.touched.girisYapPassword ? (
+                <ErrorMessage>{formik.errors.girisYapPassword}</ErrorMessage>
+              ) : (
+                <SuccessMessage></SuccessMessage>
+              )}
+            </VStack>
           </Stack>
           <HStack justify="space-between">
             <Checkbox defaultChecked>Beni Hatırla</Checkbox>

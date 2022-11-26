@@ -17,18 +17,46 @@ import {
   Text,
   VStack,
   Center,
+  Icon,
+  Flex,
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
 
+import { Navigate } from "react-router-dom";
+
 import { FcApproval } from "react-icons/fc";
 import { MdError } from "react-icons/md";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+
+const Message = ({ children, icon, color }) => {
+  return (
+    <Flex textAlign={"center"} justifyItems={"center"}>
+      <Text as="small">
+        <Icon color={color} as={icon} />
+        {children ? children : ""}
+      </Text>
+    </Flex>
+  );
+};
 
 const ErrorMessage = ({ children }) => {
-  return <Text>{children}</Text>;
+  return <Message icon={MdError} color={"red"} children={children} />;
+  //return <Message icon={MdError} color={"red"} children={children}>{children}</Message>;
 };
+
+const InfoMessage = ({ children }) => {
+  return (
+    <Message
+      icon={AiOutlineInfoCircle}
+      color={"orange.500"}
+      children={children}
+    />
+  );
+};
+
 const SuccessMessage = ({ children }) => {
-  return <Text>{children}</Text>;
+  return <Message icon={FcApproval} color={"green.500"} children={children} />;
 };
 
 const RegisterSchema = Yup.object().shape({
@@ -41,6 +69,11 @@ const RegisterSchema = Yup.object().shape({
 });
 
 function RegisterForm() {
+  //Can e-mail address be used?
+
+  const [canEmailAddressBeUsed, setCanEmailAddressBeUsed] =
+    React.useState(true);
+
   const formik = useFormik({
     initialValues: {
       uyeOlName: "",
@@ -50,32 +83,39 @@ function RegisterForm() {
     },
     validationSchema: RegisterSchema,
     onSubmit: async (values) => {
-      alert(JSON.stringify(values, null, 2));
+      //alert(JSON.stringify(values, null, 2));
+
+      const user = await register(
+        values.uyeOlEmail,
+        values.uyeOlPassword,
+        values.uyeOlName,
+        values.uyeOlSurname
+      );
+
+      console.log(user);
 
       values.uyeOlName = "";
       values.uyeOlSurname = "";
       values.uyeOlEmail = "";
       values.uyeOlPassword = "";
 
-      // const user = await register(values.uyeOlEmail, values.uyeOlPassword);
-      //console.log(user);
-
-      /*if (user) {
+      if (user) {
         toast({
           title: "Üyelik Oluşturuldu",
           position: "bottom-right",
-          description: "Anasayfaya yönlendiriliyorsunuz.",
+          description:
+            "mail adresinize doğrulama linki gönderildi.Lütfen kontrol edin.",
           status: "success",
           duration: 9000,
           isClosable: true,
         });
-      }*/
+        <Navigate to="/" />;
+      }
     },
   });
 
-  const toast = useToast();
-
   const [error, setError] = React.useState(false);
+  const toast = useToast();
 
   return (
     <>
@@ -83,45 +123,7 @@ function RegisterForm() {
         <Stack spacing="6">
           <Center fontWeight={"semibold"}>Üye Ol</Center>
           <VStack spacing={4} align="flex-start">
-            <HStack>
-              <FormControl isRequired>
-                <FormLabel htmlFor="uyeOlName">Ad:</FormLabel>
-                <Input
-                  id="uyeOlName"
-                  name="uyeOlName"
-                  type="uyeOlName"
-                  onChange={formik.handleChange}
-                  value={formik.values.uyeOlName}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-                {formik.errors.uyeOlName && formik.touched.uyeOlName ? (
-                  <ErrorMessage>ErrorMessage</ErrorMessage>
-                ) : (
-                  <SuccessMessage>SuccessMessage</SuccessMessage>
-                )}
-              </FormControl>
-
-              <FormControl isRequired>
-                <FormLabel htmlFor="email">Soyad:</FormLabel>
-                <Input
-                  id="uyeOlSurname"
-                  name="uyeOlSurname"
-                  type="uyeOlSurname"
-                  onChange={formik.handleChange}
-                  value={formik.values.uyeOlSurname}
-                  onBlur={formik.handleBlur}
-                  required
-                />
-
-                {formik.errors.uyeOlSurname && formik.touched.uyeOlSurname ? (
-                  <ErrorMessage>ErrorMessage</ErrorMessage>
-                ) : (
-                  <SuccessMessage>SuccessMessage</SuccessMessage>
-                )}
-              </FormControl>
-            </HStack>
-
+           
             <FormControl isRequired>
               <FormLabel htmlFor="uyeOlEmail">Email:</FormLabel>
               <Input
@@ -134,9 +136,19 @@ function RegisterForm() {
                 required
               />
               {formik.errors.uyeOlEmail && formik.touched.uyeOlEmail ? (
-                <ErrorMessage>ErrorMessage</ErrorMessage>
+                <ErrorMessage>{formik.errors.uyeOlEmail}</ErrorMessage>
               ) : (
-                <SuccessMessage>SuccessMessage</SuccessMessage>
+                <Text>
+                  {!canEmailAddressBeUsed ? (
+                    <InfoMessage>
+                      e-mail adresi alınmış zaten alınmış
+                    </InfoMessage>
+                  ) : (
+                    <SuccessMessage>
+                      e-posta adresi kullanılabilir
+                    </SuccessMessage>
+                  )}
+                </Text>
               )}
             </FormControl>
 
@@ -149,9 +161,9 @@ function RegisterForm() {
               required
             />
             {formik.errors.uyeOlPassword && formik.touched.uyeOlPassword ? (
-              <ErrorMessage>ErrorMessage</ErrorMessage>
+              <ErrorMessage>{formik.errors.uyeOlPassword}</ErrorMessage>
             ) : (
-              <SuccessMessage>SuccessMessage</SuccessMessage>
+              <SuccessMessage></SuccessMessage>
             )}
           </VStack>
           <Stack spacing="6">

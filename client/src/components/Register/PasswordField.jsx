@@ -12,7 +12,7 @@ import * as React from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
 export const PasswordField = React.forwardRef((props, ref) => {
-  const { id,isRequired } = props;
+  const { id, isRequired } = props;
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = React.useRef(null);
   const mergeRef = useMergeRefs(inputRef, ref);
@@ -25,7 +25,7 @@ export const PasswordField = React.forwardRef((props, ref) => {
     }
   };
   return (
-    <FormControl isRequired>
+    <FormControl isRequired={isRequired}>
       <FormLabel htmlFor={id}>Şifre:</FormLabel>
       <InputGroup>
         <InputRightElement>
