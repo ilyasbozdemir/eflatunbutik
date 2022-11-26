@@ -133,4 +133,4 @@ function LogInForm() {
   );
 }
 
-export default LogInForm;
+export default React.memo(LogInForm) ;

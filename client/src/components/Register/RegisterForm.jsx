@@ -123,7 +123,45 @@ function RegisterForm() {
         <Stack spacing="6">
           <Center fontWeight={"semibold"}>Üye Ol</Center>
           <VStack spacing={4} align="flex-start">
-           
+            <HStack>
+              <FormControl isRequired>
+                <FormLabel htmlFor="uyeOlName">Ad:</FormLabel>
+                <Input
+                  id="uyeOlName"
+                  name="uyeOlName"
+                  type="text"
+                  onChange={formik.handleChange}
+                  value={formik.values.uyeOlName}
+                  onBlur={formik.handleBlur}
+                  required
+                />
+                {formik.errors.uyeOlName && formik.touched.uyeOlName ? (
+                  <ErrorMessage>{formik.errors.uyeOlName}</ErrorMessage>
+                ) : (
+                  <SuccessMessage></SuccessMessage>
+                )}
+              </FormControl>
+
+              <FormControl isRequired>
+                <FormLabel htmlFor="email">Soyad:</FormLabel>
+                <Input
+                  id="uyeOlSurname"
+                  name="uyeOlSurname"
+                  type="uyeOlSurname"
+                  onChange={formik.handleChange}
+                  value={formik.values.uyeOlSurname}
+                  onBlur={formik.handleBlur}
+                  required
+                />
+
+                {formik.errors.uyeOlSurname && formik.touched.uyeOlSurname ? (
+                  <ErrorMessage>{formik.errors.uyeOlSurname}</ErrorMessage>
+                ) : (
+                  <SuccessMessage></SuccessMessage>
+                )}
+              </FormControl>
+            </HStack>
+
             <FormControl isRequired>
               <FormLabel htmlFor="uyeOlEmail">Email:</FormLabel>
               <Input
