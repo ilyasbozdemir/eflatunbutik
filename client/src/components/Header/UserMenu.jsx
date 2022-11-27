@@ -37,10 +37,10 @@ function UserMenu({ isOpen, onOpen, onClose }) {
         </MenuButton>
 
         <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
-          <Link to="/giris">
+          <Link to="/giris/">
             <MenuItem>Giriş Yap</MenuItem>
           </Link>
-          <Link to="/uyelik">
+          <Link to="/uye-ol/">
             <MenuItem>Üye Ol</MenuItem>
           </Link>
         </MenuList>

@@ -12,7 +12,8 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { auth } from "./index";
+import { app } from "./firebase";
+import { auth } from "./firebase";
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
@@ -70,16 +71,11 @@ export const register = async (email, password, name, lastName) => {
     await updateProfile(auth.currentUser, {
       displayName: name + " " + lastName,
     }).then(
-      function () {
-      
-      },
-      function (error) {
-        
-      }
+      function () {},
+      function (error) {}
     );
 
-    await sendUserEmailVerification(email)
-
+    await sendUserEmailVerification(email);
 
     return user;
   } catch (error) {
@@ -95,7 +91,6 @@ export const login = async (email, password) => {
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert(errorMessage)
   }
 };
 
@@ -135,7 +130,7 @@ export const updateUser = async (displayName, photoURL) => {
     });
 };
 
-export const deleteProfile = async (displayName, photoURL) => {
+export const deleteProfile = async () => {
   const user = auth.currentUser;
 
   deleteUser(user)
@@ -195,3 +190,27 @@ export const sendUserPasswordResetEmail = async (email) => {
       // ..
     });
 };
+
+export const addUser = (id, user) =>
+  app.firestore().collection("users").doc(id).set(user);
+
+export const getUser = (id) =>
+  app.firestore().collection("users").doc(id).get();
+
+export const reauthenticate = (currentPassword) => {
+  const user = app.auth().currentUser;
+  const cred = app.auth.EmailAuthProvider.credential(
+    user.email,
+    currentPassword
+  );
+
+  return user.reauthenticateWithCredential(cred);
+};
+
+export const updateUserProfile = (id, updates) =>
+  app.firestore().collection("users").doc(id).update(updates);
+
+export const saveBasketItems = (items, userId) =>
+  app.firestore().collection("users").doc(userId).update({ basket: items });
+
+  

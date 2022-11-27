@@ -2,7 +2,7 @@ import React from "react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
 import { useFormik } from "formik";
-import { register } from "../../firebase/auth";
+import { register } from "../../services/auth";
 
 import * as Yup from "yup";
 

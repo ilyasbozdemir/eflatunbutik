@@ -19,7 +19,7 @@ import { PasswordField } from "./PasswordField";
 import { useFormik } from "formik";
 import LoginButton from "./LoginButton";
 
-import { login } from "../../firebase/auth";
+import { login } from "../../services/auth";
 import { FcApproval } from "react-icons/fc";
 import { MdError } from "react-icons/md";
 
