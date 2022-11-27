@@ -95,7 +95,7 @@ function RegisterForm() {
       );
 
       console.log(user);
-
+      
       values.uyeOlName = "";
       values.uyeOlSurname = "";
       values.uyeOlEmail = "";
@@ -103,15 +103,15 @@ function RegisterForm() {
 
       if (user) {
         toast({
-          title: "Üyelik Oluşturuldu",
+          title: "Bilgi",
           position: "bottom-right",
           description:
-            "mail adresinize doğrulama linki gönderildi.Lütfen kontrol edin.",
+            "İşlem başarılı",
           status: "success",
           duration: 9000,
           isClosable: true,
         });
-        <Navigate to="/" />;
+        <Navigate to="/" replace={true} />;
       }
     },
   });
