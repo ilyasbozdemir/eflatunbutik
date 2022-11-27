@@ -60,7 +60,7 @@ function LogInForm() {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      //alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values, null, 2));
       const user = await login(values.uyeOlEmail, values.uyeOlPassword);
       if (user) {
         alert("tmm");

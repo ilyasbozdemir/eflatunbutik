@@ -74,6 +74,8 @@ function RegisterForm() {
   const [canEmailAddressBeUsed, setCanEmailAddressBeUsed] =
     React.useState(true);
 
+   //auth/email-already-in-use 
+
   const formik = useFormik({
     initialValues: {
       uyeOlName: "",
@@ -233,4 +235,4 @@ function RegisterForm() {
   );
 }
 
-export default RegisterForm;
+export default React.memo(RegisterForm) ;

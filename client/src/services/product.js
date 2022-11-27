@@ -164,7 +164,7 @@ export const deleteImage = (id) =>
   app.storage().ref("products").child(id).delete();
 
 export const editProduct = (id, updates) =>
-  this.db.collection("products").doc(id).update(updates);
+  app.firestore().collection("products").doc(id).update(updates);
 
 export const removeProduct = (id) =>
   app.firestore().collection("products").doc(id).delete();

@@ -12,11 +12,13 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from "firebase/auth";
+
 import { app } from "./firebase";
 import { auth } from "./firebase";
-
+ 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
+
 
 export const facebookWithLogin = async (email, password) => {
   facebookProvider.addScope("user_birthday");
@@ -37,7 +39,12 @@ export const facebookWithLogin = async (email, password) => {
       const credential = FacebookAuthProvider.credentialFromError(error);
     });
 };
-
+export const googleWithRegister = async () => {
+  auth.signInWithPopup(googleProvider).catch((error) => alert(error.message));
+};
+export const facebookWithRegister = async () => {
+  auth.signInWithPopup(facebookProvider).catch((error) => alert(error.message));
+};
 export const googleWithLogin = async (email, password) => {
   GoogleAuthProvider.addScope(
     "https://www.googleapis.com/auth/contacts.readonly"
@@ -86,15 +93,19 @@ export const register = async (email, password, name, lastName) => {
 
 export const login = async (email, password) => {
   try {
+  
     const { user } = await signInWithEmailAndPassword(auth, email, password);
+
+    console.log(user.email, user.displayName);
     return user;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
+    alert(errorCode + " " + errorMessage);
   }
 };
 
-export const logout = async (email, password) => {
+export const logout = async () => {
   try {
     signOut(auth);
   } catch (error) {
@@ -212,5 +223,3 @@ export const updateUserProfile = (id, updates) =>
 
 export const saveBasketItems = (items, userId) =>
   app.firestore().collection("users").doc(userId).update({ basket: items });
-
-  
