@@ -7,12 +7,17 @@ import { bindActionCreators } from "redux";
 import { createStructuredSelector } from "reselect";
 
 import { selectLoginState } from "./store/selectors";
+import ScrollToTop from "./components/ScrollToTop";
+
 
 function App() {
+
   return (
     <>
       <Layout>
-        <></>
+        <>
+          <ScrollToTop/>
+        </>
         <Router />
         <Footer />
       </Layout>

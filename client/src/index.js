@@ -25,7 +25,7 @@ import { bindActionCreators } from "redux";
 import { createStructuredSelector } from "reselect";
 
 import { selectLoginState } from "./store/selectors";
-
+import { Skeleton } from "@chakra-ui/react";
 import App from "./App";
 
 const persistConfig = {
@@ -58,7 +58,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <Provider store={store}>
-      <PersistGate loading={<div>Loading</div>} persistor={persistor}>
+      <PersistGate
+        loading={
+          <Skeleton startColor="pink.500" endColor="purple.500" height="20px" />
+        }
+        persistor={persistor}
+      >
         <Chakra startAppName={<App />} />
       </PersistGate>
     </Provider>
