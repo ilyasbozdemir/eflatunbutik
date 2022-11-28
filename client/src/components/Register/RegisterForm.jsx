@@ -3,7 +3,8 @@ import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
 import { useFormik } from "formik";
 import { register } from "../../services/auth";
-
+import { useLocation } from "react-router";
+import { Route, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import {
@@ -22,8 +23,6 @@ import {
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
-
-import { Navigate } from "react-router-dom";
 
 import { FcApproval } from "react-icons/fc";
 import { MdError } from "react-icons/md";
@@ -69,12 +68,15 @@ const RegisterSchema = Yup.object().shape({
 });
 
 function RegisterForm() {
-  //Can e-mail address be used?
+  const toast = useToast();
 
+  //Can e-mail address be used?
   const [canEmailAddressBeUsed, setCanEmailAddressBeUsed] =
     React.useState(true);
 
-   //auth/email-already-in-use 
+  const navigate = useNavigate();
+
+  //auth/email-already-in-use
 
   const formik = useFormik({
     initialValues: {
@@ -95,29 +97,30 @@ function RegisterForm() {
       );
 
       console.log(user);
-      
+
       values.uyeOlName = "";
       values.uyeOlSurname = "";
       values.uyeOlEmail = "";
       values.uyeOlPassword = "";
 
       if (user) {
+        setCurrentUser(user);
         toast({
           title: "Bilgi",
           position: "bottom-right",
-          description:
-            "İşlem başarılı",
+          description: "İşlem başarılı",
           status: "success",
-          duration: 9000,
+          duration: 1500,
           isClosable: true,
         });
-        <Navigate to="/" replace={true} />;
       }
     },
   });
+  const [currentUser, setCurrentUser] = React.useState(false);
 
   const [error, setError] = React.useState(false);
-  const toast = useToast();
+
+  console.log("test " + currentUser);
 
   return (
     <>
@@ -179,15 +182,7 @@ function RegisterForm() {
                 <ErrorMessage>{formik.errors.uyeOlEmail}</ErrorMessage>
               ) : (
                 <Text>
-                  {!canEmailAddressBeUsed ? (
-                    <InfoMessage>
-                      e-mail adresi alınmış zaten alınmış
-                    </InfoMessage>
-                  ) : (
-                    <SuccessMessage>
-                      e-posta adresi kullanılabilir
-                    </SuccessMessage>
-                  )}
+                 test
                 </Text>
               )}
             </FormControl>
@@ -235,4 +230,4 @@ function RegisterForm() {
   );
 }
 
-export default React.memo(RegisterForm) ;
+export default React.memo(RegisterForm);

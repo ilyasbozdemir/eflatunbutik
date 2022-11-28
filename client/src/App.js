@@ -6,18 +6,22 @@ import { Provider } from "react-redux";
 // import createSagaMiddleware from 'redux-saga';
 import { persistReducer, persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import { createStore, compose, applyMiddleware } from "redux";
+import {
+  legacy_createStore as createStore,
+  compose,
+  applyMiddleware,
+} from "redux";
 
 import storage from "redux-persist/lib/storage";
 // web için varsayılan localstorage
 
 import reducers from "../src/store/reducers";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { createStructuredSelector } from 'reselect';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { createStructuredSelector } from "reselect";
 
-import { selectLoginState } from './store/selectors';
+import { selectLoginState } from "./store/selectors";
 
 const persistConfig = {
   key: "root",
@@ -47,7 +51,8 @@ let persistor = persistStore(store);
 function App() {
   return (
     <>
-      <Provider store={store}>
+      {/*
+ <Provider store={store}>
         <PersistGate loading={<div>Loading</div>} persistor={persistor}>
           <Layout>
             <></>
@@ -55,21 +60,16 @@ function App() {
             <Footer />
           </Layout>
         </PersistGate>
+       
       </Provider>
+         */}
+      <Layout>
+        <></>
+        <Router />
+        <Footer />
+      </Layout>
     </>
   );
 }
 
-
-const mapStateToProps = createStructuredSelector({
-  loginState: selectLoginState(),
-});
-
-const mapDispatchToProps = (dispatch) => (
-  (
-    bindActionCreators({
-    }, dispatch)
-  )
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -1,7 +1,7 @@
 import * as constants from "./constants";
 
 const initialState = {
-  loginState: true,
+  loginState: false,
 };
 
 export default function store(state = initialState, action) {

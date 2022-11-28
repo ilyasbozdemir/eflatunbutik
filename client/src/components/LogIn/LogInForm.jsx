@@ -25,13 +25,6 @@ import { MdError } from "react-icons/md";
 
 import * as Yup from "yup";
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { createStructuredSelector } from "reselect";
-
-import { selectLoginState } from "../../store/selectors";
-import { setLoginState } from "../../store/actions";
-
 const Message = ({ children, icon, color }) => {
   return (
     <Flex textAlign={"center"} justifyItems={"center"}>
@@ -52,18 +45,6 @@ const SuccessMessage = ({ children }) => {
   return <Message icon={FcApproval} color={"green.500"} children={children} />;
 };
 
-const mapStateToProps = createStructuredSelector({
-  loginState: selectLoginState(),
-});
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      setLoginState,
-    },
-    dispatch
-  );
-
 const loginSchema = Yup.object().shape({
   girisYapEmail: Yup.string()
     .email("Geçersiz e-mail adresi")
@@ -83,8 +64,7 @@ class LogInForm extends React.Component {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      
-      this.props.setLoginState(false)
+      this.props.setLoginState(true);
 
       const user = await login(values.uyeOlEmail, values.uyeOlPassword);
       if (user) {
@@ -93,7 +73,6 @@ class LogInForm extends React.Component {
     },
   });
   render() {
-
     return (
       <>
         <form onSubmit={this.formik.handleSubmit}>
@@ -115,7 +94,9 @@ class LogInForm extends React.Component {
                   />
                   {this.formik.errors.girisYapEmail &&
                   this.formik.touched.girisYapEmail ? (
-                    <ErrorMessage>{this.formik.errors.girisYapEmail}</ErrorMessage>
+                    <ErrorMessage>
+                      {this.formik.errors.girisYapEmail}
+                    </ErrorMessage>
                   ) : (
                     <SuccessMessage></SuccessMessage>
                   )}
@@ -130,7 +111,9 @@ class LogInForm extends React.Component {
                 />
                 {this.formik.errors.girisYapPassword &&
                 this.formik.touched.girisYapPassword ? (
-                  <ErrorMessage>{this.formik.errors.girisYapPassword}</ErrorMessage>
+                  <ErrorMessage>
+                    {this.formik.errors.girisYapPassword}
+                  </ErrorMessage>
                 ) : (
                   <SuccessMessage></SuccessMessage>
                 )}
@@ -160,4 +143,6 @@ class LogInForm extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
+
+
+export default LogInForm;

@@ -88,6 +88,7 @@ export const register = async (email, password, name, lastName) => {
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
+    alert(errorCode)
   }
 };
 
