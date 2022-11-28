@@ -7,6 +7,7 @@ import {
   Text,
   Box,
   Spacer,
+  Divider,
   useDisclosure as UseDisclosure,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
@@ -80,6 +81,7 @@ function index({ onOpen, ...rest }) {
         {/**/}
 
         <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
+          <Divider />
           <HeaderBrand />
           <HeaderMenu />
         </Stack>
