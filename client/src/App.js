@@ -13,6 +13,12 @@ import storage from "redux-persist/lib/storage";
 
 import reducers from "../src/store/reducers";
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectLoginState } from './store/selectors';
+
 const persistConfig = {
   key: "root",
   storage,
@@ -54,4 +60,16 @@ function App() {
   );
 }
 
-export default App;
+
+const mapStateToProps = createStructuredSelector({
+  loginState: selectLoginState(),
+});
+
+const mapDispatchToProps = (dispatch) => (
+  (
+    bindActionCreators({
+    }, dispatch)
+  )
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
