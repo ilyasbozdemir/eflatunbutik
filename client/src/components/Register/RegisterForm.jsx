@@ -3,8 +3,6 @@ import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
 import { useFormik } from "formik";
 import { register } from "../../services/auth";
-import { useLocation } from "react-router";
-import { Route, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import {
@@ -74,7 +72,7 @@ function RegisterForm() {
   const [canEmailAddressBeUsed, setCanEmailAddressBeUsed] =
     React.useState(true);
 
-  const navigate = useNavigate();
+ 
 
   //auth/email-already-in-use
 
@@ -119,8 +117,6 @@ function RegisterForm() {
   const [currentUser, setCurrentUser] = React.useState(false);
 
   const [error, setError] = React.useState(false);
-
-  console.log("test " + currentUser);
 
   return (
     <>

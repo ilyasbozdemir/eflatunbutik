@@ -25,6 +25,13 @@ import { MdError } from "react-icons/md";
 
 import * as Yup from "yup";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { createStructuredSelector } from "reselect";
+
+import { selectLoginState } from "../../store/selectors";
+import { setLoginState } from "../../store/actions";
+
 const Message = ({ children, icon, color }) => {
   return (
     <Flex textAlign={"center"} justifyItems={"center"}>
@@ -52,97 +59,95 @@ const loginSchema = Yup.object().shape({
   girisYapPassword: Yup.string().min(6, "En az 6 karakter olmalıdır."),
 });
 
-class LogInForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  formik = useFormik({
+function LogInForm() {
+  const formik = useFormik({
     initialValues: {
       girisYapEmail: "",
       girisYapPassword: "",
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      this.props.setLoginState(true);
-
       const user = await login(values.uyeOlEmail, values.uyeOlPassword);
       if (user) {
-        alert("tmm");
       }
     },
   });
-  render() {
-    return (
-      <>
-        <form onSubmit={this.formik.handleSubmit}>
-          <Stack spacing="6">
-            <Stack spacing="5">
-              <Center fontWeight={"semibold"}>Giriş Yap</Center>
+  return (
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        <Stack spacing="6">
+          <Stack spacing="5">
+            <Center fontWeight={"semibold"}>Giriş Yap</Center>
 
-              <VStack spacing={4} align="flex-start">
-                <FormControl isRequired>
-                  <FormLabel htmlFor="girisYapEmail">Email:</FormLabel>
-                  <Input
-                    id="girisYapEmail"
-                    name="girisYapEmail"
-                    type="email"
-                    onChange={this.formik.handleChange}
-                    value={this.formik.values.girisYapEmail}
-                    onBlur={this.formik.handleBlur}
-                    required
-                  />
-                  {this.formik.errors.girisYapEmail &&
-                  this.formik.touched.girisYapEmail ? (
-                    <ErrorMessage>
-                      {this.formik.errors.girisYapEmail}
-                    </ErrorMessage>
-                  ) : (
-                    <SuccessMessage></SuccessMessage>
-                  )}
-                </FormControl>
-
-                <PasswordField
-                  id="girisYapPassword"
-                  value={this.formik.values.girisYapPassword}
-                  onChange={this.formik.handleChange}
-                  onBlur={this.formik.handleBlur}
+            <VStack spacing={4} align="flex-start">
+              <FormControl isRequired>
+                <FormLabel htmlFor="girisYapEmail">Email:</FormLabel>
+                <Input
+                  id="girisYapEmail"
+                  name="girisYapEmail"
+                  type="email"
+                  onChange={formik.handleChange}
+                  value={formik.values.girisYapEmail}
+                  onBlur={formik.handleBlur}
                   required
                 />
-                {this.formik.errors.girisYapPassword &&
-                this.formik.touched.girisYapPassword ? (
-                  <ErrorMessage>
-                    {this.formik.errors.girisYapPassword}
-                  </ErrorMessage>
+                {formik.errors.girisYapEmail && formik.touched.girisYapEmail ? (
+                  <ErrorMessage>{formik.errors.girisYapEmail}</ErrorMessage>
                 ) : (
                   <SuccessMessage></SuccessMessage>
                 )}
-              </VStack>
-            </Stack>
-            <HStack justify="space-between">
-              <Checkbox defaultChecked>Beni Hatırla</Checkbox>
-              <Button variant="link" colorScheme="blue" size="sm">
-                Şifremi Unuttum
-              </Button>
-            </HStack>
-            <Stack spacing="6">
-              <LoginButton />
+              </FormControl>
 
-              <HStack>
-                <Divider />
-                <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                  veya devam et
-                </Text>
-                <Divider />
-              </HStack>
-              <OAuthButtonGroup />
-            </Stack>
+              <PasswordField
+                id="girisYapPassword"
+                value={formik.values.girisYapPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              {formik.errors.girisYapPassword &&
+              formik.touched.girisYapPassword ? (
+                <ErrorMessage>{formik.errors.girisYapPassword}</ErrorMessage>
+              ) : (
+                <SuccessMessage></SuccessMessage>
+              )}
+            </VStack>
           </Stack>
-        </form>
-      </>
-    );
-  }
+          <HStack justify="space-between">
+            <Checkbox defaultChecked>Beni Hatırla</Checkbox>
+            <Button variant="link" colorScheme="blue" size="sm">
+              Şifremi Unuttum
+            </Button>
+          </HStack>
+          <Stack spacing="6">
+            <LoginButton />
+            <Button onClick={() => setLoginState(true)}>true</Button>
+            <Button onClick={() => setLoginState(false)}>false</Button>
+            <HStack>
+              <Divider />
+              <Text fontSize="sm" whiteSpace="nowrap" color="muted">
+                veya devam et
+              </Text>
+              <Divider />
+            </HStack>
+            <OAuthButtonGroup />
+          </Stack>
+        </Stack>
+      </form>
+    </>
+  );
 }
 
+const mapStateToProps = createStructuredSelector({
+  loginState: selectLoginState(),
+});
 
-export default LogInForm;
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      setLoginState,
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
