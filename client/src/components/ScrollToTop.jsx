@@ -1,5 +1,5 @@
 import { Icon, Button, Box } from "@chakra-ui/react";
-import { BsChevronCompactUp } from "react-icons/bs";
+import { BsChevronUp } from "react-icons/bs";
 
 import React, { useState, useLayoutEffect, useEffect } from "react";
 
@@ -29,7 +29,7 @@ function ScrollToTop() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (windowPosition >= 100) {
+    if (windowPosition >= 150) {
       setShow(true);
     } else {
       setShow(false);
@@ -42,7 +42,7 @@ function ScrollToTop() {
         <Box>
           <Button
             onClick={scrollToTop}
-            borderRadius={"25px"}
+            borderRadius={"25px 25px 25px 25px"}
             color={"white"}
             bgGradient="linear(to-l, #ac28ca, #ff1060)"
             _hover={{ bgGradient: "linear(to-r, #ac28ca, #ff1060)" }}
@@ -51,7 +51,7 @@ function ScrollToTop() {
             right={"15px"}
             zIndex={100}
           >
-            <Icon as={BsChevronCompactUp} m={3} fontSize={20} />
+            <Icon as={BsChevronUp} m={3} fontSize={20} />
           </Button>
         </Box>
       )}
