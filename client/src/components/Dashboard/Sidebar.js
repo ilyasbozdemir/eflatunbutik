@@ -10,15 +10,18 @@ import {
   FiSettings,
 } from "react-icons/fi";
 
+import { GrCatalogOption } from "react-icons/gr";
 import NavLink from "./NavLink";
-
-import Logo from '../Logo'
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { TbPlugConnected } from "react-icons/tb";
+import Logo from "../Logo";
 const LinkItems = [
-  { label: "Home", icon: FiHome, href: "/" },
-  { label: "Trending", icon: FiTrendingUp, href: "/" },
-  { label: "Explore", icon: FiCompass, href: "/" },
-  { label: "Favourites", icon: FiStar, href: "/" },
-  { label: "Settings", icon: FiSettings, href: "/" },
+  { label: "Yönetim Paneli", icon: FiHome, href: "/" },
+  { label: "Katalog", icon: GrCatalogOption, href: "/" },
+  { label: "Siparişler", icon: AiOutlineShoppingCart, href: "/" },
+  { label: "Eklentiler", icon: TbPlugConnected, href: "/" },
+  //{ label: "Favourites", icon: FiStar, href: "/" },
+  { label: "Ayarlar", icon: FiSettings, href: "/" },
 ];
 
 export default function Sidebar({ onClose, ...rest }) {
@@ -45,7 +48,7 @@ export default function Sidebar({ onClose, ...rest }) {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          <Logo/>
+          <Logo />
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>

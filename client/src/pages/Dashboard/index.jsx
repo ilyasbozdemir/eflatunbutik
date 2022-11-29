@@ -2,10 +2,7 @@ import React from 'react'
 import Dashboard from '../../components/Dashboard/index'
 
 function index() {
-  return (
-    <Dashboard/>
-      
-  )
+  return <Dashboard/>
 }
 
 export default index

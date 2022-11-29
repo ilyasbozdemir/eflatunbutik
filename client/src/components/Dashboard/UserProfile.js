@@ -13,10 +13,24 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { FiChevronDown, FiBell } from "react-icons/fi";
+import { AiOutlineSetting, AiOutlineHome } from "react-icons/ai";
+
 
 export default function UserProfile() {
   return (
-    <HStack spacing={{ base: "0", md: "6" }}>
+    <HStack spacing={{ base: "0", md: "0" }}>
+      <IconButton
+        size="lg"
+        variant="ghost"
+        aria-label="open menu"
+        icon={<AiOutlineHome />}
+      />
+      <IconButton
+        size="lg"
+        variant="ghost"
+        aria-label="open menu"
+        icon={<AiOutlineSetting />}
+      />
       <IconButton
         size="lg"
         variant="ghost"
