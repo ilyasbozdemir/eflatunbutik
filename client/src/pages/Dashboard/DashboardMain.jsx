@@ -46,15 +46,16 @@ const InfoBox = (props) => {
         <Box
           bg={bg}
           color={"white"}
-          width={"30px"}
-          height={"30px"}
+          width={"35px"}
+          height={"35px"}
           borderRadius={"10px 10px"}
           boxShadow={
             "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px"
           }
         >
-          <Icon as={icon} fontSize="25px" />
+          <Icon as={icon} fontSize="25px"  />
         </Box>
+
         <Text display={"relative"} top={"5px"} right={"5px"}>
           {title}
         </Text>
@@ -67,7 +68,7 @@ const InfoBox = (props) => {
 function DashboardMain() {
   return (
     <>
-      <Flex direction={"row"}>
+      <Flex direction={"row"} justifyContent={'center'} alignContent={'center'}>
         {infoArr.map((element, index) => (
           <InfoBox key={index} {...element} />
         ))}
