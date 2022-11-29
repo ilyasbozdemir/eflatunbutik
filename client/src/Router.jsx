@@ -6,8 +6,6 @@ import Page404 from "./pages/ErrorPage/Page404";
 import Favorite from "./pages/Favorite";
 import Basket from "./pages/Basket";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-
 import RequireAuth from "../src/components/RequireAuth";
 
 function Router() {
@@ -37,8 +35,11 @@ function Router() {
         <Route element={<RequireAuth allowedRoles={["USER"]} />}>
           <Route path="/favorilerim" element={<Favorite />} />
         </Route>
-        <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
-          <Route exact path="/admin/" element={<Dashboard />} />
+        <Route
+          path="/admin/:path?"
+          exact
+          element={<RequireAuth allowedRoles={["ADMIN"]} />}
+        >
         </Route>
 
         <Route path="*" element={<Page404 />} />

@@ -15,7 +15,6 @@ function App() {
       <Layout>
         <Router />
         <Footer />
-
         <>
           <ScrollToTop />
         </>
