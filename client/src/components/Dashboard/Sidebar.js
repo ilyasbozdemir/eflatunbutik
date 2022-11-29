@@ -12,6 +12,7 @@ import {
 
 import NavLink from "./NavLink";
 
+import Logo from '../Logo'
 const LinkItems = [
   { label: "Home", icon: FiHome, href: "/" },
   { label: "Trending", icon: FiTrendingUp, href: "/" },
@@ -44,7 +45,7 @@ export default function Sidebar({ onClose, ...rest }) {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          <Logo/>
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>

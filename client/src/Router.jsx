@@ -8,13 +8,20 @@ import Basket from "./pages/Basket";
 import Login from "./pages/Login";
 import RequireAuth from "../src/components/RequireAuth";
 
+import Dashboard from "./pages/Dashboard";
+import Catalog from "./pages/Dashboard/Catalog";
+import Order from "./pages/Dashboard/Order";
+import User from "./pages/Dashboard/User";
+import UserLogin from "./pages/Dashboard/UserLogin";
+
+
 function Router() {
   return (
     <>
       <Routes>
         <Route
           element={
-            <RequireAuth allowedRoles={["ANONYMOUS", "USER", "ADMIN"]}  />
+            <RequireAuth allowedRoles={["ANONYMOUS", "USER", "ADMIN"]} />
           }
         >
           <Route exact path="/" element={<Home />} />
@@ -36,11 +43,16 @@ function Router() {
           <Route path="/favorilerim" element={<Favorite />} />
         </Route>
         <Route
-          path="/admin/:path?"
+          path="/admin/"
           exact
           element={<RequireAuth allowedRoles={["ADMIN"]} />}
         >
-          
+          <Route exact path="/admin/" element={<Dashboard />} />
+          <Route path="/admin/catalog/" element={<Catalog />} />
+          <Route path="/admin/order/" element={<Order />} />
+          <Route path="/admin/user/" element={<User />} />
+          <Route path="/admin/giris/" element={<UserLogin />} />
+
         </Route>
 
         <Route path="*" element={<Page404 />} />

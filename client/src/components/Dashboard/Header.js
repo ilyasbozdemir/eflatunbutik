@@ -2,6 +2,7 @@ import { IconButton, Flex, Text } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import UserProfile from "./UserProfile";
 
+import Logo from '../Logo'
 export default function Header({ onOpen, ...rest }) {
   return (
     <Flex
@@ -32,7 +33,7 @@ export default function Header({ onOpen, ...rest }) {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+        <Logo/>
       </Text>
 
       <UserProfile />

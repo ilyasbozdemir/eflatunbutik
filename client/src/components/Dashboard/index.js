@@ -18,7 +18,7 @@ export default function Layout({ children }) {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
+        size="sm"
       >
         <DrawerContent>
           <Sidebar onClose={onClose} />

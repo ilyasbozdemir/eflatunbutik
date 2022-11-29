@@ -34,7 +34,7 @@ export default function UserProfile() {
               <Avatar
                 size="md"
                 src={
-                  "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                  "https://scontent.cdninstagram.com/v/t51.2885-19/312907936_126034318784286_1837847843852548548_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=yPEUjDlbQv8AX8-M36x&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfDODQr5PlC8XPhswUTdOnIXOSWbxL9yqmzvpFNfMyeBVA&oe=638B3746&_nc_sid=978cb9"
                 }
               />
               <VStack
@@ -43,7 +43,7 @@ export default function UserProfile() {
                 spacing="1px"
                 ml="2"
               >
-                <Text fontSize="lg">Ademola Jones</Text>
+                <Text fontSize="lg">İlyas Bozdemir</Text>
                 <Text fontSize="md" color="gray.600">
                   Admin
                 </Text>

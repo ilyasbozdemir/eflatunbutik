@@ -16,7 +16,7 @@ function index({ children, isDashboardLayout }) {
 
   return (
     <>
-      {isDashboardLayout == false ? (
+      {isDashboardLayout === false ? (
         <Box minH="100vh" zIndex="100">
           <Sidebar
             onClose={() => onClose}
