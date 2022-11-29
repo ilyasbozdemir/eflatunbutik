@@ -46,7 +46,7 @@ export default function UserProfile() {
           >
             <HStack spacing="4">
               <Avatar
-                size="md"
+                size={{base:'sm',md:'md'}}
                 src={
                   "https://scontent.cdninstagram.com/v/t51.2885-19/312907936_126034318784286_1837847843852548548_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=yPEUjDlbQv8AX8-M36x&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfDODQr5PlC8XPhswUTdOnIXOSWbxL9yqmzvpFNfMyeBVA&oe=638B3746&_nc_sid=978cb9"
                 }
