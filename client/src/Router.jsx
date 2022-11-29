@@ -14,7 +14,7 @@ function Router() {
       <Routes>
         <Route
           element={
-            <RequireAuth allowedRoles={["ANONYMOUS", "USER", "ADMIN"]} />
+            <RequireAuth allowedRoles={["ANONYMOUS", "USER", "ADMIN"]}  />
           }
         >
           <Route exact path="/" element={<Home />} />
@@ -40,6 +40,7 @@ function Router() {
           exact
           element={<RequireAuth allowedRoles={["ADMIN"]} />}
         >
+          
         </Route>
 
         <Route path="*" element={<Page404 />} />

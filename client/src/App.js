@@ -12,13 +12,14 @@ import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
     <>
-      <Layout>
-        <Router />
-        <Footer />
+      <Layout isDashboardLayout={false}>
         <>
+          <Router />
+          <Footer />
           <ScrollToTop />
         </>
       </Layout>
+     
     </>
   );
 }
