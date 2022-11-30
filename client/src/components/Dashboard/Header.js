@@ -17,6 +17,8 @@ export default function Header({ onOpen, ...rest }) {
       borderBottomWidth="1px"
       borderBottomColor="gray.200"
       justifyContent={{ base: "space-between", md: "flex-end" }}
+      boxShadow={"rgba(0, 0, 0, 0.3) 0px 19px 20px, rgba(0, 0, 0, 0.22) 0px 10px 0px"}
+      
       {...rest}
     >
       <IconButton

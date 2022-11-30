@@ -18,6 +18,7 @@ export default function NavLink({ link, ...rest }) {
           color: "white",
         }}
         {...rest}
+        borderBottom={'1px solid #bccccc'}
       >
         {icon && (
           <Icon
@@ -29,7 +30,10 @@ export default function NavLink({ link, ...rest }) {
             as={icon}
           />
         )}
-        <Text fontFamily={'corbel'} fontSize="1.2rem">{label}</Text>
+        <Text 
+        fontFamily={'corbel'} 
+        fontSize="1.2rem"
+        >{label}</Text>
       </Flex>
     </Link>
   );

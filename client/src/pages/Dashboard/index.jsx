@@ -1,5 +1,6 @@
 import React from "react";
 import Dashboard from "../../components/Dashboard/index";
+import SettingButton from "../../components/Dashboard/SettingButton";
 import DashboardMain from "./DashboardMain";
 import {
   Breadcrumb,
@@ -8,7 +9,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { IoMdArrowDropright } from "react-icons/io";
-
 
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ function index() {
       <Dashboard>
         <CurrentBreadcrumb />
         <DashboardMain />
-
+        <SettingButton />
       </Dashboard>
     </>
   );

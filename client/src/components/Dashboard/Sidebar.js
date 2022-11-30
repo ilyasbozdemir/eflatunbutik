@@ -8,10 +8,11 @@ import {
   FiCompass,
   FiStar,
   FiSettings,
+  FiBookOpen,
   FiChevronRight,
 } from "react-icons/fi";
 
-import { GrCatalogOption, GrConfigure } from "react-icons/gr";
+import { GrConfigure } from "react-icons/gr";
 import NavLink from "./NavLink";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import {
@@ -20,9 +21,10 @@ import {
   TbShoppingCartDiscount,
 } from "react-icons/tb";
 import Logo from "../Logo";
+
 const LinkItems = [
   { label: "Yönetim Paneli", icon: FiHome, href: "/" },
-  { label: "Katalog", icon: GrCatalogOption, href: "/" },
+  { label: "Katalog", icon: FiBookOpen, href: "/" },
   { label: "Siparişler", icon: AiOutlineShoppingCart, href: "/" },
   { label: "Kampanya Yönetimi", icon: TbShoppingCartDiscount, href: "/" },
   { label: "Yapılandırma", icon: GrConfigure, href: "/" },

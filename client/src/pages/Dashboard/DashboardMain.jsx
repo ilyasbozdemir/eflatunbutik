@@ -9,10 +9,10 @@ import {
   Flex,
   Stack,
   HStack,
-  VStack,
   Icon,
   Alert,
   AlertIcon,
+  Box,
 } from "@chakra-ui/react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -21,34 +21,31 @@ import SalesOrdersChart from "../../components/Dashboard/Charts/SalesOrdersChart
 import EnvanterChart from "../../components/Dashboard/Charts/EnvanterChart";
 import SearchTermsTable from "../../components/Dashboard/Table/SearchTermsTable";
 
+import WeatherForecast from '../../components/Dashboard/WeatherForecast '
+
+
 const infoArr = [
   {
     icon: BiShoppingBag,
     color: "teal.500",
-    color2: "teal.300",
     title: "Sipariş Adedi",
-    count: 10,
-  },
-  {
+    count: 750,
+  }, {
     icon: HiOutlineUserAdd,
     color: "orange.500",
-    color2: "orange.300",
     title: "Yeni Kullanıcı",
-    count: 20,
-  },
-  {
+    count: 350,
+  }, {
     icon: BsBasket3,
     color: "purple.500",
-    color2: "purple.300",
     title: "Unutulmuş Sepet Adedi",
-    count: 45,
+    count: 154,
   },
   {
     icon: GiClick,
     color: "gray.500",
-    color2: "gray.300",
     title: "Ziyaretçi",
-    count: 10,
+    count: 1530,
   },
 ];
 const InfoBox = (props) => {
@@ -110,10 +107,51 @@ function DashboardMain() {
         <Flex
           p={3}
           direction={{ base: "column", lg: "row" }}
-          justifyContent={{ base: "space-between", lg: "space-between" }}
+          justifyContent={{ base: "center", lg: "space-between" }}
         >
-          <Text>[To Do Component Gelcek]</Text>
-          <Calendar onChange={onChange} value={value} activeStartDate={value} />
+        
+          <Box
+            bg={"#fff"}
+            boxShadow={
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+            }
+            width={348}
+            height={300}
+          >
+            <Text
+              justifyContent={"center"}
+              textAlign={"center"}
+              fontFamily={"corbel"}
+              fontSize={"20px"}
+              borderBottom={'2px solid black'}
+            >
+              Hava Durumu
+            </Text>
+            <WeatherForecast width={348} height={272} />
+          </Box>
+          <Box
+            bg={"#fff"}
+            boxShadow={
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+            }
+            width={348}
+            height={300}
+          >
+            <Text
+              justifyContent={"center"}
+              textAlign={"center"}
+              fontFamily={"corbel"}
+              fontSize={"20px"}
+              borderBottom={'2px solid black'}
+            >
+              Takvim
+            </Text>
+            <Calendar
+              onChange={onChange}
+              value={value}
+              activeStartDate={value}
+            />
+          </Box>
         </Flex>
 
         <Flex p={3} direction={"column"} m={1}>
@@ -126,7 +164,7 @@ function DashboardMain() {
           <EnvanterChart />
         </Flex>
         <Flex p={3} direction={"column"} m={1}>
-          <Alert status="info" justifyContent={'center'}>
+          <Alert status="info" justifyContent={"center"}>
             <AlertIcon />
             En çok aranan terim raporunu anlık olarak aşağıda
             görüntüleyebilirsiniz
@@ -135,6 +173,7 @@ function DashboardMain() {
         </Flex>
         {/*
       <Text>Son Siparişler</Text>
+      <Text>Hava Durumu </Text>
       <Text>Son Eklenen Ürünler</Text>
       <Text>Favoriye alınan ürünler</Text>
       <Text>Unutulan sepetler</Text>

@@ -1,5 +1,6 @@
 import {
   IconButton,
+  Button,
   Avatar,
   Box,
   Flex,
@@ -14,28 +15,29 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown, FiBell } from "react-icons/fi";
 import { AiOutlineSetting, AiOutlineHome } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 export default function UserProfile() {
   return (
     <HStack spacing={{ base: "0", md: "0" }}>
+   
+      <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="search data"
+          icon={<FiSearch />}
+        />
       <a href="/" target="_blank">
         <IconButton
           size="lg"
           variant="ghost"
-          aria-label="open menu"
+          aria-label="open home page"
           icon={<AiOutlineHome />}
         />
       </a>
 
-      <Link>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<AiOutlineSetting />}
-        />
-      </Link>
+   
 
       <Link>
         <IconButton
