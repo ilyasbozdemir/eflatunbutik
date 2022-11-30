@@ -4,6 +4,7 @@ import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Chakra } from "../src/Chakra";
 
+
 import { Provider } from "react-redux";
 //import sagas from '../src/store/sagas';
 // import createSagaMiddleware from 'redux-saga';
@@ -15,6 +16,7 @@ import {
   applyMiddleware,
 } from "redux";
 
+
 import storage from "redux-persist/lib/storage";
 // web için varsayılan localstorage
 
@@ -22,6 +24,9 @@ import reducers from "../src/store/reducers";
 
 
 import { Skeleton } from "@chakra-ui/react";
+
+import logger from 'redux-logger'
+
 import App from "./App";
 
 
@@ -35,14 +40,17 @@ const persistConfig = {
 // Middleware: persisted reducerımızı oluşturuyoruz.
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-//const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 //const sagaMiddleware = createSagaMiddleware();
 
+const middlewares= [/*sagaMiddleware,*/logger]
+
+
 export const store = createStore(
-  persistedReducer
-  // composeEnhancer(
-  //   applyMiddleware(sagaMiddleware),
-  // ),
+  persistedReducer,
+   composeEnhancer(
+     applyMiddleware(...middlewares),
+   ),
 );
 
 // Middleware: persist store oluşturuyoruz.

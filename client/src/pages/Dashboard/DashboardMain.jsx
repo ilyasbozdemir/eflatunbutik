@@ -8,20 +8,20 @@ const infoArr = [
   {
     icon: BiShoppingBag,
     color: "blue.500",
-    bg: "blue.400",
+    bg: "white",
     title: "Sipariş",
     count: 10,
   },
   {
     icon: HiOutlineUserAdd,
-    bg: "yellow.400",
+    bg: "white",
     color: "yellow.500",
     title: "Yeni Kullanıcı",
     count: 20,
   },
   {
     icon: HiOutlineUserAdd,
-    bg: "green.400",
+    bg: "white",
     color: "green.500",
     title: "Ziyaretçi",
     count: 45,
@@ -33,7 +33,7 @@ const InfoBox = (props) => {
     <>
       <Box
         bg={bg}
-        color={"white"}
+        color={"black"}
         p={4}
         m={4}
         width={"200px"}
@@ -44,7 +44,7 @@ const InfoBox = (props) => {
         }
       >
         <Box
-          bg={bg}
+          bg={color}
           color={"white"}
           width={"35px"}
           height={"35px"}
@@ -73,6 +73,16 @@ function DashboardMain() {
           <InfoBox key={index} {...element} />
         ))}
       </Flex>
+      <Box>bunlar hep widget şekilnde olucak</Box>
+      <Box>
+        chart.js gelcek
+      </Box>
+      <Box>Son Siparişler</Box>
+      <Box>Son Eklenen Ürünler</Box>
+      <Box>Favoriye alınan ürünler</Box>
+      <Box>Unutulan sepetler</Box>
+      <Box>aktif kullanıcılar</Box>
+      <Box>calender</Box>
     </>
   );
 }
