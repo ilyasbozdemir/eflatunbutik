@@ -8,13 +8,13 @@ export default function NavLink({ link, ...rest }) {
     <Link href={href} passHref>
       <Flex
         align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
+        p="3"
+        mx="3"
+        borderRadius="md"
         role="group"
         cursor="pointer"
         _hover={{
-          bg: "cyan.400",
+          bg: "purple.400",
           color: "white",
         }}
         {...rest}
@@ -29,7 +29,7 @@ export default function NavLink({ link, ...rest }) {
             as={icon}
           />
         )}
-        <Text fontSize="1.2rem">{label}</Text>
+        <Text fontFamily={'corbel'} fontSize="1.2rem">{label}</Text>
       </Flex>
     </Link>
   );

@@ -8,19 +8,26 @@ import {
   FiCompass,
   FiStar,
   FiSettings,
+  FiChevronRight,
 } from "react-icons/fi";
 
-import { GrCatalogOption } from "react-icons/gr";
+import { GrCatalogOption, GrConfigure } from "react-icons/gr";
 import NavLink from "./NavLink";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { TbPlugConnected } from "react-icons/tb";
+import {
+  TbPlugConnected,
+  TbChartInfographic,
+  TbShoppingCartDiscount,
+} from "react-icons/tb";
 import Logo from "../Logo";
 const LinkItems = [
   { label: "Yönetim Paneli", icon: FiHome, href: "/" },
   { label: "Katalog", icon: GrCatalogOption, href: "/" },
   { label: "Siparişler", icon: AiOutlineShoppingCart, href: "/" },
+  { label: "Kampanya Yönetimi", icon: TbShoppingCartDiscount, href: "/" },
+  { label: "Yapılandırma", icon: GrConfigure, href: "/" },
+  { label: "Raporlar", icon: TbChartInfographic, href: "/" },
   { label: "Eklentiler", icon: TbPlugConnected, href: "/" },
-  //{ label: "Favourites", icon: FiStar, href: "/" },
   { label: "Ayarlar", icon: FiSettings, href: "/" },
 ];
 
