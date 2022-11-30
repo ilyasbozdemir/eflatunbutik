@@ -14,29 +14,38 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown, FiBell } from "react-icons/fi";
 import { AiOutlineSetting, AiOutlineHome } from "react-icons/ai";
-
+import { Link } from "react-router-dom";
 
 export default function UserProfile() {
   return (
     <HStack spacing={{ base: "0", md: "0" }}>
-      <IconButton
-        size="lg"
-        variant="ghost"
-        aria-label="open menu"
-        icon={<AiOutlineHome />}
-      />
-      <IconButton
-        size="lg"
-        variant="ghost"
-        aria-label="open menu"
-        icon={<AiOutlineSetting />}
-      />
-      <IconButton
-        size="lg"
-        variant="ghost"
-        aria-label="open menu"
-        icon={<FiBell />}
-      />
+      <a href="/" target="_blank">
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<AiOutlineHome />}
+        />
+      </a>
+
+      <Link>
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<AiOutlineSetting />}
+        />
+      </Link>
+
+      <Link>
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<FiBell />}
+        />
+      </Link>
+
       <Flex alignItems="center">
         <Menu>
           <MenuButton
@@ -46,7 +55,7 @@ export default function UserProfile() {
           >
             <HStack spacing="4">
               <Avatar
-                size={{base:'sm',md:'md'}}
+                size={{ base: "sm", md: "md" }}
                 src={
                   "https://scontent.cdninstagram.com/v/t51.2885-19/312907936_126034318784286_1837847843852548548_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=yPEUjDlbQv8AX8-M36x&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfDODQr5PlC8XPhswUTdOnIXOSWbxL9yqmzvpFNfMyeBVA&oe=638B3746&_nc_sid=978cb9"
                 }
