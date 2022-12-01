@@ -21,8 +21,7 @@ import SalesOrdersChart from "../../components/Dashboard/Charts/SalesOrdersChart
 import EnvanterChart from "../../components/Dashboard/Charts/EnvanterChart";
 import SearchTermsTable from "../../components/Dashboard/Table/SearchTermsTable";
 
-import WeatherForecast from '../../components/Dashboard/WeatherForecast '
-
+import WeatherForecast from "../../components/Dashboard/WeatherForecast/WeatherForecast ";
 
 const infoArr = [
   {
@@ -30,12 +29,14 @@ const infoArr = [
     color: "teal.500",
     title: "Sipariş Adedi",
     count: 750,
-  }, {
+  },
+  {
     icon: HiOutlineUserAdd,
     color: "orange.500",
     title: "Yeni Kullanıcı",
     count: 350,
-  }, {
+  },
+  {
     icon: BsBasket3,
     color: "purple.500",
     title: "Unutulmuş Sepet Adedi",
@@ -109,7 +110,6 @@ function DashboardMain() {
           direction={{ base: "column", lg: "row" }}
           justifyContent={{ base: "center", lg: "space-between" }}
         >
-        
           <Box
             bg={"#fff"}
             boxShadow={
@@ -123,7 +123,7 @@ function DashboardMain() {
               textAlign={"center"}
               fontFamily={"corbel"}
               fontSize={"20px"}
-              borderBottom={'2px solid black'}
+              borderBottom={"2px solid black"}
             >
               Hava Durumu
             </Text>
@@ -142,7 +142,7 @@ function DashboardMain() {
               textAlign={"center"}
               fontFamily={"corbel"}
               fontSize={"20px"}
-              borderBottom={'2px solid black'}
+              borderBottom={"2px solid black"}
             >
               Takvim
             </Text>
