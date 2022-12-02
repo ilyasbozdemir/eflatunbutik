@@ -21,6 +21,7 @@ import "react-calendar/dist/Calendar.css";
 import SalesChart from "../../components/Dashboard/Charts/SalesChart";
 import SalesOrdersChart from "../../components/Dashboard/Charts/SalesOrdersChart";
 import EnvanterChart from "../../components/Dashboard/Charts/EnvanterChart";
+
 import SearchTermsTable from "../../components/Dashboard/Table/SearchTermsTable";
 
 import WeatherForecast from "../../components/Dashboard/WeatherForecast/WeatherForecast ";
@@ -91,81 +92,114 @@ function DashboardMain() {
   return (
     <>
       <Stack>
-        <Grid templateColumns={"repeat(auto-fit, minmax(200px,1fr))"} gap={10}>
+        <Grid
+          mt={3}
+          templateColumns={"repeat(auto-fit, minmax(200px,1fr))"}
+          gap={10}
+        >
           {infoArr.map((element, index) => (
             <Item key={index} {...element} />
           ))}
         </Grid>
 
-        <Flex
-          p={3}
-          direction={{ base: "column", lg: "row" }}
-          justifyContent={{ base: "center", lg: "space-between" }}
+        <Grid
+          mt={3}
+          templateColumns={"repeat(auto-fit, minmax(350px,1fr))"}
+          gap={10}
         >
-          <Box
-            bg={"#fff"}
-            boxShadow={
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
-            }
-            width={348}
-            height={300}
-          >
-            <Text
-              justifyContent={"center"}
-              textAlign={"center"}
-              fontFamily={"corbel"}
-              fontSize={"20px"}
-              borderBottom={"2px solid black"}
+          <GridItem mt={3}>
+            <Flex
+              direction={{ base: "column", lg: "row" }}
+              justifyContent={{ base: "center", lg: "space-between" }}
             >
-              Hava Durumu
-            </Text>
-            <WeatherForecast width={348} height={272} />
-          </Box>
-          <Box
-            bg={"#fff"}
-            boxShadow={
-              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
-            }
-            width={348}
-            height={300}
-          >
-            <Text
-              justifyContent={"center"}
-              textAlign={"center"}
-              fontFamily={"corbel"}
-              fontSize={"20px"}
-              borderBottom={"2px solid black"}
-            >
-              Takvim
-            </Text>
-            <Calendar
-              onChange={onChange}
-              value={value}
-              activeStartDate={value}
-            />
-          </Box>
-        </Flex>
+              <Box
+                bg={"#fff"}
+                boxShadow={
+                  "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+                }
+                width={350}
+                height={300}
+                borderRadius={"10px 10px"}
+              >
+                <Text
+                  justifyContent={"center"}
+                  textAlign={"center"}
+                  fontFamily={"corbel"}
+                  fontSize={"20px"}
+                  borderBottom={"2px solid black"}
+                >
+                  Hava Durumu
+                </Text>
+                <WeatherForecast width={348} height={272} />
+              </Box>
+              <Box
+                bg={"#fff"}
+                boxShadow={
+                  "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+                }
+                width={350}
+                height={300}
+                borderRadius={"10px 10px"}
+              >
+                
+                <Text
+                  justifyContent={"center"}
+                  textAlign={"center"}
+                  fontFamily={"corbel"}
+                  fontSize={"20px"}
+                  borderBottom={"2px solid black"}
+                >
+                  Takvim
+                </Text>
+                <Calendar
+                  onChange={onChange}
+                  value={value}
+                  activeStartDate={value}
+                />
+              </Box>
+            </Flex>
+          </GridItem>
 
-
-
-        <Flex p={3} direction={"column"} m={1}>
-          <Alert status="info">
+          <Alert status="info" borderRadius={"10px 10px"}>
             <AlertIcon />
             Grafikler aşağıda listelenmiştir.
           </Alert>
-          <SalesChart />
-          <SalesOrdersChart />
-          <EnvanterChart />
-        </Flex>
-
-        <Flex p={3} direction={"column"} m={1}>
-          <Alert status="info" justifyContent={"center"}>
-            <AlertIcon />
-            En çok aranan terim raporunu anlık olarak aşağıda
-            görüntüleyebilirsiniz
-          </Alert>
-          <SearchTermsTable />
-        </Flex>
+          <GridItem
+            bg={"#fff"}
+            boxShadow={
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+            }
+            height={"100%"}
+            borderRadius={"10px 10px"}
+          >
+            <Flex justifyContent={"center"}>
+              <SalesChart />
+            </Flex>
+          </GridItem>
+          <GridItem
+            bg={"#fff"}
+            boxShadow={
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+            }
+            height={"100%"}
+            borderRadius={"10px 10px"}
+          >
+            <Flex justifyContent={"center"}>
+              <SalesOrdersChart />
+            </Flex>
+          </GridItem>
+          <GridItem
+            bg={"#fff"}
+            boxShadow={
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
+            }
+            borderRadius={"10px 10px"}
+          >
+            <Flex justifyContent={"center"}>
+              <EnvanterChart />
+            </Flex>
+          </GridItem>
+        </Grid>
         {/*
       <Text>Son Siparişler</Text>
       <Text>Hava Durumu </Text>

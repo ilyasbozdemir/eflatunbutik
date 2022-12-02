@@ -6,6 +6,7 @@ import { AiOutlineSetting } from "react-icons/ai";
 function SettingButton() {
   return (
     <Box
+      borderRadius={'50% 50%'}
       bg={"white"}
       position={"fixed"}
       bottom={"40px"}
