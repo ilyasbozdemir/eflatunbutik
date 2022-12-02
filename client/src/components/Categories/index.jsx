@@ -7,12 +7,13 @@ import Product from "../Product";
 //Kategoriler Beden Renk Fiyat Aralığı
 export class index extends Component {
   render() {
+    
     const { breadcrumb, categoryData } = this.props;
 
     return (
       <>
         <Flex direction={"row"}>
-          <Grid as="aside" width={"270px"} bg={'pink.600'}>
+          <Grid as="aside" width={"270px"} bg={"pink.600"}>
             kategori filreleme alanı
           </Grid>
           <Grid width={"calc(100% - 270px)"}>
