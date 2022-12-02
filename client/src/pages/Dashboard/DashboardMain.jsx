@@ -1,9 +1,10 @@
 import React from "react";
 import { BiShoppingBag } from "react-icons/bi";
+import { CiMoneyCheck1 } from "react-icons/ci";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { GiClick } from "react-icons/gi";
 import { BsBasket3 } from "react-icons/bs";
-
+import {MdOutlineSell} from 'react-icons/md'
 import {
   Text,
   Flex,
@@ -35,6 +36,20 @@ const infoArr = [
     count: 750,
   },
   {
+    icon: MdOutlineSell,
+    color: "cyan.500",
+    color2: "cyan.400",
+    title: "Toplam Satış",
+    count: 250,
+  },
+  {
+    icon: CiMoneyCheck1,
+    color: "red.500",
+    color2: "red.400",
+    title: "Toplam  Ciro",
+    count: '₺123700',
+  },
+  {
     icon: HiOutlineUserAdd,
     color: "orange.500",
     color2: "orange.400",
@@ -50,11 +65,11 @@ const infoArr = [
   },
   {
     icon: GiClick,
-    color: "gray.500",
-    color2: "gray.400",
+    color: "blue.500",
+    color2: "blue.400",
     title: "Ziyaretçi",
-    count: 1530,
-  },
+    count: 530,
+  }
 ];
 const Item = (props) => {
   const { icon, color, color2, title, count } = props;
@@ -141,7 +156,6 @@ function DashboardMain() {
                 height={300}
                 borderRadius={"10px 10px"}
               >
-                
                 <Text
                   justifyContent={"center"}
                   textAlign={"center"}
@@ -200,6 +214,7 @@ function DashboardMain() {
             </Flex>
           </GridItem>
         </Grid>
+
         {/*
       <Text>Son Siparişler</Text>
       <Text>Hava Durumu </Text>
