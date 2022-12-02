@@ -13,6 +13,8 @@ import {
   Alert,
   AlertIcon,
   Box,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -27,62 +29,58 @@ const infoArr = [
   {
     icon: BiShoppingBag,
     color: "teal.500",
+    color2: "teal.400",
     title: "Sipariş Adedi",
     count: 750,
   },
   {
     icon: HiOutlineUserAdd,
     color: "orange.500",
+    color2: "orange.400",
     title: "Yeni Kullanıcı",
     count: 350,
   },
   {
     icon: BsBasket3,
     color: "purple.500",
+    color2: "purple.400",
     title: "Unutulmuş Sepet Adedi",
     count: 154,
   },
   {
     icon: GiClick,
     color: "gray.500",
+    color2: "gray.400",
     title: "Ziyaretçi",
     count: 1530,
   },
 ];
-const InfoBox = (props) => {
+const Item = (props) => {
   const { icon, color, color2, title, count } = props;
   return (
     <>
-      <Stack
-        display={"relative"}
-        justifyContent={"space-around"}
-        width={{ base: "100%", md: "150px" }}
-        height={{ base: "130px" }}
+      <GridItem
         bg={color}
-        color={"white"}
+        color={"#fff"}
         borderRadius={"10px 10px"}
         boxShadow={
           "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -2px 2px"
         }
+        w="100%"
+        h="100"
       >
         <HStack justifyContent={"space-between"} mx={1}>
           <Text fontSize={30} fontWeight={"semibold"} fontFamily={"sans-serif"}>
             {count}
           </Text>
-          <Icon
-            as={icon}
-            fontSize={35}
-            fontWeight={"semibold"}
-            fontFamily={"sans-serif"}
-            color={color2}
-          />
+          <Icon as={icon} fontSize={35} color={color2} />
         </HStack>
         <HStack justifyContent={"center"}>
           <Text fontSize={20} fontFamily={"corbel"}>
             {title}
           </Text>
         </HStack>
-      </Stack>
+      </GridItem>
     </>
   );
 };
@@ -93,17 +91,11 @@ function DashboardMain() {
   return (
     <>
       <Stack>
-        <Flex
-          direction={{ base: "column", md: "row" }}
-          spacing="8"
-          justifyContent={"space-between"}
-          alignContent={"center"}
-          m={5}
-        >
+        <Grid templateColumns={"repeat(auto-fit, minmax(200px,1fr))"} gap={10}>
           {infoArr.map((element, index) => (
-            <InfoBox key={index} {...element} />
+            <Item key={index} {...element} />
           ))}
-        </Flex>
+        </Grid>
 
         <Flex
           p={3}
@@ -154,6 +146,8 @@ function DashboardMain() {
           </Box>
         </Flex>
 
+
+
         <Flex p={3} direction={"column"} m={1}>
           <Alert status="info">
             <AlertIcon />
@@ -163,6 +157,7 @@ function DashboardMain() {
           <SalesOrdersChart />
           <EnvanterChart />
         </Flex>
+
         <Flex p={3} direction={"column"} m={1}>
           <Alert status="info" justifyContent={"center"}>
             <AlertIcon />

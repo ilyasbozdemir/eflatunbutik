@@ -17,9 +17,7 @@ import { linkItems } from "../../constants/LinkItems";
 import { Link } from "react-router-dom";
 
 function index({ onClose, ...rest }) {
-  
   const [isDesktop] = UseMediaQuery("(min-width: 768px)");
-
 
   return (
     <>
@@ -32,6 +30,11 @@ function index({ onClose, ...rest }) {
         pos="fixed"
         h="full"
         style={{ overflowY: "auto" }}
+        sx={{
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
         {...rest}
       >
         <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">

@@ -50,6 +50,9 @@ function ScrollToTop() {
             bottom={"80px"}
             right={"15px"}
             zIndex={100}
+            boxShadow={
+              " rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
+            }
           >
             <Icon as={BsChevronUp} m={3} fontSize={20} />
           </Button>

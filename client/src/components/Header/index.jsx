@@ -33,18 +33,19 @@ function index({ onOpen, ...rest }) {
 
   return (
     <>
-      <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
-        <HeaderTop />
-      </Stack>
-
-      <Flex
+      <Box
+        as="header"
+        display={"flex"}
         position="sticky"
         top="0"
         zIndex="1000"
         alignItems="center"
         justifyContent={{ base: "flex-start", md: "flex-end" }}
         bg={UseColorModeValue("white", "blackAlpha.50")}
-        /*  backdropFilter="blur(1.5rem)"*/
+        backdropFilter="blur(1.5rem)"
+        boxShadow={
+          " rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
+        }
         {...rest}
       >
         <IconButton
@@ -81,14 +82,19 @@ function index({ onOpen, ...rest }) {
         {/**/}
 
         <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
+          <HeaderTop />
           <Divider />
           <HeaderBrand />
           <HeaderMenu />
         </Stack>
-      </Flex>
-
+      </Box>
       {/*= Mobile Bottom Navigation =*/}
-      <Box display={{ base: "block", md: "none" }}>
+      <Box
+        display={{ base: "block", md: "none" }}
+        boxShadow={
+          " rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
+        }
+      >
         <BottomNavigation />
       </Box>
     </>
