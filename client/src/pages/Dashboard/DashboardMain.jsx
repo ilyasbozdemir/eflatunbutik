@@ -4,7 +4,7 @@ import { CiMoneyCheck1 } from "react-icons/ci";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { GiClick } from "react-icons/gi";
 import { BsBasket3 } from "react-icons/bs";
-import {MdOutlineSell} from 'react-icons/md'
+import { MdOutlineSell } from "react-icons/md";
 import {
   Text,
   Flex,
@@ -47,7 +47,7 @@ const infoArr = [
     color: "red.500",
     color2: "red.400",
     title: "Toplam  Ciro",
-    count: '₺123700',
+    count: "₺123700",
   },
   {
     icon: HiOutlineUserAdd,
@@ -69,7 +69,7 @@ const infoArr = [
     color2: "blue.400",
     title: "Ziyaretçi",
     count: 530,
-  }
+  },
 ];
 const Item = (props) => {
   const { icon, color, color2, title, count } = props;
@@ -86,13 +86,21 @@ const Item = (props) => {
         h="100"
       >
         <HStack justifyContent={"space-between"} mx={1}>
-          <Text fontSize={30} fontWeight={"semibold"} fontFamily={"sans-serif"}>
+          <Text
+            fontSize={{ base: 28, lg: 30 }}
+            fontWeight={"semibold"}
+            fontFamily={"sans-serif"}
+          >
             {count}
           </Text>
-          <Icon as={icon} fontSize={35} color={color2} />
+          <Icon as={icon} fontSize={{ base: 30, lg: 35 }} color={color2} />
         </HStack>
         <HStack justifyContent={"center"}>
-          <Text fontSize={20} fontFamily={"corbel"}>
+          <Text 
+          fontSize={{ base: 20, lg: 20 }}
+           fontFamily={"corbel"}
+           wordBreak={'break-word'}
+           >
             {title}
           </Text>
         </HStack>

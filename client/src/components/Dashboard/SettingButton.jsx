@@ -3,10 +3,12 @@ import { Box, Button, Icon } from "@chakra-ui/react";
 
 import { AiOutlineSetting } from "react-icons/ai";
 
-function SettingButton() {
+function SettingButton({ onOpen }) {
   return (
     <Box
-      borderRadius={'50% 50%'}
+      onClick={onOpen}
+      aria-label="settings button"
+      borderRadius={"50% 50%"}
       bg={"white"}
       position={"fixed"}
       bottom={"40px"}

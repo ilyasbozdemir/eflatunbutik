@@ -2,11 +2,13 @@ import React from "react";
 import Dashboard from "../../components/Dashboard/index";
 import SettingButton from "../../components/Dashboard/SettingButton";
 import DashboardMain from "./DashboardMain";
+import SettingSidebar from "../../components/Dashboard/SettingSidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   Text,
+  useDisclosure as UseDisclosure,
 } from "@chakra-ui/react";
 import { IoMdArrowDropright } from "react-icons/io";
 
@@ -34,12 +36,23 @@ const CurrentBreadcrumb = () => {
 };
 
 function index() {
+  const {
+    isOpen: isOpenAdminSettingSidebar,
+    onOpen: onOpenAdminSettingSidebar,
+    onClose: onCloseAdminSettingSidebar,
+  } = UseDisclosure();
+
   return (
     <>
       <Dashboard>
         <CurrentBreadcrumb />
         <DashboardMain />
-        <SettingButton />
+        <SettingButton onOpen={onOpenAdminSettingSidebar} />
+        <SettingSidebar
+          onOpen={onOpenAdminSettingSidebar}
+          isOpen={isOpenAdminSettingSidebar}
+          onClose={onCloseAdminSettingSidebar}
+        />
       </Dashboard>
     </>
   );
