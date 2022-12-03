@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 
-import Home from "./pages/Home";
-import Page404 from "./pages/ErrorPage/Page404";
+
 import Favorite from "./pages/Favorite";
 import Basket from "./pages/Basket";
 import Login from "./pages/Login";
@@ -16,6 +15,9 @@ import UserLogin from "./pages/Dashboard/UserLogin";
 import RequireAuth from "../src/components/RequireAuth";
 
 import CategoryProduct from "./pages/CategoryProduct";
+
+const Home = React.lazy(() => import("./pages/Home"));
+const Page404 = React.lazy(() => import("./pages/ErrorPage/Page404"));
 
 function Router() {
   return (
@@ -56,7 +58,20 @@ function Router() {
               />
             }
           />
-          <Route path="/yeni-gelenler/" element={<Home />} />
+          <Route
+            path="/yeni-gelenler/"
+            element={
+              <CategoryProduct
+                breadcrumbs={[
+                  { item: "Anasayfa", link: "/", isCurrentPage: false },
+                  {
+                    item: "Yeni Gelenler",
+                    isCurrentPage: true,
+                  },
+                ]}
+              />
+            }
+          />
           <Route path="/elbise/" element={<Home />} />
           <Route path="/ust-giyim/" element={<Home />} />
           <Route path="/alt-giyim/" element={<Home />} />/

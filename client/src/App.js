@@ -8,9 +8,9 @@ import { createStructuredSelector } from "reselect";
 
 import { selectLoginState } from "./store/selectors";
 import ScrollToTop from "./components/ScrollToTop";
-import React from "react";
+import React, { Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import Dashboard from '../src/pages/Dashboard/index'
+import Dashboard from "../src/pages/Dashboard/index";
 function App() {
   let location = useLocation();
   const [isDashboard, setIsDashboard] = React.useState(
@@ -22,7 +22,7 @@ function App() {
   }, [location]);
 
   return (
-    <>
+    <Suspense fallback={'loading'}>
       {isDashboard === false ? (
         <Layout isDashboardLayout={isDashboard}>
           <>
@@ -33,10 +33,10 @@ function App() {
         </Layout>
       ) : (
         <Layout isDashboardLayout={isDashboard}>
-          <Dashboard/>
+          <Dashboard />
         </Layout>
       )}
-    </>
+    </Suspense>
   );
 }
 
