@@ -1,15 +1,13 @@
 import React from "react";
 import { Input, Button, HStack, Box, FormLabel } from "@chakra-ui/react";
 
-import { FiSearch } from "react-icons/fi";
-
 import "./style.css";
 
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
   return (
     <>
-      <>
+      <form>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -35,7 +33,7 @@ function SearchBox() {
             <i class="fas fa-times"></i>
           </div>
         </div>
-      </>
+      </form>
     </>
   );
 }
