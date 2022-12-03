@@ -1,6 +1,3 @@
-import Layout from "./Layout";
-import Footer from "./components/Footer";
-import Router from "./Router";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -10,7 +7,18 @@ import { selectLoginState } from "./store/selectors";
 import ScrollToTop from "./components/ScrollToTop";
 import React, { Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import Dashboard from "../src/pages/Dashboard/index";
+
+import  LazyComponentsSkeleton  from "./components/LazyComponentsSkeleton";
+
+
+const Router = React.lazy(() => import("./Router"));
+const Layout = React.lazy(() => import("./Layout"));
+const Footer = React.lazy(() => import("./components/Footer"));
+
+const Dashboard = React.lazy(() => import("../src/pages/Dashboard/index"));
+
+
+
 function App() {
   let location = useLocation();
   const [isDashboard, setIsDashboard] = React.useState(
@@ -22,11 +30,13 @@ function App() {
   }, [location]);
 
   return (
-    <Suspense fallback={'loading'}>
+    <Suspense fallback={<LazyComponentsSkeleton/>}>
       {isDashboard === false ? (
         <Layout isDashboardLayout={isDashboard}>
           <>
             <Router />
+          
+            
             <Footer />
             <ScrollToTop />
           </>

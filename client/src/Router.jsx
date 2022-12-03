@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 const Home = React.lazy(() => import("./pages/Home"));
+const Contact = React.lazy(() => import("./pages/Contact"));
 const Page404 = React.lazy(() => import("./pages/ErrorPage/Page404"));
 const Favorite = React.lazy(() => import("./pages/Favorite"));
 const Basket = React.lazy(() => import("./pages/Basket"));
@@ -15,6 +16,14 @@ const UserLogin = React.lazy(() => import("./pages/Dashboard/UserLogin"));
 const RequireAuth = React.lazy(() => import("../src/components/RequireAuth"));
 const CategoryProduct = React.lazy(() => import("./pages/CategoryProduct"));
 
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    element: <Home />,
+    
+  },
+];
 
 function Router() {
   return (
@@ -26,7 +35,7 @@ function Router() {
           }
         >
           <Route exact path="/" element={<Home />} />
-          <Route path="/iletisim" element={<Home />} />
+          <Route path="/iletisim/" element={<Contact />} />
           <Route
             path="/ara"
             element={
@@ -103,3 +112,4 @@ function Router() {
 }
 
 export default Router;
+export { routes };

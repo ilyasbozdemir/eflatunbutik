@@ -1,10 +1,10 @@
 import React from "react";
-import { Image, Box } from "@chakra-ui/react";
+import { Image, Box,Skeleton } from "@chakra-ui/react";
 function SliderItem({ src, alt }) {
   return (
     <>
       <Box>
-        <Image src={src} alt={alt}/>
+        <Image fallback={<Skeleton/>} src={src} alt={alt}/>
       </Box>
     </>
   );

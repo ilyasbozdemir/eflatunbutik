@@ -1,32 +1,29 @@
+import { Stack, HStack } from "@chakra-ui/react";
 import React from "react";
 
-import MySlider from "../components/MySlider";
-import IGStory from "../components/IGStory";
-import Highlights from "../components/Highlights";
-import Showcase from "../components/Showcase";
-import { Stack, HStack } from "@chakra-ui/react";
-
-
+const Showcase = React.lazy(() => import("../components/Showcase"));
+const Highlights = React.lazy(() => import("../components/Highlights"));
+const IGStory = React.lazy(() => import("../components/IGStory"));
+const MySlider = React.lazy(() => import("../components/MySlider"));
 
 function Home() {
   return (
-    <Stack>
-      {/*  <HStack>
-      <MySlider />
-       </HStack>
-      */}
+    <>
+      {/*
+      <HStack>
+        <MySlider />
+      </HStack>
+       */}
       <HStack>
         <IGStory />
       </HStack>
       <HStack>
         <Highlights />
       </HStack>
-
       <HStack>
         <Showcase />
       </HStack>
-
-    </Stack>
+    </>
   );
 }
 

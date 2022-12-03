@@ -8,6 +8,7 @@ import {
   Button,
   useDisclosure as UseDisclosure,
   Icon,
+  Skeleton,
 } from "@chakra-ui/react";
 
 import Logo from "../Logo";
