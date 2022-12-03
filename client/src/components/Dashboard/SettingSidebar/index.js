@@ -104,41 +104,6 @@ function index({ isOpen, onOpen, onClose }) {
             </HStack>
 
             <HStack>
-              <Text>
-                <Stack direction="row">
-                  <Tooltip label="Site metin yönünü ayarı örnek arapça dili sağdan soladır.">
-                    <Text fontWeight="semibold">
-                      {"Yön : "}
-                      <Badge colorScheme="red">Yakında</Badge>
-                    </Text>
-                  </Tooltip>
-                </Stack>
-              </Text>
-
-              <ButtonGroup size="xl" isAttached variant="outline" p="5">
-                <Tooltip label="Sağdan sola hizala">
-                  <IconButton
-                    onClick={arrowToLeft}
-                    aria-label="BiArrowToLeft"
-                    icon={<BiArrowToLeft />}
-                    size="md"
-                    bg="transparent"
-                    disabled
-                  />
-                </Tooltip>
-                <Tooltip label="Soldan sağa hizala.">
-                  <IconButton
-                    onClick={arrowFromLeft}
-                    aria-label="BiArrowFromLeft"
-                    icon={<BiArrowFromLeft />}
-                    size="md"
-                    bg="transparent"
-                    disabled
-                  />
-                </Tooltip>
-              </ButtonGroup>
-            </HStack>
-            <HStack>
               <Tooltip label="varsayılan site dilini ayarlayın.">
                 <Text fontWeight="semibold">
                   {"Dil : "}
@@ -153,6 +118,7 @@ function index({ isOpen, onOpen, onClose }) {
                 }}
               />
             </HStack>
+            
           </DrawerBody>
         </DrawerContent>
       </Drawer>
