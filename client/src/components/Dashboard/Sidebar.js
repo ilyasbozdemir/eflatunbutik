@@ -34,15 +34,7 @@ const LinkItems = [
 ];
 
 export default function Sidebar({ onClose, ...rest }) {
-  /*
 
-  useEffect(() => {
-    router.events.on("routeChangeComplete", onClose);
-    return () => {
-      router.events.off("routeChangeComplete", onClose);
-    };
-  }, [router.events, onClose]);
-*/
 
   return (
     <Box

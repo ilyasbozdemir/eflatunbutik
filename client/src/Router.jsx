@@ -15,6 +15,7 @@ import UserLogin from "./pages/Dashboard/UserLogin";
 
 import RequireAuth from "../src/components/RequireAuth";
 
+import CategoryProduct from "./pages/CategoryProduct";
 
 function Router() {
   return (
@@ -27,7 +28,21 @@ function Router() {
         >
           <Route exact path="/" element={<Home />} />
           <Route path="/iletisim" element={<Home />} />
-          {/* <Route
+          <Route
+            path="/ara"
+            element={
+              <CategoryProduct
+                breadcrumbs={[
+                  { item: "Anasayfa", link: "/", isCurrentPage: false },
+                  {
+                    item: "Ara",
+                    isCurrentPage: true,
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
             path="/yeni-gelenler/"
             element={
               <CategoryProduct
@@ -40,7 +55,7 @@ function Router() {
                 ]}
               />
             }
-          />*/}
+          />
           <Route path="/yeni-gelenler/" element={<Home />} />
           <Route path="/elbise/" element={<Home />} />
           <Route path="/ust-giyim/" element={<Home />} />
@@ -50,7 +65,6 @@ function Router() {
           <Route path="/outlet/" element={<Home />} />
           <Route path="/kombin/" element={<Home />} />
           <Route path="/indirim/" element={<Home />} />
-
           <Route path="/sepetim/" element={<Basket />} />
           <Route path="/giris/" element={<Login pathname="/giris/" />} />
           <Route path="/uye-ol/" element={<Login pathname="/uye-ol/" />} />
