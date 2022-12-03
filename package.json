@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ilyasBozdemir/eflatunbutik#readme",
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "html-entities": "^2.3.3"
   }
 }

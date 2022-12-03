@@ -5,6 +5,7 @@ import { Input } from "@chakra-ui/react";
 import "./style.css";
 
 import { useNavigate } from "react-router-dom";
+import { encode } from "html-entities";
 
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
@@ -13,7 +14,8 @@ function SearchBox() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/ara?");
+    if (value !== "")
+     navigate(`/ara?q=${encode(value)}`);
   };
 
   const handleKeypress = (e) => {
