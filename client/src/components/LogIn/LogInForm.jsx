@@ -16,13 +16,13 @@ import {
 import * as React from "react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
-import { useFormik } from "formik";
+
 import LoginButton from "./LoginButton";
 
 import { login } from "../../services/auth";
 import { FcApproval } from "react-icons/fc";
 import { MdError } from "react-icons/md";
-
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { connect } from "react-redux";

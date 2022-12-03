@@ -1,23 +1,50 @@
 import React from "react";
-import { Input, Button, HStack, Box, FormLabel } from "@chakra-ui/react";
+
+import { Input } from "@chakra-ui/react";
 
 import "./style.css";
 
+import { useNavigate } from "react-router-dom";
+
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
+  const [value, setValue] = React.useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/ara?");
+  };
+
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         />
         <div class={"search-box " + isActive}>
-          <input type="text" placeholder="Ara..." />
+          <Input
+            type="text"
+            placeholder="Ara..."
+            _focus={{ variant: "outline" }}
+            maxLength={30}
+            onKeyPress={handleKeypress}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            value={value}
+          />
           <div
             class="search-btn"
             onClick={() => {
-              setIsActive('active');
+              setIsActive("active");
             }}
           >
             <i class="fas fa-search"></i>
@@ -25,9 +52,9 @@ function SearchBox() {
 
           <div
             class="cancel-btn"
-            color="#000"
             onClick={() => {
-              setIsActive('');
+              setIsActive("");
+              setValue("");
             }}
           >
             <i class="fas fa-times"></i>
