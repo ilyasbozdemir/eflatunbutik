@@ -6,16 +6,34 @@ import { FiSearch } from "react-icons/fi";
 import "./style.css";
 
 function SearchBox() {
+  const [isActive, setIsActive] = React.useState("");
   return (
     <>
       <>
-        <div className="search">
-          <input type="checkbox" id="trigger" className="search__checkbox" />
-          <label className="search__label-init" for="trigger"></label>
-          <label className="search__label-active" for="trigger"></label>
-          <div className="search__border"></div>
-          <input type="text" className="search__input" />
-          <div className="search__close"></div>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        />
+        <div class={"search-box " + isActive}>
+          <input type="text" placeholder="Ara..." />
+          <div
+            class="search-btn"
+            onClick={() => {
+              setIsActive('active');
+            }}
+          >
+            <i class="fas fa-search"></i>
+          </div>
+
+          <div
+            class="cancel-btn"
+            color="#000"
+            onClick={() => {
+              setIsActive('');
+            }}
+          >
+            <i class="fas fa-times"></i>
+          </div>
         </div>
       </>
     </>

@@ -1,134 +1,76 @@
-.search {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin-left: -8rem;
-  margin-top: -1.5rem;
-  width: 16rem;
-  height: 3rem;
+
+.search-box{
+  position:relative;
+  height:60px;
+  width:0px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55 );
 }
-.search__border {
+
+.search-box.active{
+  width: 350px;
+}
+
+.search-box.active input{
+  opacity:1;
+}
+
+.search-box input{
+  height:100%;
+  width:100%;
+  border:none;
+  background:#fff;
+  font-size:18px;
+  border-radius: 50px;
+  padding: 0 60px 0 20px;
+  outline:none;
+  opacity:0;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55 );
+}
+
+.search-box .search-btn{
+  height:50px;
+  width:50px;
+  background: #fff;
+  color:#000;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 3rem;
-  height: 100%;
-  border: 0.1rem solid #000;
-  border-radius: 10rem;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s 0.4s;
+  top:50%;
+  right:-75px;
+  transform: translateY(-50%);
+  line-height:50px;
+  text-align:center;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55 );
+  z-index:2;
 }
-#trigger:checked ~ .search__border {
-  transition: width 0.4s 0.2s;
-  width: 100%;
+
+.search-box.active .search-btn{
+  height:50px;
+  width:50px;
+  background: #7928CA;
+  color:#fff;
 }
-#trigger:checked ~ .search__border:after {
-  width: 0;
-  transition: width 0.2s cubic-bezier(0.42, -0.7, 0.62, 1.25);
-}
-.search__border:after {
-  content: "";
+
+.search-box .cancel-btn{
   position: absolute;
-  bottom: -1.6rem;
-  right: -1.6rem;
-  width: 1.5rem;
-  height: 0.1rem;
-  background: #000;
-  border-radius: 0.3rem;
-  transform-origin: 100% 50%;
-  transform: rotate(225deg) translateX(3rem);
-  transition: width 0.2s 0.8s;
+  color: #7928CA;
+  top:50%;
+  right: -75px;
+  transform: translateY(-50%);
+  color:#7928CA;
+  font-size:25px;
+  cursor:pointer;
+  height:50px;
+  width:50px;
+  line-height:50px;
+  text-align:center;
+  border-radius:50%;
+  opacity:0;
 }
-.search__input {
-  position: relative;
-  width: 13rem;
-  height: 3rem;
-  padding: 0.45rem 0 0.45rem 1.2rem;
-  background: transparent;
-  outline: none;
-  border: none;
-  font-size: 1.2rem;
-  color: #000;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-#trigger:checked ~ .search__input {
-  opacity: 1;
-  z-index: auto;
-  transition: opacity 0.2s 0.6s;
-}
-.search__checkbox {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  opacity: 0;
-  z-index: -10;
-}
-.search__label-init {
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 6.56rem;
-  width: 3.4rem;
-  height: 3.2rem;
-  cursor: pointer;
-}
-#trigger:checked ~ .search__label-init {
-  transform: scale(0);
-}
-.search__label-active {
-  z-index: 3;
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-  transform: scale(0);
-}
-#trigger:checked ~ .search__label-active {
-  tranition: transform 0 0.6s;
-  transform: scale(1);
-}
-.search__close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-  z-index: -1;
-}
-#trigger:checked ~ .search__close {
-  z-index: auto;
-}
-#trigger:checked ~ .search__close:before {
-  transform: rotate(-45deg);
-  opacity: 1;
-  transition: transform 0.2s 0.6s cubic-bezier(0.73, 0.14, 0.4, 1.58), opacity 0.1s 0.6s;
-}
-#trigger:checked ~ .search__close:after {
-  transform: rotate(45deg);
-  opacity: 1;
-  transition: transform 0.2s 0.8s cubic-bezier(0.73, 0.14, 0.4, 1.58), opacity 0.1s 0.8s;
-}
-.search__close:before, .search__close:after {
-  content: "";
-  position: absolute;
-  top: 0.6rem;
-  left: 0;
-  width: 100%;
-  height: 0.3rem;
-  background: #000;
-  border-radius: 0.5rem;
-  opacity: 0;
-}
-.search__close:before {
-  transform: rotate(-45deg) translateX(2rem);
-  transition: transform 0.2s, opacity 0.1s 0.1s;
-}
-.search__close:after {
-  transform: rotate(45deg) translateX(2rem);
-  transition: transform 0.2s 0.2s, opacity 0.1s 0.3s;
+
+.search-box.active .cancel-btn{
+  right: -135px;
+  opacity:1;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55 );
 }
