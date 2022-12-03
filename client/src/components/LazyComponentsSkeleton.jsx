@@ -16,9 +16,9 @@ function LazyComponentsSkeleton() {
   return (
     <Box minH="100vh">
       <Flex justifyContent={"space-between"}>
-        <Skeleton w={{ base: 100, md: 200 }} height={"20px"} />
-        <Skeleton w={{ base: 100, md: 200 }} height={"20px"} />
-        <Skeleton w={{ base: 100, md: 200 }} height={"20px"} />
+        <SkeletonCircle w={{ base: 100, md: 200 }} height={"20px"} />
+        <SkeletonCircle w={{ base: 10, md: 20 }} height={"20px"} />
+        <SkeletonCircle w={{ base: 100, md: 200 }} height={"20px"} />
       </Flex>
       <Flex justifyContent={"space-between"} mt={3}>
         <Box>
@@ -29,13 +29,14 @@ function LazyComponentsSkeleton() {
         </Box>
       </Flex>
       <Flex justifyContent={"space-between"} mt={3}>
-        <Box>
-          <Skeleton w={"container.lg"} height={"300px"} />
-          <Skeleton
-            w={{ sm: "container.sm", md: "container.md" }}
-            height={{ base: "20px" }}
-          />
-        </Box>
+        <Skeleton
+          w={{ sm: "container.sm", md: "container.md" }}
+          height={{ base: "300px" }}
+        />
+        <Skeleton
+          w={{ sm: "container.sm", md: "container.md" }}
+          height={{ base: "300px" }}
+        />
       </Flex>
       <Flex justifyContent={"space-between"} mt={3}>
         <Skeleton
@@ -58,6 +59,13 @@ function LazyComponentsSkeleton() {
           w={{ base: "100px", md: "200px" }}
           height={{ base: "100px", md: "200px" }}
         />
+      </Flex>
+      <Flex justifyContent={"space-between"} pos={"fixed"} bottom={5}>
+        <Skeleton w={{ base: 100, md: 200 }} height={"50px"} />
+        <Skeleton w={{ base: 100, md: 200 }} height={"50px"} />
+        <Skeleton w={{ base: 100, md: 200 }} height={"50px"} />
+        <Skeleton w={{ base: 100, md: 200 }} height={"50px"} />
+        <Skeleton w={{ base: 100, md: 200 }} height={"50px"} />
       </Flex>
     </Box>
   );
