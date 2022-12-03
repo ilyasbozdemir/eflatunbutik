@@ -1,29 +1,23 @@
 import React from "react";
-import { Input, Button, HStack } from "@chakra-ui/react";
+import { Input, Button, HStack, Box, FormLabel } from "@chakra-ui/react";
 
 import { FiSearch } from "react-icons/fi";
+
+import "./style.css";
 
 function SearchBox() {
   return (
     <>
-      <HStack borderStyle="dotted" borderColor="gray.200">
-        <Input
-          variant="flushed"
-          placeholder={"Ara"}
-          maxLength={30}
-          width={{
-            sm: "300px",
-            md: "300px",
-            lg: "350px",
-            xl: "350px",
-            "2xl": "400px",
-          }}
-        />
-
-        <Button bg={"transparent"} aria-label="Search product">
-          <FiSearch />
-        </Button>
-      </HStack>
+      <>
+        <div className="search">
+          <input type="checkbox" id="trigger" className="search__checkbox" />
+          <label className="search__label-init" for="trigger"></label>
+          <label className="search__label-active" for="trigger"></label>
+          <div className="search__border"></div>
+          <input type="text" className="search__input" />
+          <div className="search__close"></div>
+        </div>
+      </>
     </>
   );
 }

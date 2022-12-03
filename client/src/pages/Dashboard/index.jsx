@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
 
+
 const CurrentBreadcrumb = () => {
   const location = useLocation();
   return (
@@ -28,7 +29,7 @@ const CurrentBreadcrumb = () => {
 
       <BreadcrumbItem isCurrentPage>
         <Text>
-          {location.pathname === "/admin" ? "Dashboard" : location.pathname}
+          {location.pathname === "/admin/" ? "Dashboard" : location.pathname}
         </Text>
       </BreadcrumbItem>
     </Breadcrumb>

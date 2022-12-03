@@ -1,0 +1,134 @@
+.search {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-left: -8rem;
+  margin-top: -1.5rem;
+  width: 16rem;
+  height: 3rem;
+}
+.search__border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3rem;
+  height: 100%;
+  border: 0.1rem solid #000;
+  border-radius: 10rem;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s 0.4s;
+}
+#trigger:checked ~ .search__border {
+  transition: width 0.4s 0.2s;
+  width: 100%;
+}
+#trigger:checked ~ .search__border:after {
+  width: 0;
+  transition: width 0.2s cubic-bezier(0.42, -0.7, 0.62, 1.25);
+}
+.search__border:after {
+  content: "";
+  position: absolute;
+  bottom: -1.6rem;
+  right: -1.6rem;
+  width: 1.5rem;
+  height: 0.1rem;
+  background: #000;
+  border-radius: 0.3rem;
+  transform-origin: 100% 50%;
+  transform: rotate(225deg) translateX(3rem);
+  transition: width 0.2s 0.8s;
+}
+.search__input {
+  position: relative;
+  width: 13rem;
+  height: 3rem;
+  padding: 0.45rem 0 0.45rem 1.2rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #000;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#trigger:checked ~ .search__input {
+  opacity: 1;
+  z-index: auto;
+  transition: opacity 0.2s 0.6s;
+}
+.search__checkbox {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0;
+  z-index: -10;
+}
+.search__label-init {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 6.56rem;
+  width: 3.4rem;
+  height: 3.2rem;
+  cursor: pointer;
+}
+#trigger:checked ~ .search__label-init {
+  transform: scale(0);
+}
+.search__label-active {
+  z-index: 3;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  transform: scale(0);
+}
+#trigger:checked ~ .search__label-active {
+  tranition: transform 0 0.6s;
+  transform: scale(1);
+}
+.search__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  z-index: -1;
+}
+#trigger:checked ~ .search__close {
+  z-index: auto;
+}
+#trigger:checked ~ .search__close:before {
+  transform: rotate(-45deg);
+  opacity: 1;
+  transition: transform 0.2s 0.6s cubic-bezier(0.73, 0.14, 0.4, 1.58), opacity 0.1s 0.6s;
+}
+#trigger:checked ~ .search__close:after {
+  transform: rotate(45deg);
+  opacity: 1;
+  transition: transform 0.2s 0.8s cubic-bezier(0.73, 0.14, 0.4, 1.58), opacity 0.1s 0.8s;
+}
+.search__close:before, .search__close:after {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  background: #000;
+  border-radius: 0.5rem;
+  opacity: 0;
+}
+.search__close:before {
+  transform: rotate(-45deg) translateX(2rem);
+  transition: transform 0.2s, opacity 0.1s 0.1s;
+}
+.search__close:after {
+  transform: rotate(45deg) translateX(2rem);
+  transition: transform 0.2s 0.2s, opacity 0.1s 0.3s;
+}
