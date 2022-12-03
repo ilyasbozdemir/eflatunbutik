@@ -14,24 +14,25 @@ export default function Header({ onOpen, ...rest }) {
       zIndex="1"
       alignItems="center"
       bg="white"
-      borderBottomWidth="1px"
-      borderBottomColor="gray.200"
       justifyContent={{ base: "space-between", md: "flex-end" }}
-      boxShadow={"rgba(0, 0, 0, 0.3) 0px 19px 20px, rgba(0, 0, 0, 0.22) 0px 10px 0px"}
+      boxShadow=
+      {
+        `rgba(0, 0, 0, 0.3) 19px 0px 20px`
+      }
       
       {...rest}
     >
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
-        variant="outline"
+        variant="ghost"
         aria-label="open menu"
         icon={<FiMenu />}
       />
 
       <Text
         display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
+        fontSize={{ base: "xl", md: "2xl" }}
         fontFamily="monospace"
         fontWeight="bold"
       >

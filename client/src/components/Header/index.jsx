@@ -44,13 +44,14 @@ function index({ onOpen, ...rest }) {
         bg={UseColorModeValue("white", "blackAlpha.50")}
         backdropFilter="blur(1.5rem)"
         boxShadow={
-          " rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
+          "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
         }
         {...rest}
       >
         <IconButton
           display={{ base: "flex", md: "none" }}
           onClick={onOpen}
+          variant="ghost"
           aria-label="open menu"
           icon={<FiMenu />}
           bg="transparent"
