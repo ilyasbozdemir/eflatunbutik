@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import TermsOfUseComponent from "../components/TermsOfUseComponent";
 
 function TermsOfUse() {
   return (
-    <div>TermsOfUse</div>
-  )
+    <>
+      <TermsOfUseComponent />
+    </>
+  );
 }
 
-export default TermsOfUse
+export default TermsOfUse;
