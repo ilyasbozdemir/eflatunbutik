@@ -44,4 +44,4 @@ function CategoryProduct(props) {
   );
 }
 
-export default CategoryProduct;
+export default React.memo(CategoryProduct);

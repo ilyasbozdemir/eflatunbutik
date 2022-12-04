@@ -99,9 +99,13 @@ function index() {
                       delaySpeed={1000}
                       onLoopDone={handleDone}
                       onType={handleType}
-                      words={["xxxxxxxxxxx", "yyyyyyyyyyy", "zzzzzzzzzzz"]}
+                      words={[
+                        "her cebe uygun",
+                        "avantajlı ürünler",
+                      ]}
                     />
                   </span>
+                  <br />
                   {" eflatunbutik.com'da"}
                 </Heading>
               </Stack>
@@ -125,24 +129,26 @@ function index() {
           </Box>
           <Flex flex="1" overflow="hidden">
             <Image
-              src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
+              src="https://img.modamerve.com/resize/78857cd67e1a4a8e/400/600/kusakli-saten-abiye-siyah-asm2537-313353-56-O.jpg"
               alt="Lovely Image"
               fallback={<Skeleton />}
               maxH="450px"
               minW="300px"
               objectFit="cover"
               flex="1"
+              draggable={false}
             />
             <Image
               display={{
                 base: "none",
                 sm: "initial",
               }}
-              src="https://images.unsplash.com/photo-1589156206699-bc21e38c8a7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
+              src="https://img.modamerve.com/resize/78857cd67e1a4a8e/400/600/kusakli-saten-abiye-siyah-asm2537-313353-56-O.jpg"
               alt="Lovely Image"
               fallback={<Skeleton />}
               maxH="450px"
               objectFit="cover"
+              draggable={false}
             />
           </Flex>
         </Stack>
