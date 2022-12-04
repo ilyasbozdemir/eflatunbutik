@@ -8,22 +8,18 @@ import {
   HStack,
   Icon,
   Image,
-  Link,
   Skeleton,
   Stack,
+  Text,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
 import Logo from "../../Logo";
 
 function index() {
-  const texts = [
-    "Gardırobunuzu yenileme zamanı",
-     "Tesettür Giyim, aradığınız ve daha fazla indirimli ürün en uygun fiyatlar ve kampanyalarla Eflatun Butik'te."];
-
   const handleType = (count) => {};
-
   const handleDone = () => {};
   return (
     <>
@@ -94,28 +90,32 @@ function index() {
                   <Logo />
                 </Heading>
                 <Heading size="lg" fontWeight="normal">
-                  <Typewriter
-                    words={texts}
-                    loop={true}
-                    cursor
-                    typeSpeed={100}
-                    deleteSpeed={50}
-                    delaySpeed={1000}
-                    onLoopDone={handleDone}
-                    onType={handleType}
-                    cursorBlinking={false}
-                  />
-                  <Cursor cursorColor='black' />
+                  <span style={{ color: "red", fontWeight: "bold" }}>
+                    <Typewriter
+                      loop
+                      cursorStyle="_"
+                      typeSpeed={70}
+                      deleteSpeed={50}
+                      delaySpeed={1000}
+                      onLoopDone={handleDone}
+                      onType={handleType}
+                      words={["xxxxxxxxxxx", "yyyyyyyyyyy", "zzzzzzzzzzz"]}
+                    />
+                  </span>
+                  {" eflatunbutik.com'da"}
                 </Heading>
               </Stack>
               <HStack spacing="3">
-                <Link
+                <Text
+                  as={Link}
                   color={UseColorModeValue("red.500", "red.300")}
                   fontWeight="bold"
                   fontSize="lg"
+                  to="/"
                 >
                   Şimdi keşfedin
-                </Link>
+                </Text>
+
                 <Icon
                   color={UseColorModeValue("red.500", "red.300")}
                   as={FaArrowRight}
