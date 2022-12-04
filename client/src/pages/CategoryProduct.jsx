@@ -29,16 +29,26 @@ import { Link } from "react-router-dom";
 
 import Product from "../components/Product";
 import { IoMdArrowDropright } from "react-icons/io";
-//Kategoriler Beden Renk Fiyat Aralığı
+
+import {
+  Drawer,
+  DrawerContent,
+  useDisclosure ,
+} from "@chakra-ui/react";
+
+
 
 function CategoryProduct(props) {
   const { breadcrumbs, categoryData } = props;
 
   const [sliderValue, setSliderValue] = React.useState([120, 240]);
   const [showTooltip, setShowTooltip] = React.useState(false);
+
   return (
     <>
       <Flex direction={"row"} p={2}>
+        {/*
+         Kategorile0r Beden Renk Fiyat Aralığı*/}
         <Grid
           as="aside"
           width={"270px"}
@@ -273,6 +283,7 @@ function CategoryProduct(props) {
           </Text>
           <Divider />
         </Grid>
+
         <Grid width={"calc(100% - 270px)"}>
           <Flex textAlign={"center"} mt={2} ml={2}>
             <Breadcrumb
