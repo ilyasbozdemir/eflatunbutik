@@ -10,7 +10,6 @@ function WeatherForecast() {
   const APP_ID = "208ea3c8385ff11580c26fbdda5e4006";
   const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
-  
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
@@ -32,8 +31,6 @@ function WeatherForecast() {
         });
     });
   }, []);
-
-  console.log(data);
 
   console.log("cityName : " + cityName);
 

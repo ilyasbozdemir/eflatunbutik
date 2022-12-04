@@ -1,11 +1,15 @@
 import React from "react";
 import {
+  Box,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
+  MenuDivider,
   HStack,
   Icon,
+  Text,
+  Flex,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
@@ -13,8 +17,12 @@ import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-function UserMenu({ isOpen, onOpen, onClose }) {
+function UserMenu(props) {
+  const { isOpen, onOpen, onClose, ...rest } = props;
   const userRef = React.useRef();
+  const [isLogin, setIsLogin] = React.useState(false);
+  const [isAdmin, setIsAdmin] = React.useState(false);
+
   return (
     <>
       <Menu isOpen={isOpen}>
@@ -28,25 +36,109 @@ function UserMenu({ isOpen, onOpen, onClose }) {
           fontWeight="normal"
           onMouseEnter={onOpen}
           onMouseLeave={onClose}
-          bg={'transparent'}
+          bg={"transparent"}
+          rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+          {...rest}
         >
           <HStack>
             <Icon as={AiOutlineUser} fontSize={25} />
-            {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
           </HStack>
         </MenuButton>
 
         <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
-          <Link to="/giris/">
-            <MenuItem>Giriş Yap</MenuItem>
-          </Link>
-          <Link to="/uye-ol/">
-            <MenuItem>Üye Ol</MenuItem>
-          </Link>
+          <>
+            {isLogin === false
+              ? menuAnon.map((menu, index) => (
+                  <>
+                    <ItemMenu key={index} {...menu} />
+                    <MenuDivider/>
+                  </>
+                ))
+              : menuUser.map((menu, index) => (
+                  <>
+                    <ItemMenu key={index} {...menu} />
+                    <MenuDivider/>
+                  </>
+                ))}
+
+            {isAdmin === true
+              ? menuAdmin.map((menu, index) => (
+                  <>
+                    <ItemMenu key={index} {...menu} />
+                    <MenuDivider/>
+                  </>
+                ))
+              : ""}
+          </>
         </MenuList>
       </Menu>
     </>
   );
 }
+
+const menuAnon = [
+  {
+    title: "Giriş Yap",
+    to: "/giris/",
+  },
+  {
+    title: "Üye Ol",
+    to: "/uye-ol/",
+  },
+];
+const menuUser = [
+  {
+    title: "Kullanıcı Bilgilerim",
+    to: "//",
+  },
+  {
+    title: "Adres Bilgilerim",
+    to: "//",
+  },
+  {
+    title: "Siparişlerim",
+    to: "//",
+  },
+  {
+    title: "İade Taleplerim",
+    to: "//",
+  },
+  {
+    title: "Şifre Güncelleme",
+    to: "//",
+  },
+  {
+    title: "Çıkış",
+    to: "//",
+  },
+];
+const menuAdmin = [
+  {
+    title: "Kontrol Paneline Git",
+    to: "/admin/",
+  },
+];
+
+const ItemMenu = ({ title, to }) => {
+  return (
+    <>
+      <Text as={Link} to={to} >
+        <Flex
+          as="span"
+          textAlign={"center"}
+          justifyContent={"center"}
+          direction={"row"}
+          _hover={{
+            bgGradient: "linear(to-l, #7928CA, #FF0080)",
+            color: "#fff",
+          }}
+          p={1}
+        >
+          <Text ml={1}>{title}</Text>
+        </Flex>
+      </Text>
+    </>
+  );
+};
 
 export default UserMenu;

@@ -44,7 +44,7 @@ function SearchBox() {
             value={value}
           />
           <div
-            class="search-btn"
+            className="search-btn"
             onClick={() => {
               setIsActive("active");
             }}
@@ -53,7 +53,7 @@ function SearchBox() {
           </div>
 
           <div
-            class="cancel-btn"
+            className="cancel-btn"
             onClick={() => {
               setIsActive("");
               setValue("");
