@@ -34,7 +34,7 @@ function index() {
     const { name, onClickHandled } = props;
     return (
       <Button
-        fontSize={{ base: "16px", md: "20px" }}
+        fontSize={{ base: "12px", md: "20px" }}
         color={"white"}
         bgGradient={"linear(to-l, #7928CA, #FF0080)"}
         _hover={{
