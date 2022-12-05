@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 
-import Header from "./Header";
+import ProductContent from "./ProductContent";
 import Sidebar from "./Sidebar";
 import { Flex } from "@chakra-ui/react";
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
 
-function FilterProductCategory() {
+function FilterProductCategory(props) {
+  const { children } = props;
+  
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const variants = useBreakpointValue({ base: smVariant, md: mdVariant });
 
@@ -15,17 +17,19 @@ function FilterProductCategory() {
 
   return (
     <>
-      <Flex direction={"column"} zIndex={150}>
+      <Flex direction={"row"} zIndex={150}>
         <Sidebar
           variant={variants?.navigation}
           isOpen={isSidebarOpen}
           onClose={toggleSidebar}
         />
-        <Box ml={!variants?.navigationButton && 200}>
-          <Header
+        <Box>
+          <ProductContent
             showSidebarButton={variants?.navigationButton}
             onShowSidebar={toggleSidebar}
-          />
+          >
+            {children}
+          </ProductContent>
         </Box>
       </Flex>
     </>

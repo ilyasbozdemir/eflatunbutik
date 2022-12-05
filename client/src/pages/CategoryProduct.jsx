@@ -1,13 +1,15 @@
 import React from "react";
 
-import ProductCategory from "../components/ProductCategory/FilterProductCategory";
+import FilterProductCategory from "../components/ProductCategory/FilterProductCategory";
 
 function CategoryProduct(props) {
   const { breadcrumbs, categoryData } = props;
 
   return (
     <>
-      <ProductCategory></ProductCategory>
+      <FilterProductCategory>
+        aaa
+      </FilterProductCategory>
     </>
   );
 }
