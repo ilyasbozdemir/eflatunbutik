@@ -50,7 +50,7 @@ function index() {
 
   return (
     <Center>
-      <ButtonGroup mx={5}>
+      <ButtonGroup mx={2}>
         {buttons.map((button, index) => (
           <HighlightButton key={index} {...button} />
         ))}
