@@ -31,7 +31,6 @@ function App() {
         <Layout isDashboardLayout={isDashboard}>
           <>
             <Router />
-
             <Footer />
             <ScrollToTop />
           </>

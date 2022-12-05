@@ -1,4 +1,4 @@
-import { Stack, HStack } from "@chakra-ui/react";
+import { Stack, HStack, Flex } from "@chakra-ui/react";
 import React from "react";
 
 const Showcase = React.lazy(() => import("../components/Showcase"));
@@ -9,17 +9,13 @@ const MySlider = React.lazy(() => import("../components/MySlider"));
 function Home() {
   return (
     <>
-      {/*
-      <HStack>
-        <MySlider />
-      </HStack>
-       */}
       <HStack>
         <IGStory />
       </HStack>
       <HStack>
         <Highlights />
       </HStack>
+
       <HStack>
         <Showcase />
       </HStack>

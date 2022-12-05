@@ -495,7 +495,51 @@ function Router() {
                 ]}
               />
             }
-          />{" "}
+          />
+          <Route
+            path="/kombin/"
+            element={
+              <CategoryProduct
+                breadcrumbs={[
+                  { item: "Anasayfa", link: "/", isCurrentPage: false },
+                  {
+                    item: "Kombin",
+                    isCurrentPage: true,
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
+            path="/etekli-kombin/"
+            element={
+              <CategoryProduct
+                breadcrumbs={[
+                  { item: "Anasayfa", link: "/", isCurrentPage: false },
+                  { item: "Kombin", link: "/kombin/", isCurrentPage: false },
+                  {
+                    item: "Etekli Kombin",
+                    isCurrentPage: true,
+                  },
+                ]}
+              />
+            }
+          />
+          <Route
+            path="/pantolonlu-kombin/"
+            element={
+              <CategoryProduct
+                breadcrumbs={[
+                  { item: "Anasayfa", link: "/", isCurrentPage: false },
+                  { item: "Kombin", link: "/kombin/", isCurrentPage: false },
+                  {
+                    item: "Pantolonlu Kombin",
+                    isCurrentPage: true,
+                  },
+                ]}
+              />
+            }
+          />
           <Route
             path="/indirim/"
             element={

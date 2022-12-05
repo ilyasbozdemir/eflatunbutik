@@ -9,7 +9,7 @@ function index({ categoryData }) {
       maxW="7xl"
       mx="auto"
       px={{
-        base: "42",
+        base: "4",
         md: "4",
         lg: "6",
       }}
