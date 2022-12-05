@@ -20,10 +20,10 @@ export function FavouriteButton(props) {
       setIcon(
         <Icon as={AiFillHeart} color={"red.500"} transition="all 0.15s ease" />
       );
-      setTitle("Ürün favorilere eklendi.");
+      setTitle("Ürün favorilerden kaldırıldı.");
     } else {
       setIcon(<Icon as={AiOutlineHeart} transition="all 0.15s ease" />);
-      setTitle("Ürün favorilerden kaldırıldı.");
+      setTitle("Ürün favorilere eklendi.");
     }
     toast({
       title: title,
