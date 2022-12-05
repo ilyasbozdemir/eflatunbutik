@@ -3,7 +3,7 @@ import {
   Button,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
-function LoginButton({ name }) {
+function AddToCardButton({ name }) {
   return (
     <>
       <Button
@@ -23,4 +23,4 @@ function LoginButton({ name }) {
   );
 }
 
-export default LoginButton;
+export default AddToCardButton;
