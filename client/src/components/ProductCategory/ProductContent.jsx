@@ -1,21 +1,17 @@
-import { Box, IconButton, Flex } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { Box, IconButton, Flex, ButtonGroup } from "@chakra-ui/react";
 
+import { TbFilter, TbArrowsSort } from "react-icons/tb";
 const ProductContent = (props) => {
   const { showSidebarButton = true, onShowSidebar } = props;
   return (
     <>
       <>
-        <Flex mb={5} borderRadius={"10px 10px"}>
-          <Box>
-            {showSidebarButton && (
-              <IconButton
-                icon={<ChevronRightIcon w={8} h={8} />}
-                colorScheme="blackAlpha"
-                variant="outline"
-                onClick={onShowSidebar}
-              />
-            )}
+        <Flex minWidth="max-content" alignItems="center" gap="2">
+          <Box p="2">
+            <ButtonGroup size="sm" isAttached variant="outline">
+              <IconButton aria-label="Add to friends" icon={<TbArrowsSort />} />
+              <IconButton aria-label="Add to friends" icon={<TbFilter />} />
+            </ButtonGroup>
           </Box>
         </Flex>
       </>

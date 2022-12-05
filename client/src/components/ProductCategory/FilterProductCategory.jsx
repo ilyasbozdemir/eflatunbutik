@@ -7,7 +7,6 @@ import { encode, decode } from "html-entities";
 
 import { useSearchParams } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
-import { alertAnatomy } from "@chakra-ui/anatomy";
 
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
@@ -45,48 +44,50 @@ function FilterProductCategory(props) {
             onShowSidebar={toggleSidebar}
           />
           {isSearchPage ?? isSearchPage === true ? (
-            <Flex minWidth="max-content" alignItems="center" gap="2">
-              <Box p="2">
-                <Text>
-                  <Text as="span" fontWeight={"bold"}>
-                    {` ${searchParams.get("q")} `}{" "}
+            <>
+              <Flex minWidth="max-content" alignItems="center" gap="2">
+                <Box p="2">
+                  <Text>
+                    <Text as="span" fontWeight={"bold"}>
+                      {` ${searchParams.get("q")} `}{" "}
+                    </Text>
+                    ile ilgili
+                    <Text as="span" fontWeight={"bold"}>
+                      {" " + searchProductCount}
+                    </Text>
+                    {` ürün bulduk.`}
                   </Text>
-                  ile ilgili
-                  <Text as="span" fontWeight={"bold"}>
-                    {" " + searchProductCount}
-                  </Text>
-                  {` ürün bulduk.`}
-                </Text>
-              </Box>
-              <Spacer />
-              <Box gap="2">
-                <Select
-                  w={"100%"}
-                  name="siralama"
-                  placeholder="Sıralama"
-                  onChange={onChange}
-                >
-                  <option value="varsayilansiralama">
-                    Varsayılan Sıralama
-                  </option>
-                  {/*?siralama=varsayilanSiralama*/}
-                  <option value="artanfiyat">Artan Fiyat</option>
-                  {/*?siralama=artanFiyat */}
-                  <option value="azalanfiyat">Azalan Fiyat</option>
-                  {/*?siralama=azalanFiyat */}
-                  <option value="degerlendirmepuani">
-                    Çok Değerlendirilenler
-                  </option>
-                  {/*?siralama=degerlendirmepuanı */}
-                  <option value="yuksekpuanlilar">Yüksek Puanlılar</option>
-                  {/*?siralama=yuksekpuanlilar */}
-                  <option value="indirimliurunler">İndirim Oranı</option>
-                  {/*?siralama=indirimliurunler */}
-                  <option value="enyeni">Yeni Eklenenler</option>
-                  {/*?siralama=enyeni */}
-                </Select>
-              </Box>
-            </Flex>
+                </Box>
+                <Spacer />
+                <Box gap="2">
+                  <Select
+                    w={"100%"}
+                    name="siralama"
+                    placeholder="Sıralama"
+                    onChange={onChange}
+                  >
+                    <option value="varsayilansiralama">
+                      Varsayılan Sıralama
+                    </option>
+                    {/*?siralama=varsayilanSiralama*/}
+                    <option value="artanfiyat">Artan Fiyat</option>
+                    {/*?siralama=artanFiyat */}
+                    <option value="azalanfiyat">Azalan Fiyat</option>
+                    {/*?siralama=azalanFiyat */}
+                    <option value="degerlendirmepuani">
+                      Çok Değerlendirilenler
+                    </option>
+                    {/*?siralama=degerlendirmepuanı */}
+                    <option value="yuksekpuanlilar">Yüksek Puanlılar</option>
+                    {/*?siralama=yuksekpuanlilar */}
+                    <option value="indirimliurunler">İndirim Oranı</option>
+                    {/*?siralama=indirimliurunler */}
+                    <option value="enyeni">Yeni Eklenenler</option>
+                    {/*?siralama=enyeni */}
+                  </Select>
+                </Box>
+              </Flex>
+            </>
           ) : (
             ""
           )}
