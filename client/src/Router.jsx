@@ -27,20 +27,7 @@ function Router() {
         >
           <Route exact path="/" element={<Home />} />
           <Route path="/iletisim/" element={<Contact />} />
-          <Route
-            path="/ara"
-            element={
-              <CategoryProduct
-                breadcrumbs={[
-                  { item: "Anasayfa", link: "/", isCurrentPage: false },
-                  {
-                    item: "Ara",
-                    isCurrentPage: true,
-                  },
-                ]}
-              />
-            }
-          />
+          <Route path="/ara" element={<CategoryProduct isSearchPage />} />
           <Route
             path="/yeni-gelenler/"
             element={
