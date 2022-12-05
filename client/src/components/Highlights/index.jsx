@@ -1,5 +1,5 @@
 import React from "react";
-import { Center, ButtonGroup } from "@chakra-ui/react";
+import {  ButtonGroup } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 function index() {
   // Sepete En Çok Eklenenler
@@ -49,13 +49,11 @@ function index() {
   };
 
   return (
-    <Center>
-      <ButtonGroup>
-        {buttons.map((button, index) => (
-          <HighlightButton key={index} {...button} />
-        ))}
-      </ButtonGroup>
-    </Center>
+    <ButtonGroup>
+      {buttons.map((button, index) => (
+        <HighlightButton key={index} {...button} />
+      ))}
+    </ButtonGroup>
   );
 }
 

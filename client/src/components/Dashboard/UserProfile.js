@@ -59,7 +59,7 @@ export default function UserProfile() {
               <Avatar
                 size={{ base: "sm", md: "md" }}
                 src={
-                  "https://scontent.cdninstagram.com/v/t51.2885-19/312907936_126034318784286_1837847843852548548_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=110&_nc_ohc=yPEUjDlbQv8AX8-M36x&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfDODQr5PlC8XPhswUTdOnIXOSWbxL9yqmzvpFNfMyeBVA&oe=638B3746&_nc_sid=978cb9"
+                  "https://instagram.fkya4-1.fna.fbcdn.net/v/t51.2885-19/312907936_1260343187874286_1837847843852548548_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fkya4-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=Be9IAuk5FqgAX8R31_c&tn=f7hdyjuMgRNqrPB5&edm=ACWDqb8BAAAA&ccb=7-5&oh=00_AfBf1mgxOSI7ls-fYOjEgAEO0vPrZ4pp5ljuGtSy-Nd3-A&oe=63932046&_nc_sid=1527a3"
                 }
               />
               <VStack
