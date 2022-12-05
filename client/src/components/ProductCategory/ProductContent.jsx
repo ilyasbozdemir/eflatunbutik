@@ -2,11 +2,11 @@ import { Box, IconButton, Flex } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const ProductContent = (props) => {
-  const { showSidebarButton = true, onShowSidebar, children } = props;
+  const { showSidebarButton = true, onShowSidebar } = props;
   return (
     <>
       <>
-        <Flex bg="pink.400" color="white" borderRadius={"10px 10px"}>
+        <Flex mb={5} borderRadius={"10px 10px"}>
           <Box>
             {showSidebarButton && (
               <IconButton
@@ -17,8 +17,6 @@ const ProductContent = (props) => {
               />
             )}
           </Box>
-
-          <Box>{children}</Box>
         </Flex>
       </>
     </>

@@ -29,15 +29,14 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
     <Box
       p={5}
       w="200px"
-      top={0}
       h={"100%"}
-      bg={"gray.500"}
+      bg={"gray.400"}
       borderRadius={"10px 10px"}
     >
       <SidebarContent onClick={onClose} color={"white"} />
     </Box>
   ) : (
-    <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+    <Drawer isOpen={isOpen} placement="bottom" size={'full'} onClose={onClose}>
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />

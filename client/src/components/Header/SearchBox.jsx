@@ -5,17 +5,18 @@ import { Input } from "@chakra-ui/react";
 import "./style.css";
 
 import { useNavigate } from "react-router-dom";
-import { encode } from "html-entities";
-
+import { encode, decode } from "html-entities";
+import { useSearchParams } from "react-router-dom";
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
-  const [value, setValue] = React.useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = React.useState(decode(searchParams.get("q")));
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
+    setIsActive("active");
     e.preventDefault();
-    if (value !== "")
-     navigate(`/ara?q=${encode(value)}`);
+    if (value !== "") navigate(`/ara?q=${encode(value)}`);
   };
 
   const handleKeypress = (e) => {
@@ -38,17 +39,13 @@ function SearchBox() {
             _focus={{ variant: "outline" }}
             maxLength={30}
             onKeyPress={handleKeypress}
+            onClick={""}
             onChange={(e) => {
               setValue(e.target.value);
             }}
             value={value}
           />
-          <div
-            className="search-btn"
-            onClick={() => {
-              setIsActive("active");
-            }}
-          >
+          <div className="search-btn" onClick={handleSubmit}>
             <i class="fas fa-search"></i>
           </div>
 
