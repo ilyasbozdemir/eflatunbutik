@@ -3,7 +3,9 @@ import * as React from 'react'
 
 export const ProductGrid = (props) => {
   const columns = React.useMemo(() => {
-    const count = React.Children.toArray(props.children).filter(React.isValidElement).length
+    const count = React.Children
+    .toArray(props.children)
+    .filter(React.isValidElement).length
     return {
       base: Math.min(2, count),
       md: Math.min(3, count),

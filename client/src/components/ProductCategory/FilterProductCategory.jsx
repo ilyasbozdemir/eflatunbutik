@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -34,7 +34,10 @@ function FilterProductCategory(props) {
   const onChange = (e) => {
     const { name, value } = e.target;
 
-    alert(`?${name}=${value}`);
+    setSearchParams({
+      q: searchParams.get("q"),
+      [name]: value,
+    });
   };
 
   return (
@@ -57,7 +60,7 @@ function FilterProductCategory(props) {
                 <Box>
                   <Text>
                     <Text as="span" fontWeight={"bold"}>
-                      {` ${searchParams.get("q")} `}{" "}
+                      {` ${searchParams.get("q")} `}
                     </Text>
                     ile ilgili
                     <Text as="span" fontWeight={"bold"}>
@@ -67,6 +70,37 @@ function FilterProductCategory(props) {
                   </Text>
                 </Box>
                 <Spacer />
+                {variants?.navigationButton === false ? (
+                  <Box gap="2" mx={4}>
+                    <Select
+                      w={"100%"}
+                      name="siralama"
+                      placeholder="Sıralama"
+                      onChange={onChange}
+                    >
+                      <option value="varsayilansiralama">
+                        Varsayılan Sıralama
+                      </option>
+                      {/*?siralama=varsayilanSiralama*/}
+                      <option value="artanfiyat">Artan Fiyat</option>
+                      {/*?siralama=artanFiyat */}
+                      <option value="azalanfiyat">Azalan Fiyat</option>
+                      {/*?siralama=azalanFiyat */}
+                      <option value="degerlendirmepuani">
+                        Çok Değerlendirilenler
+                      </option>
+                      {/*?siralama=degerlendirmepuanı */}
+                      <option value="yuksekpuanlilar">Yüksek Puanlılar</option>
+                      {/*?siralama=yuksekpuanlilar */}
+                      <option value="indirimliurunler">İndirim Oranı</option>
+                      {/*?siralama=indirimliurunler */}
+                      <option value="enyeni">Yeni Eklenenler</option>
+                      {/*?siralama=enyeni */}
+                    </Select>
+                  </Box>
+                ) : (
+                  ""
+                )}
 
                 {variants?.navigationButton === true ? (
                   <Box gap="2">
@@ -75,6 +109,7 @@ function FilterProductCategory(props) {
                         showSidebarButton={variants?.navigationButton}
                         onShowSidebar={toggleSidebar}
                       />
+
                       <Select
                         w={"100%"}
                         name="siralama"

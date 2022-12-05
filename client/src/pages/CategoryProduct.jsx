@@ -13,6 +13,9 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 
+
+import { products } from "../components/Product/_data";
+
 function CategoryProduct(props) {
   const { breadcrumbs, isSearchPage } = props;
   const [categoryData, setCategoryDaya] = React.useState([]);
@@ -41,7 +44,7 @@ function CategoryProduct(props) {
       )}
 
       <FilterProductCategory isSearchPage={isSearchPage}>
-        <Product categoryData={categoryData} />
+        <Product categoryData={products} />
       </FilterProductCategory>
     </Box>
   );
