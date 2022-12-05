@@ -1,4 +1,4 @@
-import { Box, IconButton, Flex, ButtonGroup } from "@chakra-ui/react";
+import { Icon, Button, Flex, ButtonGroup } from "@chakra-ui/react";
 
 import { TbFilter } from "react-icons/tb";
 const ProductContent = (props) => {
@@ -13,11 +13,10 @@ const ProductContent = (props) => {
           borderRadius={"10px 10px"}
         >
           <ButtonGroup size="md" isAttached variant="outline">
-            <IconButton
-              aria-label="Add to friends"
-              icon={<TbFilter />}
-              onClick={onShowSidebar}
-            />
+            <Button aria-label="product filters" onClick={onShowSidebar}>
+              <Icon as={TbFilter} />
+              Filtrele
+            </Button>
           </ButtonGroup>
         </Flex>
       )}
