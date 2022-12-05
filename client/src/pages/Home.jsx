@@ -9,9 +9,9 @@ const MySlider = React.lazy(() => import("../components/MySlider"));
 function Home() {
   return (
     <>
-      <Center mt={4}>
+      <HStack mt={4}>
         <IGStory />
-      </Center>
+      </HStack>
       <Center mt={4}>
         <Highlights />
       </Center>
