@@ -54,7 +54,7 @@ function FilterProductCategory(props) {
                 alignItems="center"
                 gap="2"
               >
-                <Box p="2">
+                <Box>
                   <Text>
                     <Text as="span" fontWeight={"bold"}>
                       {` ${searchParams.get("q")} `}{" "}

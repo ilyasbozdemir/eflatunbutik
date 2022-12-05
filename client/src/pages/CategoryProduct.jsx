@@ -18,13 +18,14 @@ function CategoryProduct(props) {
   const [categoryData, setCategoryDaya] = React.useState([]);
 
   return (
-    <Box mt={10} ml={2} zIndex={150}>
+    <Box mt={5} zIndex={150}>
       {isSearchPage ?? isSearchPage === false ? (
-      ''
+        ""
       ) : (
         <>
           <Breadcrumb
             separator={<Icon as={IoMdArrowDropright} color="gray.500" />}
+            my={2}
           >
             {breadcrumbs.map((breadcrumb, i) => (
               <BreadcrumbItem isCurrentPage={breadcrumb.isCurrentPage}>
@@ -40,7 +41,7 @@ function CategoryProduct(props) {
       )}
 
       <FilterProductCategory isSearchPage={isSearchPage}>
-      <Product categoryData={categoryData} />
+        <Product categoryData={categoryData} />
       </FilterProductCategory>
     </Box>
   );
