@@ -10,7 +10,7 @@ export function FavouriteButton(props) {
   const [icon, setIcon] = React.useState(
     <Icon as={AiOutlineHeart} transition="all 0.15s ease" />
   );
-  const [title, setTitle] = React.useState("Bilgi");
+  const [title, setTitle] = React.useState("Ürün favorilere eklendi.");
   const [description, setDescription] = React.useState("");
 
   const clickHandled = () => {
@@ -30,7 +30,7 @@ export function FavouriteButton(props) {
       description: description,
       status: "info",
       position: "top-right",
-      duration: 1000,
+      duration: 500,
       isClosable: true,
     });
   };
