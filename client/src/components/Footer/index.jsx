@@ -21,6 +21,7 @@ import iyzicoLogo from "../../assests/iyzico_ile_ode_colored.svg";
 function index() {
   return (
     <Container
+      zIndex={150}
       as="footer"
       role="contentinfo"
       maxW={"container.lg"}
@@ -147,7 +148,6 @@ function index() {
                 lg: "360px",
               }}
             >
-              
               <Input
                 placeholder="E-mail adresini giriniz"
                 type="email"
@@ -156,7 +156,6 @@ function index() {
               <Button color="blue.400" type="submit" flexShrink={0}>
                 Abone ol
               </Button>
-
             </Stack>
           </Stack>
         </Stack>

@@ -1,4 +1,3 @@
-
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { createStructuredSelector } from "reselect";
@@ -8,16 +7,13 @@ import ScrollToTop from "./components/ScrollToTop";
 import React, { Suspense } from "react";
 import { useLocation } from "react-router-dom";
 
-import  LazyComponentsSkeleton  from "./components/LazyComponentsSkeleton";
-
+import LazyComponentsSkeleton from "./components/LazyComponentsSkeleton";
 
 const Router = React.lazy(() => import("./Router"));
 const Layout = React.lazy(() => import("./Layout"));
 const Footer = React.lazy(() => import("./components/Footer"));
 
 const Dashboard = React.lazy(() => import("../src/pages/Dashboard/index"));
-
-
 
 function App() {
   let location = useLocation();
@@ -30,13 +26,12 @@ function App() {
   }, [location]);
 
   return (
-    <Suspense fallback={<LazyComponentsSkeleton/>}>
+    <Suspense fallback={<LazyComponentsSkeleton />}>
       {isDashboard === false ? (
         <Layout isDashboardLayout={isDashboard}>
           <>
             <Router />
-          
-            
+
             <Footer />
             <ScrollToTop />
           </>
