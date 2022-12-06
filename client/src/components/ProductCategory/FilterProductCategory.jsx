@@ -124,7 +124,6 @@ const SelectBox = ({ onChange }) => {
     <Select
       w={"100%"}
       name="siralama"
-      placeholder="Sıralama"
       onChange={onChange}
     >
       <option value="varsayilansiralama">Varsayılan Sıralama</option>
