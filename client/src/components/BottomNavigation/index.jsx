@@ -21,11 +21,6 @@ const navs = [
     label: "anasayfa",
   },
   {
-    to: "/ara",
-    icon: AiOutlineSearch,
-    label: "ara",
-  },
-  {
     to: "/sepetim",
     icon: AiOutlineShoppingCart,
     label: "sepetim",
@@ -35,7 +30,6 @@ const navs = [
     icon: AiOutlineStar,
     label: "favorilerim",
   },
-
   {
     label: "hesabım",
   },
@@ -44,13 +38,14 @@ const navs = [
 function index() {
   const [isLogin, setIsLogin] = UseState(false);
   const { isOpen, onOpen, onClose } = UseDisclosure();
+
   return (
     <>
       <Flex justifyContent={"center"} direction={"row"}>
         <Box
           zIndex={1000}
           height={50}
-          minW="95%"
+          minW="100%"
           position="fixed"
           bottom={1}
           borderRadius={"10px 10px 10px 10px"}

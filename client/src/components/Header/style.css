@@ -1,6 +1,6 @@
 .search-box {
   position: relative;
-  height: 60px;
+  height: 40px;
   width: 0px;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
