@@ -28,14 +28,20 @@ function FilterProductCategory(props) {
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const onChange = (e) => {
     const { name, value } = e.target;
-
-    setSearchParams({
-      q: searchParams.get("q"),
-      [name]: value,
-    });
+    if (location.pathname.startsWith("/ara"))
+      setSearchParams({
+        q: searchParams.get("q"),
+        [name]: value,
+      });
+    else {
+      setSearchParams({
+        [name]: value,
+      });
+    }
   };
 
   return (
@@ -99,8 +105,11 @@ function FilterProductCategory(props) {
                   showSidebarButton={variants?.navigationButton}
                   onShowSidebar={toggleSidebar}
                 />
-
-                <SelectBox onChange={onChange} />
+                <Flex
+                  justifyContent={{ base: "space-between", md: "flex-end" }}
+                >
+                  <SelectBox onChange={onChange} />
+                </Flex>
               </HStack>
             </Box>
           )}
