@@ -20,8 +20,6 @@ const mdVariant = { navigation: "sidebar", navigationButton: false };
 
 function FilterProductCategory(props) {
   const { children, isSearchPage } = props;
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [searchProductCount, setSearchProductCount] = useState(4);
@@ -72,31 +70,7 @@ function FilterProductCategory(props) {
                 <Spacer />
                 {variants?.navigationButton === false ? (
                   <Box gap="2" mx={4}>
-                    <Select
-                      w={"100%"}
-                      name="siralama"
-                      placeholder="Sıralama"
-                      onChange={onChange}
-                    >
-                      <option value="varsayilansiralama">
-                        Varsayılan Sıralama
-                      </option>
-                      {/*?siralama=varsayilanSiralama*/}
-                      <option value="artanfiyat">Artan Fiyat</option>
-                      {/*?siralama=artanFiyat */}
-                      <option value="azalanfiyat">Azalan Fiyat</option>
-                      {/*?siralama=azalanFiyat */}
-                      <option value="degerlendirmepuani">
-                        Çok Değerlendirilenler
-                      </option>
-                      {/*?siralama=degerlendirmepuanı */}
-                      <option value="yuksekpuanlilar">Yüksek Puanlılar</option>
-                      {/*?siralama=yuksekpuanlilar */}
-                      <option value="indirimliurunler">İndirim Oranı</option>
-                      {/*?siralama=indirimliurunler */}
-                      <option value="enyeni">Yeni Eklenenler</option>
-                      {/*?siralama=enyeni */}
-                    </Select>
+                    <SelectBox onChange={onChange} />
                   </Box>
                 ) : (
                   ""
@@ -110,33 +84,7 @@ function FilterProductCategory(props) {
                         onShowSidebar={toggleSidebar}
                       />
 
-                      <Select
-                        w={"100%"}
-                        name="siralama"
-                        placeholder="Sıralama"
-                        onChange={onChange}
-                      >
-                        <option value="varsayilansiralama">
-                          Varsayılan Sıralama
-                        </option>
-                        {/*?siralama=varsayilanSiralama*/}
-                        <option value="artanfiyat">Artan Fiyat</option>
-                        {/*?siralama=artanFiyat */}
-                        <option value="azalanfiyat">Azalan Fiyat</option>
-                        {/*?siralama=azalanFiyat */}
-                        <option value="degerlendirmepuani">
-                          Çok Değerlendirilenler
-                        </option>
-                        {/*?siralama=degerlendirmepuanı */}
-                        <option value="yuksekpuanlilar">
-                          Yüksek Puanlılar
-                        </option>
-                        {/*?siralama=yuksekpuanlilar */}
-                        <option value="indirimliurunler">İndirim Oranı</option>
-                        {/*?siralama=indirimliurunler */}
-                        <option value="enyeni">Yeni Eklenenler</option>
-                        {/*?siralama=enyeni */}
-                      </Select>
+                      <SelectBox onChange={onChange} />
                     </HStack>
                   </Box>
                 ) : (
@@ -145,7 +93,16 @@ function FilterProductCategory(props) {
               </Flex>
             </>
           ) : (
-            ""
+            <Box gap="2">
+              <HStack>
+                <ProductContent
+                  showSidebarButton={variants?.navigationButton}
+                  onShowSidebar={toggleSidebar}
+                />
+
+                <SelectBox onChange={onChange} />
+              </HStack>
+            </Box>
           )}
           <Box p={2}>{children}</Box>
         </Box>
@@ -153,5 +110,29 @@ function FilterProductCategory(props) {
     </>
   );
 }
-
+const SelectBox = ({ onChange }) => {
+  return (
+    <Select
+      w={"100%"}
+      name="siralama"
+      placeholder="Sıralama"
+      onChange={onChange}
+    >
+      <option value="varsayilansiralama">Varsayılan Sıralama</option>
+      {/*?siralama=varsayilanSiralama*/}
+      <option value="artanfiyat">Artan Fiyat</option>
+      {/*?siralama=artanFiyat */}
+      <option value="azalanfiyat">Azalan Fiyat</option>
+      {/*?siralama=azalanFiyat */}
+      <option value="degerlendirmepuani">Çok Değerlendirilenler</option>
+      {/*?siralama=degerlendirmepuanı */}
+      <option value="yuksekpuanlilar">Yüksek Puanlılar</option>
+      {/*?siralama=yuksekpuanlilar */}
+      <option value="indirimliurunler">İndirim Oranı</option>
+      {/*?siralama=indirimliurunler */}
+      <option value="enyeni">Yeni Eklenenler</option>
+      {/*?siralama=enyeni */}
+    </Select>
+  );
+};
 export default FilterProductCategory;

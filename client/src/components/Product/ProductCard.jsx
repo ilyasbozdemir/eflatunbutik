@@ -24,7 +24,7 @@ export const ProductCard = (props) => {
   const { name, imageUrl, price, salePrice, rating } = product;
 
   React.useEffect(() => {
-    console.log('componentler yüklendi.')
+    console.log("componentler yüklendi.");
   }, []);
 
   return (
@@ -42,10 +42,12 @@ export const ProductCard = (props) => {
           }}
           transition="all .5s ease-in-out"
           cursor={"pointer"}
-
-          onMouseEnter={()=>{console.log('onMouseEnter')}}
-          onMouseLeave={()=>{console.log('onMouseLeave')}}
-
+          onMouseEnter={() => {
+            setShow(true);
+          }}
+          onMouseLeave={() => {
+            setShow(false);
+          }}
           {...rootProps}
         >
           <Box position="relative">
@@ -61,7 +63,7 @@ export const ProductCard = (props) => {
                 })}
               />
             </AspectRatio>
-            {show === false ? (
+            {show === true ? (
               <FavouriteButton
                 position="absolute"
                 top="4"
@@ -87,14 +89,14 @@ export const ProductCard = (props) => {
             <HStack>
               <Rating defaultValue={rating} size="sm" />
               <Text
-                fontSize="sm"
+                as="small"
                 color={useColorModeValue("gray.600", "gray.400")}
               >
-                12 Yorum
+                (12)
               </Text>
             </HStack>
           </Stack>
-          <Stack align="center">
+          <Stack align="center" transition="all .5s ease-in-out">
             <AddToCardButton />
           </Stack>
         </Stack>
