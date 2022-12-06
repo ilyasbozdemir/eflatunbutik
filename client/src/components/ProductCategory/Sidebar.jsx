@@ -249,8 +249,8 @@ const SidebarContent = (props) => {
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (
-    <Box p={5} w="200px" h={"100%"} bg={"gray.400"} borderRadius={"10px 10px"}>
-      <SidebarContent onClick={onClose} color={"white"} />
+    <Box p={5} w="200px" h={"100%"} borderRadius={"10px 10px"}>
+      <SidebarContent onClick={onClose}  />
     </Box>
   ) : (
     <Drawer isOpen={isOpen} placement="bottom" size={"full"} onClose={onClose}>
