@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Text,
   Box,
   Button,
   Drawer,
@@ -8,7 +9,7 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerContent,
-  VStack,
+  Collapse,
 } from "@chakra-ui/react";
 import Logo from "../Logo";
 
@@ -16,27 +17,33 @@ const SidebarContent = (props) => {
   const { onClick, ...rest } = props;
 
   return (
-    <VStack>
-      <Box w="100%" onClick={onClick} {...rest}>
-        {"{Product Filter Content}"}
+    <>
+      <Box {...rest}>
+        [Kategori
+        <br />
+        fiyat aralığı
+        <br />
+        değerlendirme puanı <br />
+        kuponlu ürünler
+        <br />
+        beden
+        <br />
+        renk
+        <br />
+        sepette indirim]
+        <br />
       </Box>
-    </VStack>
+    </>
   );
 };
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (
-    <Box
-      p={5}
-      w="200px"
-      h={"100%"}
-      bg={"gray.400"}
-      borderRadius={"10px 10px"}
-    >
+    <Box p={5} w="200px" h={"100%"} bg={"gray.400"} borderRadius={"10px 10px"}>
       <SidebarContent onClick={onClose} color={"white"} />
     </Box>
   ) : (
-    <Drawer isOpen={isOpen} placement="bottom" size={'full'} onClose={onClose}>
+    <Drawer isOpen={isOpen} placement="bottom" size={"full"} onClose={onClose}>
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
