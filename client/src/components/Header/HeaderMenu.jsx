@@ -7,7 +7,7 @@ import { linkItems } from "../../../src/constants/LinkItems";
 function HeaderMenu() {
   return (
     <>
-      <Flex>
+      <Flex w={'100%'}>
         {linkItems.map((link, i) => (
           <Navbar key={i} link={link} />
         ))}

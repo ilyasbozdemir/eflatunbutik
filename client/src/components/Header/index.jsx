@@ -35,82 +35,99 @@ function index({ onOpen, ...rest }) {
 
   return (
     <>
-      <Box
-        as="header"
-        display={"flex"}
-        position="sticky"
-        top="0"
-        zIndex="1000"
-        alignItems="center"
-        bg={UseColorModeValue("white", "blackAlpha.50")}
-        boxShadow={
-          "rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
-        }
-        {...rest}
-      >
-        <Flex
-          direction={"column"}
-          alignItems="center"
-          justifyContent={{ base: "space-between", md: "flex-end" }}
-        
+      <>
+        <Box
+          as="header"
+          display={"flex"}
+          position="sticky"
+          top="0"
+          zIndex="1000"
+          bg={UseColorModeValue("white", "blackAlpha.50")}
+          boxShadow={`rgba(0, 0, 0, 0.07) 0px 1px 1px,
+             rgba(0, 0, 0, 0.07) 0px 2px 2px,
+             rgba(0, 0, 0, 0.07) 0px 4px 4px,
+             rgba(0, 0, 0, 0.07) 0px 8px 8px,
+             rgba(0, 0, 0, 0.07) 0px 16px 16px`}
+          {...rest}
         >
-          <Box display={"flex"} bg={"yellow.400"}>
-            <IconButton
-              display={{ base: "flex", md: "none" }}
-              onClick={onOpen}
-              variant="ghost"
-              aria-label="open menu"
-              icon={<FiMenu />}
-              bg="transparent"
-            />
-
-            <Text
-              as="div"
-              display={{ base: "flex", md: "none" }}
-              fontSize="2xl"
-              fontFamily="monospace"
-              fontWeight="bold"
+          {/* isMobile*/}
+          <Flex
+            direction={"column"}
+            display={{ base: "flex", md: "none" }}
+            justifyItems={"center"}
+            width={"100%"}
+          >
+            <Box
+              my={2}
+              as="span"
+              display={"flex"}
+              direction={"row"}
+              textAlign={"center"}
+              justifyContent={"space-between"}
+              width={"100%"}
             >
-              <Link to="/">
-                <Logo />
-              </Link>
-            </Text>
-            <Spacer />
-
-            {/*settings component*/}
-            <Box display={{ base: "block", md: "block", lg: "none" }}>
-              <SettingSidebarButton onOpen={onOpenSettingSidebar} />
+              <IconButton
+                display={{ base: "flex", md: "none" }}
+                onClick={onOpen}
+                variant="ghost"
+                aria-label="open menu"
+                icon={<FiMenu />}
+                bg="transparent"
+              />
+              <Text
+                as="div"
+                display={{ base: "flex", md: "none" }}
+                fontSize="2xl"
+                fontFamily="monospace"
+                fontWeight="bold"
+              >
+                <Link to="/">
+                  <Logo />
+                </Link>
+              </Text>
+              <Spacer />
+              {/*settings component*/}
+              <Box display={{ base: "block", md: "block", lg: "none" }}>
+                <SettingSidebarButton onOpen={onOpenSettingSidebar} />
+              </Box>
+              <SettingSidebar
+                onOpen={onOpenSettingSidebar}
+                isOpen={isOpenSettingSidebar}
+                onClose={onCloseSettingSidebar}
+              />
             </Box>
-            <Spacer />
-            <SettingSidebar
-              onOpen={onOpenSettingSidebar}
-              isOpen={isOpenSettingSidebar}
-              onClose={onCloseSettingSidebar}
-            />
-          </Box>
+            <Box
+              my={2}
+              as="span"
+              display={"flex"}
+              direction={"row"}
+              justifyContent={"center"}
+              width={"100%"}
+            >
+              <SearchBox />
+            </Box>
+          </Flex>
+          {/* /isMobile*/}
 
-          <Box display={{ base: "block", md: "none" }}>
-            <SearchBox />
-          </Box>
-        </Flex>
-
-        <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
-          <HeaderTop />
-          <Divider />
-          <HeaderBrand />
-          <HeaderMenu />
-        </Stack>
-      </Box>
-
-      {/*= Mobile Bottom Navigation =*/}
-      <Box
-        display={{ base: "block", md: "none" }}
-        boxShadow={
-          " rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
-        }
-      >
-        <BottomNavigation />
-      </Box>
+          {/* isDesktop*/}
+          <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
+            <HeaderTop />
+            <Divider />
+            <HeaderBrand />
+            <HeaderMenu />
+          </Stack>
+          {/* /isDesktop*/}
+        </Box>
+        {/*= Mobile Bottom Navigation =*/}
+        <Box
+          display={{ base: "block", md: "none" }}
+          boxShadow={
+            " rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px"
+          }
+        >
+          <BottomNavigation />
+        </Box>
+      </>
     </>
   );
 }

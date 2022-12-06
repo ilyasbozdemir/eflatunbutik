@@ -35,7 +35,6 @@ function SearchBox() {
             <Input
               type="text"
               placeholder="Ara..."
-              _focus={{ variant: "outline" }}
               maxLength={30}
               onKeyPress={handleKeypress}
               onClick={""}

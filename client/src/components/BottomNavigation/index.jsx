@@ -47,12 +47,11 @@ function index() {
           height={50}
           minW="100%"
           position="fixed"
-          bottom={1}
-          borderRadius={"10px 10px 10px 10px"}
+          bottom={0}
           bgGradient="linear(to-r, #3A1C71, #CB356B, #BD3F32)"
           textAlign={"center"}
           boxShadow="xs"
-          rounded="md"
+          
         >
           <Flex
             direction={"row"}
