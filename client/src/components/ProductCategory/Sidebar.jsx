@@ -40,16 +40,22 @@ const SidebarContent = (props) => {
   const [sliderValue, setSliderValue] = React.useState([120, 240]);
   const [showTooltip, setShowTooltip] = React.useState(false);
 
-  return (
-    <>
-      <Box {...rest}>
+  const Categories = () => {
+    return (
+      <>
         <Center>
           <Text fontWeight={"semibold"} as="h4">
             Kategoriler
           </Text>
         </Center>
+
         {"{CategoryList}"}
-        <Divider />
+      </>
+    );
+  };
+  const PriceRange = () => {
+    return (
+      <>
         <Center>
           <Text fontWeight={"semibold"} as="h4">
             Fiyat Aralığı
@@ -74,7 +80,14 @@ const SidebarContent = (props) => {
           <Text>En Düşük :{sliderValue[0]}</Text>
           <Text>En Yüksek :{sliderValue[1]}</Text>
         </Flex>
+      </>
+    );
+  };
 
+  const EvaluationScore = () => {
+    return (
+      <>
+        {" "}
         <Center>
           <Text fontWeight={"semibold"} as="h4">
             Değerlendirme Puanı
@@ -104,8 +117,13 @@ const SidebarContent = (props) => {
             </Radio>
           </Stack>
         </RadioGroup>
-        <Divider />
+      </>
+    );
+  };
 
+  const BodySize = () => {
+    return (
+      <>
         <Center>
           <Text fontWeight={"semibold"} as="h4">
             Beden
@@ -136,7 +154,13 @@ const SidebarContent = (props) => {
             </Radio>
           </Stack>
         </RadioGroup>
-        <Divider />
+      </>
+    );
+  };
+
+  const Colors = () => {
+    return (
+      <>
         <Center>
           <Text fontWeight={"semibold"} as="h4">
             Renkler
@@ -212,35 +236,65 @@ const SidebarContent = (props) => {
             </Checkbox>
           </Stack>
         </CheckboxGroup>
+      </>
+    );
+  };
 
-        <Divider />
+  const CouponProduct = () => {
+    return (
+      <Text fontWeight={"semibold"} as="h4">
+        <FormControl display="flex" alignItems="center">
+          <FormLabel htmlFor="coupon-products" mb="0">
+            Kuponlu Ürünler
+          </FormLabel>
+          <Switch id="coupon-products" colorScheme="pink" />
+        </FormControl>
+      </Text>
+    );
+  };
+  const DiscountedProduct = () => {
+    return (
+      <Text fontWeight={"semibold"} as="h4">
+        <FormControl display="flex" alignItems="center">
+          <FormLabel htmlFor="discount-products" mb="0">
+            İndirimli Ürünler
+          </FormLabel>
+          <Switch id="discount-products" colorScheme="pink" />
+        </FormControl>
+      </Text>
+    );
+  };
+  const DiscountInCart = () => {
+    return (
+      <Text fontWeight={"semibold"} as="h4">
+        <FormControl display="flex" alignItems="center">
+          <FormLabel htmlFor="campaign-products" mb="0">
+            Sepette Kampanyalı Ürünler
+          </FormLabel>
+          <Switch id="campaign-products" colorScheme="pink" />
+        </FormControl>
+      </Text>
+    );
+  };
 
-        <Text fontWeight={"semibold"} as="h4">
-          <FormControl display="flex" alignItems="center">
-            <FormLabel htmlFor="coupon-products" mb="0">
-              Kuponlu Ürünler
-            </FormLabel>
-            <Switch id="coupon-products" colorScheme="pink" />
-          </FormControl>
-        </Text>
+  return (
+    <>
+      <Box {...rest}>
+        <Categories m={3} />
         <Divider />
-        <Text fontWeight={"semibold"} as="h4">
-          <FormControl display="flex" alignItems="center">
-            <FormLabel htmlFor="discount-products" mb="0">
-              İndirimli Ürünler
-            </FormLabel>
-            <Switch id="discount-products" colorScheme="pink" />
-          </FormControl>
-        </Text>
+        <PriceRange m={3} />
         <Divider />
-        <Text fontWeight={"semibold"} as="h4">
-          <FormControl display="flex" alignItems="center">
-            <FormLabel htmlFor="campaign-products" mb="0">
-              Sepette Kampanyalı Ürünler
-            </FormLabel>
-            <Switch id="campaign-products" colorScheme="pink" />
-          </FormControl>
-        </Text>
+        <EvaluationScore m={3} />
+        <Divider />
+        <BodySize m={3} />
+        <Divider />
+        <Colors m={3} />
+        <Divider />
+        <CouponProduct m={3} />
+        <Divider />
+        <DiscountedProduct m={3} />
+        <Divider />
+        <DiscountInCart m={3} />
         <Divider />
       </Box>
     </>
@@ -250,7 +304,7 @@ const SidebarContent = (props) => {
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (
     <Box p={5} w="200px" h={"100%"} borderRadius={"10px 10px"}>
-      <SidebarContent onClick={onClose}  />
+      <SidebarContent onClick={onClose} />
     </Box>
   ) : (
     <Drawer isOpen={isOpen} placement="bottom" size={"full"} onClose={onClose}>
