@@ -27,6 +27,7 @@ function SearchBox() {
   const [searchHistory, setSearchHistory] = React.useState([
     { name: "Elbise", to: "/elbise/" },
     { name: "trençkot", to: "/trenckot/" },
+    { name: "kaban", to: "/kaban/" },
   ]);
 
   const [searchParams, setSearchParams] = useSearchParams();
