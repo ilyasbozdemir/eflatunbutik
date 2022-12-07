@@ -1,52 +1,200 @@
 import React from "react";
 
+import { Link, useNavigate } from "react-router-dom";
+import { encode, decode } from "html-entities";
+import { useSearchParams } from "react-router-dom";
 import {
-  Input,
-  FormControl,
-  InputGroup,
-  InputRightElement,
-  IconButton,
+  Stack,
   Button,
-  Flex,
-  Avatar,
   Text,
   Box,
+  InputGroup,
+  InputRightElement,
+  Input,
+  IconButton,
+  Flex,
 } from "@chakra-ui/react";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 
-import { useNavigate } from "react-router-dom";
-import { encode, decode } from "html-entities";
-import { useSearchParams } from "react-router-dom";
-
-import SearchAutocomplete from "./SearchAutocomplete";
-
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
+  const [searchHistory, setSearchHistory] = React.useState([
+    { name: "Elbise", to: "/elbise/" },
+    { name: "trençkot", to: "/trenckot/" },
+  ]);
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const [value, setValue] = React.useState(decode(searchParams.get("q")));
   const navigate = useNavigate();
+  const [closeButtonShow, setCloseButtonShow] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(
+    decode(searchParams.get("q"))
+  );
+
+  React.useEffect(() => {
+    if (inputValue.length > 0) {
+      setCloseButtonShow(true);
+    } else {
+      setCloseButtonShow(false);
+    }
+  }, [inputValue]);
 
   const handleSubmit = (e) => {
-    setIsActive("active");
     e.preventDefault();
-    if (value !== "") navigate(`/ara?q=${encode(value)}`);
+    if (inputValue !== "") navigate(`/ara?q=${encode(inputValue)}`);
   };
-
   const handleKeypress = (e) => {
     if (e.keyCode === 13) {
       handleSubmit(e);
     }
   };
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <SearchAutocomplete />
+      <form autocomplete="off" onSubmit={handleSubmit}>
+        <Stack spacing={4}>
+          <Flex
+            direction={"row"}
+            border={"1px solid"}
+            borderRadius={"16px"}
+            pos={"relative"}
+          >
+            <InputGroup>
+              <Input
+                placeholder="Ürün,kategori ara"
+                borderRadius="16px 0 0 16px"
+                value={inputValue}
+                onChange={handleChange}
+                onKeyPress={handleKeypress}
+                w={{ base: "350px" }}
+                pl={2}
+                css={{
+                  "::placeholder": {
+                    color: "#4A5568",
+                  },
+                }}
+              />
+              {closeButtonShow === true ? (
+                <InputRightElement
+                  children={
+                    <IconButton
+                      onClick={() => setInputValue("")}
+                      bg="transparent"
+                      _hover={{ bg: "transparent" }}
+                      icon={<AiOutlineClose />}
+                    />
+                  }
+                />
+              ) : (
+                ""
+              )}
+            </InputGroup>
+            <IconButton
+              ml={1}
+              type="submit"
+              bg="transparent"
+              _hover={{ bg: "transparent" }}
+              icon={<FiSearch borderRadius="16px 0 0 16px" />}
+            />
+
+            <Box
+              css={{
+                backgroundColor: "#fff",
+                borderRadius: "16px",
+                position: "absolute",
+                border: "1px solid #d4d4d4",
+                borderBottom: "none",
+                borderTop: "none",
+                zIndex: 99,
+                top: "100%",
+                left: 0,
+                right: 0,
+              }}
+            >
+              <Box
+                css={{
+                  padding: "10px",
+                  cursor: "pointer",
+                  bg: "#fff",
+                }}
+              >
+                {/*
+                  <Flex
+                  justifyContent={"space-between"}
+                  color={"gray.500"}
+                  py={2}
+                >
+                  {inputValue.length < 2 ? (
+                    <Text as="small">
+                      Aramaya başlamak için
+                      <Text as="b"> en az 3 karakter </Text>
+                      yazmalısınız.
+                    </Text>
+                  ) : (
+                    ""
+                  )}
+                </Flex>
+                   */}
+
+                <Flex
+                  justifyContent={"space-between"}
+                  color={"gray.500"}
+                  py={2}
+                >
+                  {inputValue.length > 0 ? (
+                    <>[aranan keyler gelecek]</>
+                  ) : searchHistory.length > 0 ? (
+                    <>
+                      <Flex justifyContent={"space-between"} pb={1}>
+                        <Text as="small">GEÇMİŞ ARAMALAR</Text>
+                        <Text
+                          as={"small"}
+                          bg={"transparent"}
+                          _hover={{ color: "pink.300" }}
+                          color={"pink.500"}
+                        >
+                          Temizle
+                        </Text>
+                      </Flex>
+                      {searchHistory.map((item, i) => (
+                        <SearchBoxItem key={i} {...item} />
+                      ))}
+                    </>
+                  ) : (
+                    "te"
+                  )}
+                </Flex>
+              </Box>
+            </Box>
+          </Flex>
+        </Stack>
       </form>
     </>
   );
 }
+const SearchBoxItem = (props) => {
+  const { name, to } = props;
+  return (
+    <>
+      <Link to={to}>
+        <Box
+          css={{
+            padding: "10px",
+            cursor: "pointer",
+            bg: "#fff",
+            borderBottom: "1px solid #d4d4d4",
+          }}
+          _hover={{ bg: "pink.500", color: "white" }}
+        >
+          {name}
+        </Box>{" "}
+      </Link>
+    </>
+  );
+};
 
 export default SearchBox;
