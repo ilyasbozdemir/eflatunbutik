@@ -22,7 +22,7 @@ import { FiSearch } from "react-icons/fi";
 import { BiTrash } from "react-icons/bi";
 
 function SearchBox() {
-  const [isActive, setIsActive] = React.useState("");
+  const [isActive, setIsActive] = React.useState(false);
 
   const [searchHistory, setSearchHistory] = React.useState([
     { name: "Elbise", to: "/elbise/" },
@@ -70,6 +70,8 @@ function SearchBox() {
           >
             <InputGroup>
               <Input
+                onFocus={() => setIsActive(true)}
+                onBlur={() => setIsActive(false)}
                 placeholder="Ürün,kategori ara"
                 borderRadius="16px 0 0 16px"
                 value={inputValue}
@@ -105,43 +107,49 @@ function SearchBox() {
               _hover={{ bg: "transparent" }}
               icon={<FiSearch borderRadius="16px 0 0 16px" />}
             />
-
-            <Box
-              css={{
-                backgroundColor: "#fff",
-                borderRadius: "16px",
-                position: "absolute",
-                border: "1px solid #d4d4d4",
-                borderBottom: "none",
-                borderTop: "none",
-                zIndex: 99,
-                top: "100%",
-                left: 0,
-                right: 0,
-              }}
-            >
-              <Box
-                css={{
-                  padding: "10px",
-                  cursor: "pointer",
-                  bg: "#fff",
-                }}
-              >
-                {inputValue.length > 0 ? (
-                  <>[aranan keyler gelecek]</>
-                ) : searchHistory.length > 0 ? (
-                  <>
-                    <Flex direction={"column"}>
-                      {searchHistory.map((item, i) => (
-                        <SearchBoxItem key={i} {...item} />
-                      ))}
-                    </Flex>
-                  </>
-                ) : (
-                  ""
-                )}
-              </Box>
-            </Box>
+            {isActive === true ? (
+              <>
+                {" "}
+                <Box
+                  css={{
+                    backgroundColor: "#fff",
+                    borderRadius: "16px",
+                    position: "absolute",
+                    border: "1px solid #d4d4d4",
+                    borderBottom: "none",
+                    borderTop: "none",
+                    zIndex: 99,
+                    top: "100%",
+                    left: 0,
+                    right: 0,
+                  }}
+                >
+                  <Box
+                    css={{
+                      padding: "10px",
+                      cursor: "pointer",
+                      bg: "#fff",
+                    }}
+                  >
+                    {inputValue.length > 0 ? (
+                      <>[aranan keyler gelecek]</>
+                    ) : searchHistory.length > 0 ? (
+                      <>
+                        <Flex direction={"column"}>
+                          {searchHistory.map((item, i) => (
+                            <SearchBoxItem key={i} {...item} />
+                          ))}
+                        </Flex>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </Box>
+                </Box>
+              </>
+            ) : (
+              <></>
+            )}
           </Flex>
         </Stack>
       </form>
