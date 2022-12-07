@@ -12,16 +12,17 @@ import {
   InputRightElement,
   Input,
   IconButton,
+  Icon,
   Flex,
   HStack,
 } from "@chakra-ui/react";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
+import { BiTrash } from "react-icons/bi";
 
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
-  const [searchBoxItemIsFocus,setSearchBoxItemIsFocus]= React.useState(false)
 
   const [searchHistory, setSearchHistory] = React.useState([
     { name: "Elbise", to: "/elbise/" },
@@ -147,31 +148,45 @@ function SearchBox() {
   );
 }
 const SearchBoxItem = (props) => {
+  const [searchBoxItemIsFocus, setSearchBoxItemIsFocus] = React.useState(false);
+
   const { name, to } = props;
   return (
     <>
-      <Link to={to}>
-        <Box
-          css={{
-            padding: "10px",
-            cursor: "pointer",
-            bg: "#fff",
-            color: "#000",
-            borderBottom: "1px solid #d4d4d4",
-            width: "100%",
-          }}
-          _hover={{ bg: "pink.500", color: "#fff" }}
-          onMouseEnter={''}
-          onMouseLeave={''}
-        >
-          <HStack spacing="4px">
-            <Box>
-              <FiSearch />
-            </Box>
-            <Box> {name}</Box>
-          </HStack>
-        </Box>
-      </Link>
+      <Box
+        css={{
+          padding: "10px",
+          cursor: "pointer",
+          bg: "#fff",
+          color: "#000",
+          borderBottom: "1px solid #d4d4d4",
+          width: "100%",
+        }}
+        _hover={{ bg: "pink.500", color: "#fff" }}
+        onMouseEnter={() => setSearchBoxItemIsFocus(false)}
+        onMouseLeave={() => setSearchBoxItemIsFocus(true)}
+      >
+        <Flex justifyContent={"space-between"}>
+          <Link to={to}>
+            <HStack spacing="4px">
+              <Box>
+                <FiSearch />
+              </Box>
+              <Box> {name}</Box>
+            </HStack>{" "}
+          </Link>
+          {searchBoxItemIsFocus === false ? (
+            <Icon
+              as={BiTrash}
+              onClick={() => {
+                alert("item kaldırıldı.");
+              }}
+            />
+          ) : (
+            ""
+          )}
+        </Flex>
+      </Box>
     </>
   );
 };
