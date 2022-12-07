@@ -13,6 +13,7 @@ import {
   Input,
   IconButton,
   Flex,
+  HStack,
 } from "@chakra-ui/react";
 
 import { AiOutlineClose } from "react-icons/ai";
@@ -20,6 +21,8 @@ import { FiSearch } from "react-icons/fi";
 
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
+  const [searchBoxItemIsFocus,setSearchBoxItemIsFocus]= React.useState(false)
+
   const [searchHistory, setSearchHistory] = React.useState([
     { name: "Elbise", to: "/elbise/" },
     { name: "trençkot", to: "/trenckot/" },
@@ -122,52 +125,19 @@ function SearchBox() {
                   bg: "#fff",
                 }}
               >
-                {/*
-                  <Flex
-                  justifyContent={"space-between"}
-                  color={"gray.500"}
-                  py={2}
-                >
-                  {inputValue.length < 2 ? (
-                    <Text as="small">
-                      Aramaya başlamak için
-                      <Text as="b"> en az 3 karakter </Text>
-                      yazmalısınız.
-                    </Text>
-                  ) : (
-                    ""
-                  )}
-                </Flex>
-                   */}
-
-                <Flex
-                  justifyContent={"space-between"}
-                  color={"gray.500"}
-                  py={2}
-                >
-                  {inputValue.length > 0 ? (
-                    <>[aranan keyler gelecek]</>
-                  ) : searchHistory.length > 0 ? (
-                    <>
-                      <Flex justifyContent={"space-between"} pb={1}>
-                        <Text as="small">GEÇMİŞ ARAMALAR</Text>
-                        <Text
-                          as={"small"}
-                          bg={"transparent"}
-                          _hover={{ color: "pink.300" }}
-                          color={"pink.500"}
-                        >
-                          Temizle
-                        </Text>
-                      </Flex>
+                {inputValue.length > 0 ? (
+                  <>[aranan keyler gelecek]</>
+                ) : searchHistory.length > 0 ? (
+                  <>
+                    <Flex direction={"column"}>
                       {searchHistory.map((item, i) => (
                         <SearchBoxItem key={i} {...item} />
                       ))}
-                    </>
-                  ) : (
-                    "te"
-                  )}
-                </Flex>
+                    </Flex>
+                  </>
+                ) : (
+                  ""
+                )}
               </Box>
             </Box>
           </Flex>
@@ -186,12 +156,21 @@ const SearchBoxItem = (props) => {
             padding: "10px",
             cursor: "pointer",
             bg: "#fff",
+            color: "#000",
             borderBottom: "1px solid #d4d4d4",
+            width: "100%",
           }}
-          _hover={{ bg: "pink.500", color: "white" }}
+          _hover={{ bg: "pink.500", color: "#fff" }}
+          onMouseEnter={''}
+          onMouseLeave={''}
         >
-          {name}
-        </Box>{" "}
+          <HStack spacing="4px">
+            <Box>
+              <FiSearch />
+            </Box>
+            <Box> {name}</Box>
+          </HStack>
+        </Box>
       </Link>
     </>
   );
