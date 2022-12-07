@@ -112,7 +112,6 @@ function index({ onOpen, ...rest }) {
           {/* isDesktop*/}
           <Stack display={{ base: "none", md: "flex" }} w={"100%"}>
             <HeaderTop />
-            <Divider />
             <HeaderBrand />
             <HeaderMenu />
           </Stack>

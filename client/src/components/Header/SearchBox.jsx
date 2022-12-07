@@ -1,10 +1,27 @@
 import React from "react";
 
-import { Input } from "@chakra-ui/react";
-import "./style.css";
+import {
+  Input,
+  FormControl,
+  InputGroup,
+  InputRightElement,
+  IconButton,
+  Button,
+  Flex,
+  Avatar,
+  Text,
+  Box,
+} from "@chakra-ui/react";
+
+import { AiOutlineClose } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
+
 import { useNavigate } from "react-router-dom";
 import { encode, decode } from "html-entities";
 import { useSearchParams } from "react-router-dom";
+
+import SearchAutocomplete from "./SearchAutocomplete";
+
 function SearchBox() {
   const [isActive, setIsActive] = React.useState("");
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,38 +43,7 @@ function SearchBox() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          />
-          <div class={"search-box " + isActive}>
-            <Input
-              type="text"
-              placeholder="Ara..."
-              maxLength={30}
-              onKeyPress={handleKeypress}
-              onClick={""}
-              onChange={(e) => {
-                setValue(e.target.value);
-              }}
-              value={value}
-            />
-            <div className="search-btn" onClick={handleSubmit}>
-              <i class="fas fa-search"></i>
-            </div>
-
-            <div
-              className="cancel-btn"
-              onClick={() => {
-                setIsActive("");
-                setValue("");
-              }}
-            >
-              <i class="fas fa-times"></i>
-            </div>
-          </div>
-        </>
+        <SearchAutocomplete />
       </form>
     </>
   );

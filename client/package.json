@@ -33,6 +33,7 @@
     "react-router-dom": "^6.4.3",
     "react-router-redux": "^4.0.8",
     "react-scripts": "5.0.1",
+    "react-search-autocomplete": "^8.2.1",
     "react-simple-maps": "^3.0.0",
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.29.0",

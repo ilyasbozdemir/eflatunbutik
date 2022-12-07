@@ -8,20 +8,12 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerContent,
+  VStack,
+  useColorMode,
 } from "@chakra-ui/react";
 import Logo from "../Logo";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  Icon,
-  Divider,
-  Center,
-  Stack,
-  FormControl,
-  FormLabel,
-  Box,
-} from "@chakra-ui/react";
+import { Icon, Stack, FormControl, FormLabel, Box } from "@chakra-ui/react";
 
 import { AiFillStar } from "react-icons/ai";
 import {
@@ -40,27 +32,29 @@ const SidebarContent = (props) => {
   const [sliderValue, setSliderValue] = React.useState([120, 240]);
   const [showTooltip, setShowTooltip] = React.useState(false);
 
-  const Categories = () => {
+  const CategoryName = ({ name }) => {
     return (
       <>
-        <Center>
-          <Text fontWeight={"semibold"} as="h4">
-            Kategoriler
-          </Text>
-        </Center>
+        <Text fontWeight={"semibold"}  >
+          {name}
+        </Text>
+      </>
+    );
+  };
+
+  const Categories = () => {
+    return (
+      <Box>
+        <CategoryName name={"Kategoriler"} />
 
         {"{CategoryList}"}
-      </>
+      </Box>
     );
   };
   const PriceRange = () => {
     return (
-      <>
-        <Center>
-          <Text fontWeight={"semibold"} as="h4">
-            Fiyat Aralığı
-          </Text>
-        </Center>
+      <Box>
+        <CategoryName name={"Fiyat Aralığı"} />
 
         <RangeSlider
           defaultValue={sliderValue}
@@ -80,19 +74,15 @@ const SidebarContent = (props) => {
           <Text>En Düşük :{sliderValue[0]}</Text>
           <Text>En Yüksek :{sliderValue[1]}</Text>
         </Flex>
-      </>
+      </Box>
     );
   };
 
   const EvaluationScore = () => {
     return (
-      <>
-        {" "}
-        <Center>
-          <Text fontWeight={"semibold"} as="h4">
-            Değerlendirme Puanı
-          </Text>
-        </Center>
+      <Box>
+        <CategoryName name={"Değerlendirme Puanı"} />
+
         <RadioGroup defaultValue="2">
           <Stack spacing={5} direction="column">
             <Radio colorScheme="pink" value="1">
@@ -117,18 +107,14 @@ const SidebarContent = (props) => {
             </Radio>
           </Stack>
         </RadioGroup>
-      </>
+      </Box>
     );
   };
 
   const BodySize = () => {
     return (
       <>
-        <Center>
-          <Text fontWeight={"semibold"} as="h4">
-            Beden
-          </Text>
-        </Center>
+        <CategoryName name={"Beden"} />
         <RadioGroup defaultValue="2">
           <Stack spacing={5} direction="column">
             <Radio colorScheme="pink" value="1">
@@ -161,11 +147,7 @@ const SidebarContent = (props) => {
   const Colors = () => {
     return (
       <>
-        <Center>
-          <Text fontWeight={"semibold"} as="h4">
-            Renkler
-          </Text>
-        </Center>
+        <CategoryName name={"Renkler"} />
 
         <CheckboxGroup>
           <Stack spacing={[1]} direction={["column"]}>
@@ -280,30 +262,23 @@ const SidebarContent = (props) => {
   return (
     <>
       <Box {...rest}>
-        <Categories m={3} />
-        <Divider />
-        <PriceRange m={3} />
-        <Divider />
-        <EvaluationScore m={3} />
-        <Divider />
-        <BodySize m={3} />
-        <Divider />
-        <Colors m={3} />
-        <Divider />
-        <CouponProduct m={3} />
-        <Divider />
-        <DiscountedProduct m={3} />
-        <Divider />
-        <DiscountInCart m={3} />
-        <Divider />
+        <VStack>
+          <Categories />
+        </VStack>
       </Box>
     </>
   );
 };
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
+  const borderVariant = {
+    css: {
+      borderRadius: "10px 10px",
+      border: "1px solid",
+    },
+  };
   return variant === "sidebar" ? (
-    <Box p={5} w="200px" h={"100%"} borderRadius={"10px 10px"}>
+    <Box w="200px" h={"100%"} {...borderVariant}>
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (

@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import CardWrapper from "../components/Card/CardWrapper";
+import CardWrapper from "../components/Cart/CardWrapper";
 
 function Basket() {
   return (
