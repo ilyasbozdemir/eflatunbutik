@@ -32,12 +32,6 @@ const images = [
     to: "/triko/",
     src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
   },
-  {
-    name: "Triko",
-    onClickHandled: "",
-    to: "/triko/",
-    src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
-  },
 ];
 const ImageItem = (props) => {
   const { src, to, name } = props;
@@ -50,7 +44,6 @@ const ImageItem = (props) => {
         alignItems={"center"}
         className={styles.container}
         overflow={"auto"}
-        overflowX= 'auto'
       >
         <Image
           css={{

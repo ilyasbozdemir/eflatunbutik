@@ -1,5 +1,5 @@
 import React from "react";
-import {  ButtonGroup } from "@chakra-ui/react";
+import { ButtonGroup, Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 function index() {
   // Sepete En Çok Eklenenler
@@ -49,11 +49,13 @@ function index() {
   };
 
   return (
-    <ButtonGroup>
-      {buttons.map((button, index) => (
-        <HighlightButton key={index} {...button} />
-      ))}
-    </ButtonGroup>
+    
+      <Flex direction={"row"} justifyContent={"space-around"}>
+        {buttons.map((button, index) => (
+          <HighlightButton key={index} {...button} />
+        ))}{" "}
+      </Flex>
+   
   );
 }
 
