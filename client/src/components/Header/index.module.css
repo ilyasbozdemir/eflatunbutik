@@ -12,7 +12,6 @@
   max-height: 350px;
   overflow: auto;
 
-  
   background-color: #fff;
   position: absolute;
   z-index: 950;
@@ -23,10 +22,16 @@
 .search .search_result .search_result_item {
   align-items: center;
   cursor: pointer;
-  border-bottom :1px #A020F0 solid;
+  display:flex;
+  justify-content:space-between;
+  border-bottom: 1px #a020f0 solid;
 }
+
+
+
 .search .search_result .search_result_item:hover {
-  background: #dcd;
+  background: #DC92E0;
+  color:#fff;
 }
 
 .search .result_not_found {

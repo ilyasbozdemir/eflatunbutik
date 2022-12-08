@@ -38,6 +38,11 @@ function SearchBox() {
       title: "Tesettür Elbise",
       type: "Ürün",
     },
+    {
+      id: 2,
+      title: "Ayrobin Elbise",
+      type: "Ürün",
+    },
   ];
 
   const [result, setResult] = React.useState(false);
@@ -162,18 +167,16 @@ function SearchBox() {
                     pl={3}
                     pr={3}
                   >
-                    <Flex justifyContent={"space-between"}>
-                      <Box>{item.title}</Box>
-                      {item.type === "Kategori" ? (
-                        <Box>
-                          <Badge variant="outline" colorScheme="green">
-                            {item.type}
-                          </Badge>
-                        </Box>
-                      ) : (
-                        ""
-                      )}
-                    </Flex>
+                    <Box>{item.title}</Box>
+                    {item.type === "Kategori" ? (
+                      <Box>
+                        <Badge variant="outline" colorScheme="green">
+                          {item.type}
+                        </Badge>
+                      </Box>
+                    ) : (
+                      ""
+                    )}
                   </Box>
                 ))
               )}
