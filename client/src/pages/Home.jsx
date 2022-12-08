@@ -11,7 +11,7 @@ function Home() {
     <>
       <HStack
         mt={4}
-        display={useBreakpointValue({ base: "block", md: "none" })}
+        display={useBreakpointValue({ base: "none", md: "none" })}
       >
         <IGStory />
       </HStack>
