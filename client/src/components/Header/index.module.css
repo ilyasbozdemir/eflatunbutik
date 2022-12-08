@@ -19,6 +19,12 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.search .search_result::-webkit-scrollbar {
+  display: none;
+}
+
+
 .search .search_result .search_result_item {
   align-items: center;
   cursor: pointer;
