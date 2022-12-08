@@ -5,8 +5,6 @@ import { encode, decode } from "html-entities";
 import { useSearchParams } from "react-router-dom";
 import {
   Stack,
-  Button,
-  Text,
   Box,
   InputGroup,
   InputRightElement,
@@ -25,9 +23,9 @@ function SearchBox() {
   const [isActive, setIsActive] = React.useState(false);
 
   const [searchHistory, setSearchHistory] = React.useState([
-    { name: "Elbise", to: "/elbise/" },
-    { name: "trençkot", to: "/trenckot/" },
-    { name: "kaban", to: "/kaban/" },
+    { id: 1, name: "Elbise", to: "/elbise/" },
+    { id: 2, name: "trençkot", to: "/trenckot/" },
+    { id: 3, name: "kaban", to: "/kaban/" },
   ]);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -58,6 +56,7 @@ function SearchBox() {
     setInputValue(e.target.value);
   };
 
+
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
@@ -71,7 +70,6 @@ function SearchBox() {
             <InputGroup>
               <Input
                 onFocus={() => setIsActive(true)}
-                onBlur={() => setIsActive(false)}
                 placeholder="Ürün,kategori ara"
                 borderRadius="16px 0 0 16px"
                 value={inputValue}
@@ -126,7 +124,7 @@ function SearchBox() {
                 >
                   <Box
                     css={{
-                      padding: "10px",
+                      padding: "5px",
                       cursor: "pointer",
                       bg: "#fff",
                     }}
@@ -137,7 +135,10 @@ function SearchBox() {
                       <>
                         <Flex direction={"column"}>
                           {searchHistory.map((item, i) => (
-                            <SearchBoxItem key={i} {...item} />
+                            <SearchBoxItem
+                              key={item.id}
+                              {...item}
+                            />
                           ))}
                         </Flex>
                       </>
@@ -159,21 +160,20 @@ function SearchBox() {
 const SearchBoxItem = (props) => {
   const [searchBoxItemIsFocus, setSearchBoxItemIsFocus] = React.useState(false);
 
-  const { name, to } = props;
+  const { id, name, to } = props;
   return (
     <>
       <Box
         css={{
-          padding: "10px",
-          cursor: "pointer",
           bg: "#fff",
           color: "#000",
           borderBottom: "1px solid #d4d4d4",
           width: "100%",
         }}
-        _hover={{ bg: "pink.500", color: "#fff" }}
         onMouseEnter={() => setSearchBoxItemIsFocus(false)}
         onMouseLeave={() => setSearchBoxItemIsFocus(true)}
+        role={"group"}
+        _hover={{ bg: "pink.500", color: "#fff" }}
       >
         <Flex justifyContent={"space-between"}>
           <Link to={to}>
@@ -181,15 +181,30 @@ const SearchBoxItem = (props) => {
               <Box>
                 <FiSearch />
               </Box>
-              <Box> {name}</Box>
-            </HStack>{" "}
+              <Box
+                css={{
+                  padding: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                {name}
+              </Box>
+            </HStack>
           </Link>
           {searchBoxItemIsFocus === false ? (
             <Icon
+              id={id}
               as={BiTrash}
-              onClick={() => {
-                alert("item kaldırıldı.");
+              mt={2}
+              mr={3}
+              size={'sm'}
+              onClick={(e) => {
+
+                alert(e.target.getAttribute("id"));
+              
               }}
+              bg={"pink.500"}
+              cursor="pointer"
             />
           ) : (
             ""
