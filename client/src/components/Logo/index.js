@@ -9,7 +9,7 @@ function index() {
       <Box>
         <span id={styles.brand}>
           <Text
-            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            bgGradient="linear(to-r, #e0218a, #720b93)"
             bgClip="text"
             fontSize="3xl"
             fontWeight="extrabold"
