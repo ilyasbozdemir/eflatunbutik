@@ -120,8 +120,8 @@ function SearchBox() {
               bg="#A020F0"
               color="white"
               _hover={{ color: "gray.200" }}
-              borderRadius="0 16px 16px 0"
-              icon={<FiSearch  />}
+              borderRadius={isTyping ? "0 16px 0 0" : "0 16px 16px 0"}
+              icon={<FiSearch />}
             />
           </Flex>
           <Box
