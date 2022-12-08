@@ -56,6 +56,19 @@ function SearchBox() {
     setInputValue(e.target.value);
   };
 
+  const input = document.getElementById("search-input");
+  const inputBox = document.getElementById("search-box-context");
+
+  document.addEventListener("click", (e) => {
+    if (
+      e.composedPath().includes(input)
+     
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  });
 
   return (
     <>
@@ -69,7 +82,7 @@ function SearchBox() {
           >
             <InputGroup>
               <Input
-                onFocus={() => setIsActive(true)}
+                id="search-input"
                 placeholder="Ürün,kategori ara"
                 borderRadius="16px 0 0 16px"
                 value={inputValue}
@@ -109,6 +122,7 @@ function SearchBox() {
               <>
                 {" "}
                 <Box
+                  id="search-box-context"
                   css={{
                     backgroundColor: "#fff",
                     borderRadius: "16px",
@@ -135,10 +149,7 @@ function SearchBox() {
                       <>
                         <Flex direction={"column"}>
                           {searchHistory.map((item, i) => (
-                            <SearchBoxItem
-                              key={item.id}
-                              {...item}
-                            />
+                            <SearchBoxItem key={item.id} {...item} />
                           ))}
                         </Flex>
                       </>
@@ -197,11 +208,9 @@ const SearchBoxItem = (props) => {
               as={BiTrash}
               mt={2}
               mr={3}
-              size={'sm'}
+              size={"sm"}
               onClick={(e) => {
-
                 alert(e.target.getAttribute("id"));
-              
               }}
               bg={"pink.500"}
               cursor="pointer"
