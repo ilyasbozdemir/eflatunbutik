@@ -12,7 +12,7 @@ import {
   IconButton,
   Icon,
   Flex,
-  HStack,
+  Text,
 } from "@chakra-ui/react";
 
 import styles from "./index.module.css";
@@ -22,13 +22,23 @@ import { FiSearch } from "react-icons/fi";
 import { BiTrash } from "react-icons/bi";
 
 function SearchBox() {
-  const [isActive, setIsActive] = React.useState(false);
-
   const [searchHistory, setSearchHistory] = React.useState([
     { id: 1, name: "Elbise", to: "/elbise/" },
     { id: 2, name: "trençkot", to: "/trenckot/" },
     { id: 3, name: "kaban", to: "/kaban/" },
   ]);
+  const data = [
+    {
+      id: 1,
+      title: "elbise",
+      type: "Kategori",
+    },
+    {
+      id: 2,
+      title: "Elbise",
+      type: "Kategori",
+    },
+  ];
 
   const [result, setResult] = React.useState(false);
 
@@ -55,6 +65,13 @@ function SearchBox() {
       setInputValue("");
     }
   };
+
+  React.useEffect(() => {
+    const filteredResult = data.filter((item) =>
+      item.title.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setResult(filteredResult.length > 0 ? filteredResult : false);
+  }, [inputValue]);
 
   React.useEffect(() => {
     if (inputValue.length > 0) {
@@ -124,30 +141,40 @@ function SearchBox() {
               icon={<FiSearch />}
             />
           </Flex>
-          <Box
-            border={inputValue.length > 0 ? "1px solid #A020F0" : null}
-            className={styles.search_result}
-          >
-            {result === true ? (
-              result.map((item, index) => (
-                <Box
-                  key={index}
-                  pl={3}
-                  className={styles.search_result_item}
-                  pt={3}
-                  pb={1}
-                >
-                  {item.title}
-                </Box>
-              ))
-            ) : inputValue.length > 0 ? (
-              <Box pl={3} className={styles.result_not_found}>
-                "{inputValue}" ile ilgili bir ürün veya kategori bulamadık!
-              </Box>
-            ) : (
-              ""
-            )}
-          </Box>
+
+          {isTyping && (
+            <Box
+              border={isTyping ? "1px solid #A020F0" : null}
+              className={styles.search_result}
+            >
+              {
+                <>
+                  {result === false ? (
+                    <Box pl={3} className={styles.result_not_found}>
+                      "<Text as="b">{inputValue}</Text>" ile ilgili bir ürün
+                      veya kategori bulamadık!
+                    </Box>
+                  ) : (
+                    result.map((item) => (
+                      <Box
+                        key={item.id}
+                        className={styles.search_result_item}
+                        pt={3}
+                        pb={1}
+                        pl={3}
+                        pr={3}
+                      >
+                        <Flex justifyContent={"space-between"}>
+                          <Box>{item.title}</Box>
+                          <Box>{item.type}</Box>
+                        </Flex>
+                      </Box>
+                    ))
+                  )}
+                </>
+              }
+            </Box>
+          )}
         </Stack>
       </form>
     </>
