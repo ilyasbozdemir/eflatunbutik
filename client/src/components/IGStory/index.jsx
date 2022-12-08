@@ -4,6 +4,9 @@ import { Flex, Image, Stack, Text, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/fa";
+
+import styles from "./index.module.css";
+
 const images = [
   {
     name: "Sana Özel",
@@ -29,6 +32,12 @@ const images = [
     to: "/triko/",
     src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
   },
+  {
+    name: "Triko",
+    onClickHandled: "",
+    to: "/triko/",
+    src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
+  },
 ];
 const ImageItem = (props) => {
   const { src, to, name } = props;
@@ -39,12 +48,16 @@ const ImageItem = (props) => {
         direction={"column"}
         w={110}
         alignItems={"center"}
+        className={styles.container}
+        overflow={"auto"}
+        overflowX= 'auto'
       >
         <Image
           css={{
             borderWidth: "4px",
             borderStyle: "solid",
-            background: "linear-gradient(45deg, purple, orange) border-box",
+            background: `radikal-gradient(45deg, purple, orange) border-box,
+            radikal-gradient(45deg, purple, orange) border-box`,
           }}
           borderRadius="full"
           boxSize="50px"

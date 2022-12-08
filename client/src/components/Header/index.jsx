@@ -103,6 +103,8 @@ function index({ onOpen, ...rest }) {
               direction={"row"}
               justifyContent={"center"}
               width={"100%"}
+              pl={3}
+              pr={3}
             >
               <SearchBox />
             </Box>
