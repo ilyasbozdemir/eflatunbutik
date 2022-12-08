@@ -13,8 +13,8 @@ import {
   Icon,
   Flex,
   Text,
+  Badge,
 } from "@chakra-ui/react";
-
 import styles from "./index.module.css";
 
 import { AiOutlineClose } from "react-icons/ai";
@@ -30,13 +30,13 @@ function SearchBox() {
   const data = [
     {
       id: 1,
-      title: "elbise",
+      title: "Elbise",
       type: "Kategori",
     },
     {
       id: 2,
-      title: "Elbise",
-      type: "Kategori",
+      title: "Tesettür Elbise",
+      type: "Ürün",
     },
   ];
 
@@ -147,32 +147,36 @@ function SearchBox() {
               border={isTyping ? "1px solid #A020F0" : null}
               className={styles.search_result}
             >
-              {
-                <>
-                  {result === false ? (
-                    <Box pl={3} className={styles.result_not_found}>
-                      "<Text as="b">{inputValue}</Text>" ile ilgili bir ürün
-                      veya kategori bulamadık!
-                    </Box>
-                  ) : (
-                    result.map((item) => (
-                      <Box
-                        key={item.id}
-                        className={styles.search_result_item}
-                        pt={3}
-                        pb={1}
-                        pl={3}
-                        pr={3}
-                      >
-                        <Flex justifyContent={"space-between"}>
-                          <Box>{item.title}</Box>
-                          <Box>{item.type}</Box>
-                        </Flex>
-                      </Box>
-                    ))
-                  )}
-                </>
-              }
+              {result === false ? (
+                <Box pl={3} className={styles.result_not_found}>
+                  "<Text as="b">{inputValue}</Text>" ile ilgili bir ürün veya
+                  kategori bulamadık!
+                </Box>
+              ) : (
+                result.map((item) => (
+                  <Box
+                    key={item.id}
+                    className={styles.search_result_item}
+                    pt={3}
+                    pb={1}
+                    pl={3}
+                    pr={3}
+                  >
+                    <Flex justifyContent={"space-between"}>
+                      <Box>{item.title}</Box>
+                      {item.type === "Kategori" ? (
+                        <Box>
+                          <Badge variant="outline" colorScheme="green">
+                            {item.type}
+                          </Badge>
+                        </Box>
+                      ) : (
+                        ""
+                      )}
+                    </Flex>
+                  </Box>
+                ))
+              )}
             </Box>
           )}
         </Stack>

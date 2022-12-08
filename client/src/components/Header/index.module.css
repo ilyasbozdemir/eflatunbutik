@@ -20,15 +20,13 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.search .search-result .search_result_item {
-  padding: 0 15px;
-  height: 60px;
-  display: flex;
+.search .search_result .search_result_item {
   align-items: center;
   cursor: pointer;
+  border-bottom :1px #A020F0 solid;
 }
-.search .search-result .search_result_item:hover {
-  background: antiquewhite;
+.search .search_result .search_result_item:hover {
+  background: #dcd;
 }
 
 .search .result_not_found {
