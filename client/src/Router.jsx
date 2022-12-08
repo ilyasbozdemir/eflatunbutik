@@ -104,7 +104,7 @@ function Router() {
             }
           />
           <Route
-            path="/tshirt/"
+            path="/tisort/"
             element={
               <CategoryProduct
                 breadcrumbs={[
@@ -115,7 +115,7 @@ function Router() {
                     isCurrentPage: false,
                   },
                   {
-                    item: "Tshirt",
+                    item: "Tişört",
                     isCurrentPage: true,
                   },
                 ]}

@@ -27,22 +27,78 @@ function SearchBox() {
     { id: 2, name: "trençkot", to: "/trenckot/" },
     { id: 3, name: "kaban", to: "/kaban/" },
   ]);
+
   const data = [
     {
       id: 1,
+      title: "Yeni Gelenler",
+      type: "Kategori",
+      to: "/yeni-gelenler/",
+    },
+    {
+      id: 2,
       title: "Elbise",
       type: "Kategori",
+      to: "/elbise/",
     },
+    {
+      id: 3,
+      title: "Triko",
+      type: "Kategori",
+      to: "/triko/",
+    },
+    {
+      id: 4,
+      title: "İç Giyim",
+      type: "Kategori",
+      to: "/ic-giyim/",
+    },
+    {
+      id: 5,
+      title: "Üst Giyim",
+      type: "Kategori",
+      to: "/ust-giyim/",
+    },
+    {
+      id: 6,
+      title: "Sweatshirt",
+      type: "Kategori",
+      to: "/sweatshirt/",
+    },
+    {
+      id: 7,
+      title: "Tişört",
+      type: "Kategori",
+      to: "/tisort/",
+    },
+    {
+      id: 8,
+      title: "Tunik",
+      type: "Kategori",
+      to: "/tunik/",
+    },
+    {
+      id: 9,
+      title: "Tunik",
+      type: "Kategori",
+      to: "/tunik/",
+    },{
+      id: 10,
+      title: "Bluz",
+      type: "Kategori",
+      to: "/bluz/",
+    },{
+      id: 11,
+      title: "Alt Giyim",
+      type: "Kategori",
+      to: "/alt-giyim/",
+    },
+    /*,
     {
       id: 2,
       title: "Tesettür Elbise",
       type: "Ürün",
-    },
-    {
-      id: 2,
-      title: "Ayrobin Elbise",
-      type: "Ürün",
-    },
+    },*/
   ];
 
   const [result, setResult] = React.useState(false);
@@ -90,9 +146,16 @@ function SearchBox() {
     e.preventDefault();
     if (inputValue !== "") navigate(`/ara?q=${encode(inputValue)}`);
   };
-  const handleKeypress = (e) => {
+
+  const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       handleSubmit(e);
+    }
+    if (e.keyCode === 38) {
+      console.log("yukarı");
+    }
+    if (e.keyCode === 40) {
+      console.log("aşağı");
     }
   };
   const handleChange = (e) => {
@@ -116,7 +179,7 @@ function SearchBox() {
                 borderRadius="16px 0 0 16px"
                 value={inputValue}
                 onChange={handleChange}
-                onKeyPress={handleKeypress}
+                onKeyDown={handleKeyDown}
                 w={{ base: "350px" }}
                 pl={3}
                 _placeholder={{ color: "gray.500" }}
@@ -159,25 +222,28 @@ function SearchBox() {
                 </Box>
               ) : (
                 result.map((item) => (
-                  <Box
-                    key={item.id}
-                    className={styles.search_result_item}
-                    pt={3}
-                    pb={1}
-                    pl={3}
-                    pr={3}
-                  >
-                    <Box>{item.title}</Box>
-                    {item.type === "Kategori" ? (
-                      <Box>
-                        <Badge variant="outline" colorScheme="green">
-                          {item.type}
-                        </Badge>
-                      </Box>
-                    ) : (
-                      ""
-                    )}
-                  </Box>
+                  <Link to={item.to}>
+                    <Box
+                      key={item.id}
+                      className={styles.search_result_item}
+                      pt={3}
+                      pb={1}
+                      pl={3}
+                      pr={3}
+                    >
+                      <Box>{item.title}</Box>
+
+                      {item.type === "Kategori" ? (
+                        <Box>
+                          <Badge variant="outline" colorScheme="pink">
+                            {item.type}
+                          </Badge>
+                        </Box>
+                      ) : (
+                        ""
+                      )}
+                    </Box>{" "}
+                  </Link>
                 ))
               )}
             </Box>

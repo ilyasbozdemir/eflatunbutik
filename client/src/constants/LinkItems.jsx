@@ -41,7 +41,7 @@ export const linkItems = [
       {
         label: "Tişört",
         icon: GiClothes,
-        href: "/tshirt/",
+        href: "/tisort/",
       },
       {
         label: "Tunik",
