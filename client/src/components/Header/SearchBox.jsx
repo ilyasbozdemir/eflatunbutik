@@ -117,9 +117,11 @@ function SearchBox() {
             <IconButton
               ml={1}
               type="submit"
-              bg="transparent"
-              _hover={{ bg: "transparent" }}
-              icon={<FiSearch borderRadius="16px 0 0 16px" />}
+              bg="#A020F0"
+              color="white"
+              _hover={{ color: "gray.200" }}
+              borderRadius="0 16px 16px 0"
+              icon={<FiSearch  />}
             />
           </Flex>
           <Box
