@@ -6,7 +6,7 @@ import Showcase3 from "./Showcase3";
 
 function index() {
   return (
-    <Flex direction={"row"}>
+    <Flex direction={"column"} mb={3}>
       <Showcase1 />
       <Showcase2 />
       <Showcase3 />

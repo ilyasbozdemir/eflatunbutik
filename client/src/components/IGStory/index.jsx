@@ -42,7 +42,6 @@ const ImageItem = (props) => {
         direction={"column"}
         w={110}
         alignItems={"center"}
-        className={styles.container}
         overflow={"auto"}
       >
         <Image
