@@ -77,12 +77,12 @@ function index() {
       mr={10}
       columns={columns}
       columnGap={{
-        base: "4",
-        md: "5",
+        base: "1",
+        md: "1",
       }}
       rowGap={{
-        base: "4",
-        md: "5",
+        base: "1",
+        md: "1",
       }}
       justifyContent={"center"}
     >
