@@ -75,7 +75,7 @@ function FilterProductCategory(props) {
                   </Text>
                 </Box>
                 <Spacer />
-                {variants?.navigationButton === false ? ( //mobile false
+                {variants?.navigationButton === false ? ( //mobile false search true
                   <Box gap="2" mx={4}>
                     <SelectBox onChange={onChange} />
                   </Box>
@@ -92,6 +92,7 @@ function FilterProductCategory(props) {
                       />
 
                       <SelectBox onChange={onChange} />
+                      {/*mobile false category true*/}
                     </HStack>
                   </Box>
                 ) : (
