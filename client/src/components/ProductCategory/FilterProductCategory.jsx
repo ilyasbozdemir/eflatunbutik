@@ -6,6 +6,7 @@ import {
   Spacer,
   Text,
   HStack,
+  Center,
 } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/react";
 import ProductContent from "./ProductContent";
@@ -45,14 +46,14 @@ function FilterProductCategory(props) {
   };
 
   return (
-    <>
-      <Flex direction={"row"} ml={2}>
+    <Center>
+      <Flex direction={"row"}>
         <Sidebar
           variant={variants?.navigation}
           isOpen={isSidebarOpen}
           onClose={toggleSidebar}
         />
-        <Box ml={3} minWidth="max-content" justifyContent={"space-between"}>
+        <Box minWidth="max-content" justifyContent={"space-between"}>
           {isSearchPage ?? isSearchPage === true ? (
             <>
               <Flex
@@ -74,7 +75,7 @@ function FilterProductCategory(props) {
                   </Text>
                 </Box>
                 <Spacer />
-                {variants?.navigationButton === false ? (//mobile false
+                {variants?.navigationButton === false ? ( //mobile false
                   <Box gap="2" mx={4}>
                     <SelectBox onChange={onChange} />
                   </Box>
@@ -82,7 +83,7 @@ function FilterProductCategory(props) {
                   ""
                 )}
 
-                {variants?.navigationButton === true ? (//mobile true
+                {variants?.navigationButton === true ? ( //mobile true
                   <Box gap="2">
                     <HStack>
                       <ProductContent
@@ -113,19 +114,15 @@ function FilterProductCategory(props) {
               </HStack>
             </Box>
           )}
-          <Box p={2}>{children}</Box>
+          <Box>{children}</Box>
         </Box>
       </Flex>
-    </>
+    </Center>
   );
 }
 const SelectBox = ({ onChange }) => {
   return (
-    <Select
-      w={"100%"}
-      name="siralama"
-      onChange={onChange}
-    >
+    <Select w={"100%"} name="siralama" onChange={onChange}>
       <option value="varsayilansiralama">Varsayılan Sıralama</option>
       {/*?siralama=varsayilanSiralama*/}
       <option value="artanfiyat">Artan Fiyat</option>

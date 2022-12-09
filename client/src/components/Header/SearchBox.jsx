@@ -280,7 +280,7 @@ function SearchBox() {
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
-        <Stack spacing={4} ref={searchRef} className={styles.search}>
+        <Stack ref={searchRef} className={styles.search}>
           <Flex
             direction={"row"}
             border={isTyping ? "1px solid #A020F0" : "1px solid"}
