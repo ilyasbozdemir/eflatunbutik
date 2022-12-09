@@ -29,7 +29,7 @@ function ScrollToTop() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (windowPosition >= 150) {
+    if (windowPosition >= 200) {
       setShow(true);
     } else {
       setShow(false);
