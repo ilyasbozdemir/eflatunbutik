@@ -62,7 +62,7 @@ function FilterProductCategory(props) {
                 alignItems="center"
                 gap="2"
               >
-                <Box>
+                <Box ml={5}>
                   <Text>
                     <Text as="span" fontWeight={"bold"}>
                       {` ${searchParams.get("q")} `}
@@ -108,6 +108,7 @@ function FilterProductCategory(props) {
                 />
                 <Flex
                   justifyContent={{ base: "space-between", md: "flex-end" }}
+                  ml={5}
                 >
                   <SelectBox onChange={onChange} />
                 </Flex>
