@@ -1,4 +1,4 @@
-import { Center, HStack, useBreakpointValue } from "@chakra-ui/react";
+import {  HStack, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 
 const Showcase = React.lazy(() => import("../components/Showcase"));
