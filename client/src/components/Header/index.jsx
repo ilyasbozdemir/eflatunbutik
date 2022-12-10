@@ -76,6 +76,7 @@ function index({ onOpen, ...rest }) {
                 px={3}
                 pos={"relative"}
                 top={"5px"}
+                fontWeight={"semibold"}
               >
                 <Icon
                   pos={"absolute"}
