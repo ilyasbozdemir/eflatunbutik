@@ -8,7 +8,7 @@ function SettingSidebarButton({ onOpen }) {
         onClick={onOpen}
         aria-label="settings button"
         icon={<SettingsIcon />}
-        size="sm"
+        size="xl"
         bg="transparent"
       />
     </>

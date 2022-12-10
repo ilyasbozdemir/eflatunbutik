@@ -1,7 +1,7 @@
 import React from "react";
 import { FiMenu } from "react-icons/fi";
 import {
-  IconButton,
+  Icon,
   Stack,
   Text,
   Box,
@@ -66,14 +66,27 @@ function index({ onOpen, ...rest }) {
               justifyContent={"space-between"}
               width={"100%"}
             >
-              <IconButton
-                display={{ base: "flex", md: "none" }}
+              <Stack
                 onClick={onOpen}
-                variant="ghost"
-                aria-label="open menu"
-                icon={<FiMenu />}
-                bg="transparent"
-              />
+                alignItems={"center"}
+                cursor="pointer"
+                display={"flex !important"}
+                direction={"column"}
+                overflow={"auto"}
+                px={3}
+                pos={"relative"}
+                top={"5px"}
+              >
+                <Icon
+                  pos={"absolute"}
+                  display={{ base: "flex", md: "none" }}
+                  variant="ghost"
+                  aria-label="open menu"
+                  as={FiMenu}
+                  bg="transparent"
+                />
+                <Text as="small">Menü</Text>
+              </Stack>
               <Text
                 as="div"
                 display={{ base: "flex", md: "none" }}
