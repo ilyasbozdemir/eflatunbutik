@@ -1,9 +1,9 @@
-import React from "react";
-
-import { Flex, Image, Stack, Text, Box } from "@chakra-ui/react";
+import React, { useState } from "react";
+import Slider from "react-slick";
+import { Flex, Image, Stack, Text, Box, Icon } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import styles from "./index.module.css";
 
@@ -66,18 +66,31 @@ const ImageItem = (props) => {
   );
 };
 
-function index() {
+function IGStory() {
+  const [xoffset, setXoffset] = useState(5);
   return (
     <>
-      <Box>
-        <Flex direction={"row"} minWidth="max-content">
+      <Box overflow={"hidden"} minWidth="max-content">
+        <Icon
+          as={IoIosArrowBack}
+          size={"md"}
+          onClick={() => setXoffset(xoffset - 10)}
+          cursor={'pointer'}
+        />
+        <Flex direction={"row"} transform={`translateX(${xoffset}px)`}>
           {images.map((image, index) => (
             <ImageItem key={index} {...image} />
           ))}
         </Flex>
+        <Icon
+          as={IoIosArrowForward}
+          size={"md"}
+          onClick={() => setXoffset(xoffset + 10)}
+          cursor={'pointer'}
+        />
       </Box>
     </>
   );
 }
 
-export default index;
+export default IGStory;
