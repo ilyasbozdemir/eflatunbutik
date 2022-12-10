@@ -24,6 +24,7 @@
     "react": "^18.2.0",
     "react-calendar": "^4.0.0",
     "react-chartjs-2": "^5.0.1",
+    "react-cookie-consent": "^8.0.1",
     "react-dom": "^18.2.0",
     "react-flags-select": "^2.2.3",
     "react-icons": "^4.6.0",

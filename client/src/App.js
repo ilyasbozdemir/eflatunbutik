@@ -8,6 +8,7 @@ import React, { Suspense } from "react";
 import { useLocation } from "react-router-dom";
 
 import LazyComponentsSkeleton from "./components/LazyComponentsSkeleton";
+import CookieContainer from './components/CookieContainer'
 
 const Router = React.lazy(() => import("./Router"));
 const Layout = React.lazy(() => import("./Layout"));
@@ -33,6 +34,7 @@ function App() {
             <Router />
             <Footer />
             <ScrollToTop />
+            <CookieContainer/>
           </>
         </Layout>
       ) : (
