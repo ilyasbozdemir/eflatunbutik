@@ -11,42 +11,46 @@ import {
   useDisclosure as UseDisclosure,
 } from "@chakra-ui/react";
 
-function index({ children, isDashboardLayout }) {
+const Footer = React.lazy(() => import("../components/Footer"));
+const ScrollToTop = React.lazy(() => import("../components/ScrollToTop"));
+const CookieContainer = React.lazy(() => import("../components/CookieContainer"));
+
+function index({ children }) {
   const { isOpen, onOpen, onClose } = UseDisclosure();
 
   return (
     <>
-      {isDashboardLayout === false ? (
-        <Box minH="100vh" zIndex="100">
-          <Sidebar
-            onClose={() => onClose}
-            display={{ base: "none", md: "none" }}
-          />
-          <Drawer
-            autoFocus={true}
-            isOpen={isOpen}
-            placement="left"
-            onClose={onClose}
-            returnFocusOnClose={false}
-            onOverlayClick={onClose}
-            size="xs"
-          >
-            <DrawerContent>
-              <Sidebar onClose={onClose} />
-            </DrawerContent>
-          </Drawer>
+      <Box minH="100vh" zIndex="100">
+        <Sidebar
+          onClose={() => onClose}
+          display={{ base: "none", md: "none" }}
+        />
+        <Drawer
+          autoFocus={true}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="xs"
+        >
+          <DrawerContent>
+            <Sidebar onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
 
-          {/*= Header =*/}
-          <Header onOpen={onOpen} />
+        {/*= Header =*/}
+        <Header onOpen={onOpen} />
 
-          <Box>
-            {/*= add children components =*/}
-            {children}
-          </Box>
+        <Box>
+
+          {children}
+            <Footer />
+            <ScrollToTop />
+            <CookieContainer/>
         </Box>
-      ) : (
-        <DashboardLayout> {children}</DashboardLayout>
-      )}
+      </Box>
+      )
     </>
   );
 }

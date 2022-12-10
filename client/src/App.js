@@ -17,31 +17,13 @@ const Footer = React.lazy(() => import("./components/Footer"));
 const Dashboard = React.lazy(() => import("../src/pages/Dashboard/index"));
 
 function App() {
-  let location = useLocation();
-  const [isDashboard, setIsDashboard] = React.useState(
-    location.pathname.startsWith("/admin")
-  );
+ 
 
-  React.useEffect(() => {
-    setIsDashboard(location.pathname.startsWith("/admin"));
-  }, [location]);
+
 
   return (
     <Suspense fallback={<LazyComponentsSkeleton />}>
-      {isDashboard === false ? (
-        <Layout isDashboardLayout={isDashboard}>
-          <>
-            <Router />
-            <Footer />
-            <ScrollToTop />
-            <CookieContainer/>
-          </>
-        </Layout>
-      ) : (
-        <Layout isDashboardLayout={isDashboard}>
-          <Dashboard />
-        </Layout>
-      )}
+       <Router />
     </Suspense>
   );
 }
