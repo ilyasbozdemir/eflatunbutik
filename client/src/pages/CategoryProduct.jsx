@@ -18,7 +18,7 @@ import { products } from "../components/Product/_data";
 
 function CategoryProduct(props) {
   const { breadcrumbs, isSearchPage } = props;
-  const [categoryData, setCategoryDaya] = React.useState([]);
+  const [categoryData, setCategoryDaya] = React.useState(products);
 
   return (
     <Box mt={5} zIndex={150}>
@@ -44,7 +44,7 @@ function CategoryProduct(props) {
       )}
 
       <FilterProductCategory isSearchPage={isSearchPage}>
-        <Product categoryData={products} />
+        <Product categoryData={categoryData} />
       </FilterProductCategory>
     </Box>
   );
