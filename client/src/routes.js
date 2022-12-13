@@ -62,7 +62,7 @@ const categories = [
       />
     ),
   },
-  {
+  /*{
     path: "//",
     element: (
       <CategoryProduct
@@ -75,7 +75,7 @@ const categories = [
         ]}
       />
     ),
-  },
+  },*/
 ];
 
 const as = [
