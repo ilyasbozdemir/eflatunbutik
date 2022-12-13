@@ -1,9 +1,7 @@
 import { useLocation, Navigate, Outlet } from "react-router";
 
-const RequireAuth = ({ allowedRoles }) => {
-  const location = useLocation();
-
-
+const RequireAuth = (props) => {
+  const { allowedRoles, children } = props;
 
   const IS_USER_ANONYMOUS = "ANONYMOUS";
   const IS_USER_USER = "USER";
@@ -28,6 +26,7 @@ const RequireAuth = ({ allowedRoles }) => {
   );
   */
 
-  return <Outlet />;
+  // return <Outlet />;
+  return { children };
 };
 export default RequireAuth;

@@ -2,7 +2,6 @@ import React from "react";
 
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import DashboardLayout from "./DashboardLayout";
 
 import {
   Box,
@@ -11,11 +10,15 @@ import {
   useDisclosure as UseDisclosure,
 } from "@chakra-ui/react";
 
+import { Outlet } from "react-router-dom";
+
 const Footer = React.lazy(() => import("../components/Footer"));
 const ScrollToTop = React.lazy(() => import("../components/ScrollToTop"));
-const CookieContainer = React.lazy(() => import("../components/CookieContainer"));
+const CookieContainer = React.lazy(() =>
+  import("../components/CookieContainer")
+);
 
-function index({ children }) {
+function index() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
 
   return (
@@ -43,11 +46,10 @@ function index({ children }) {
         <Header onOpen={onOpen} />
 
         <Box>
-
-          {children}
-            <Footer />
-            <ScrollToTop />
-            <CookieContainer/>
+          <ScrollToTop />
+          <CookieContainer />
+          <Outlet />
+          <Footer />
         </Box>
       </Box>
       )

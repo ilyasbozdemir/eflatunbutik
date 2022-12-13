@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
 import React from "react";
+import ProtectedRoute from "../src/components/ProtectedRoute";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Contact = React.lazy(() => import("./pages/Contact"));
@@ -16,18 +16,134 @@ const User = React.lazy(() => import("./pages/Dashboard/User"));
 const UserLogin = React.lazy(() => import("./pages/Dashboard/UserLogin"));
 const RequireAuth = React.lazy(() => import("../src/components/RequireAuth"));
 const CategoryProduct = React.lazy(() => import("./pages/CategoryProduct"));
+const AuthLayout = React.lazy(() => import("./Layout/AuthLayout"));
+const Layout = React.lazy(() => import("./Layout"));
 
-const routes = [
+const categories = [
   {
-    path: "",
-    element: "",
+    path: "/yeni-gelenler/",
+    element: (
+      <CategoryProduct
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          {
+            item: "Yeni Gelenler",
+            isCurrentPage: true,
+          },
+        ]}
+      />
+    ),
+  },
+  {
+    path: "/triko/",
+    element: (
+      <CategoryProduct
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          {
+            item: "Triko",
+            isCurrentPage: true,
+          },
+        ]}
+      />
+    ),
+  },
+  {
+    path: "/elbise/",
+    element: (
+      <CategoryProduct
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          {
+            item: "Elbise",
+            isCurrentPage: true,
+          },
+        ]}
+      />
+    ),
+  },
+  {
+    path: "//",
+    element: (
+      <CategoryProduct
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          {
+            item: "",
+            isCurrentPage: true,
+          },
+        ]}
+      />
+    ),
+  },
+];
+
+const as = [
+  {
+    path: "/",
+    element: <Layout />,
     children: [
       {
-        path: "",
-        element: "",
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/iletisim/",
+        element: <Contact />,
+      },
+      {
+        path: "/ara/",
+        element: <CategoryProduct isSearchPage />,
+      },
+      {
+        path: "/sepetim/",
+        element: <Basket />,
+      },
+      ...categories,
+    ],
+  },
+  {
+    path: "/giris/",
+    element: (
+      <AuthLayout>
+        <Login />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: "/uye-ol/",
+    element: (
+      <AuthLayout>
+        <Login />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: "/admin/",
+    element: <ProtectedRoute user={true} />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: 'admin/catalog/',
+        element: <Dashboard />,
+      },
+
+      {
+        path: 'admin/order/',
+        element: <Dashboard />,
+      },
+      {
+        path: 'admin/user/',
+        element: <Dashboard />,
+      },
+      {
+        path: 'admin/giris/',
+        element: <UserLogin />,
       },
     ],
   },
 ];
-
-export default routes;
+export default as;
