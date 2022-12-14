@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Text,
-  Button,
+  Flex,
   Drawer,
   DrawerOverlay,
   DrawerCloseButton,
@@ -9,7 +9,6 @@ import {
   DrawerBody,
   DrawerContent,
   VStack,
-  useColorMode,
 } from "@chakra-ui/react";
 import Logo from "../Logo";
 
@@ -23,9 +22,11 @@ import {
   RangeSliderThumb,
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
-import { Flex, Grid, Spacer } from "@chakra-ui/react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { Switch } from "@chakra-ui/react";
+
+import { linkItems } from "../../constants/LinkItems";
+import { Link, useLocation } from "react-router-dom";
 
 const SidebarContent = (props) => {
   const { onClick, ...rest } = props;
@@ -35,25 +36,44 @@ const SidebarContent = (props) => {
   const CategoryName = ({ name }) => {
     return (
       <>
-        <Text fontWeight={"semibold"}  >
-          {name}
-        </Text>
+        <Text fontWeight={"semibold"}>{name}</Text>
       </>
     );
   };
 
+  //const {label, href, icon, childrens} = link;
+  //eğer location href ise children varsa göster
+
   const Categories = () => {
+    const location = useLocation();
+    const [loc, setLoc] = React.useState(location.pathname);
+
+    React.useEffect(() => {
+      setLoc(location.pathname);
+    }, [location]);
+
     return (
       <Box>
         <CategoryName name={"Kategoriler"} />
 
-        {"{CategoryList}"}
+        {linkItems.map((link, i) => (
+          <Box key={i} pb={1}>
+            <Link to={link.href}> {link.label}</Link>
+            {loc === link.href
+              ? link.childrens.map((children, j) => (
+                  <Box key={j} pb={1} pl={3}>
+                    <Link to={children.href}> {children.label}</Link>
+                  </Box>
+                ))
+              : ""}
+          </Box>
+        ))}
       </Box>
     );
   };
   const PriceRange = () => {
     return (
-      <Box>
+      <Box w={"90%"}>
         <CategoryName name={"Fiyat Aralığı"} />
 
         <RangeSlider
@@ -264,6 +284,7 @@ const SidebarContent = (props) => {
       <Box {...rest}>
         <VStack>
           <Categories />
+          <PriceRange />
         </VStack>
       </Box>
     </>
@@ -278,7 +299,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
     },
   };
   return variant === "sidebar" ? (
-    <Box w="200px" h={"100%"} {...borderVariant}>
+    <Box overflow={"auto"} w="200px" h={"100%"} {...borderVariant}>
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (
@@ -286,11 +307,11 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>
-            <Logo />
-          </DrawerHeader>
+
           <DrawerBody>
-            <SidebarContent onClick={onClose} />
+            <Flex>
+              <SidebarContent onClick={onClose} />
+            </Flex>
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>

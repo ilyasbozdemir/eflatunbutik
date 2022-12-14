@@ -13,12 +13,15 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 
-
 import { products } from "../components/Product/_data";
 
 function CategoryProduct(props) {
   const { breadcrumbs, isSearchPage } = props;
   const [categoryData, setCategoryDaya] = React.useState(products);
+
+  React.useEffect(() => {
+    setCategoryDaya(products);
+  }, [categoryData]);
 
   return (
     <Box mt={5} zIndex={150}>

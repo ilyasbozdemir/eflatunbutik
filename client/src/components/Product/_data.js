@@ -35,7 +35,7 @@ export const products = [
     id: "1",
     name: "Bamboo Tan",
     currency: "USD",
-    price: 199,
+    price: 300,
     flag: "new",
     imageUrl:
       "https://images.unsplash.com/photo-1602024242516-fbc9d4fda4b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
@@ -49,7 +49,7 @@ export const products = [
     id: "2",
     name: "Iconic Turquoise",
     currency: "USD",
-    price: 199,
+    price: 125,
     salePrice: 179.99,
     flag: "on-sale",
     imageUrl:
@@ -64,7 +64,7 @@ export const products = [
     id: "3",
     name: "Marble Leather",
     currency: "USD",
-    price: 199,
+    price: 250,
     imageUrl:
       "https://images.unsplash.com/photo-1564594985645-4427056e22e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
     rating: 4,
