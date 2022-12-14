@@ -29,9 +29,11 @@ import { linkItems } from "../../constants/LinkItems";
 import { Link, useLocation } from "react-router-dom";
 
 const SidebarContent = (props) => {
+  const minPrice = 90;
+  const maxPrice = 300;
+  const step = 1;
   const { onClick, ...rest } = props;
-  const [sliderValue, setSliderValue] = React.useState([120, 240]);
-  const [showTooltip, setShowTooltip] = React.useState(false);
+  const [sliderValue, setSliderValue] = React.useState([minPrice, maxPrice]);
 
   const CategoryName = ({ name }) => {
     return (
@@ -40,9 +42,6 @@ const SidebarContent = (props) => {
       </>
     );
   };
-
-  //const {label, href, icon, childrens} = link;
-  //eğer location href ise children varsa göster
 
   const Categories = () => {
     const location = useLocation();
@@ -53,7 +52,7 @@ const SidebarContent = (props) => {
     }, [location]);
 
     return (
-      <Box>
+      <Box w={"90%"}>
         <CategoryName name={"Kategoriler"} />
 
         {linkItems.map((link, i) => (
@@ -78,21 +77,21 @@ const SidebarContent = (props) => {
 
         <RangeSlider
           defaultValue={sliderValue}
-          min={0}
-          max={300}
-          step={5}
+          min={minPrice}
+          max={maxPrice}
+          step={step}
           onChangeEnd={(val) => setSliderValue(val)}
         >
           <RangeSliderTrack bg="red.100">
-            <RangeSliderFilledTrack bg="pink" />
+            <RangeSliderFilledTrack bg="red.500" />
           </RangeSliderTrack>
           <RangeSliderThumb boxSize={6} index={0} />
           <RangeSliderThumb boxSize={6} index={1} />
         </RangeSlider>
 
-        <Flex justifyContent={"space-between"}>
-          <Text>En Düşük :{sliderValue[0]}</Text>
-          <Text>En Yüksek :{sliderValue[1]}</Text>
+        <Flex justifyContent={"space-between"} w={"95%"}>
+          <Text fontSize={"sm"}>{sliderValue[0]}</Text>
+          <Text fontSize={"sm"}>{sliderValue[1]}</Text>
         </Flex>
       </Box>
     );
@@ -282,7 +281,7 @@ const SidebarContent = (props) => {
   return (
     <>
       <Box {...rest}>
-        <VStack>
+        <VStack m={2}>
           <Categories />
           <PriceRange />
         </VStack>
