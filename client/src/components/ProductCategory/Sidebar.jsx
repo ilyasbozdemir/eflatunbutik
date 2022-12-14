@@ -99,34 +99,39 @@ const SidebarContent = (props) => {
 
   const EvaluationScore = () => {
     return (
-      <Box>
-        <CategoryName name={"Değerlendirme Puanı"} />
-
-        <RadioGroup defaultValue="2">
-          <Stack spacing={5} direction="column">
-            <Radio colorScheme="pink" value="1">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} /> 4 yıldız ve üzeri
-              </Flex>
-            </Radio>
-            <Radio colorScheme="pink" value="2">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} /> 3 yıldız ve üzeri
-              </Flex>
-            </Radio>
-            <Radio colorScheme="pink" value="3">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} /> 2 yıldız ve üzeri
-              </Flex>
-            </Radio>
-            <Radio colorScheme="pink" value="4">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} /> 1 yıldız ve üzeri
-              </Flex>
-            </Radio>
-          </Stack>
-        </RadioGroup>
-      </Box>
+      <>
+        <Box w={"90%"}>
+          <CategoryName name={"Değerlendirme Puanı"} />
+          <RadioGroup defaultValue="2">
+            <Stack spacing={5} direction="column">
+              <Radio colorScheme="pink" value="1">
+                <Flex>
+                  <Icon as={AiFillStar} color={"yellow.400"} /> 4 yıldız ve
+                  üzeri
+                </Flex>
+              </Radio>
+              <Radio colorScheme="pink" value="2">
+                <Flex>
+                  <Icon as={AiFillStar} color={"yellow.400"} /> 3 yıldız ve
+                  üzeri
+                </Flex>
+              </Radio>
+              <Radio colorScheme="pink" value="3">
+                <Flex>
+                  <Icon as={AiFillStar} color={"yellow.400"} /> 2 yıldız ve
+                  üzeri
+                </Flex>
+              </Radio>
+              <Radio colorScheme="pink" value="4">
+                <Flex>
+                  <Icon as={AiFillStar} color={"yellow.400"} /> 1 yıldız ve
+                  üzeri
+                </Flex>
+              </Radio>
+            </Stack>
+          </RadioGroup>
+        </Box>
+      </>
     );
   };
 
@@ -284,6 +289,7 @@ const SidebarContent = (props) => {
         <VStack m={2}>
           <Categories />
           <PriceRange />
+          <EvaluationScore />
         </VStack>
       </Box>
     </>

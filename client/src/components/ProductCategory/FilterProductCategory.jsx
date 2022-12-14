@@ -46,7 +46,7 @@ function FilterProductCategory(props) {
   };
 
   return (
-    <Center>
+    <Center  >
       <Flex direction={"row"}>
         <Sidebar
           variant={variants?.navigation}
@@ -119,7 +119,7 @@ function FilterProductCategory(props) {
           <Box>{children}</Box>
         </Box>
       </Flex>
-    </Center>
+    </Center >
   );
 }
 const SelectBox = ({ onChange }) => {
