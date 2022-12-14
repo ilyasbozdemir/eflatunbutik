@@ -105,27 +105,27 @@ const SidebarContent = (props) => {
           <RadioGroup defaultValue="2">
             <Stack spacing={5} direction="column">
               <Radio colorScheme="pink" value="1">
-                <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} /> 4 yıldız ve
-                  üzeri
+                <Flex justifyContent={"center"} textAlign={"center"}>
+                  <Icon as={AiFillStar} color={"yellow.400"} />
+                  <Text> 4 yıldız ve üzeri</Text>
                 </Flex>
               </Radio>
               <Radio colorScheme="pink" value="2">
                 <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} /> 3 yıldız ve
-                  üzeri
+                  <Icon as={AiFillStar} color={"yellow.400"} />{" "}
+                  <Text>3 yıldız ve üzeri</Text>
                 </Flex>
               </Radio>
               <Radio colorScheme="pink" value="3">
                 <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} /> 2 yıldız ve
-                  üzeri
+                  <Icon as={AiFillStar} color={"yellow.400"} />{" "}
+                  <Text>2 yıldız ve üzeri</Text>
                 </Flex>
               </Radio>
               <Radio colorScheme="pink" value="4">
                 <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} /> 1 yıldız ve
-                  üzeri
+                  <Icon as={AiFillStar} color={"yellow.400"} />{" "}
+                  <Text>1 yıldız ve üzeri</Text>
                 </Flex>
               </Radio>
             </Stack>
@@ -290,6 +290,11 @@ const SidebarContent = (props) => {
           <Categories />
           <PriceRange />
           <EvaluationScore />
+          <BodySize />
+          <Colors />
+          <CouponProduct />
+          <DiscountedProduct />
+          <DiscountInCart />
         </VStack>
       </Box>
     </>
