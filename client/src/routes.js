@@ -509,14 +509,14 @@ const categories = [
     path: "/etekli-kombin/",
     element: (
       <CategoryProduct
-      breadcrumbs={[
-        { item: "Anasayfa", link: "/", isCurrentPage: false },
-        { item: "Kombin", link: "/kombin/", isCurrentPage: false },
-        {
-          item: "Etekli Kombin",
-          isCurrentPage: true,
-        },
-      ]}
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          { item: "Kombin", link: "/kombin/", isCurrentPage: false },
+          {
+            item: "Etekli Kombin",
+            isCurrentPage: true,
+          },
+        ]}
       />
     ),
   },
@@ -524,20 +524,30 @@ const categories = [
     path: "/indirim/",
     element: (
       <CategoryProduct
-      breadcrumbs={[
-        { item: "Anasayfa", link: "/", isCurrentPage: false },
-        { item: "Kombin", link: "/kombin/", isCurrentPage: false },
-        {
-          item: "İndirimdekiler",
-          isCurrentPage: true,
-        },
-      ]}
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          { item: "Kombin", link: "/kombin/", isCurrentPage: false },
+          {
+            item: "İndirimdekiler",
+            isCurrentPage: true,
+          },
+        ]}
       />
     ),
   },
 ];
 
 const router = [
+  {
+    path: "*",
+    element: (
+      <AuthLayout>
+        {/* AuthLayout boş bir layout vermesi adına  */}
+        <Page404 />
+      </AuthLayout>
+    ),
+  },
+
   {
     path: "/",
     element: <Layout />,
@@ -559,10 +569,6 @@ const router = [
         element: <Basket />,
       },
       ...categories,
-      {
-        path: "*",
-        element: <Page404 />,
-      },
     ],
   },
   {
@@ -579,6 +585,16 @@ const router = [
       <AuthLayout>
         <Login />
       </AuthLayout>
+    ),
+  },
+  {
+    path: "/favorilerim/",
+    element: (
+      <ProtectedRoute>
+        <AuthLayout>
+          <Favorite />
+        </AuthLayout>
+      </ProtectedRoute>
     ),
   },
   {
@@ -614,7 +630,11 @@ const router = [
   },
   {
     path: "*",
-    element: <Page404 />,
+    element: (
+      <AuthLayout>
+        <Page404 />
+      </AuthLayout>
+    ),
   },
 ];
 export default router;

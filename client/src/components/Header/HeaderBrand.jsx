@@ -5,10 +5,8 @@ import {
   Box,
   Heading,
   HStack,
-  Button,
   useDisclosure as UseDisclosure,
   Icon,
-  Skeleton,
 } from "@chakra-ui/react";
 
 import Logo from "../Logo";
@@ -48,6 +46,7 @@ function HeaderBrand() {
           <UserMenu isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
 
           <Link
+            to="/favorilerim/"
             bg={"transparent"}
             aria-label="product favorite"
             onMouseEnter={() => setIsFavoriShown(true)}

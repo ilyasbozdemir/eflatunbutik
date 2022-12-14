@@ -20,7 +20,7 @@ import styles from "./index.module.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 
-function SearchBox() {
+function SearchBox(props) {
   const [searchHistory, setSearchHistory] = React.useState([
     { id: 1, name: "Elbise", to: "/elbise/" },
     { id: 2, name: "trençkot", to: "/trenckot/" },
@@ -280,7 +280,7 @@ function SearchBox() {
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
-        <Stack ref={searchRef} className={styles.search}>
+        <Stack ref={searchRef} className={styles.search} {...props}>
           <Flex
             direction={"row"}
             border={isTyping ? "1px solid #A020F0" : "1px solid"}
