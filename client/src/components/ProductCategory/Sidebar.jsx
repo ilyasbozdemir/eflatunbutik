@@ -282,7 +282,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (
-    <Drawer isOpen={isOpen} placement="top" size={"sm"} onClose={onClose}>
+    <Drawer isOpen={isOpen} placement="bottom" size={"sm"} onClose={onClose}>
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
