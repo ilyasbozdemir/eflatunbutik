@@ -10,23 +10,21 @@ import {
   DrawerContent,
   VStack,
 } from "@chakra-ui/react";
-import Logo from "../Logo";
 
 import { Icon, Stack, FormControl, FormLabel, Box } from "@chakra-ui/react";
 
 import { AiFillStar } from "react-icons/ai";
-import {
-  RangeSlider,
-  RangeSliderTrack,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-} from "@chakra-ui/react";
+
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { Switch } from "@chakra-ui/react";
 
 import { linkItems } from "../../constants/LinkItems";
 import { Link, useLocation } from "react-router-dom";
+
+import PriceRange from './Filter/PriceRange'
+import Categories from './Filter/Categories'
+import EvaluationScore from './Filter/EvaluationScore'
 
 const SidebarContent = (props) => {
   const minPrice = 90;
@@ -38,99 +36,7 @@ const SidebarContent = (props) => {
   const CategoryName = ({ name }) => {
     return (
       <>
-        <Text fontWeight={"semibold"}>{name}</Text>
-      </>
-    );
-  };
-
-  const Categories = () => {
-    const location = useLocation();
-    const [loc, setLoc] = React.useState(location.pathname);
-
-    React.useEffect(() => {
-      setLoc(location.pathname);
-    }, [location]);
-
-    return (
-      <Box w={"90%"}>
-        <CategoryName name={"Kategoriler"} />
-
-        {linkItems.map((link, i) => (
-          <Box key={i} pb={1}>
-            <Link to={link.href}> {link.label}</Link>
-            {loc === link.href
-              ? link.childrens.map((children, j) => (
-                  <Box key={j} pb={1} pl={3}>
-                    <Link to={children.href}> {children.label}</Link>
-                  </Box>
-                ))
-              : ""}
-          </Box>
-        ))}
-      </Box>
-    );
-  };
-  const PriceRange = () => {
-    return (
-      <Box w={"90%"}>
-        <CategoryName name={"Fiyat Aralığı"} />
-
-        <RangeSlider
-          defaultValue={sliderValue}
-          min={minPrice}
-          max={maxPrice}
-          step={step}
-          onChangeEnd={(val) => setSliderValue(val)}
-        >
-          <RangeSliderTrack bg="red.100">
-            <RangeSliderFilledTrack bg="red.500" />
-          </RangeSliderTrack>
-          <RangeSliderThumb boxSize={6} index={0} />
-          <RangeSliderThumb boxSize={6} index={1} />
-        </RangeSlider>
-
-        <Flex justifyContent={"space-between"} w={"95%"}>
-          <Text fontSize={"sm"}>{sliderValue[0]}</Text>
-          <Text fontSize={"sm"}>{sliderValue[1]}</Text>
-        </Flex>
-      </Box>
-    );
-  };
-
-  const EvaluationScore = () => {
-    return (
-      <>
-        <Box w={"90%"}>
-          <CategoryName name={"Değerlendirme Puanı"} />
-          <RadioGroup defaultValue="2">
-            <Stack spacing={5} direction="column">
-              <Radio colorScheme="pink" value="1">
-                <Flex justifyContent={"center"} textAlign={"center"}>
-                  <Icon as={AiFillStar} color={"yellow.400"} />
-                  <Text> 4 yıldız ve üzeri</Text>
-                </Flex>
-              </Radio>
-              <Radio colorScheme="pink" value="2">
-                <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} />{" "}
-                  <Text>3 yıldız ve üzeri</Text>
-                </Flex>
-              </Radio>
-              <Radio colorScheme="pink" value="3">
-                <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} />{" "}
-                  <Text>2 yıldız ve üzeri</Text>
-                </Flex>
-              </Radio>
-              <Radio colorScheme="pink" value="4">
-                <Flex>
-                  <Icon as={AiFillStar} color={"yellow.400"} />{" "}
-                  <Text>1 yıldız ve üzeri</Text>
-                </Flex>
-              </Radio>
-            </Stack>
-          </RadioGroup>
-        </Box>
+        <Text fontWeight={"semibold"}>{name}</Texxt>
       </>
     );
   };
@@ -140,7 +46,7 @@ const SidebarContent = (props) => {
       <>
         <CategoryName name={"Beden"} />
         <RadioGroup defaultValue="2">
-          <Stack spacing={5} direction="column">
+          <Stack spacing={5} direction="row" w={"90%"}>
             <Radio colorScheme="pink" value="1">
               36
             </Radio>
@@ -174,7 +80,7 @@ const SidebarContent = (props) => {
         <CategoryName name={"Renkler"} />
 
         <CheckboxGroup>
-          <Stack spacing={[1]} direction={["column"]}>
+          <Stack spacing={[1]} direction={["row"]}>
             <Checkbox size="md" value="Siyah">
               <Flex textAlign={"center"} ml={1}>
                 <Box
@@ -185,7 +91,6 @@ const SidebarContent = (props) => {
                   border={"1px #000 solid"}
                   mr={1}
                 />
-                Siyah
               </Flex>
             </Checkbox>
             <Checkbox size="md" value="Beyaz">
@@ -198,7 +103,6 @@ const SidebarContent = (props) => {
                   border={"1px #000 solid"}
                   mr={1}
                 />
-                Beyaz
               </Flex>
             </Checkbox>
             <Checkbox size="md" value="Yeşil">
@@ -211,7 +115,6 @@ const SidebarContent = (props) => {
                   border={"1px #000 solid"}
                   mr={1}
                 />
-                Yeşil
               </Flex>
             </Checkbox>
             <Checkbox size="md" value="Kırmızı">
@@ -224,7 +127,6 @@ const SidebarContent = (props) => {
                   border={"1px #000 solid"}
                   mr={1}
                 />
-                Kırmızı
               </Flex>
             </Checkbox>
             <Checkbox size="md" value="Mavi">
@@ -237,7 +139,6 @@ const SidebarContent = (props) => {
                   border={"1px #000 solid"}
                   mr={1}
                 />
-                Mavi
               </Flex>
             </Checkbox>
           </Stack>
@@ -286,7 +187,7 @@ const SidebarContent = (props) => {
   return (
     <>
       <Box {...rest}>
-        <VStack m={2}>
+        <VStack>
           <Categories />
           <PriceRange />
           <EvaluationScore />
@@ -318,10 +219,13 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
         <DrawerContent>
           <DrawerCloseButton />
 
+          <DrawerHeader>
+            <Text fontSize={"xl"}>Filtrele</Text>
+          </DrawerHeader>
+
           <DrawerBody>
-            <Flex>
-              <SidebarContent onClick={onClose} />
-            </Flex>
+            {/* <SidebarContent onClick={onClose} /> */}
+            (Mobile Filter Content)
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>
