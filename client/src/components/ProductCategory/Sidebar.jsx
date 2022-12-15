@@ -27,16 +27,13 @@ import Categories from './Filter/Categories'
 import EvaluationScore from './Filter/EvaluationScore'
 
 const SidebarContent = (props) => {
-  const minPrice = 90;
-  const maxPrice = 300;
-  const step = 1;
+
   const { onClick, ...rest } = props;
-  const [sliderValue, setSliderValue] = React.useState([minPrice, maxPrice]);
 
   const CategoryName = ({ name }) => {
     return (
       <>
-        <Text fontWeight={"semibold"}>{name}</Texxt>
+        <Text fontWeight={"semibold"}>{name}</Text>
       </>
     );
   };
