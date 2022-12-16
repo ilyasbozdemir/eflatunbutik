@@ -18,7 +18,7 @@ function PriceRange() {
   return (
     <>
       <Box w={"90%"}>
-        <Text fontWeight={"semibold"}>'Fiyat Aralığı'</Text>
+        <Text fontWeight={"semibold"}>Fiyat Aralığı</Text>
         <RangeSlider
           defaultValue={sliderValue}
           min={minPrice}

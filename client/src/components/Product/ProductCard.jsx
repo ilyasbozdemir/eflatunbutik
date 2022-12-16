@@ -42,12 +42,6 @@ export const ProductCard = (props) => {
           }}
           transition="all .5s ease-in-out"
           cursor={"pointer"}
-          onMouseEnter={() => {
-            setShow(true);
-          }}
-          onMouseLeave={() => {
-            setShow(false);
-          }}
           {...rootProps}
         >
           <Box position="relative">
@@ -63,16 +57,13 @@ export const ProductCard = (props) => {
                 })}
               />
             </AspectRatio>
-            {show === true ? (
-              <FavouriteButton
-                position="absolute"
-                top="4"
-                right="4"
-                aria-label={`Add ${name} to your favourites`}
-              />
-            ) : (
-              ""
-            )}
+
+            <FavouriteButton
+              position="absolute"
+              top="4"
+              right="4"
+              aria-label={`Add ${name} to your favourites`}
+            />
           </Box>
           <Stack>
             <Stack spacing="1">
