@@ -1,11 +1,12 @@
 import React from "react";
 import {
-  Flex,
+  Center,
   Box,
   Breadcrumb,
   BreadcrumbItem,
   Text,
   Icon,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
 import FilterProductCategory from "../components/ProductCategory/FilterProductCategory";
@@ -23,32 +24,39 @@ function CategoryProduct(props) {
     setCategoryDaya(products);
   }, [categoryData]);
 
-  return (
-    <Box mt={5} zIndex={150} mx={2}>
-      {isSearchPage ?? isSearchPage === false ? (
-        ""
-      ) : (
-        <>
-          <Breadcrumb
-            separator={<Icon as={IoMdArrowDropright} color="gray.500" />}
-            my={2}
-          >
-            {breadcrumbs.map((breadcrumb, i) => (
-              <BreadcrumbItem isCurrentPage={breadcrumb.isCurrentPage}>
-                {breadcrumb.isCurrentPage === true ? (
-                  <Text>{breadcrumb.item}</Text>
-                ) : (
-                  <Link to={breadcrumb.link}>{breadcrumb.item}</Link>
-                )}
-              </BreadcrumbItem>
-            ))}
-          </Breadcrumb>
-        </>
-      )}
+  const smVariant = { isCenter: false };
+  const mdVariant = { isCenter: true };
 
-      <FilterProductCategory isSearchPage={isSearchPage}>
-        <Product categoryData={categoryData} />
-      </FilterProductCategory>
+  const variants = useBreakpointValue({ base: smVariant, md: mdVariant });
+
+  return (
+    <Box as={variants?.isCenter === true ? Box : Center}>
+      <Box mt={5} zIndex={150} mx={2}>
+        {isSearchPage ?? isSearchPage === false ? (
+          ""
+        ) : (
+          <>
+            <Breadcrumb
+              separator={<Icon as={IoMdArrowDropright} color="gray.500" />}
+              my={2}
+            >
+              {breadcrumbs.map((breadcrumb, i) => (
+                <BreadcrumbItem isCurrentPage={breadcrumb.isCurrentPage}>
+                  {breadcrumb.isCurrentPage === true ? (
+                    <Text>{breadcrumb.item}</Text>
+                  ) : (
+                    <Link to={breadcrumb.link}>{breadcrumb.item}</Link>
+                  )}
+                </BreadcrumbItem>
+              ))}
+            </Breadcrumb>
+          </>
+        )}
+
+        <FilterProductCategory isSearchPage={isSearchPage}>
+          <Product categoryData={categoryData} />
+        </FilterProductCategory>
+      </Box>
     </Box>
   );
 }
