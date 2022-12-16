@@ -19,11 +19,12 @@ import AddToCardButton from "./AddToCardButton";
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, imageUrl, price, salePrice, rating } = product;
+  const { name, price, salePrice, rating, ratingCount, imageUrl } = product;
+  const { id, src, alt } = imageUrl;
 
   return (
     <>
-      <>
+      <Link as={'a'} href={"/#"} target={"_blank"}>
         <Stack
           spacing={useBreakpointValue({
             base: "4",
@@ -47,8 +48,8 @@ export const ProductCard = (props) => {
           <Box position="relative">
             <AspectRatio ratio={2 / 3}>
               <Image
-                src={imageUrl}
-                alt={name}
+                src={src}
+                alt={alt}
                 draggable={false}
                 fallback={<Skeleton />}
                 borderRadius={useBreakpointValue({
@@ -83,7 +84,7 @@ export const ProductCard = (props) => {
                 as="small"
                 color={useColorModeValue("gray.600", "gray.400")}
               >
-                (12)
+                {ratingCount === 0 ? null : `(${ratingCount})`}
               </Text>
             </HStack>
           </Stack>
@@ -91,7 +92,7 @@ export const ProductCard = (props) => {
             <AddToCardButton />
           </Stack>
         </Stack>
-      </>
+      </Link>
     </>
   );
 };
