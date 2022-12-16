@@ -18,14 +18,8 @@ import { PriceTag } from "./PriceTag";
 import AddToCardButton from "./AddToCardButton";
 
 export const ProductCard = (props) => {
-  const [show, setShow] = React.useState(false);
-
   const { product, rootProps } = props;
   const { name, imageUrl, price, salePrice, rating } = product;
-
-  React.useEffect(() => {
-    console.log("componentler yüklendi.");
-  }, []);
 
   return (
     <>
@@ -42,10 +36,16 @@ export const ProductCard = (props) => {
           }}
           transition="all .5s ease-in-out"
           cursor={"pointer"}
+          border={"1px #cdc solid"}
+          borderRadius={useBreakpointValue({
+            base: "md",
+            md: "xl",
+          })}
           {...rootProps}
+          zIndex={100}
         >
           <Box position="relative">
-            <AspectRatio ratio={4 / 3}>
+            <AspectRatio ratio={2 / 3}>
               <Image
                 src={imageUrl}
                 alt={name}
@@ -60,8 +60,8 @@ export const ProductCard = (props) => {
 
             <FavouriteButton
               position="absolute"
-              top="4"
-              right="4"
+              top="2"
+              right="2"
               aria-label={`Add ${name} to your favourites`}
             />
           </Box>
