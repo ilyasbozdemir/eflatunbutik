@@ -16,15 +16,16 @@ import { FavouriteButton } from "./FavouriteButton";
 import { PriceTag } from "./PriceTag";
 
 import AddToCardButton from "./AddToCardButton";
-
+import { useParams } from "react-router-dom";
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, price, salePrice, rating, ratingCount, imageUrl } = product;
+  const { name, price, salePrice, rating, ratingCount, slug, imageUrl } =
+    product;
   const { id, src, alt } = imageUrl;
 
   return (
     <>
-      <Link as={'a'} href={"/#"} target={"_blank"}>
+      <Link as={"a"} href={`/p/${id}-${slug}`} target={"_blank"}>
         <Stack
           spacing={useBreakpointValue({
             base: "4",

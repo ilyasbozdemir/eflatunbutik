@@ -1,5 +1,6 @@
 import React from "react";
 import ProtectedRoute from "../src/components/ProtectedRoute";
+import ProductDetail from "./pages/ProductDetail";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Contact = React.lazy(() => import("./pages/Contact"));
@@ -596,6 +597,10 @@ const router = [
         </AuthLayout>
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "/p/:productDetail/",
+    element: <ProductDetail />,
   },
   {
     path: "/admin/",
