@@ -24,7 +24,7 @@ function CategoryProduct(props) {
   }, [categoryData]);
 
   return (
-    <Box  mt={5} zIndex={150}>
+    <Box mt={5} zIndex={150} mx={2}>
       {isSearchPage ?? isSearchPage === false ? (
         ""
       ) : (
