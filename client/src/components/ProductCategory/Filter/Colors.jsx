@@ -1,99 +1,52 @@
 import React from "react";
-import {
-  Text,
-  Flex,
-  Drawer,
-  DrawerOverlay,
-  DrawerCloseButton,
-  DrawerHeader,
-  DrawerBody,
-  DrawerContent,
-  VStack,
-} from "@chakra-ui/react";
+import { Text, Flex, Box } from "@chakra-ui/react";
 
-import { Icon, Stack, FormControl, FormLabel, Box } from "@chakra-ui/react";
-
-import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
-
-
+import { AiOutlineCheck } from "react-icons/fa";
 const CategoryName = ({ name }) => {
-    return (
-      <>
-        <Text fontWeight={"semibold"}>{name}</Text>
-      </>
-    );
-  };
-  
-const Colors = () => {
-    return (
-      <>
-        <CategoryName name={"Renkler"} />
+  return (
+    <>
+      <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
+        {name}
+      </Text>
+    </>
+  );
+};
+const GetColorCheckbox = ({ name }) => {
+  return (
+    <>
+      <Box
+        size="md"
+        name={name}
+        data-value={name}
+        onClick={(e) => {
+          alert(e.target.dataset.value);
+        }}
+        w={5}
+        h={5}
+        borderRadius={"50% 50%"}
+        bg={name}
+        border={"1px #000 solid"}
+        mx={1}
+        cursor={"pointer"}
+      />
+    </>
+  );
+};
 
-        <CheckboxGroup>
-          <Stack spacing={[1]} direction={["row"]}>
-            <Checkbox size="md" value="Siyah">
-              <Flex textAlign={"center"} ml={1}>
-                <Box
-                  w={5}
-                  h={5}
-                  borderRadius={"50% 50%"}
-                  bg={"black"}
-                  border={"1px #000 solid"}
-                  mr={1}
-                />
-              </Flex>
-            </Checkbox>
-            <Checkbox size="md" value="Beyaz">
-              <Flex textAlign={"center"} ml={1}>
-                <Box
-                  w={5}
-                  h={5}
-                  borderRadius={"50% 50%"}
-                  bg={"white"}
-                  border={"1px #000 solid"}
-                  mr={1}
-                />
-              </Flex>
-            </Checkbox>
-            <Checkbox size="md" value="Yeşil">
-              <Flex textAlign={"center"} ml={1}>
-                <Box
-                  w={5}
-                  h={5}
-                  borderRadius={"50% 50%"}
-                  bg={"green"}
-                  border={"1px #000 solid"}
-                  mr={1}
-                />
-              </Flex>
-            </Checkbox>
-            <Checkbox size="md" value="Kırmızı">
-              <Flex textAlign={"center"} ml={1}>
-                <Box
-                  w={5}
-                  h={5}
-                  borderRadius={"50% 50%"}
-                  bg={"red"}
-                  border={"1px #000 solid"}
-                  mr={1}
-                />
-              </Flex>
-            </Checkbox>
-            <Checkbox size="md" value="Mavi">
-              <Flex textAlign={"center"} ml={1}>
-                <Box
-                  w={5}
-                  h={5}
-                  borderRadius={"50% 50%"}
-                  bg={"blue"}
-                  border={"1px #000 solid"}
-                  mr={1}
-                />
-              </Flex>
-            </Checkbox>
-          </Stack>
-        </CheckboxGroup>
-      </>
-    );
-  };
-  export default Colors
+const Colors = ({ colors }) => {
+  React.useEffect(() => {}, [colors]);
+  return (
+    <Box w={"100%"} fontFamily={"corbel"}>
+      <CategoryName name={"Renk"} />
+
+      <Flex direction={["row"]}>
+        {colors.map((color, index) => (
+          <>
+            <GetColorCheckbox id={`color_${index}`} key={index} name={color} />
+          </>
+        ))}
+      </Flex>
+    </Box>
+  );
+};
+export default Colors;

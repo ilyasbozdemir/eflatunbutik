@@ -37,12 +37,14 @@ const SidebarContent = (props) => {
   return (
     <>
       <Box {...rest}>
-        <VStack>
+        <VStack my={3}>
           <Categories />
           <PriceRange />
           <EvaluationScore />
           <BodySize />
-          <Colors />
+          <Colors
+            colors={["black", "white", "blue", "red", "green", "yellow"]}
+          />
           <CouponProduct />
           <DiscountedProduct />
           <DiscountInCart />
@@ -53,15 +55,8 @@ const SidebarContent = (props) => {
 };
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
-
   return variant === "sidebar" ? (
-    <Box
-      overflow={"auto"}
-      overflowY={"scroll"}
-      w="200px"
-      h={"container.md"}
- 
-    >
+    <Box overflow={"auto"} overflowY={"scroll"} w="200px" h={"container.md"}>
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (

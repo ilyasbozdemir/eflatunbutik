@@ -10,8 +10,10 @@ import { Radio, RadioGroup } from "@chakra-ui/react";
 function EvaluationScore() {
   return (
     <>
-      <Box w={"90%"}>
-        <Text fontWeight={"semibold"}>{"Değerlendirme Puanı"}</Text>
+      <Box w={"100%"} fontFamily={"corbel"}>
+        <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
+          {"Değerlendirme Puanı"}
+        </Text>
         <RadioGroup defaultValue="2">
           <Stack spacing={5} direction="column">
             <Radio colorScheme="pink" value="1">
