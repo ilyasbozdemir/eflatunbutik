@@ -24,18 +24,12 @@ export const ProductCard = (props) => {
 
   return (
     <>
-      <Stack position="relative">
+      <Stack position="relative" textDecoration="none">
         <Stack
           spacing={useBreakpointValue({
             base: "4",
             md: "5",
           })}
-          _hover={{
-            transform: "scale(1.05)",
-            boxShadow:
-              "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
-          }}
-          transition="all .5s ease-in-out"
           cursor={"pointer"}
           border={"1px #cdc solid"}
           borderRadius={useBreakpointValue({
@@ -49,13 +43,12 @@ export const ProductCard = (props) => {
             as={"a"}
             href={`/p/${id}-${slug}`}
             target={"_blank"}
-            textDecoration="none"
             _hover={{
               textDecoration: "none",
             }}
           >
             <Box>
-              <AspectRatio ratio={2 / 3}>
+              <AspectRatio ratio={2 / 3} overflow={"hidden"}>
                 <Image
                   src={src}
                   alt={alt}
@@ -65,6 +58,10 @@ export const ProductCard = (props) => {
                     base: "md",
                     md: "xl",
                   })}
+                  transition="all .5s ease-in-out"
+                  _hover={{
+                    transform: "scale(1.02)",
+                  }}
                 />
               </AspectRatio>
             </Box>
@@ -98,7 +95,7 @@ export const ProductCard = (props) => {
 
         <FavouriteButton
           position="absolute"
-          top="1"
+          top="0"
           right="1"
           aria-label={`Add ${name} to your favourites`}
           zIndex={101}

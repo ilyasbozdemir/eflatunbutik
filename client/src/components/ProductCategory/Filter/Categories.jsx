@@ -23,7 +23,7 @@ function Categories() {
           {loc === link.href
             ? link.childrens.map((children, j) => (
                 <Box key={j} pb={1} pl={3}>
-                  <Icon as={BiSubdirectoryRight} color="blackAlpha.500" />
+                  <Icon as={BiSubdirectoryRight} color="blackAlpha.600" />
                   <Link to={children.href}> {children.label}</Link>
                 </Box>
               ))

@@ -53,14 +53,15 @@ const SidebarContent = (props) => {
 };
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
-  const borderVariant = {
-    css: {
-      borderRadius: "10px 10px",
-      border: "1px solid",
-    },
-  };
+
   return variant === "sidebar" ? (
-    <Box overflow={"auto"} w="200px" h={"100%"} {...borderVariant}>
+    <Box
+      overflow={"auto"}
+      overflowY={"scroll"}
+      w="200px"
+      h={"container.lg"}
+ 
+    >
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (

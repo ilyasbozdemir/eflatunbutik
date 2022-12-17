@@ -29,8 +29,8 @@ function PriceRange() {
           <RangeSliderTrack bg="red.100">
             <RangeSliderFilledTrack bg="red.500" />
           </RangeSliderTrack>
-          <RangeSliderThumb boxSize={6} index={0} bg="pink.300" />
-          <RangeSliderThumb boxSize={6} index={1} bg="pink.300" />
+          <RangeSliderThumb boxSize={3} index={0} bg="pink.300" />
+          <RangeSliderThumb boxSize={3} index={1} bg="pink.300" />
         </RangeSlider>
 
         <Flex justifyContent={"space-between"} w={"95%"}>
