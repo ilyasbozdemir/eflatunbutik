@@ -59,7 +59,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
       overflow={"auto"}
       overflowY={"scroll"}
       w="200px"
-      h={"container.lg"}
+      h={"container.md"}
  
     >
       <SidebarContent onClick={onClose} />

@@ -15,16 +15,28 @@ function Categories() {
   }, [location]);
 
   return (
-    <Box w={"90%"}>
-      <Text fontWeight={"semibold"}>{"Kategoriler"}</Text>
+    <Box w={"100%"} fontFamily={"corbel"}>
+      <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
+        {"Kategoriler"}
+      </Text>
       {linkItems.map((link, i) => (
         <Box key={i} pb={1}>
-          <Link to={link.href}> {link.label}</Link>
+          <Link to={link.href}>
+            <Text py={1} fontSize={13}>
+              {" "}
+              {link.label}
+            </Text>
+          </Link>
+
           {loc === link.href
             ? link.childrens.map((children, j) => (
                 <Box key={j} pb={1} pl={3}>
-                  <Icon as={BiSubdirectoryRight} color="blackAlpha.600" />
-                  <Link to={children.href}> {children.label}</Link>
+                  <Link to={children.href}>
+                    <Text py={1} fontSize={13}>
+                      <Icon as={BiSubdirectoryRight} color="blackAlpha.600" />
+                      {children.label}
+                    </Text>
+                  </Link>
                 </Box>
               ))
             : ""}
