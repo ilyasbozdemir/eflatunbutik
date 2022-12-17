@@ -599,7 +599,7 @@ const router = [
     ),
   },
   {
-    path: "/p/:productDetail/",
+    path: "/p/:productId-:productDetail/",
     element: <ProductDetail />,
   },
   {

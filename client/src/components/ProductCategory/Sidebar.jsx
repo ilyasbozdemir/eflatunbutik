@@ -22,32 +22,17 @@ import { Switch } from "@chakra-ui/react";
 import { linkItems } from "../../constants/LinkItems";
 import { Link, useLocation } from "react-router-dom";
 
-import PriceRange from './Filter/PriceRange'
-import Categories from './Filter/Categories'
-import EvaluationScore from './Filter/EvaluationScore'
-import Colors from './Filter/Colors'
-import BodySize from './Filter/BodySize'
-import CouponProduct from './Filter/CouponProduct'
-import DiscountedProduct from './Filter/DiscountedProduct'
-import DiscountInCart from './Filter/DiscountInCart'
+import PriceRange from "./Filter/PriceRange";
+import Categories from "./Filter/Categories";
+import EvaluationScore from "./Filter/EvaluationScore";
+import Colors from "./Filter/Colors";
+import BodySize from "./Filter/BodySize";
+import CouponProduct from "./Filter/CouponProduct";
+import DiscountedProduct from "./Filter/DiscountedProduct";
+import DiscountInCart from "./Filter/DiscountInCart";
 
 const SidebarContent = (props) => {
-
   const { onClick, ...rest } = props;
-
-
-  const DiscountInCart = () => {
-    return (
-      <Text fontWeight={"semibold"} as="h4">
-        <FormControl display="flex" alignItems="center">
-          <FormLabel htmlFor="campaign-products" mb="0">
-            Sepette Kampanyalı Ürünler
-          </FormLabel>
-          <Switch id="campaign-products" colorScheme="pink" />
-        </FormControl>
-      </Text>
-    );
-  };
 
   return (
     <>

@@ -1,8 +1,10 @@
 import React from "react";
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, Icon } from "@chakra-ui/react";
 
 import { linkItems } from "../../../constants/LinkItems";
 import { Link, useLocation } from "react-router-dom";
+
+import { BiSubdirectoryRight } from "react-icons/bi";
 
 function Categories() {
   const location = useLocation();
@@ -21,6 +23,7 @@ function Categories() {
           {loc === link.href
             ? link.childrens.map((children, j) => (
                 <Box key={j} pb={1} pl={3}>
+                  <Icon as={BiSubdirectoryRight} color="blackAlpha.500" />
                   <Link to={children.href}> {children.label}</Link>
                 </Box>
               ))
