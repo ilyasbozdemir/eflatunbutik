@@ -41,7 +41,7 @@ function index() {
 
   return (
     <>
-      <Flex justifyContent={"center"} direction={"row"} zIndex={1000}>
+      <Flex justifyContent={"center"} direction={"row"}>
         <Box
           height={50}
           minW="100%"
@@ -51,6 +51,7 @@ function index() {
           textAlign={"center"}
           boxShadow="xs"
           maxWidth={"30em"}
+          zIndex={1000}
         >
           <Flex
             direction={"row"}
