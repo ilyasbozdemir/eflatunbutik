@@ -18,16 +18,16 @@ function index({ link }) {
 
   return (
     <>
-      <Menu isOpen={isOpen}>
+      <Menu isOpen={isOpen} pos={"relative"}>
         <MenuButton
           mx={1}
           py={[1, 2, 2]}
           px={4}
           borderRadius={5}
           _hover={{
-            bg: UseColorModeValue("gray.100", "gray.700"),
-            color: "#fff",
-            bgGradient: "linear(to-l, #7928CA, #FF0080)",
+            borderBottom: "solid",
+            borderBottomColor: "#7928CA",
+            color: "#7928CA",
           }}
           aria-label={{ label } + " button"}
           fontWeight="normal"
