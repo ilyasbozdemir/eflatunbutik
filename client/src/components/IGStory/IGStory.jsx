@@ -70,7 +70,7 @@ function IGStory() {
   const [xoffset, setXoffset] = useState(5);
   return (
     <>
-      <Box overflow={"hidden"} minWidth="max-content">
+      <Box overflow={"hidden"}>
         <Icon
           as={IoIosArrowBack}
           size={"md"}
