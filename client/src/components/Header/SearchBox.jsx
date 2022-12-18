@@ -280,7 +280,12 @@ function SearchBox(props) {
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
-        <Stack ref={searchRef} className={styles.search} {...props}>
+        <Stack
+          ref={searchRef}
+          className={styles.search}
+          {...props}
+          maxWidth={"30em"}
+        >
           <Flex
             direction={"row"}
             border={isTyping ? "1px solid #A020F0" : "1px solid"}
