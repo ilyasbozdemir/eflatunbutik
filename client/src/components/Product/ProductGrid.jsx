@@ -19,11 +19,11 @@ export const ProductGrid = (props) => {
     <SimpleGrid
       columns={columns}
       columnGap={{
-        base: "8",
+        base: "23",
         md: "10",
       }}
       rowGap={{
-        base: "8",
+        base: "3",
         md: "10",
       }}
       justifyContent={'center'}

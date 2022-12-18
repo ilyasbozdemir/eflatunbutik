@@ -24,83 +24,79 @@ export const ProductCard = (props) => {
 
   return (
     <>
-      <Stack position="relative" textDecoration="none">
-        <Stack
-          spacing={useBreakpointValue({
-            base: "4",
-            md: "5",
-          })}
-          cursor={"pointer"}
-          border={"1px #cdc solid"}
-          borderRadius={useBreakpointValue({
-            base: "md",
-            md: "xl",
-          })}
-          {...rootProps}
-          zIndex={100}
+      <Stack
+        position="relative"
+        textDecoration="none"
+        cursor={"pointer"}
+        border={"1px #cdc solid"}
+        borderRadius={useBreakpointValue({
+          base: "md",
+          md: "xl",
+        })}
+        {...rootProps}
+        zIndex={100}
+      >
+        <Link
+          as={"a"}
+          href={`/p/${id}-${slug}`}
+          target={"_blank"}
+          _hover={{
+            textDecoration: "none",
+          }}
         >
-          <Link
-            as={"a"}
-            href={`/p/${id}-${slug}`}
-            target={"_blank"}
-            _hover={{
-              textDecoration: "none",
-            }}
-          >
-            <Box>
-              <AspectRatio ratio={2 / 3} overflow={"hidden"}>
-                <Image
-                  src={src}
-                  alt={alt}
-                  draggable={false}
-                  fallback={<Skeleton />}
-                  borderRadius={useBreakpointValue({
-                    base: "md",
-                    md: "xl",
-                  })}
-                  transition="all .5s ease-in-out"
-                  _hover={{
-                    transform: "scale(1.02)",
-                  }}
-                />
-              </AspectRatio>
-            </Box>
-            <Stack>
-              <Stack spacing="1">
-                <Link>
-                  <Text
-                    fontWeight="medium"
-                    color={useColorModeValue("gray.700", "gray.400")}
-                  >
-                    {name}
-                  </Text>
-                </Link>
-                <PriceTag price={price} salePrice={salePrice} currency="TRY" />
-              </Stack>
-              <HStack>
-                <Rating defaultValue={rating} size="sm" />
+          <Box>
+            <AspectRatio ratio={2 / 3} overflow={"hidden"}>
+              <Image
+                src={src}
+                alt={alt}
+                draggable={false}
+                fallback={<Skeleton />}
+                borderRadius={useBreakpointValue({
+                  base: "md",
+                  md: "xl",
+                })}
+                transition="all .5s ease-in-out"
+                _hover={{
+                  transform: "scale(1.02)",
+                }}
+              />
+            </AspectRatio>
+          </Box>
+          <Stack>
+            <Stack spacing="1">
+              <Link>
                 <Text
-                  as="small"
-                  color={useColorModeValue("gray.600", "gray.400")}
+                  fontWeight="medium"
+                  color={useColorModeValue("gray.700", "gray.400")}
                 >
-                  {ratingCount === 0 ? null : `(${ratingCount})`}
+                  {name}
                 </Text>
-              </HStack>
+              </Link>
+              <PriceTag price={price} salePrice={salePrice} currency="TRY" />
             </Stack>
-            <Stack align="center">
-              <AddToCardButton />
-            </Stack>
-          </Link>
-        </Stack>
-
-        <FavouriteButton
-          position="absolute"
-          top="0"
-          right="1"
-          aria-label={`Add ${name} to your favourites`}
-          zIndex={101}
-        />
+            <HStack>
+              <Rating defaultValue={rating} size="sm" />
+              <Text
+                as="small"
+                color={useColorModeValue("gray.600", "gray.400")}
+              >
+                {ratingCount === 0 ? null : `(${ratingCount})`}
+              </Text>
+            </HStack>
+          </Stack>
+          <Stack align="center">
+            <AddToCardButton />
+          </Stack>
+        </Link>
       </Stack>
+
+      <FavouriteButton
+        position="absolute"
+        top="0"
+        right="1"
+        aria-label={`Add ${name} to your favourites`}
+        zIndex={101}
+      />
     </>
   );
 };
