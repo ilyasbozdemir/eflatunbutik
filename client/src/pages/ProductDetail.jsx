@@ -17,9 +17,9 @@ function ProductDetail() {
           onClick={async () => {
             try {
               const shareData = {
-                title: 'MDN',
-                text: 'Learn web development on MDN!',
-                url: 'https://developer.mozilla.org'
+                title: 'test title',
+                text: 'test text ',
+                url: 'http://localhost:3000/p/01-bamboo-tan'
               }
               await navigator.share(shareData);
             } catch (err) {
@@ -27,7 +27,7 @@ function ProductDetail() {
             }
           }}
         >
-          Tıkla
+          Paylaş
         </Button>
 
         <Box id="product-container">
