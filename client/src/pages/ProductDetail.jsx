@@ -1,12 +1,26 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
 import { useParams } from "react-router-dom";
 
 function ProductDetail() {
   const params = useParams();
+  const [isProduct, setIsProduct] = React.useState(true);
+
   //alert(params.productDetail, params.productId);
-  if (5 === 5)
+
+  if (isProduct)
     //geçerli bir ürün ve ürün adıysa
-    return <div>ProductDetail</div>;
+
+    return (
+      <>
+        <Box id="product-container">
+          <Box id="container-left-content">
+            <Box id="gallery-container"></Box>
+          </Box>
+          <Box id="container-right-content"></Box>
+        </Box>
+      </>
+    );
   else return <div>NotFound</div>;
 }
 

@@ -25,7 +25,6 @@ export const ProductCard = (props) => {
   return (
     <Stack position="relative">
       <Stack
-        
         textDecoration="none"
         cursor={"pointer"}
         border={"1px #cdc solid"}
