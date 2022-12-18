@@ -8,7 +8,7 @@ import React, { Suspense } from "react";
 import LazyComponentsSkeleton from "./components/LazyComponentsSkeleton";
 
 const Router = React.lazy(() => import("./Router"));
-
+/*
 function MyComponent() {
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
@@ -30,6 +30,7 @@ function MyComponent() {
     </div>
   );
 }
+*/
 
 function App() {
   return (

@@ -23,9 +23,9 @@ export const ProductCard = (props) => {
   const { id, src, alt } = imageUrl;
 
   return (
-    <>
+    <Stack position="relative">
       <Stack
-        position="relative"
+        
         textDecoration="none"
         cursor={"pointer"}
         border={"1px #cdc solid"}
@@ -95,8 +95,8 @@ export const ProductCard = (props) => {
         top="0"
         right="1"
         aria-label={`Add ${name} to your favourites`}
-        zIndex={101}
+        zIndex={110}
       />
-    </>
+    </Stack>
   );
 };
