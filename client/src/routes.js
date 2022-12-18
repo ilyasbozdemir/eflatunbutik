@@ -569,6 +569,10 @@ const router = [
         path: "/sepetim/",
         element: <Basket />,
       },
+      {
+        path: "/p/:productId-:productDetail/",
+        element: <ProductDetail />,
+      },
       ...categories,
     ],
   },
@@ -598,10 +602,7 @@ const router = [
       </ProtectedRoute>
     ),
   },
-  {
-    path: "/p/:productId-:productDetail/",
-    element: <ProductDetail />,
-  },
+
   {
     path: "/admin/",
     element: <ProtectedRoute user={true} />,
