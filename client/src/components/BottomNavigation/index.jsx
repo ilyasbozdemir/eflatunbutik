@@ -47,6 +47,7 @@ function index() {
           minW="100%"
           position="fixed"
           bottom={0}
+          left={0}
           bgGradient="linear(to-r, #3A1C71, #CB356B, #BD3F32)"
           textAlign={"center"}
           boxShadow="xs"
