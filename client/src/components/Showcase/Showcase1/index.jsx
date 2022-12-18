@@ -21,6 +21,8 @@ import Logo from "../../Logo";
 function index() {
   const handleType = (count) => {};
   const handleDone = () => {};
+  const imageUrl =
+    "https://images.unsplash.com/photo-1555529771-835f59fc5efe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
   return (
     <>
       <Box
@@ -99,10 +101,7 @@ function index() {
                       delaySpeed={1000}
                       onLoopDone={handleDone}
                       onType={handleType}
-                      words={[
-                        "her cebe uygun",
-                        "avantajlı ürünler",
-                      ]}
+                      words={["her cebe uygun", "avantajlı ürünler"]}
                     />
                   </span>
                   <br />
@@ -129,7 +128,7 @@ function index() {
           </Box>
           <Flex flex="1" overflow="hidden">
             <Image
-              src="https://img.modamerve.com/resize/78857cd67e1a4a8e/400/600/kusakli-saten-abiye-siyah-asm2537-313353-56-O.jpg"
+              src={imageUrl}
               alt="Lovely Image"
               fallback={<Skeleton />}
               maxH="450px"
@@ -143,7 +142,7 @@ function index() {
                 base: "none",
                 sm: "initial",
               }}
-              src="https://img.modamerve.com/resize/78857cd67e1a4a8e/400/600/kusakli-saten-abiye-siyah-asm2537-313353-56-O.jpg"
+              src={imageUrl}
               alt="Lovely Image"
               fallback={<Skeleton />}
               maxH="450px"
