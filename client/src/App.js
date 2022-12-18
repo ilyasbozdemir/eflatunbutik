@@ -26,7 +26,7 @@ function MyComponent() {
   });
   return (
     <div>
-      Rendered at width:{dimensions.width}  height:{dimensions.height}
+      Rendered at width:{dimensions.width} height:{dimensions.height}
     </div>
   );
 }
@@ -34,9 +34,7 @@ function MyComponent() {
 function App() {
   return (
     <Suspense fallback={<LazyComponentsSkeleton />}>
-      <div>
-        <MyComponent />
-      </div>
+      <div>{/*<MyComponent />*/}</div>
 
       <Router />
     </Suspense>
