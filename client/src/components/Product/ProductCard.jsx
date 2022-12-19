@@ -34,6 +34,7 @@ export const ProductCard = (props) => {
         })}
         {...rootProps}
         zIndex={100}
+        p={1}
       >
         <Link
           as={"a"}
