@@ -13,7 +13,7 @@ import {
 import * as React from "react";
 import { Rating } from "./Rating";
 import { FavouriteButton } from "./FavouriteButton";
-import { PriceTag } from "./PriceTag";
+import  PriceTag  from "./PriceTag";
 
 import AddToCardButton from "./AddToCardButton";
 export const ProductCard = (props) => {
@@ -23,11 +23,11 @@ export const ProductCard = (props) => {
   const { id, src, alt } = imageUrl;
 
   return (
-    <Stack position="relative">
+    <Stack position="relative" w={150} h={'auto'}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
-        border={"1px #cdc solid"}
+        border={"1px #d9bceb solid"}
         borderRadius={useBreakpointValue({
           base: "md",
           md: "xl",
@@ -66,13 +66,19 @@ export const ProductCard = (props) => {
             <Stack spacing="1">
               <Link>
                 <Text
-                  fontWeight="medium"
+                fontSize={13}
                   color={useColorModeValue("gray.700", "gray.400")}
                 >
                   {name}
                 </Text>
               </Link>
-              <PriceTag price={price} salePrice={salePrice} currency="TRY" />
+
+              <PriceTag
+                price={price}
+                salePrice={salePrice}
+                currency="TRY"
+                locale={"tr-TR"}
+              />
             </Stack>
             <HStack>
               <Rating defaultValue={rating} size="sm" />
@@ -84,7 +90,7 @@ export const ProductCard = (props) => {
               </Text>
             </HStack>
           </Stack>
-          <Stack align="center">
+          <Stack align="center" mt={2}>
             <AddToCardButton />
           </Stack>
         </Link>
