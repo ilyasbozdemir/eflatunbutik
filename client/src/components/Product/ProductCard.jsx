@@ -13,7 +13,7 @@ import {
 import * as React from "react";
 import { Rating } from "./Rating";
 import { FavouriteButton } from "./FavouriteButton";
-import  PriceTag  from "./PriceTag";
+import PriceTag from "./PriceTag";
 
 import AddToCardButton from "./AddToCardButton";
 export const ProductCard = (props) => {
@@ -23,7 +23,7 @@ export const ProductCard = (props) => {
   const { id, src, alt } = imageUrl;
 
   return (
-    <Stack position="relative" w={150} h={'auto'}>
+    <Stack position="relative" w={150} h={"auto"}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
@@ -66,7 +66,7 @@ export const ProductCard = (props) => {
             <Stack spacing="1">
               <Link>
                 <Text
-                fontSize={13}
+                  fontSize={13}
                   color={useColorModeValue("gray.700", "gray.400")}
                 >
                   {name}
@@ -90,10 +90,13 @@ export const ProductCard = (props) => {
               </Text>
             </HStack>
           </Stack>
-          <Stack align="center" mt={2}>
-            <AddToCardButton />
-          </Stack>
         </Link>
+        <Stack align="center" mt={2}>
+          <AddToCardButton />
+        </Stack>
+        <Stack align="center" mt={2}>
+          <Link>Hızlı Gözat</Link>
+        </Stack>
       </Stack>
 
       <FavouriteButton
