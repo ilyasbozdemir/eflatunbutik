@@ -14,7 +14,7 @@ import * as React from "react";
 import { Rating } from "./Rating";
 import { FavouriteButton } from "./FavouriteButton";
 import PriceTag from "./PriceTag";
-
+import { Tooltip } from "@chakra-ui/react";
 import AddToCardButton from "./AddToCardButton";
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
@@ -23,7 +23,7 @@ export const ProductCard = (props) => {
   const { id, src, alt } = imageUrl;
 
   return (
-    <Stack position="relative" w={150} h={"auto"}>
+    <Stack position="relative" w={150} h={150}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
@@ -68,8 +68,15 @@ export const ProductCard = (props) => {
                 <Text
                   fontSize={13}
                   color={useColorModeValue("gray.700", "gray.400")}
+                  css={{
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    textOverflow: "ellips",
+                  }}
                 >
-                  {name}
+                  <Tooltip openDelay={100} label={name} fontSize={13}>
+                    {name}
+                  </Tooltip>
                 </Text>
               </Link>
 
@@ -82,12 +89,21 @@ export const ProductCard = (props) => {
             </Stack>
             <HStack>
               <Rating defaultValue={rating} size="sm" />
-              <Text
-                as="small"
-                color={useColorModeValue("gray.600", "gray.400")}
-              >
-                {ratingCount === 0 ? null : `(${ratingCount})`}
-              </Text>
+
+              {ratingCount === 0 ? null : (
+                <>
+                  <Text
+                    as="small"
+                    _dark={{ color: "gray.400" }}
+                    _light={{ color: "gray.600" }}
+                  >
+                    <Tooltip
+                      label={`Yorum sayısı :${ratingCount}`}
+                      children={`(${ratingCount})`}
+                    />
+                  </Text>
+                </>
+              )}
             </HStack>
           </Stack>
         </Link>

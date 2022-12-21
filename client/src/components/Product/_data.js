@@ -1,8 +1,8 @@
 export const images = [
   {
     id: "01",
-    src: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=434&q=80https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=434&q=80",
-    alt: "Awesome watch",
+    src: "https://www.eflatunmoda.com/i/l/000/0000464_muhtesem-tasarim-elbise-kahve.jpeg",
+    alt: "muhtesem-tasarim-elbise",
   },
   {
     id: "02",
@@ -23,8 +23,8 @@ export const images = [
 export const products = [
   {
     id: "1",
-    name: "Bamboo Tan",
-    slug:'bamboo-tan',
+    name: "Muhteşem Tasarım Elbise - Kahve",
+    slug:'muhtesem-tasarim-elbise-kahve',
     currency: "TRY",
     price: 300,
     flag: "new",
@@ -41,8 +41,8 @@ export const products = [
     currency: "TRY",
     price: 125,
     salePrice: 179.99,
-    flag: "on-sale",
-    rating: 4,
+    flag: "Yeni",
+    rating: 5,
     ratingCount: 3,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
@@ -67,7 +67,7 @@ export const products = [
     currency: "TRY",
     price: 199,
     rating: 5,
-    ratingCount: 0,
+    ratingCount: 3,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
     imageUrl: images[3],
