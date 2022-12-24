@@ -278,12 +278,7 @@ function SearchBox(props) {
     setInputValue(e.target.value);
   };
 
-  const [isLargerThan320] = useMediaQuery("(min-width: 320px)");
-  const [isLessThan480] = useMediaQuery("(max-width: 480px)");
-  const [w, setW] = React.useState();
-  React.useEffect(() => {
-    setW("12.5em");
-  }, [isLargerThan320, isLessThan480]);
+
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
@@ -291,7 +286,7 @@ function SearchBox(props) {
           ref={searchRef}
           className={styles.search}
           {...props}
-          w={{ base: w, md: "30em" }}
+          w={{ base: '13.5em', md: "30em" }}
           maxWidth={{ base: "30em" }}
         >
           <Flex

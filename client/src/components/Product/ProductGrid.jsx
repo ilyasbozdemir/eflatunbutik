@@ -1,15 +1,13 @@
-import { SimpleGrid,useMediaQuery } from "@chakra-ui/react";
-import * as React from "react";
+import { SimpleGrid, useMediaQuery } from "@chakra-ui/react";
+import React from "react";
 
 export const ProductGrid = (props) => {
+ 
 
-
-  const columns = React.useMemo(() => {
+  const columns =React. useMemo(() => {
     const count = React.Children.toArray(props.children).filter(
       React.isValidElement
     ).length;
-
-   
 
     return {
       base: Math.min(2, count),
@@ -17,7 +15,6 @@ export const ProductGrid = (props) => {
       lg: Math.min(4, count),
       xl: Math.min(5, count),
     };
-
   }, [props.children]);
 
   return (
@@ -28,11 +25,10 @@ export const ProductGrid = (props) => {
         md: "10",
       }}
       rowGap={{
-        base: "5",
+        base: "50",
         md: "10",
       }}
       justifyContent={"center"}
-      
       {...props}
     />
   );

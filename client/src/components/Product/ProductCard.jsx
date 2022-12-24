@@ -50,6 +50,9 @@ export const ProductCard = (props) => {
   //Small screens, laptops
   const [isLargerThan769] = useMediaQuery("(min-width: 769px)");
   const [isLessThan1024] = useMediaQuery("(max-width: 1024px)");
+  //Desktops, large screens
+  const [isLargerThan1025] = useMediaQuery("(min-width: 1025px)");
+  const [isLessThan1200] = useMediaQuery("(max-width: 1200px)");
 
   const [h, setH] = React.useState();
   const [w, setW] = React.useState();
@@ -57,27 +60,26 @@ export const ProductCard = (props) => {
   React.useEffect(() => {
     setH(100);
     setW(100);
-    console.log(
-      "mobile" + isLargerThan320 + " " + isLessThan480
-    );
+    console.log("mobile" + isLargerThan320 + " " + isLessThan480);
   }, [isLargerThan320, isLessThan480]);
 
   React.useEffect(() => {
     setH(120);
     setW(120);
-    console.log(
-      "tablet" + isLargerThan481 + " " + isLessThan1024
-    );
+    console.log("tablet" + isLargerThan481 + " " + isLessThan1024);
   }, [isLargerThan481, isLessThan1024]);
 
   React.useEffect(() => {
     setH(130);
     setW(130);
-    console.log(
-      "laptops" + isLargerThan769 + " " + isLessThan768
-    );
+    console.log("laptops" + isLargerThan769 + " " + isLessThan768);
   }, [isLargerThan769, isLessThan768]);
 
+  React.useEffect(() => {
+    setH(150);
+    setW(150);
+    console.log("desktops" + isLargerThan1025 + " " + isLessThan1200);
+  }, [isLargerThan1025, isLessThan1200]);
   return (
     <Stack position="relative" h={h} w={w}>
       <Stack
