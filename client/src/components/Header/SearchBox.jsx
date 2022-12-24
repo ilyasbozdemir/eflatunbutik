@@ -19,6 +19,7 @@ import styles from "./index.module.css";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
+import { useMediaQuery } from "@chakra-ui/react";
 
 function SearchBox(props) {
   const [searchHistory, setSearchHistory] = React.useState([
@@ -277,6 +278,12 @@ function SearchBox(props) {
     setInputValue(e.target.value);
   };
 
+  const [isLargerThan320] = useMediaQuery("(min-width: 320px)");
+  const [isLessThan480] = useMediaQuery("(max-width: 480px)");
+  const [w, setW] = React.useState();
+  React.useEffect(() => {
+    setW("12.5em");
+  }, [isLargerThan320, isLessThan480]);
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
@@ -284,7 +291,8 @@ function SearchBox(props) {
           ref={searchRef}
           className={styles.search}
           {...props}
-          maxWidth={"30em"}
+          w={{ base: w, md: "30em" }}
+          maxWidth={{ base: "30em" }}
         >
           <Flex
             direction={"row"}

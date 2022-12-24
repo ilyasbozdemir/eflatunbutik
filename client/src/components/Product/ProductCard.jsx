@@ -23,6 +23,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import { useMediaQuery } from "@chakra-ui/react";
+
 import * as React from "react";
 import { Rating } from "./Rating";
 import { FavouriteButton } from "./FavouriteButton";
@@ -39,8 +41,45 @@ export const ProductCard = (props) => {
   const [ratingSize, setRatingSize] = React.useState(10);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  //Mobile devices
+  const [isLargerThan320] = useMediaQuery("(min-width: 320px)");
+  const [isLessThan480] = useMediaQuery("(max-width: 480px)");
+  //iPads, Tablets
+  const [isLargerThan481] = useMediaQuery("(min-width: 481px)");
+  const [isLessThan768] = useMediaQuery("(max-width: 768px)");
+  //Small screens, laptops
+  const [isLargerThan769] = useMediaQuery("(min-width: 769px)");
+  const [isLessThan1024] = useMediaQuery("(max-width: 1024px)");
+
+  const [h, setH] = React.useState();
+  const [w, setW] = React.useState();
+
+  React.useEffect(() => {
+    setH(100);
+    setW(100);
+    console.log(
+      "mobile" + isLargerThan320 + " " + isLessThan480
+    );
+  }, [isLargerThan320, isLessThan480]);
+
+  React.useEffect(() => {
+    setH(120);
+    setW(120);
+    console.log(
+      "tablet" + isLargerThan481 + " " + isLessThan1024
+    );
+  }, [isLargerThan481, isLessThan1024]);
+
+  React.useEffect(() => {
+    setH(130);
+    setW(130);
+    console.log(
+      "laptops" + isLargerThan769 + " " + isLessThan768
+    );
+  }, [isLargerThan769, isLessThan768]);
+
   return (
-    <Stack position="relative" w={{ md: 160 }} h={{ md: 150 }}>
+    <Stack position="relative" h={h} w={w}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
@@ -175,7 +214,7 @@ const QuickProductDetailModal = (props) => {
             </AspectRatio>
           </ModalBody>
 
-          {/*
+          {/* 
 <AddToCardButton product={product} />
  */}
         </ModalContent>
