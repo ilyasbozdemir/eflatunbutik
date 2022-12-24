@@ -24,7 +24,7 @@ export const ProductCard = (props) => {
 
   const [ratingSize, setRatingSize] = React.useState(10);
   return (
-    <Stack position="relative" w={160} h={150}>
+    <Stack position="relative" w={{ md: 160 }} h={{ md: 150 }}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
@@ -63,7 +63,7 @@ export const ProductCard = (props) => {
               />
             </AspectRatio>
           </Box>
-          <Stack >
+          <Stack>
             <Stack spacing="1">
               <Link>
                 <Text
