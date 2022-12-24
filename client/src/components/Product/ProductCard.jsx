@@ -165,7 +165,7 @@ const QuickProductDetailModal = (props) => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <AspectRatio ratio={4 / 3} allowFullScreen>
+            <AspectRatio ratio={1}>
               <Image
                 src={src}
                 alt={alt}
@@ -175,7 +175,9 @@ const QuickProductDetailModal = (props) => {
             </AspectRatio>
           </ModalBody>
 
-          <AddToCardButton product={product} />
+          {/*
+<AddToCardButton product={product} />
+ */}
         </ModalContent>
       </Modal>
     </>
