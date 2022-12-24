@@ -108,7 +108,7 @@ export const ProductCard = (props) => {
           </Stack>
         </Link>
         <Stack align="center" mt={2}>
-          <AddToCardButton />
+          <AddToCardButton product={product} />
         </Stack>
         <Stack align="center" mt={2}>
           <Link>Hızlı Gözat</Link>

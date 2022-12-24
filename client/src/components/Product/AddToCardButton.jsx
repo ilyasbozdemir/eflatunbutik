@@ -3,7 +3,8 @@ import {
   Button,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
-function AddToCardButton({ name }) {
+function AddToCardButton({ product }) {
+  const { id } = product;
   return (
     <>
       <Button
@@ -16,6 +17,7 @@ function AddToCardButton({ name }) {
           bg: UseColorModeValue("gray.800", "gray.500"),
           bgGradient: "linear(to-r, #ac28ca, #ff1060)",
         }}
+        onClick={() => alert(id)}
       >
         Sepete Ekle
       </Button>
