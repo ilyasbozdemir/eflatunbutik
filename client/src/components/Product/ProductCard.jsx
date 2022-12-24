@@ -22,12 +22,13 @@ export const ProductCard = (props) => {
     product;
   const { id, src, alt } = imageUrl;
 
+  const [ratingSize, setRatingSize] = React.useState(10);
   return (
-    <Stack position="relative" w={150} h={150}>
+    <Stack position="relative" w={160} h={150}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
-        border={"1px #d9bceb solid"}
+        border={"1px #ccc solid"}
         borderRadius={useBreakpointValue({
           base: "md",
           md: "xl",
@@ -62,7 +63,7 @@ export const ProductCard = (props) => {
               />
             </AspectRatio>
           </Box>
-          <Stack>
+          <Stack >
             <Stack spacing="1">
               <Link>
                 <Text
@@ -88,14 +89,14 @@ export const ProductCard = (props) => {
               />
             </Stack>
             <HStack>
-              <Rating defaultValue={rating} size="sm" />
+              <Rating defaultValue={rating} size={ratingSize} />
 
               {ratingCount === 0 ? null : (
                 <>
                   <Text
-                    as="small"
                     _dark={{ color: "gray.400" }}
                     _light={{ color: "gray.600" }}
+                    fontSize={ratingSize}
                   >
                     <Tooltip
                       label={`Yorum sayısı :${ratingCount}`}
@@ -105,14 +106,14 @@ export const ProductCard = (props) => {
                 </>
               )}
             </HStack>
+            <Stack align="center" mt={2}>
+              <AddToCardButton product={product} />
+            </Stack>
+            <Stack align="center" mt={2}>
+              <Link>Hızlı Gözat</Link>
+            </Stack>
           </Stack>
         </Link>
-        <Stack align="center" mt={2}>
-          <AddToCardButton product={product} />
-        </Stack>
-        <Stack align="center" mt={2}>
-          <Link>Hızlı Gözat</Link>
-        </Stack>
       </Stack>
 
       <FavouriteButton

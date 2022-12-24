@@ -14,8 +14,7 @@ function AddToCardButton({ product }) {
         bg={UseColorModeValue("gray.100", "gray.700")}
         bgGradient={"linear(to-l, #7928CA, #FF0080)"}
         _hover={{
-          bg: UseColorModeValue("gray.800", "gray.500"),
-          bgGradient: "linear(to-r, #ac28ca, #ff1060)",
+          opacity: 0.9,
         }}
         onClick={() => alert(id)}
       >

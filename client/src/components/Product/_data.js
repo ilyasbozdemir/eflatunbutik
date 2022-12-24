@@ -26,7 +26,7 @@ export const products = [
     name: "Muhteşem Tasarım Elbise - Kahve",
     slug:'muhtesem-tasarim-elbise-kahve',
     currency: "TRY",
-    price: 300,
+    price: 299.99,
     flag: "new",
     rating: 4,
     ratingCount: 1,
@@ -53,7 +53,7 @@ export const products = [
     name: "Marble Leather",
     slug:'marble-leather',
     currency: "TRY",
-    price: 250,
+    price: 249.99,
     rating: 4,
     ratingCount: 5,
     description:
@@ -65,7 +65,7 @@ export const products = [
     name: "Silve wolf",
     slug:'silve-wolf',
     currency: "TRY",
-    price: 199,
+    price: 199.99,
     rating: 5,
     ratingCount: 3,
     description:
