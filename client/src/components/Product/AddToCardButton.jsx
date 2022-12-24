@@ -1,8 +1,14 @@
 import React from "react";
 import {
   Button,
+  Flex,
+  Icon,
+  Text,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
+
+import { BiShoppingBag } from "react-icons/bi";
+
 function AddToCardButton({ product }) {
   const { id } = product;
   return (
@@ -18,7 +24,10 @@ function AddToCardButton({ product }) {
         }}
         onClick={() => alert(id)}
       >
-        Sepete Ekle
+        <Flex justifyContent={"space-between"} direction={"row"} justifyItems={'center'}>
+          <Icon as={BiShoppingBag} />
+          <Text>Sepete Ekle</Text>
+        </Flex>
       </Button>
     </>
   );
