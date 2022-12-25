@@ -1,49 +1,38 @@
 import React from "react";
-import { Text, Flex } from "@chakra-ui/react";
+import { Text, Flex, tokenToCSSVar } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 function index() {
-  // Sepete En Çok Eklenenler
-  // En Çok Öne Çıkanlar
-  // İndirimdekiler
-  const cokSatanlarHandled = (e) => {
-    alert("cokSatanlarHandled");
-  };
-  const oneCikanlarHandled = (e) => {
-    alert("oneCikanlarHandled");
-  };
-  const indirimdekilerHandled = (e) => {
-    alert("indirimdekilerHandled");
-  };
-
   const buttons = [
     {
       name: "Çok Satanlar",
-      onClickHandled: cokSatanlarHandled,
+      to: '/cok-satanlar/',
     },
     {
       name: "Öne Çıkanlar",
-      onClickHandled: oneCikanlarHandled,
+      to: '/one-cikanlar/',
     },
     {
       name: "İndirimdekiler",
-      onClickHandled: indirimdekilerHandled,
+      to: '/indirim/',
     },
   ];
 
   const HighlightButton = (props) => {
-    const { name, onClickHandled } = props;
+    const { name, to } = props;
     return (
-      <Button
-      fontSize={12}
-        color={"white"}
-        bgGradient={"linear(to-l, #7928CA, #FF0080)"}
-        _hover={{
-          bgGradient: "linear(to-l, #7928AA, #FF0060)",
-        }}
-        onClick={onClickHandled}
-      >
-        {name}
-      </Button>
+      <Link to={to}>
+        <Button
+          fontSize={12}
+          color={"white"}
+          bgGradient={"linear(to-l, #7928CA, #FF0080)"}
+          _hover={{
+            bgGradient: "linear(to-l, #7928AA, #FF0060)",
+          }}
+        >
+          {name}
+        </Button>
+      </Link>
     );
   };
 

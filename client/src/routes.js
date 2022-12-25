@@ -22,6 +22,34 @@ const Layout = React.lazy(() => import("./Layout"));
 
 const categories = [
   {
+    path: "/cok-satanlar/",
+    element: (
+      <CategoryProduct
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          {
+            item: "Çok Satanlar",
+            isCurrentPage: true,
+          },
+        ]}
+      />
+    ),
+  },
+  {
+    path: "/one-cikanlar/",
+    element: (
+      <CategoryProduct
+        breadcrumbs={[
+          { item: "Anasayfa", link: "/", isCurrentPage: false },
+          {
+            item: "Öne Çıkanlar",
+            isCurrentPage: true,
+          },
+        ]}
+      />
+    ),
+  },
+  {
     path: "/yeni-gelenler/",
     element: (
       <CategoryProduct
@@ -527,7 +555,6 @@ const categories = [
       <CategoryProduct
         breadcrumbs={[
           { item: "Anasayfa", link: "/", isCurrentPage: false },
-          { item: "Kombin", link: "/kombin/", isCurrentPage: false },
           {
             item: "İndirimdekiler",
             isCurrentPage: true,
