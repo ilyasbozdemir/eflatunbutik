@@ -67,28 +67,10 @@ const ImageItem = (props) => {
 };
 
 function IGStory() {
-  const [xoffset, setXoffset] = useState(5);
+ 
   return (
     <>
-      <Box overflow={"hidden"} maxWidth={'30em'}>
-        <Icon
-          as={IoIosArrowBack}
-          size={"md"}
-          onClick={() => setXoffset(xoffset - 10)}
-          cursor={'pointer'}
-        />
-        <Flex direction={"row"} transform={`translateX(${xoffset}px)`}>
-          {images.map((image, index) => (
-            <ImageItem key={index} {...image} />
-          ))}
-        </Flex>
-        <Icon
-          as={IoIosArrowForward}
-          size={"md"}
-          onClick={() => setXoffset(xoffset + 10)}
-          cursor={'pointer'}
-        />
-      </Box>
+      
     </>
   );
 }
