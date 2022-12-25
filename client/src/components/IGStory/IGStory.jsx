@@ -48,24 +48,6 @@ const images = [
     to: "/triko/",
     src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
   },
-  {
-    name: "Triko",
-    onClickHandled: "",
-    to: "/triko/",
-    src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
-  },
-  {
-    name: "Triko",
-    onClickHandled: "",
-    to: "/triko/",
-    src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
-  },
-  {
-    name: "Triko",
-    onClickHandled: "",
-    to: "/triko/",
-    src: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1058&q=80",
-  },
 ];
 const ImageItem = (props) => {
   const { src, to, name, ...rest } = props;
@@ -104,31 +86,49 @@ const ImageItem = (props) => {
 function IGStory() {
   const [width, setWidth] = React.useState(0);
   const carousel = React.useRef();
+  const item = React.useRef();
 
   React.useLayoutEffect(() => {
     console.log(
-      carousel.current.scrollWidth + "  " + carousel.current.offsetWidth
+      "scrollWidth: " +
+        carousel.current.scrollWidth +
+        " offsetWidth :" +
+        carousel.current.offsetWidth
     );
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    console.log(
+      "item.scrollWidth: " +
+        item.current.scrollWidth +
+        " item.offsetWidth :" +
+        item.current.offsetWidth
+    );
+    setWidth(
+      carousel.current.scrollWidth -
+        carousel.current.offsetWidth +
+        item.current.scrollWidth
+    );
   }, []);
 
   return (
     <>
-      <motion.div ref={carousel} className={styles.carousel}>
-        <motion.div
-          drag={"x"}
-          dragConstraints={{ left: -width, right: 0 }}
-          className={styles.inner_carousel}
-        >
-          {images.map((image, index) => {
-            return (
-              <motion.div className={styles.item}>
-                <ImageItem key={index} {...image} />
-              </motion.div>
-            );
-          })}
+      <Box pos={"relative"}>
+        <motion.div ref={carousel} className={styles.carousel}>
+          <motion.div
+            drag={"x"}
+            dragConstraints={{ left: -width, right: 0 }}
+            className={styles.inner_carousel}
+          >
+            {images.map((image, index) => {
+              return (
+                <motion.div ref={item} className={styles.item}>
+                  <ImageItem key={index} {...image} />
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+        <></>
+      </Box>
     </>
   );
 }
