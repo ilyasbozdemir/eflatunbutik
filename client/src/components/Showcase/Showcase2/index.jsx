@@ -1,62 +1,59 @@
 import { Image, Box, SimpleGrid } from "@chakra-ui/react";
 import React, { useMemo as UseMemo } from "react";
+import { Link } from "react-router-dom";
 
 import style from "./style.module.css";
 
-//https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80
-//https://images.unsplash.com/photo-1548306530-3ece53b754b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80
-//https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80
-//https://images.pexels.com/photos/7675547/pexels-photo-7675547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
-
 const Cart = (props) => {
-  const { imageUrl, title } = props;
+  const { name, to, src } = props;
 
   return (
-    <>
+    <Link to={to}>
       <Box className={style.cart} transition="transform 0.75s">
-        <Image
-          src={imageUrl}
-          alt={`${title} photos`}
-          className={style.cart_image}
-        />
+        <Image src={src} alt={`${name} photos`} className={style.cart_image} />
         <Box as="h3" className={style.cart_title}>
-          {title}
+          {name}
         </Box>
       </Box>
-    </>
+    </Link>
   );
 };
 
 const carts = [
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80",
-    title: "Elbise",
+    name: "Yeni Gelenler",
+    to: "/yeni-gelenler/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
   },
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80",
-    title: "Elbise",
+    name: "Elbise",
+    to: "/elbise/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
   },
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80",
-    title: "Elbise",
+    name: "Triko",
+    to: "/triko/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
   },
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80",
-    title: "Elbise",
+    name: "Üst Giyim",
+    to: "/ust-giyim/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
   },
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80",
-    title: "Elbise",
+    name: "Alt Giyim",
+    to: "/alt-giyim/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
   },
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1630759072462-d5348e577ee8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=872&q=80",
-    title: "Elbise",
+    name: "Dış Giyim",
+    to: "/dis-giyim/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
+  },
+  {
+    name: "Outlet",
+    to: "/outlet/",
+    src: "https://images.unsplash.com/photo-1613521973937-efce73f2f943?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=930&q=80",
   },
 ];
 

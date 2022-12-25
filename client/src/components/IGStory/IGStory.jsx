@@ -22,43 +22,42 @@ import { motion } from "framer-motion";
 const images = [
   {
     name: "Yeni Gelenler",
-    onClickHandled: "",
     to: "/yeni-gelenler/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     name: "Elbise",
-    onClickHandled: "",
+
     to: "/elbise/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     name: "Triko",
-    onClickHandled: "",
+
     to: "/triko/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     name: "Üst Giyim",
-    onClickHandled: "",
+
     to: "/ust-giyim/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     name: "Alt Giyim",
-    onClickHandled: "",
+
     to: "/alt-giyim/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     name: "Dış Giyim",
-    onClickHandled: "",
+
     to: "/dis-giyim/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
   {
     name: "Outlet",
-    onClickHandled: "",
+
     to: "/outlet/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
@@ -122,4 +121,4 @@ function IGStory() {
   );
 }
 
-export default IGStory;
+export default React.memo(IGStory);
