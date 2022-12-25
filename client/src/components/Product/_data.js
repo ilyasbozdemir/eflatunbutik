@@ -19,14 +19,19 @@ export const images = [
     src: "https://images.unsplash.com/photo-1585487000143-9bcec9b8e483?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=391&q=80",
     alt: "Awesome watch",
   },
+  {
+    id: "04",
+    alt: "Awesome watch",
+    src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=420&q=80",
+  },
 ];
 export const products = [
   {
     id: "1",
     name: "Muhteşem Tasarım Elbise - Kahve",
-    slug:'muhtesem-tasarim-elbise-kahve',
+    slug: "muhtesem-tasarim-elbise-kahve",
     currency: "TRY",
-    price: 300,
+    price: 299.99,
     flag: "new",
     rating: 4,
     ratingCount: 1,
@@ -37,7 +42,7 @@ export const products = [
   {
     id: "2",
     name: "Iconic Turquoise",
-    slug:'iconic-turquoise',
+    slug: "iconic-turquoise",
     currency: "TRY",
     price: 125,
     salePrice: 179.99,
@@ -51,9 +56,9 @@ export const products = [
   {
     id: "3",
     name: "Marble Leather",
-    slug:'marble-leather',
+    slug: "marble-leather",
     currency: "TRY",
-    price: 250,
+    price: 249.99,
     rating: 4,
     ratingCount: 5,
     description:
@@ -63,13 +68,25 @@ export const products = [
   {
     id: "4",
     name: "Silve wolf",
-    slug:'silve-wolf',
+    slug: "silve-wolf",
     currency: "TRY",
-    price: 199,
+    price: 199.99,
     rating: 5,
     ratingCount: 3,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
     imageUrl: images[3],
+  },
+  {
+    id: "5",
+    name: "Sleek design",
+    slug: "sleek-design",
+    currency: "TRY",
+    price: 159.99,
+    rating: 5,
+    ratingCount: 3,
+    description:
+      "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
+    imageUrl: images[4],
   },
 ];
