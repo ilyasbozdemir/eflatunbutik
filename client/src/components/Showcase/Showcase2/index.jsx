@@ -69,24 +69,18 @@ function index() {
   }, [count]);
 
   return (
-    <SimpleGrid
-      ml={10}
-      mr={10}
-      columns={columns}
-      columnGap={{
-        base: "2",
-        md: "2",
-      }}
-      rowGap={{
-        base: "2",
-        md: "2",
-      }}
-      justifyContent={"center"}
-    >
-      {carts.map((cart, index) => (
-        <Cart key={index} {...cart} />
-      ))}
-    </SimpleGrid>
+    <>
+      <SimpleGrid
+        ml={1}
+        columns={[2, 3, 4, 5, 6]}
+        gap={[1, 2, 3, 4, 5]}
+        h={"100%"}
+      >
+        {carts.map((cart, i) => (
+          <Cart key={i} {...cart} />
+        ))}
+      </SimpleGrid>
+    </>
   );
 }
 
