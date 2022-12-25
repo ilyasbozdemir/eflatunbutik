@@ -128,7 +128,7 @@ export const ProductCard = (props) => {
                     textOverflow: "ellips",
                   }}
                 >
-                  <Tooltip openDelay={100} label={name} fontSize={13}>
+                  <Tooltip placement={'top'}  openDelay={100} label={name} fontSize={13}>
                     {name}
                   </Tooltip>
                 </Text>
