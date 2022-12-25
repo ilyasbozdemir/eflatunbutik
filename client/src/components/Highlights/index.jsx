@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonGroup, Flex } from "@chakra-ui/react";
+import { Text, Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 function index() {
   // Sepete En Çok Eklenenler
@@ -21,7 +21,7 @@ function index() {
       onClickHandled: cokSatanlarHandled,
     },
     {
-      name: "En Çok Öne Çıkanlar",
+      name: "Öne Çıkanlar",
       onClickHandled: oneCikanlarHandled,
     },
     {
@@ -34,14 +34,13 @@ function index() {
     const { name, onClickHandled } = props;
     return (
       <Button
-        size={{ base: "sm", md: "md" }}
+      fontSize={12}
         color={"white"}
         bgGradient={"linear(to-l, #7928CA, #FF0080)"}
         _hover={{
           bgGradient: "linear(to-l, #7928AA, #FF0060)",
         }}
         onClick={onClickHandled}
-        padding={5}
       >
         {name}
       </Button>
@@ -49,13 +48,11 @@ function index() {
   };
 
   return (
-    
-      <Flex direction={"row"} justifyContent={"space-around"}>
-        {buttons.map((button, index) => (
-          <HighlightButton key={index} {...button} />
-        ))}{" "}
-      </Flex>
-   
+    <Flex direction={"row"} justifyContent={"space-around"}>
+      {buttons.map((button, index) => (
+        <HighlightButton key={index} {...button} />
+      ))}{" "}
+    </Flex>
   );
 }
 
