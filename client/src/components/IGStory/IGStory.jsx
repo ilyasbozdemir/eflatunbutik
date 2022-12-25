@@ -9,7 +9,7 @@ import {
   Icon,
   background,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -64,8 +64,10 @@ const images = [
 ];
 const ImageItem = (props) => {
   const { src, to, name, ...rest } = props;
+  const navigate = useNavigate();
+
   return (
-    <Link to={to}>
+    <>
       <Stack
         display={"flex !important"}
         direction={"column"}
@@ -73,6 +75,9 @@ const ImageItem = (props) => {
         alignItems={"center"}
         overflow={"auto"}
         {...rest}
+        onClick={() => {
+          navigate(to);
+        }}
       >
         <Image
           css={{
@@ -89,7 +94,7 @@ const ImageItem = (props) => {
           {name}
         </Text>
       </Stack>
-    </Link>
+    </>
   );
 };
 
