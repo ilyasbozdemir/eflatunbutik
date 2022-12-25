@@ -47,7 +47,7 @@ function ScrollToTop() {
             bgGradient="linear(to-l, #ac28ca, #ff1060)"
             _hover={{ bgGradient: "linear(to-r, #ac28ca, #ff1060)" }}
             position={"fixed"}
-            bottom={"80px"}
+            bottom={{base:"80px",lg:'40px'}}
             right={"15px"}
             zIndex={500}
             boxShadow={
