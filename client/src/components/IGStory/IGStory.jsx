@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import { Flex, Image, Stack, Text, Box, Icon } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Stack,
+  Text,
+  Box,
+  Icon,
+  background,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import styles from "./index.module.css";
+
+import { motion } from "framer-motion";
 
 const images = [
   {
@@ -34,7 +44,7 @@ const images = [
   },
 ];
 const ImageItem = (props) => {
-  const { src, to, name } = props;
+  const { src, to, name, ...rest } = props;
   return (
     <Link to={to}>
       <Stack
@@ -43,6 +53,7 @@ const ImageItem = (props) => {
         w={110}
         alignItems={"center"}
         overflow={"auto"}
+        {...rest}
       >
         <Image
           css={{
@@ -67,10 +78,19 @@ const ImageItem = (props) => {
 };
 
 function IGStory() {
- 
   return (
     <>
-      
+      <motion.div className={styles.carousel}>
+        <motion.div drag={'x'}  className={styles.inner_carousel}>
+          {images.map((image, index) => {
+            return (
+              <motion.div className={styles.item}>
+                <ImageItem key={index} {...image}  />
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </motion.div>
     </>
   );
 }

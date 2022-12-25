@@ -1,0 +1,11 @@
+.carousel {
+  cursor: grab;
+  overflow:hidden;
+}
+.inner_carousel {
+  display: flex;
+}
+.item {
+  width: 33%;
+  padding: 20px;
+}
