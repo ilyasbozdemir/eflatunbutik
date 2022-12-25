@@ -58,17 +58,17 @@ export const ProductCard = (props) => {
   const [w, setW] = React.useState();
 
   React.useEffect(() => {
-    setW(100);
+    setW(120);
     console.log("mobile" + isLargerThan320 + " " + isLessThan480);
   }, [isLargerThan320, isLessThan480]);
 
   React.useEffect(() => {
-    setW(120);
+    setW(140);
     console.log("tablet" + isLargerThan481 + " " + isLessThan1024);
   }, [isLargerThan481, isLessThan1024]);
 
   React.useEffect(() => {
-    setW(130);
+    setW(140);
     console.log("laptops" + isLargerThan769 + " " + isLessThan768);
   }, [isLargerThan769, isLessThan768]);
 
@@ -120,7 +120,7 @@ export const ProductCard = (props) => {
             <Stack spacing="1">
               <Link>
                 <Text
-                  fontSize={13}
+                  fontSize={[12, 13, 14, 15, 16]}
                   color={useColorModeValue("gray.700", "gray.400")}
                   css={{
                     overflow: "hidden",

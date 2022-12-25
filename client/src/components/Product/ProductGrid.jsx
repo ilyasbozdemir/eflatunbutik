@@ -8,10 +8,8 @@ export const ProductGrid = (props) => {
     <SimpleGrid
       ml={1}
       columns={[2, 3, 4, 5, 6]}
-      gap={5}
+      gap={[1, 2, 3, 4, 5]}
       h={"100%"}
-      pos={"relative"}
-      zIndex={150}
     >
       {child.map((c, i) => (
         <div key={i}>{c}</div>

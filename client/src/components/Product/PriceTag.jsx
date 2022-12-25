@@ -7,9 +7,26 @@ function PriceTag(props) {
     <>
       <HStack>
         {salePrice === undefined ? null : (
-          <Text color={"gray.500"} as={"s"}>{`${salePrice} TL`}</Text>
+          <Text
+            fontSize={[12, 13, 14, 15, 16]}
+            css={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellips",
+            }}
+            color={"gray.500"}
+            as={"s"}
+          >{`${salePrice} TL`}</Text>
         )}
-        <Text color={"#cc19e0"}>{`${price} TL`}</Text>
+        <Text
+          fontSize={[12, 13, 14, 15, 16]}
+          css={{
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellips",
+          }}
+          color={"#cc19e0"}
+        >{`${price} TL`}</Text>
       </HStack>
     </>
   );
