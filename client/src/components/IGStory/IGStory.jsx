@@ -21,12 +21,6 @@ import { motion } from "framer-motion";
 
 const images = [
   {
-    name: "Sana Özel",
-    onClickHandled: "",
-    to: "/sanaozel/",
-    src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-  },
-  {
     name: "Yeni Gelenler",
     onClickHandled: "",
     to: "/yeni-gelenler/",
@@ -104,10 +98,10 @@ function IGStory() {
   const [width, setWidth] = React.useState(0);
   const carousel = React.useRef();
   const item = React.useRef();
-
+  const WindowDimensions = useWindowDimensions();
   React.useLayoutEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-  }, []);
+  }, [WindowDimensions.width]);
 
   return (
     <motion.div ref={carousel} className={styles.carousel}>
