@@ -1,10 +1,10 @@
 .carousel {
-  cursor: grab;
   overflow:hidden;
+  cursor:grab;
 }
 .inner_carousel {
   display: flex;
 }
 .item {
-  padding: 10px;
+  padding: 5px;
 }
