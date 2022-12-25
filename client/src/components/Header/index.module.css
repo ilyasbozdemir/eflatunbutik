@@ -2,6 +2,7 @@
   position: relative;
 }
 
+
 .search .search_result {
   position: absolute;
   top: 25px;
@@ -24,20 +25,17 @@
   display: none;
 }
 
-
 .search .search_result .search_result_item {
   align-items: center;
   cursor: pointer;
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px #a020f0 solid;
 }
 
-
-
 .search .search_result .search_result_item:hover {
-  background: #DC92E0;
-  color:#fff;
+  background: #dc92e0;
+  color: #fff;
 }
 
 .search .result_not_found {

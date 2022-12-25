@@ -5,7 +5,7 @@ import { ProductGrid } from "./ProductGrid";
 
 function index({ categoryData }) {
   return (
-    <Box>
+    <Box my={5}>
       <ProductGrid>
         {categoryData?.map((product) => (
           <ProductCard key={product.id} product={product} />

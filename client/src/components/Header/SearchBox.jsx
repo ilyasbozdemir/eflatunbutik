@@ -286,7 +286,7 @@ function SearchBox(props) {
           ref={searchRef}
           className={styles.search}
           {...props}
-          w={{ base: '13.5em', md: "30em" }}
+          w={{ base: '14.5em', md: "30em" }}
           maxWidth={{ base: "30em" }}
         >
           <Flex
