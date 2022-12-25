@@ -21,7 +21,7 @@ import iyzicoLogo from "../../assests/iyzico_ile_ode_colored.svg";
 function index() {
   return (
     <Container
-    pos={'relative'}
+      pos={"relative"}
       zIndex={150}
       as="footer"
       maxW={"container.lg"}

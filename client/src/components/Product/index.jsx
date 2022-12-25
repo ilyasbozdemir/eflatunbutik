@@ -5,20 +5,7 @@ import { ProductGrid } from "./ProductGrid";
 
 function index({ categoryData }) {
   return (
-    <Box
-      maxW="7xl"
-      mx="auto"
-      px={{
-        base: "4",
-        md: "4",
-        lg: "6",
-      }}
-      py={{
-        base: "3",
-        md: "4",
-        lg: "6",
-      }}
-    >
+    <Box>
       <ProductGrid>
         {categoryData?.map((product) => (
           <ProductCard key={product.id} product={product} />

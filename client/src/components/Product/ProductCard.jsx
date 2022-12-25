@@ -54,34 +54,30 @@ export const ProductCard = (props) => {
   const [isLargerThan1025] = useMediaQuery("(min-width: 1025px)");
   const [isLessThan1200] = useMediaQuery("(max-width: 1200px)");
 
-  const [h, setH] = React.useState();
+  //const [h, setH] = React.useState();
   const [w, setW] = React.useState();
 
   React.useEffect(() => {
-    setH(100);
     setW(100);
     console.log("mobile" + isLargerThan320 + " " + isLessThan480);
   }, [isLargerThan320, isLessThan480]);
 
   React.useEffect(() => {
-    setH(120);
     setW(120);
     console.log("tablet" + isLargerThan481 + " " + isLessThan1024);
   }, [isLargerThan481, isLessThan1024]);
 
   React.useEffect(() => {
-    setH(130);
     setW(130);
     console.log("laptops" + isLargerThan769 + " " + isLessThan768);
   }, [isLargerThan769, isLessThan768]);
 
   React.useEffect(() => {
-    setH(150);
     setW(150);
     console.log("desktops" + isLargerThan1025 + " " + isLessThan1200);
   }, [isLargerThan1025, isLessThan1200]);
   return (
-    <Stack position="relative" h={h} w={w}>
+    <Stack position="relative" w={w}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
