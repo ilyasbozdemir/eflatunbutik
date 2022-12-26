@@ -12,7 +12,7 @@ const ProductContent = (props) => {
           gap="2"
           borderRadius={"10px 10px"}
         >
-          <ButtonGroup size="md" isAttached variant="outline">
+          <ButtonGroup size="md"  variant="outline">
             <Button aria-label="product filters" onClick={onShowSidebar}>
               <Icon as={TbFilter} />
               Filtrele

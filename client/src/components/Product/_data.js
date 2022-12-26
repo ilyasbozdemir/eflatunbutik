@@ -59,6 +59,7 @@ export const products = [
     slug: "marble-leather",
     currency: "TRY",
     price: 249.99,
+    salePrice: 299.99,
     rating: 4,
     ratingCount: 5,
     description:

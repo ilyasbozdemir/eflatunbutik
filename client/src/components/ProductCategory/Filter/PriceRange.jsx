@@ -22,20 +22,29 @@ import {
 import { ButtonGroup, IconButton } from "@chakra-ui/react";
 import { CloseIcon, CheckIcon, EditIcon } from "@chakra-ui/icons";
 
-function PriceRange() {
-  const minPrice = 90;
-  const maxPrice = 300;
+import { useSearchParams, useLocation } from "react-router-dom";
+
+function PriceRange(props) {
+  const { minPrice, maxPrice } = props.prices;
+
   const step = 1;
   const [sliderValue, setSliderValue] = React.useState([minPrice, maxPrice]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const onChanged = ([min, max]) => {
     setSliderValue([min, max]);
   };
 
-  let tutar = 125;
-  tutar = tutar + (tutar * 44) / 100
+  React.useEffect(() => {
 
- 
+    setSearchParams({ fiyat: `${sliderValue[0]},${sliderValue[1]}` });
+    
+  }, [sliderValue]);
+
+  //searchParams.forEach((value, key) => {});
+
   return (
     <>
       <Box w={"90%"}>

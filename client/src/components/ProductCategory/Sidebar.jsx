@@ -11,16 +11,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { Icon, Stack, FormControl, FormLabel, Box } from "@chakra-ui/react";
-
-import { AiFillStar } from "react-icons/ai";
-
-import { Radio, RadioGroup } from "@chakra-ui/react";
-import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
-import { Switch } from "@chakra-ui/react";
-
-import { linkItems } from "../../constants/LinkItems";
-import { Link, useLocation } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 
 import PriceRange from "./Filter/PriceRange";
 import Categories from "./Filter/Categories";
@@ -39,7 +30,7 @@ const SidebarContent = (props) => {
       <Box {...rest}>
         <VStack my={3}>
           <Categories />
-          <PriceRange />
+          <PriceRange prices={{ minPrice: 125, maxPrice: 300 }} />
           <EvaluationScore />
           <BodySize />
           <Colors
@@ -56,7 +47,23 @@ const SidebarContent = (props) => {
 
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (
-    <Box overflow={"auto"} overflowY={"scroll"} w="200px" h={"container.md"}>
+    <Box
+      overflowY={"auto"}
+      w="200px"
+      h={"container.md"}
+      css={{
+        '&::-webkit-scrollbar': {
+          width: '4px',
+        },
+        '&::-webkit-scrollbar-track': {
+          width: '5px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: '#FF0080',
+          borderRadius: '12px',
+        },
+      }}
+    >
       <SidebarContent onClick={onClose} />
     </Box>
   ) : (

@@ -13,8 +13,7 @@ import ProductContent from "./ProductContent";
 import Sidebar from "./Sidebar";
 import { encode, decode } from "html-entities";
 
-import { useSearchParams } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation,useSearchParams } from "react-router-dom";
 
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
