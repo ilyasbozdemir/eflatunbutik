@@ -47,7 +47,7 @@ export const ProductCard = (props) => {
   const [isLargerThan320] = useMediaQuery("(min-width: 320px)");
   const [isLessThan480] = useMediaQuery("(max-width: 480px)");
   //iPads, Tablets
-  const [isLargerThan481] = useMediaQuery("(min-width: 481px)");
+  const [isLargerThan481] = useMediaQuery("(min-width: 480px)");
   const [isLessThan768] = useMediaQuery("(max-width: 768px)");
   //Small screens, laptops
   const [isLargerThan769] = useMediaQuery("(min-width: 769px)");
@@ -67,7 +67,7 @@ export const ProductCard = (props) => {
   }, [isLargerThan320, isLessThan480]);
 
   React.useEffect(() => {
-    setW(140);
+    setW(130);
     console.log("tablet" + isLargerThan481 + " " + isLessThan1024);
   }, [isLargerThan481, isLessThan1024]);
 

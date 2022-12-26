@@ -10,7 +10,7 @@ const DiscountInCart = () => {
     <Text fontWeight={"semibold"} as="h4">
       <FormControl display="flex" alignItems="center">
         <FormLabel htmlFor="campaign-products" mb="0">
-          Sepette Kampanyalı Ürünler
+          Sepette Kampanya
         </FormLabel>
         <Switch id="campaign-products" colorScheme="pink" />
       </FormControl>
