@@ -21,9 +21,9 @@ const GetColorCheckbox = ({ name }) => {
         onClick={(e) => {
           alert(e.target.dataset.value);
         }}
-        w={5}
-        h={5}
-        borderRadius={"50% 50%"}
+        w={8}
+        h={8}
+        borderRadius={"10px"}
         bg={name}
         border={"1px #000 solid"}
         mx={1}

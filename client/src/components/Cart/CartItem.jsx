@@ -86,7 +86,7 @@ export const CartItem = (props) => {
         }}
       >
         <Link fontSize="sm" textDecor="underline">
-          Delete
+          Sil
         </Link>
         <QuantitySelect
           value={quantity}
