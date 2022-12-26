@@ -62,7 +62,7 @@ export const ProductCard = (props) => {
   const [w, setW] = React.useState();
 
   React.useEffect(() => {
-    setW(120);
+    setW(100);
     console.log("mobile" + isLargerThan320 + " " + isLessThan480);
   }, [isLargerThan320, isLessThan480]);
 
@@ -72,12 +72,12 @@ export const ProductCard = (props) => {
   }, [isLargerThan481, isLessThan1024]);
 
   React.useEffect(() => {
-    setW(140);
+    setW(160);
     console.log("laptops" + isLargerThan769 + " " + isLessThan768);
   }, [isLargerThan769, isLessThan768]);
 
   React.useEffect(() => {
-    setW(150);
+    setW(170);
     console.log("desktops" + isLargerThan1025 + " " + isLessThan1200);
   }, [isLargerThan1025, isLessThan1200]);
   return (

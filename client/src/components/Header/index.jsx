@@ -37,7 +37,6 @@ function index({ onOpen, ...rest }) {
     <>
       <>
         <Box
-       
           as="header"
           display={"flex"}
           position="sticky"

@@ -5,12 +5,11 @@ export const ProductGrid = (props) => {
   const child = React.Children.toArray(props.children);
 
   return (
-    <SimpleGrid
-      ml={1}
-      columns={[2, 3, 4, 5, 6]}
-      gap={[1, 2, 3, 4, 5]}
-      h={"100%"}
-    >
+    <SimpleGrid 
+    ml={1} 
+    columns={[2, 3, 4]}
+     gap={[1, 2, 3, 4]}
+      >
       {child.map((c, i) => (
         <div key={i}>{c}</div>
       ))}

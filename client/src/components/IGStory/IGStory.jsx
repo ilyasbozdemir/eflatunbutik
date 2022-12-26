@@ -116,8 +116,8 @@ function IGStory() {
       >
         {images.map((image, index) => {
           return (
-            <motion.div ref={item} className={styles.item}>
-              <ImageItem key={index} {...image} />
+            <motion.div key={index} ref={item} className={styles.item}>
+              <ImageItem {...image} />
             </motion.div>
           );
         })}
