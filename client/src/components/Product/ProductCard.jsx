@@ -94,32 +94,33 @@ export const ProductCard = (props) => {
         zIndex={100}
         p={1}
       >
-        <Link
-          as={"a"}
-          href={`/p/${id}-${slug}`}
-          target={"_blank"}
-          _hover={{
-            textDecoration: "none",
-          }}
-        >
+        <>
           <Box position="relative">
-            <AspectRatio ratio={2 / 3} overflow={"hidden"}>
-              <Image
-                src={src}
-                alt={alt}
-                draggable={false}
-                fallback={<Skeleton />}
-                borderRadius={useBreakpointValue({
-                  base: "md",
-                  md: "xl",
-                })}
-                transition="all .5s ease-in-out"
-                _hover={{
-                  transform: "scale(1.02)",
-                }}
-              />
-            </AspectRatio>
-
+            <Link
+              as={"a"}
+              href={`/p/${id}-${slug}`}
+              target={"_blank"}
+              _hover={{
+                textDecoration: "none",
+              }}
+            >
+              <AspectRatio ratio={2 / 3} overflow={"hidden"}>
+                <Image
+                  src={src}
+                  alt={alt}
+                  draggable={false}
+                  fallback={<Skeleton />}
+                  borderRadius={useBreakpointValue({
+                    base: "md",
+                    md: "xl",
+                  })}
+                  transition="all .5s ease-in-out"
+                  _hover={{
+                    transform: "scale(1.02)",
+                  }}
+                />
+              </AspectRatio>
+            </Link>
             <FavouriteButton
               position="absolute"
               top="0"
@@ -127,22 +128,6 @@ export const ProductCard = (props) => {
               aria-label={`Add ${name} to your favourites`}
               zIndex={110}
             />
-            {/*
-          
-            <Text
-              position="absolute"
-              top="1"
-              left="1"
-              aria-label={`badge ${name} tickets`}
-              zIndex={110}
-              bg={"green.500"}
-              color={"white"}
-              borderRadius={"3px"}
-              p={0.2}
-            >
-              {flag}
-            </Text>
-   */}
 
             {salePrice !== undefined ? (
               <>
@@ -166,55 +151,65 @@ export const ProductCard = (props) => {
             )}
           </Box>
           <Stack>
-            <Stack spacing="1">
-              <Link>
-                <Text
-                  fontSize={[12, 13, 14, 15, 16]}
-                  color={useColorModeValue("gray.700", "gray.400")}
-                  css={{
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellips",
-                  }}
-                >
-                  <Tooltip
-                    placement={"top"}
-                    openDelay={100}
-                    label={name}
-                    fontSize={13}
-                  >
-                    {name}
-                  </Tooltip>
-                </Text>
-              </Link>
-
-              <PriceTag
-                price={price}
-                salePrice={salePrice}
-                currency="TRY"
-                locale={"tr-TR"}
-              />
-            </Stack>
-            <HStack>
-              <Rating defaultValue={rating} size={ratingSize} />
-
-              {ratingCount === 0 ? null : (
-                <>
+            <Link
+              as={"a"}
+              href={`/p/${id}-${slug}`}
+              target={"_blank"}
+              _hover={{
+                textDecoration: "none",
+              }}
+            >
+              <Stack spacing="1">
+                <Link>
                   <Text
-                    _dark={{ color: "gray.400" }}
-                    _light={{ color: "gray.600" }}
-                    fontSize={ratingSize}
+                    fontSize={[12, 13, 14, 15, 16]}
+                    color={useColorModeValue("gray.700", "gray.400")}
+                    css={{
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      textOverflow: "ellips",
+                    }}
                   >
                     <Tooltip
-                      label={`Yorum sayısı :${ratingCount}`}
-                      children={`(${ratingCount})`}
-                    />
+                      placement={"top"}
+                      openDelay={100}
+                      label={name}
+                      fontSize={13}
+                    >
+                      {name}
+                    </Tooltip>
                   </Text>
-                </>
-              )}
-            </HStack>
+                </Link>
+
+                <PriceTag
+                  price={price}
+                  salePrice={salePrice}
+                  currency="TRY"
+                  locale={"tr-TR"}
+                />
+              </Stack>
+
+              <HStack>
+                <Rating defaultValue={rating} size={ratingSize} />
+
+                {ratingCount === 0 ? null : (
+                  <>
+                    <Text
+                      _dark={{ color: "gray.400" }}
+                      _light={{ color: "gray.600" }}
+                      fontSize={ratingSize}
+                    >
+                      <Tooltip
+                        label={`Yorum sayısı :${ratingCount}`}
+                        children={`(${ratingCount})`}
+                      />
+                    </Text>
+                  </>
+                )}
+              </HStack>
+            </Link>
           </Stack>
-        </Link>
+        </>
 
         <Stack align="center" mt={2}>
           <AddToCardButton product={product} />
