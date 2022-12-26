@@ -3,7 +3,7 @@ import { Text, Box } from "@chakra-ui/react";
 
 import { Stack } from "@chakra-ui/react";
 import { useRadio, useRadioGroup } from "@chakra-ui/react";
-import { Radio, RadioGroup } from "@chakra-ui/react";
+import { Label, Input, Image } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 const CategoryName = ({ name }) => {
   return (
@@ -15,7 +15,7 @@ const CategoryName = ({ name }) => {
   );
 };
 
-function RadioCard(props) {
+function BodySizeRadioCard(props) {
   const { getInputProps, getCheckboxProps } = useRadio(props);
 
   const input = getInputProps();
@@ -33,7 +33,7 @@ function RadioCard(props) {
         _checked={{
           bg: "pink.600",
           color: "white",
-          borderColor: "pink.500",
+          borderColor: "pink.600",
         }}
         px={1}
         py={1}
@@ -45,44 +45,40 @@ function RadioCard(props) {
 }
 
 const BodySize = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = React.useState("1");
 
-  /*const { name, value } = { name: "filtreler", value: "test-value" };
-
-  //filtreler=bedenler:XS;renk:Siyah
-
-  setSearchParams({
-    [name]: value,
-  });*/
-
-  const [value, setValue] = React.useState(36);
-
-  const options = [36, 38, 40, 42, 44, 46];
+  const options = [
+    "36",
+    "38",
+    "40",
+    "42",
+    "44",
+    "46",
+  ];
 
   const handleChange = (value) => {
     console.log("value change ");
   };
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: "Beden",
+    id: "Beden",
+    name: "EvaluationScore",
     defaultValue: value,
     onChange: handleChange,
   });
   const group = getRootProps();
 
-  console.table(group);
-
   return (
     <Box w={"100%"} fontFamily={"corbel"}>
       <CategoryName name={"Beden"} />
 
-      <Stack id={'Beden'} spacing={5} direction="column" {...group} mt={1}>
+      <Stack id={"Beden"} spacing={5} direction="column" mt={1} {...group}>
         {options.map((value) => {
           const radio = getRadioProps({ value });
           return (
-            <RadioCard key={value} {...radio}>
+            <BodySizeRadioCard key={value} {...radio}>
               {value}
-            </RadioCard>
+            </BodySizeRadioCard>
           );
         })}
       </Stack>

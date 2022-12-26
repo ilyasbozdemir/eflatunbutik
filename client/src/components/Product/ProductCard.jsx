@@ -80,6 +80,16 @@ export const ProductCard = (props) => {
     setW(170);
     console.log("desktops" + isLargerThan1025 + " " + isLessThan1200);
   }, [isLargerThan1025, isLessThan1200]);
+
+  const linkVariants = {
+    as: "a",
+    href: `/p/${id}-${slug}`,
+    target: "_blank",
+    _hover: {
+      textDecoration: "none",
+    },
+  };
+
   return (
     <Stack w={w}>
       <Stack
@@ -96,14 +106,7 @@ export const ProductCard = (props) => {
       >
         <>
           <Box position="relative">
-            <Link
-              as={"a"}
-              href={`/p/${id}-${slug}`}
-              target={"_blank"}
-              _hover={{
-                textDecoration: "none",
-              }}
-            >
+            <Link {...linkVariants}>
               <AspectRatio ratio={2 / 3} overflow={"hidden"}>
                 <Image
                   src={src}
@@ -151,14 +154,7 @@ export const ProductCard = (props) => {
             )}
           </Box>
           <Stack>
-            <Link
-              as={"a"}
-              href={`/p/${id}-${slug}`}
-              target={"_blank"}
-              _hover={{
-                textDecoration: "none",
-              }}
-            >
+            <Link {...linkVariants}>
               <Stack spacing="1">
                 <Link>
                   <Text

@@ -10,7 +10,7 @@ import { useSearchParams, useLocation } from "react-router-dom";
 
 import { useRadio, useRadioGroup } from "@chakra-ui/react";
 
-function RadioCard(props) {
+function EvaluationScoreRadioCard(props) {
   const { getInputProps, getCheckboxProps } = useRadio(props);
 
   const input = getInputProps();
@@ -30,9 +30,9 @@ function RadioCard(props) {
           color: "white",
           borderColor: "pink.600",
         }}
-       
         px={1}
         py={1}
+       
       >
         {props.children}
       </Box>
@@ -55,6 +55,7 @@ function EvaluationScore() {
   };
 
   const { getRootProps, getRadioProps } = useRadioGroup({
+    id: "Beden",
     name: "EvaluationScore",
     defaultValue: value,
     onChange: handleChange,
@@ -63,7 +64,7 @@ function EvaluationScore() {
 
   return (
     <>
-      <Box w={"100%"} fontFamily={"corbel"}>
+      <Box id='beden' w={"100%"} fontFamily={"corbel"}>
         <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
           {"Değerlendirme Puanı"}
         </Text>
@@ -71,9 +72,9 @@ function EvaluationScore() {
           {options.map((value) => {
             const radio = getRadioProps({ value });
             return (
-              <RadioCard key={value} {...radio}>
+              <EvaluationScoreRadioCard key={value} {...radio}>
                 {value}
-              </RadioCard>
+              </EvaluationScoreRadioCard>
             );
           })}
         </Stack>
