@@ -6,42 +6,77 @@ import { Icon, Stack, Box } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 
 import { Radio, RadioGroup } from "@chakra-ui/react";
+import { useSearchParams, useLocation } from "react-router-dom";
+
+import { useRadio, useRadioGroup } from "@chakra-ui/react";
+
+function RadioCard(props) {
+  const { getInputProps, getCheckboxProps } = useRadio(props);
+
+  const input = getInputProps();
+  const checkbox = getCheckboxProps();
+
+  return (
+    <Box as="label">
+      <input {...input} />
+      <Box
+        {...checkbox}
+        cursor="pointer"
+        borderWidth="1px"
+        borderRadius="md"
+        boxShadow="md"
+        _checked={{
+          bg: "pink.600",
+          color: "white",
+          borderColor: "pink.600",
+        }}
+       
+        px={1}
+        py={1}
+      >
+        {props.children}
+      </Box>
+    </Box>
+  );
+}
 
 function EvaluationScore() {
+  const [value, setValue] = React.useState("1");
+
+  const options = [
+    "4 yıldız ve üzeri",
+    "3 yıldız ve üzeri",
+    "2 yıldız ve üzeri",
+    "1 yıldız ve üzeri",
+  ];
+
+  const handleChange = (value) => {
+    console.log("value change ");
+  };
+
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: "EvaluationScore",
+    defaultValue: value,
+    onChange: handleChange,
+  });
+  const group = getRootProps();
+
   return (
     <>
       <Box w={"100%"} fontFamily={"corbel"}>
         <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
           {"Değerlendirme Puanı"}
         </Text>
-        <RadioGroup defaultValue="2">
-          <Stack spacing={5} direction="column">
-            <Radio colorScheme="pink" value="1">
-              <Flex justifyContent={"center"} textAlign={"center"}>
-                <Icon as={AiFillStar} color={"yellow.400"} />
-                <Text> 4 yıldız ve üzeri</Text>
-              </Flex>
-            </Radio>
-            <Radio colorScheme="pink" value="2">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} />{" "}
-                <Text>3 yıldız ve üzeri</Text>
-              </Flex>
-            </Radio>
-            <Radio colorScheme="pink" value="3">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} />{" "}
-                <Text>2 yıldız ve üzeri</Text>
-              </Flex>
-            </Radio>
-            <Radio colorScheme="pink" value="4">
-              <Flex>
-                <Icon as={AiFillStar} color={"yellow.400"} />{" "}
-                <Text>1 yıldız ve üzeri</Text>
-              </Flex>
-            </Radio>
-          </Stack>
-        </RadioGroup>
+        <Stack spacing={5} direction="column" {...group} mt={1}>
+          {options.map((value) => {
+            const radio = getRadioProps({ value });
+            return (
+              <RadioCard key={value} {...radio}>
+                {value}
+              </RadioCard>
+            );
+          })}
+        </Stack>
       </Box>
     </>
   );

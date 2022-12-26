@@ -78,7 +78,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
 
           <DrawerBody>
             {/* <SidebarContent onClick={onClose} /> */}
-            (Mobile Filter Content)
+            <SidebarContent onClick={onClose} />
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>
