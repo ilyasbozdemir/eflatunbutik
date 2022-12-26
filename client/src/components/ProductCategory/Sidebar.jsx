@@ -48,20 +48,21 @@ const SidebarContent = (props) => {
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === "sidebar" ? (
     <Box
-      overflowY={"auto"}
+      position="relative"
+      overflow={"auto"}
       w="200px"
-      minW={'200px'}
+      minW={"200px"}
       h={"container.md"}
       css={{
-        '&::-webkit-scrollbar': {
-          width: '4px',
+        "&::-webkit-scrollbar": {
+          width: "4px",
         },
-        '&::-webkit-scrollbar-track': {
-          width: '5px',
+        "&::-webkit-scrollbar-track": {
+          width: "5px",
         },
-        '&::-webkit-scrollbar-thumb': {
-          background: '#FF0080',
-          borderRadius: '12px',
+        "&::-webkit-scrollbar-thumb": {
+          background: "#444",
+          borderRadius: "12px",
         },
       }}
     >

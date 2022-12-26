@@ -45,7 +45,7 @@ function BodySizeRadioCard(props) {
 }
 
 const BodySize = () => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("36");
 
   const options = [
     "36",
@@ -62,7 +62,7 @@ const BodySize = () => {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     id: "Beden",
-    name: "EvaluationScore",
+    name: "BodySize",
     defaultValue: value,
     onChange: handleChange,
   });
