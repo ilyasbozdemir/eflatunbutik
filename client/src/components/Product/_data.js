@@ -32,7 +32,7 @@ export const products = [
     slug: "muhtesem-tasarim-elbise-kahve",
     currency: "TRY",
     price: 299.99,
-    flag: "new",
+    flag: "Yeni✨",
     rating: 4,
     ratingCount: 1,
     description:
@@ -45,8 +45,8 @@ export const products = [
     slug: "iconic-turquoise",
     currency: "TRY",
     price: 125,
-    salePrice: 179.99,
-    flag: "Yeni",
+    salePrice: 189.99,
+    flag: "Yeni✨",
     rating: 5,
     ratingCount: 3,
     description:

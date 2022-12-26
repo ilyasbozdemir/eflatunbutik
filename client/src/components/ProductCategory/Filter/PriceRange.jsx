@@ -32,6 +32,10 @@ function PriceRange() {
     setSliderValue([min, max]);
   };
 
+  let tutar = 125;
+  tutar = tutar + (tutar * 44) / 100
+
+ 
   return (
     <>
       <Box w={"90%"}>
@@ -92,7 +96,7 @@ const InputRangeSliderEditableControls = (props) => {
       value={props.value}
       isPreviewFocusable={true}
       selectAllOnFocus={false}
-      variant={'ghost'}
+      variant={"ghost"}
     >
       <Tooltip label="Düzenle">
         <EditablePreview

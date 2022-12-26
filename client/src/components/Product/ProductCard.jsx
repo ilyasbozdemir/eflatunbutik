@@ -32,9 +32,11 @@ import PriceTag from "./PriceTag";
 import { Tooltip } from "@chakra-ui/react";
 import AddToCardButton from "./AddToCardButton";
 
+import { Badge } from "@chakra-ui/react";
+
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, price, salePrice, rating, ratingCount, slug, imageUrl } =
+  const { name, price, salePrice, rating, ratingCount, slug, imageUrl, flag } =
     product;
   const { id, src, alt } = imageUrl;
 
@@ -53,6 +55,8 @@ export const ProductCard = (props) => {
   //Desktops, large screens
   const [isLargerThan1025] = useMediaQuery("(min-width: 1025px)");
   const [isLessThan1200] = useMediaQuery("(max-width: 1200px)");
+
+  const discountPercentage = Math.ceil(((salePrice - price) / price) * 100);
 
   //const [h, setH] = React.useState();
   const [w, setW] = React.useState();
@@ -77,7 +81,7 @@ export const ProductCard = (props) => {
     console.log("desktops" + isLargerThan1025 + " " + isLessThan1200);
   }, [isLargerThan1025, isLessThan1200]);
   return (
-    <Stack position="relative" w={w}>
+    <Stack w={w}>
       <Stack
         textDecoration="none"
         cursor={"pointer"}
@@ -98,7 +102,7 @@ export const ProductCard = (props) => {
             textDecoration: "none",
           }}
         >
-          <Box>
+          <Box position="relative">
             <AspectRatio ratio={2 / 3} overflow={"hidden"}>
               <Image
                 src={src}
@@ -115,6 +119,51 @@ export const ProductCard = (props) => {
                 }}
               />
             </AspectRatio>
+
+            <FavouriteButton
+              position="absolute"
+              top="0"
+              right="1"
+              aria-label={`Add ${name} to your favourites`}
+              zIndex={110}
+            />
+            {/*
+          
+            <Text
+              position="absolute"
+              top="1"
+              left="1"
+              aria-label={`badge ${name} tickets`}
+              zIndex={110}
+              bg={"green.500"}
+              color={"white"}
+              borderRadius={"3px"}
+              p={0.2}
+            >
+              {flag}
+            </Text>
+   */}
+
+            {salePrice !== undefined ? (
+              <>
+                <Text
+                  fontSize={13}
+                  position="absolute"
+                  bottom="1"
+                  right="1"
+                  aria-label={`discount ${name} product`}
+                  zIndex={110}
+                  bg={"red.500"}
+                  color={"white"}
+                  borderRadius={"3px"}
+                  p={0.2}
+                >
+                  -{discountPercentage}%
+                </Text>
+              </>
+            ) : (
+              ""
+            )}
           </Box>
           <Stack>
             <Stack spacing="1">
@@ -128,7 +177,12 @@ export const ProductCard = (props) => {
                     textOverflow: "ellips",
                   }}
                 >
-                  <Tooltip placement={'top'}  openDelay={100} label={name} fontSize={13}>
+                  <Tooltip
+                    placement={"top"}
+                    openDelay={100}
+                    label={name}
+                    fontSize={13}
+                  >
                     {name}
                   </Tooltip>
                 </Text>
@@ -170,13 +224,6 @@ export const ProductCard = (props) => {
         </Stack>
       </Stack>
 
-      <FavouriteButton
-        position="absolute"
-        top="0"
-        right="1"
-        aria-label={`Add ${name} to your favourites`}
-        zIndex={110}
-      />
       <QuickProductDetailModal
         isOpen={isOpen}
         onClose={onClose}
