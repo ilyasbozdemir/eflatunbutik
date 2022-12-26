@@ -22,12 +22,13 @@ export const linkItems = [
     href: "/triko/",
     childrens: [],
   },
+  /*
   {
     label: "İç Giyim",
     icon: GiClothes,
     href: "/ic-giyim/",
     childrens: [],
-  },
+  },*/
   {
     label: "Üst Giyim",
     icon: GiClothes,

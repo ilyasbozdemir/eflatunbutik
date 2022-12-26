@@ -50,6 +50,7 @@ const Sidebar = ({ isOpen, variant, onClose }) => {
     <Box
       overflowY={"auto"}
       w="200px"
+      minW={'200px'}
       h={"container.md"}
       css={{
         '&::-webkit-scrollbar': {
