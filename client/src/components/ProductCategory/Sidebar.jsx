@@ -50,6 +50,7 @@ const SidebarContent = (props) => {
       value: "#745E3D",
       label: "Haki",
     },
+
     {
       value: "#FF1493",
       label: "Pembe",
@@ -59,20 +60,44 @@ const SidebarContent = (props) => {
       label: "Turuncu",
     },
     {
+      value: "#8a7561",
+      label: "Vizon",
+    },
+    {
+      value: "#e3b1d2",
+      label: "Lila",
+    },
+    {
       value: "#8B0000",
       label: "Kahverengi",
     },
     {
-      value: "#800080",
+      value: "#dddddd",
+      label: "Gri",
+    },
+    {
+      value: "#6b181f",
+      label: "Bordo",
+    },
+    {
+      value: "#4c2572",
       label: "Mor",
+    },
+    {
+      value: "#8a3324",
+      label: "Kiremit",
+    },
+    {
+      value: "#50c878",
+      label: "Zümrüt",
+    },
+    {
+      value: "#ffdb58",
+      label: "Hardal",
     },
     {
       value: "#38A169",
       label: "Yeşil",
-    },
-    {
-      value: "#f0d01a",
-      label: "Sarı",
     },
   ];
 
