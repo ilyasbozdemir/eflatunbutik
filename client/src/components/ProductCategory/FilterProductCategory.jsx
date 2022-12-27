@@ -64,6 +64,8 @@ function FilterProductCategory(props) {
     "Mor",
     "150-350 arası ürün",
     "Kuponlu Ürünler",
+    "Kuponlu Ürünler",
+    "Kuponlu Ürünler",
   ]);
 
   const deleteByValue = (value) => {
@@ -148,6 +150,7 @@ function FilterProductCategory(props) {
               id="selected-filters-container"
               textAlign={"center"}
               justifyContent={"center"}
+              maxW={'container.md'}
             >
               <WrapItem>
                 <Tag size="md" variant="solid" colorScheme="gray">
@@ -158,18 +161,20 @@ function FilterProductCategory(props) {
               </WrapItem>
 
               {tags.map((tag, i) => (
-                <WrapItem>
-                  <Tag
-                    size="md"
-                    key={i}
-                    variant="solid"
-                    colorScheme="gray"
-                    boxShadow="rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px"
-                  >
-                    <TagLabel>{tag}</TagLabel>
-                    <TagCloseButton onClick={() => deleteByValue(tag)} />
-                  </Tag>
-                </WrapItem>
+                <>
+                  <WrapItem>
+                    <Tag
+                      size="md"
+                      key={i}
+                      variant="solid"
+                      colorScheme="gray"
+                      boxShadow="rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px"
+                    >
+                      <TagLabel>{tag}</TagLabel>
+                      <TagCloseButton onClick={() => deleteByValue(tag)} />
+                    </Tag>
+                  </WrapItem>
+                </>
               ))}
               <WrapItem>
                 <Button
