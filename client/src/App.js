@@ -33,6 +33,11 @@ function MyComponent() {
 */
 
 function App() {
+  let baslik = document.title;
+  
+  window.onblur = () => (document.title = "Geri Dön");
+  window.onfocus = () => (document.title = baslik);
+
   return (
     <Suspense fallback={<LazyComponentsSkeleton />}>
       <div>{/*<MyComponent />*/}</div>
