@@ -61,11 +61,13 @@ function FilterProductCategory(props) {
   const [tags, setTags] = useState([
     "3 Yıldızlı Ürün",
     "L",
+    "36",
+    "38",
+    "XL",
     "Mor",
     "150-350 arası ürün",
     "Kuponlu Ürünler",
-    "Kuponlu Ürünler",
-    "Kuponlu Ürünler",
+    "İndirimli Ürünler",
   ]);
 
   const deleteByValue = (value) => {
@@ -143,14 +145,21 @@ function FilterProductCategory(props) {
               </HStack>
             </Box>
           )}
-          <>
+          <Box
+            textAlign={"center"}
+            justifyContent={"center"}
+            ml={3}
+            mt={3}
+            border={"1px solid #cdc"}
+            borderRadius={"15px"}
+          >
             <Wrap
-              ml={3}
-              mt={3}
+              pl={3}
+              pt={3}
               id="selected-filters-container"
               textAlign={"center"}
               justifyContent={"center"}
-              maxW={'container.md'}
+              maxW={{ base: "200px", lg: "container.md" }}
             >
               <WrapItem>
                 <Tag size="md" variant="solid" colorScheme="gray">
@@ -182,12 +191,13 @@ function FilterProductCategory(props) {
                   onClick={() => {
                     setTags([]);
                   }}
+                  colorScheme={"gray"}
                 >
                   Filtreleri Temizle
                 </Button>
               </WrapItem>
             </Wrap>
-          </>
+          </Box>
           <Box>{children}</Box>
         </Box>
       </Flex>
