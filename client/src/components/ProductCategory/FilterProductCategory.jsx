@@ -62,24 +62,24 @@ function FilterProductCategory(props) {
 
   const windowDimensions = useWindowDimensions();
 
-  const [tags, setTags] = useState(["150-300 arası ürün"]);
-
-  setTimeout(function () {
-    tags.forEach(function (t, i) {
-      if (t.endsWith("arası ürün")) {
-        /* setTags((oldValues) => {
-          return oldValues.filter((tag) => tag !== t);
-        });
-        */
-      }
-    });
-  }, 500);
+  const [tags, setTags] = useState(["150-300 arası ürün", "😜"]);
 
   if (searchParams.has("fiyat")) {
     let prices = searchParams.get("fiyat");
     prices = prices.split(",");
     // alert(prices[0] + " " + prices[1]);
-    //setTags([...tags, `${prices[0]}-${prices[1]} arası ürün`]);
+
+    //setTags([...tags, `arası ürün`]);
+
+
+  } else {
+    tags.forEach(function (t, i) {
+      if (t.endsWith("arası ürün")) {
+        setTags((oldValues) => {
+          return oldValues.filter((tag) => tag !== t);
+        });
+      }
+    });
   }
 
   const deleteByValue = (value) => {
@@ -161,16 +161,11 @@ function FilterProductCategory(props) {
             <Box
               ml={3}
               mt={3}
-              border={"1px solid #cdc"}
+              border={"1px solid #ccc"}
               borderRadius={"15px"}
               maxW={{ base: windowDimensions.width - 100, lg: "container.md" }}
             >
-              <Wrap
-                p={3}
-                id="selected-filters-container"
-                textAlign={"center"}
-                justifyContent={"center"}
-              >
+              <Wrap p={3} id="selected-filters-container">
                 {tags.map((tag, i) => (
                   <>
                     <WrapItem>
