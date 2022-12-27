@@ -25,6 +25,33 @@ import DiscountInCart from "./Filter/DiscountInCart";
 const SidebarContent = (props) => {
   const { onClick, ...rest } = props;
 
+  const colors = [
+    {
+      value: "#fff",
+      label: "Beyaz",
+    },
+    {
+      value: "#000",
+      label: "Siyah",
+    },
+    {
+      value: "#3182CE",
+      label: "Mavi",
+    },
+    {
+      value: "#E53E3E",
+      label: "Kırmızı",
+    },
+    {
+      value: "#38A169",
+      label: "Yeşil",
+    },
+    {
+      value: "#f0d01a",
+      label: "Sarı",
+    },
+  ];
+
   return (
     <>
       <Box {...rest}>
@@ -33,9 +60,7 @@ const SidebarContent = (props) => {
           <PriceRange prices={{ minPrice: 125, maxPrice: 300 }} />
           <EvaluationScore />
           <BodySize />
-          <Colors
-            colors={["#000", "#fff", "#3182CE", "#E53E3E", "#38A169", "#D69E2E"]}
-          />
+          <Colors colors={colors} />
           <CouponProduct />
           <DiscountedProduct />
           <DiscountInCart />

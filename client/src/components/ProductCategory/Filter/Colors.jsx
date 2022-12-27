@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Flex, Box, SimpleGrid } from "@chakra-ui/react";
+import { Text, Flex, Box, SimpleGrid, Tooltip } from "@chakra-ui/react";
 
 import { AiOutlineCheck } from "react-icons/ai";
 
@@ -10,12 +10,12 @@ import { useCheckbox, useCheckboxGroup } from "@chakra-ui/react";
 
 const invertColor = (hex) => {
   var color = hex;
-  color = color.substring(1); // remove #
-  color = parseInt(color, 16); // convert to integer
-  color = 0xffffff ^ color; // invert three bytes
-  color = color.toString(16); // convert to hex
-  color = ("000000" + color).slice(-6); // pad with leading zeros
-  color = "#" + color; // prepend #
+  color = color.substring(1);
+  color = parseInt(color, 16);
+  color = 0xffffff ^ color;
+  color = color.toString(16);
+  color = ("000000" + color).slice(-6);
+  color = "#" + color;
   return color;
 };
 
@@ -24,34 +24,35 @@ function GetColorCheckbox(props) {
     useCheckbox(props);
 
   return (
-    <chakra.label cursor="pointer" {...htmlProps}>
-      <input {...getInputProps()} hidden />
-      <Flex
-        display="flex"
-        alignItems="center"
-        textAlign={"center"}
-        justifyContent={"center"}
-        border="1px solid"
-        borderColor="black"
-        bg={props.value}
-        w={6}
-        h={6}
-        rounded={"full"}
-        {...getCheckboxProps()}
-      >
-        {console.log(invertColor(props.value) + " " + props.value)}
-        {state.isChecked && (
-          <Icon
-            color={invertColor(props.value)}
-            as={AiOutlineCheck}
-            w={4}
-            h={4}
-          />
-        )}
-      </Flex>
+    <Tooltip label={props.label}>
+      <chakra.label {...htmlProps}>
+        <input {...getInputProps()} hidden />
+        <Flex
+          display="flex"
+          alignItems="center"
+          textAlign={"center"}
+          justifyContent={"center"}
+          border="1px solid"
+          borderColor="black"
+          bg={props.value}
+          w={6}
+          h={6}
+          rounded={"full"}
+          {...getCheckboxProps()}
+        >
+          {state.isChecked && (
+            <Icon
+              color={invertColor(props.value)}
+              as={AiOutlineCheck}
+              w={4}
+              h={4}
+            />
+          )}
+        </Flex>
 
-      <Text color="gray.700" {...getLabelProps()} userSelect={"none"}></Text>
-    </chakra.label>
+        <Text color="gray.700" {...getLabelProps()} userSelect={"none"}></Text>
+      </chakra.label>
+    </Tooltip>
   );
 }
 const Colors = ({ colors }) => {
@@ -62,7 +63,6 @@ const Colors = ({ colors }) => {
   };
   const { value, getCheckboxProps } = useCheckboxGroup({
     name: "ColorFilter",
-    defaultValue: [colors[0]],
     onChange: handleChange,
   });
 
@@ -74,8 +74,13 @@ const Colors = ({ colors }) => {
         children={"Renk"}
       />
       <SimpleGrid px={2} columns={5} id={"Colors"} spacing="3px">
-        {colors.map((color) => {
-          return <GetColorCheckbox {...getCheckboxProps({ value: color })} />;
+        {colors.map((color, index) => {
+          return (
+            <GetColorCheckbox
+              {...getCheckboxProps({ value: color.value })}
+              label={color.label}
+            />
+          );
         })}
       </SimpleGrid>
     </Box>
