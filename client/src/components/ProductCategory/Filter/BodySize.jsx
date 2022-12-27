@@ -3,8 +3,6 @@ import { chakra, Text, Box, Flex, Icon } from "@chakra-ui/react";
 
 import { Stack } from "@chakra-ui/react";
 import { useCheckbox, useCheckboxGroup } from "@chakra-ui/react";
-import { Label, Input, Image } from "@chakra-ui/react";
-import { useSearchParams } from "react-router-dom";
 
 import { AiOutlineCheck } from "react-icons/ai";
 

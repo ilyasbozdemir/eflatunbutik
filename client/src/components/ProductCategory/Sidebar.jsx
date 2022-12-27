@@ -34,7 +34,7 @@ const SidebarContent = (props) => {
           <EvaluationScore />
           <BodySize />
           <Colors
-            colors={["black", "white", "blue", "red", "green", "yellow"]}
+            colors={["#000", "#fff", "#3182CE", "#E53E3E", "#38A169", "#D69E2E"]}
           />
           <CouponProduct />
           <DiscountedProduct />
