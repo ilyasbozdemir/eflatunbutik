@@ -67,7 +67,7 @@ export const ProductCard = (props) => {
   }, [isLargerThan320, isLessThan480]);
 
   React.useEffect(() => {
-    setW(130);
+    setW(120);
     console.log("tablet" + isLargerThan481 + " " + isLessThan1024);
   }, [isLargerThan481, isLessThan1024]);
 

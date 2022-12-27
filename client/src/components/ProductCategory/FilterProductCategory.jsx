@@ -29,6 +29,8 @@ import { encode, decode } from "html-entities";
 
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 
+import { useWindowDimensions } from "../../../src/hooks/";
+
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
 
@@ -58,6 +60,8 @@ function FilterProductCategory(props) {
     }
   };
 
+  const windowDimensions = useWindowDimensions();
+
   const [tags, setTags] = useState([
     "3 Yıldızlı Ürün",
     "L",
@@ -65,7 +69,7 @@ function FilterProductCategory(props) {
     "38",
     "XL",
     "Mor",
-    "150-350 arası ürün",
+    "150-300 arası ürün",
     "Kuponlu Ürünler",
     "İndirimli Ürünler",
   ]);
@@ -152,6 +156,7 @@ function FilterProductCategory(props) {
             mt={3}
             border={"1px solid #cdc"}
             borderRadius={"15px"}
+            maxW={{ base: windowDimensions.width - 100, lg: "container.md" }}
           >
             <Wrap
               pl={3}
@@ -159,7 +164,7 @@ function FilterProductCategory(props) {
               id="selected-filters-container"
               textAlign={"center"}
               justifyContent={"center"}
-              maxW={{ base: "200px", lg: "container.md" }}
+             
             >
               <WrapItem>
                 <Tag size="md" variant="solid" colorScheme="gray">
