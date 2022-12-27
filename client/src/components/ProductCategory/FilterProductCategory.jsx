@@ -62,17 +62,25 @@ function FilterProductCategory(props) {
 
   const windowDimensions = useWindowDimensions();
 
-  const [tags, setTags] = useState([
-    "3 Yıldızlı Ürün",
-    "L",
-    "36",
-    "38",
-    "XL",
-    "Mor",
-    "150-300 arası ürün",
-    "Kuponlu Ürünler",
-    "İndirimli Ürünler",
-  ]);
+  const [tags, setTags] = useState(["150-300 arası ürün"]);
+
+  setTimeout(function () {
+    tags.forEach(function (t, i) {
+      if (t.endsWith("arası ürün")) {
+        /* setTags((oldValues) => {
+          return oldValues.filter((tag) => tag !== t);
+        });
+        */
+      }
+    });
+  }, 500);
+
+  if (searchParams.has("fiyat")) {
+    let prices = searchParams.get("fiyat");
+    prices = prices.split(",");
+    // alert(prices[0] + " " + prices[1]);
+    //setTags([...tags, `${prices[0]}-${prices[1]} arası ürün`]);
+  }
 
   const deleteByValue = (value) => {
     setTags((oldValues) => {
@@ -149,60 +157,53 @@ function FilterProductCategory(props) {
               </HStack>
             </Box>
           )}
-          <Box
-            textAlign={"center"}
-            justifyContent={"center"}
-            ml={3}
-            mt={3}
-            border={"1px solid #cdc"}
-            borderRadius={"15px"}
-            maxW={{ base: windowDimensions.width - 100, lg: "container.md" }}
-          >
-            <Wrap
-              pl={3}
-              pt={3}
-              id="selected-filters-container"
-              textAlign={"center"}
-              justifyContent={"center"}
-             
+          {tags.length > 0 ? (
+            <Box
+              ml={3}
+              mt={3}
+              border={"1px solid #cdc"}
+              borderRadius={"15px"}
+              maxW={{ base: windowDimensions.width - 100, lg: "container.md" }}
             >
-              <WrapItem>
-                <Tag size="md" variant="solid" colorScheme="gray">
-                  <TagLabel userSelect={"none"} color={"gray.700"}>
-                    {"Elbise"}
-                  </TagLabel>
-                </Tag>
-              </WrapItem>
+              <Wrap
+                p={3}
+                id="selected-filters-container"
+                textAlign={"center"}
+                justifyContent={"center"}
+              >
+                {tags.map((tag, i) => (
+                  <>
+                    <WrapItem>
+                      <Tag
+                        size="md"
+                        key={i}
+                        variant="solid"
+                        colorScheme="gray"
+                        boxShadow="rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px"
+                      >
+                        <TagLabel>{tag}</TagLabel>
+                        <TagCloseButton onClick={() => deleteByValue(tag)} />
+                      </Tag>
+                    </WrapItem>
+                  </>
+                ))}
 
-              {tags.map((tag, i) => (
-                <>
-                  <WrapItem>
-                    <Tag
-                      size="md"
-                      key={i}
-                      variant="solid"
-                      colorScheme="gray"
-                      boxShadow="rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px"
-                    >
-                      <TagLabel>{tag}</TagLabel>
-                      <TagCloseButton onClick={() => deleteByValue(tag)} />
-                    </Tag>
-                  </WrapItem>
-                </>
-              ))}
-              <WrapItem>
-                <Button
-                  size="sm"
-                  onClick={() => {
-                    setTags([]);
-                  }}
-                  colorScheme={"gray"}
-                >
-                  Filtreleri Temizle
-                </Button>
-              </WrapItem>
-            </Wrap>
-          </Box>
+                <WrapItem>
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      setTags([]);
+                    }}
+                    colorScheme={"purple"}
+                  >
+                    Filtreleri Temizle
+                  </Button>
+                </WrapItem>
+              </Wrap>
+            </Box>
+          ) : (
+            ""
+          )}
           <Box>{children}</Box>
         </Box>
       </Flex>
