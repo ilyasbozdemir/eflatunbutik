@@ -39,8 +39,32 @@ const SidebarContent = (props) => {
       label: "Mavi",
     },
     {
-      value: "#E53E3E",
+      value: "#F5F5DC",
+      label: "Bej",
+    },
+    {
+      value: "#fc0808",
       label: "Kırmızı",
+    },
+    {
+      value: "#745E3D",
+      label: "Haki",
+    },
+    {
+      value: "#FF1493",
+      label: "Pembe",
+    },
+    {
+      value: "#FF8C00",
+      label: "Turuncu",
+    },
+    {
+      value: "#8B0000",
+      label: "Kahverengi",
+    },
+    {
+      value: "#800080",
+      label: "Mor",
     },
     {
       value: "#38A169",
