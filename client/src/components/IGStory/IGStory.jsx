@@ -108,21 +108,23 @@ function IGStory() {
   }, [WindowDimensions.width]);
 
   return (
-    <motion.div ref={carousel} className={styles.carousel}>
-      <motion.div
-        drag={"x"}
-        dragConstraints={{ left: -width, right: 0 }}
-        className={styles.inner_carousel}
-      >
-        {images.map((image, index) => {
-          return (
-            <motion.div key={index} ref={item} className={styles.item}>
-              <ImageItem {...image} />
-            </motion.div>
-          );
-        })}
+    <>
+      <motion.div ref={carousel} className={styles.carousel} width={'100%'}>
+        <motion.div
+          drag={"x"}
+          dragConstraints={{ left: -width, right: 0 }}
+          className={styles.inner_carousel}
+        >
+          {images.map((image, index) => {
+            return (
+              <motion.div key={index} ref={item} className={styles.item}>
+                <ImageItem {...image} />
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
 

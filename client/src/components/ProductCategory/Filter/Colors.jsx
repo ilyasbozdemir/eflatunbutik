@@ -24,7 +24,7 @@ function GetColorCheckbox(props) {
     useCheckbox(props);
 
   return (
-    <Tooltip label={props.label}>
+    <Tooltip label={props.value}>
       <chakra.label {...htmlProps}>
         <input {...getInputProps()} hidden />
         <Flex

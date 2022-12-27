@@ -35,7 +35,7 @@ function MyComponent() {
 function App() {
   let baslik = document.title;
   
-  window.onblur = () => (document.title = "Geri Dön");
+  window.onblur = () => (document.title = "Alışverişe devam et");
   window.onfocus = () => (document.title = baslik);
 
   return (

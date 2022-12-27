@@ -1,29 +1,29 @@
 import React from "react";
-import { Text, Flex, tokenToCSSVar } from "@chakra-ui/react";
+import { Text, Flex, tokenToCSSVar, Spacer } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 function index() {
   const buttons = [
     {
       name: "Çok Satanlar",
-      to: '/cok-satanlar/',
+      to: "/cok-satanlar/",
     },
     {
       name: "Öne Çıkanlar",
-      to: '/one-cikanlar/',
+      to: "/one-cikanlar/",
     },
     {
       name: "İndirimdekiler",
-      to: '/indirim/',
+      to: "/indirim/",
     },
   ];
 
   const HighlightButton = (props) => {
     const { name, to } = props;
     return (
-      <Link to={to}>
+      <Link to={to} ml={"33%"}>
         <Button
-          fontSize={12}
+          fontSize={{ base: 12, md: 14, xl: 15, lg: 16 }}
           color={"white"}
           bgGradient={"linear(to-l, #7928CA, #FF0080)"}
           _hover={{
@@ -37,10 +37,14 @@ function index() {
   };
 
   return (
-    <Flex direction={"row"} justifyContent={"space-around"}>
+    <Flex
+      direction={"row"}
+      justifyContent={"space-around"}
+      textAlign={"center"}
+    >
       {buttons.map((button, index) => (
         <HighlightButton key={index} {...button} />
-      ))}{" "}
+      ))}
     </Flex>
   );
 }

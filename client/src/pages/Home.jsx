@@ -1,4 +1,4 @@
-import { HStack, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, HStack, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 
 const Showcase = React.lazy(() => import("../components/Showcase"));
@@ -9,18 +9,11 @@ const MySlider = React.lazy(() => import("../components/MySlider"));
 function Home() {
   return (
     <>
-      
-      <HStack
-        mt={4}
-        display={useBreakpointValue({ base: "flex", md: "none" })}
-      >
+      <HStack mt={4}>
         <IGStory />
       </HStack>
-       
-      <HStack
-        mt={4}
-        display={useBreakpointValue({ base: "block", md: "none" })}
-      >
+
+      <HStack mt={4}>
         <Highlights />
       </HStack>
 

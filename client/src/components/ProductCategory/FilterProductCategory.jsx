@@ -7,13 +7,27 @@ import {
   Text,
   HStack,
   Center,
+  Button,
+  SimpleGrid,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
+
+import {
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  TagRightIcon,
+  TagCloseButton,
+  CloseButton,
+} from "@chakra-ui/react";
+
 import { Select } from "@chakra-ui/react";
 import ProductContent from "./ProductContent";
 import Sidebar from "./Sidebar";
 import { encode, decode } from "html-entities";
 
-import { useNavigate, useLocation,useSearchParams } from "react-router-dom";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
@@ -44,9 +58,22 @@ function FilterProductCategory(props) {
     }
   };
 
+  const [tags, setTags] = useState([
+    "3 Yıldızlı Ürün",
+    "L",
+    "Mor",
+    "150-350 arası ürün",
+    "Kuponlu Ürünler",
+  ]);
+
+  const deleteByValue = (value) => {
+    setTags((oldValues) => {
+      return oldValues.filter((tag) => tag !== value);
+    });
+  };
   return (
     <>
-      <Flex direction={"row"} >
+      <Flex direction={"row"}>
         <Sidebar
           variant={variants?.navigation}
           isOpen={isSidebarOpen}
@@ -60,6 +87,7 @@ function FilterProductCategory(props) {
                 minWidth="max-content"
                 gap="2"
               >
+                "
                 <Box ml={5}>
                   <Text>
                     <Text as="span" fontWeight={"bold"}>
@@ -69,7 +97,7 @@ function FilterProductCategory(props) {
                     <Text as="span" fontWeight={"bold"}>
                       {" " + searchProductCount}
                     </Text>
-                    {` ürün bulduk.`}
+                    {` sonuç listeleniyor.`}
                   </Text>
                 </Box>
                 <Spacer />
@@ -80,7 +108,6 @@ function FilterProductCategory(props) {
                 ) : (
                   ""
                 )}
-
                 {variants?.navigationButton === true ? ( //mobile true
                   <Box gap="2">
                     <HStack>
@@ -106,7 +133,7 @@ function FilterProductCategory(props) {
                   onShowSidebar={toggleSidebar}
                 />
                 <Flex
-                  justifyContent={{ base: "space-between", md: "flex-end" }}
+                  justifyContent={{ base: "space-between", lg: "flex-end" }}
                   ml={5}
                 >
                   <SelectBox onChange={onChange} />
@@ -114,6 +141,48 @@ function FilterProductCategory(props) {
               </HStack>
             </Box>
           )}
+          <>
+            <Wrap
+              ml={3}
+              mt={3}
+              id="selected-filters-container"
+              textAlign={"center"}
+              justifyContent={"center"}
+            >
+              <WrapItem>
+                <Tag size="md" variant="solid" colorScheme="gray">
+                  <TagLabel userSelect={"none"} color={"gray.700"}>
+                    {"Elbise"}
+                  </TagLabel>
+                </Tag>
+              </WrapItem>
+
+              {tags.map((tag, i) => (
+                <WrapItem>
+                  <Tag
+                    size="md"
+                    key={i}
+                    variant="solid"
+                    colorScheme="gray"
+                    boxShadow="rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px"
+                  >
+                    <TagLabel>{tag}</TagLabel>
+                    <TagCloseButton onClick={() => deleteByValue(tag)} />
+                  </Tag>
+                </WrapItem>
+              ))}
+              <WrapItem>
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    setTags([]);
+                  }}
+                >
+                  Filtreleri Temizle
+                </Button>
+              </WrapItem>
+            </Wrap>
+          </>
           <Box>{children}</Box>
         </Box>
       </Flex>
@@ -122,7 +191,7 @@ function FilterProductCategory(props) {
 }
 const SelectBox = ({ onChange }) => {
   return (
-    <Select w={"100%"} name="siralama" onChange={onChange}>
+    <Select size={"md"} w={"100%"} name="siralama" onChange={onChange}>
       <option value="varsayilansiralama">Varsayılan Sıralama</option>
       {/*?siralama=varsayilanSiralama*/}
       <option value="artanfiyat">Artan Fiyat</option>

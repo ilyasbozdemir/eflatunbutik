@@ -1,7 +1,7 @@
 import React from "react";
-import { chakra, Text, Box, Flex, Icon } from "@chakra-ui/react";
+import { chakra, Text, Box, Flex, Icon, SimpleGrid } from "@chakra-ui/react";
 
-import { Stack } from "@chakra-ui/react";
+import { Tooltip } from "@chakra-ui/react";
 import { useCheckbox, useCheckboxGroup } from "@chakra-ui/react";
 
 import { AiOutlineCheck } from "react-icons/ai";
@@ -21,36 +21,35 @@ function CustomCheckbox(props) {
     useCheckbox(props);
 
   return (
-    <chakra.label
-      display="flex"
-      flexDirection="row"
-      alignItems="center"
-      gridColumnGap={2}
-      border="1px solid"
-      rounded="lg"
-      px={3}
-      py={1}
-      cursor="pointer"
-      {...htmlProps}
-    >
-      <input {...getInputProps()} hidden />
-      <Flex
+    <Tooltip label={props.label}>
+      <chakra.label
+        display="flex"
+        flexDirection="row"
         alignItems="center"
-        justifyContent="center"
-        border="2px solid"
-        borderColor="pink.600"
-        w={4}
-        h={4}
-        {...getCheckboxProps()}
+        cursor="pointer"
+        {...htmlProps}
       >
-        {state.isChecked && (
-          <Icon color={"pink.500"} as={AiOutlineCheck} w={3} h={3} />
-        )}
-      </Flex>
-      <Text color="gray.700" {...getLabelProps()} userSelect={"none"}>
-        {props.value}
-      </Text>
-    </chakra.label>
+        <input {...getInputProps()} hidden />
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          border="2px solid"
+          borderColor="pink.600"
+          w={4}
+          h={4}
+          {...getCheckboxProps()}
+        >
+          {state.isChecked && (
+            <Icon color={"pink.500"} as={AiOutlineCheck} w={3} h={3} />
+          )}
+        </Flex>
+
+        <Text color="gray.700" {...getLabelProps()} userSelect={"none"} pl={1}>
+          {props.value}
+        </Text>
+
+      </chakra.label>
+    </Tooltip>
   );
 }
 
@@ -82,11 +81,11 @@ const BodySize = () => {
     <Box w={"100%"} fontFamily={"Verdana"} fontSize={14}>
       <CategoryName name={"Beden"} />
 
-      <Stack id={"Beden"} spacing={5} direction="column" mt={1}>
+      <SimpleGrid id={"Beden"} columns={4} spacing="3px">
         {values.map((value) => {
           return <CustomCheckbox {...getCheckboxProps({ value: value })} />;
         })}
-      </Stack>
+      </SimpleGrid>
     </Box>
   );
 };
