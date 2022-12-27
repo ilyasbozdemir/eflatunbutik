@@ -32,7 +32,7 @@ function EvaluationScoreRadioCard(props) {
         }}
         px={1}
         py={1}
-       
+        userSelect={"none"}
       >
         {props.children}
       </Box>
@@ -64,7 +64,7 @@ function EvaluationScore() {
 
   return (
     <>
-      <Box id='beden' w={"100%"} fontFamily={"corbel"}>
+      <Box id="beden" w={"100%"} fontFamily={"corbel"}>
         <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
           {"Değerlendirme Puanı"}
         </Text>

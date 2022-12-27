@@ -2,50 +2,20 @@ import React from "react";
 import { Text, Flex, Box } from "@chakra-ui/react";
 
 import { AiOutlineCheck } from "react-icons/fa";
-const CategoryName = ({ name }) => {
-  return (
-    <>
-      <Text fontWeight={"semibold"} fontFamily={"system-ui, sans-serif"}>
-        {name}
-      </Text>
-    </>
-  );
-};
+
 const GetColorCheckbox = ({ name }) => {
-  return (
-    <>
-      <Box
-        size="md"
-        name={name}
-        data-value={name}
-        onClick={(e) => {
-          alert(e.target.dataset.value);
-        }}
-        w={8}
-        h={8}
-        borderRadius={"10px"}
-        bg={name}
-        border={"1px #000 solid"}
-        mx={1}
-        cursor={"pointer"}
-      />
-    </>
-  );
+  return <></>;
 };
 
 const Colors = ({ colors }) => {
   React.useEffect(() => {}, [colors]);
   return (
     <Box w={"100%"} fontFamily={"corbel"}>
-      <CategoryName name={"Renk"} />
-
-      <Flex direction={["row"]}>
-        {colors.map((color, index) => (
-          <>
-            <GetColorCheckbox id={`color_${index}`} key={index} name={color} />
-          </>
-        ))}
-      </Flex>
+      <Text
+        fontWeight={"semibold"}
+        fontFamily={"system-ui, sans-serif"}
+        children={"Renk"}
+      />
     </Box>
   );
 };

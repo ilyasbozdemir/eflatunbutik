@@ -1,10 +1,13 @@
 import React from "react";
-import { Text, Box } from "@chakra-ui/react";
+import { chakra, Text, Box, Flex, Icon } from "@chakra-ui/react";
 
 import { Stack } from "@chakra-ui/react";
-import { useRadio, useRadioGroup } from "@chakra-ui/react";
+import { useCheckbox, useCheckboxGroup } from "@chakra-ui/react";
 import { Label, Input, Image } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
+
+import { AiOutlineCheck } from "react-icons/ai";
+
 const CategoryName = ({ name }) => {
   return (
     <>
@@ -15,71 +18,75 @@ const CategoryName = ({ name }) => {
   );
 };
 
-function BodySizeRadioCard(props) {
-  const { getInputProps, getCheckboxProps } = useRadio(props);
-
-  const input = getInputProps();
-  const checkbox = getCheckboxProps();
+function CustomCheckbox(props) {
+  const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps } =
+    useCheckbox(props);
 
   return (
-    <Box as="label">
-      <input {...input} />
-      <Box
-        {...checkbox}
-        cursor="pointer"
-        borderWidth="1px"
-        borderRadius="md"
-        boxShadow="md"
-        _checked={{
-          bg: "pink.600",
-          color: "white",
-          borderColor: "pink.600",
-        }}
-        px={1}
-        py={1}
+    <chakra.label
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      gridColumnGap={2}
+      border="1px solid"
+      rounded="lg"
+      px={3}
+      py={1}
+      cursor="pointer"
+      {...htmlProps}
+    >
+      <input {...getInputProps()} hidden />
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        border="2px solid"
+        borderColor="pink.600"
+        w={4}
+        h={4}
+        {...getCheckboxProps()}
       >
-        {props.children}
-      </Box>
-    </Box>
+        {state.isChecked && (
+          <Icon color={"pink.500"} as={AiOutlineCheck} w={3} h={3} />
+        )}
+      </Flex>
+      <Text color="gray.700" {...getLabelProps()} userSelect={"none"}>
+        {props.value}
+      </Text>
+    </chakra.label>
   );
 }
 
 const BodySize = () => {
-  const [value, setValue] = React.useState("36");
-
-  const options = [
+  const values = [
     "36",
     "38",
     "40",
     "42",
     "44",
     "46",
+    "48",
+    "STD",
+    "S",
+    "M",
+    "L",
+    "XL",
   ];
-
   const handleChange = (value) => {
-    console.log("value change ");
+    //alert(value);
   };
-
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    id: "Beden",
+  const { value, getCheckboxProps } = useCheckboxGroup({
     name: "BodySize",
-    defaultValue: value,
+    defaultValue: [values[0]],
     onChange: handleChange,
   });
-  const group = getRootProps();
 
   return (
-    <Box w={"100%"} fontFamily={"corbel"}>
+    <Box w={"100%"} fontFamily={"Verdana"} fontSize={14}>
       <CategoryName name={"Beden"} />
 
-      <Stack id={"Beden"} spacing={5} direction="column" mt={1} {...group}>
-        {options.map((value) => {
-          const radio = getRadioProps({ value });
-          return (
-            <BodySizeRadioCard key={value} {...radio}>
-              {value}
-            </BodySizeRadioCard>
-          );
+      <Stack id={"Beden"} spacing={5} direction="column" mt={1}>
+        {values.map((value) => {
+          return <CustomCheckbox {...getCheckboxProps({ value: value })} />;
         })}
       </Stack>
     </Box>
