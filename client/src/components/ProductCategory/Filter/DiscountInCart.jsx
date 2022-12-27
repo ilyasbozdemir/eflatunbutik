@@ -7,12 +7,12 @@ import { Switch } from "@chakra-ui/react";
 
 const DiscountInCart = () => {
   return (
-    <Text fontWeight={"semibold"} as="h4">
+    <Text fontWeight={"semibold"}>
       <FormControl display="flex" alignItems="center">
-        <FormLabel htmlFor="campaign-products" mb="0">
-          Sepette Kampanya
+        <Switch id="campaign-products" colorScheme="pink" />{" "}
+        <FormLabel userSelect={"none"} htmlFor="campaign-products" mb="0">
+          Sepette İndirim
         </FormLabel>
-        <Switch id="campaign-products" colorScheme="pink" />
       </FormControl>
     </Text>
   );

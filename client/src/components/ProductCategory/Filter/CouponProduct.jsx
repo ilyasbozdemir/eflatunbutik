@@ -15,12 +15,12 @@ const CategoryName = ({ name }) => {
 
 const CouponProduct = () => {
   return (
-    <Text fontWeight={"semibold"} as="h4">
+    <Text >
       <FormControl display="flex" alignItems="center">
-        <FormLabel htmlFor="coupon-products" mb="0">
+        <Switch id="coupon-products" colorScheme="pink" />{" "}
+        <FormLabel htmlFor="coupon-products" mb="0" userSelect={'none'}>
           Kuponlu Ürünler
         </FormLabel>
-        <Switch id="coupon-products" colorScheme="pink" />
       </FormControl>
     </Text>
   );

@@ -25,14 +25,14 @@ const CategoryName = ({ name }) => {
 
 const DiscountedProduct = () => {
   return (
-    <Text fontWeight={"semibold"} as="h4">
+    <Text fontWeight={"semibold"}>
       <FormControl display="flex" alignItems="center">
-        <FormLabel htmlFor="discount-products" mb="0">
+        <Switch id="discount-products" colorScheme="pink" />
+        <FormLabel  userSelect={'none'} htmlFor="discount-products" mb="0">
           İndirimli Ürünler
         </FormLabel>
-        <Switch id="discount-products" colorScheme="pink" />
       </FormControl>
     </Text>
   );
 };
-export default DiscountedProduct
+export default DiscountedProduct;

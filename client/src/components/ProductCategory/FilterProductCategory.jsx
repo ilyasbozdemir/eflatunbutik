@@ -64,14 +64,14 @@ function FilterProductCategory(props) {
 
   const [tags, setTags] = useState(["150-300 arası ürün", "😜"]);
 
+  React.useEffect(() => {}, []);
+
   if (searchParams.has("fiyat")) {
     let prices = searchParams.get("fiyat");
     prices = prices.split(",");
     // alert(prices[0] + " " + prices[1]);
 
     //setTags([...tags, `arası ürün`]);
-
-
   } else {
     tags.forEach(function (t, i) {
       if (t.endsWith("arası ürün")) {
