@@ -8,6 +8,8 @@ import { AiFillStar } from "react-icons/ai";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { useSearchParams, useLocation } from "react-router-dom";
 
+import { MainContext, useContext } from "../../../contexts/MainContext";
+
 import { useRadio, useRadioGroup } from "@chakra-ui/react";
 
 function EvaluationScoreRadioCard(props) {
@@ -41,7 +43,7 @@ function EvaluationScoreRadioCard(props) {
 }
 
 function EvaluationScore() {
-  const [value, setValue] = React.useState("1");
+  const { tags, setTags } = useContext(MainContext);
 
   const options = [
     "4 yıldız ve üzeri",
@@ -57,7 +59,6 @@ function EvaluationScore() {
   const { getRootProps, getRadioProps } = useRadioGroup({
     id: "Beden",
     name: "EvaluationScore",
-    defaultValue: value,
     onChange: handleChange,
   });
   const group = getRootProps();

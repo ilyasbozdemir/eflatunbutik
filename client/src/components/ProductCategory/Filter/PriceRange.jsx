@@ -27,6 +27,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useSearchParams, useLocation } from "react-router-dom";
+import { MainContext, useContext } from "../../../contexts/MainContext";
 
 function PriceRange() {
   const minPrice = 100;
@@ -53,9 +54,23 @@ function PriceRange() {
     setSliderValue([sliderValue[0], val]);
   };
   const [searchParams, setSearchParams] = useSearchParams();
+  const { tags, setTags } = useContext(MainContext);
 
   React.useEffect(() => {
-    setSearchParams({ fiyat: `${sliderValue[0]},${sliderValue[1]}` });
+    setTimeout(() => {
+      setSearchParams({ fiyat: `${sliderValue[0]},${sliderValue[1]}` });
+
+      tags.forEach(function (t, i) {
+        if (t.endsWith("arası ürün")) {
+          setTags((oldValues) => {
+            return oldValues.filter((tag) => tag !== t);
+          });
+        }
+      });
+    }, 50);
+
+    setTags([...tags, `${sliderValue[0]} - ${sliderValue[1]} arası ürün`]);
+
   }, [sliderValue]);
 
   return (
@@ -86,8 +101,6 @@ function PriceRange() {
               onChange={handleChange}
               allowMouseWheel
               size={"sm"}
-              keepWithinRange={false}
-              clampValueOnBlur={false}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -105,8 +118,6 @@ function PriceRange() {
               onChange={handleChange2}
               allowMouseWheel
               size={"sm"}
-              keepWithinRange={false}
-              clampValueOnBlur={false}
             >
               <NumberInputField />
               <NumberInputStepper>
