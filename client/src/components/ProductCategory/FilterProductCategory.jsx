@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import autoAnimate from "@formkit/auto-animate";
+
 import {
   Box,
   Flex,
@@ -59,6 +61,11 @@ function FilterProductCategory(props) {
       });
     }
   };
+  const parent = useRef(null);
+
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
 
   const windowDimensions = useWindowDimensions();
 
@@ -68,8 +75,6 @@ function FilterProductCategory(props) {
     setTags((oldValues) => {
       return oldValues.filter((tag) => tag !== value);
     });
-    if (searchParams.has("fiyat")) searchParams.delete("fiyat");
-    if (searchParams.has("fiyat")) alert('dans');
   };
 
   return (
@@ -151,7 +156,7 @@ function FilterProductCategory(props) {
               borderRadius={"15px"}
               maxW={{ base: windowDimensions.width - 100, lg: "container.md" }}
             >
-              <Wrap p={3} id="selected-filters-container">
+              <Wrap p={3} ref={parent} id="selected-filters-container">
                 {tags.map((tag, i) => (
                   <>
                     <WrapItem>
