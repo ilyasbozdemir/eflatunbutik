@@ -15,7 +15,7 @@ function App() {
   window.onblur = () => (document.title = "Alışverişe devam et");
   window.onfocus = () => (document.title = baslik);
 
-  const [tags, setTags] = React.useState([]);
+  const [tags, setTags] = React.useState(['arası ürün']);
   const [basket, setBasket] = React.useState([]);
 
   const data = {
