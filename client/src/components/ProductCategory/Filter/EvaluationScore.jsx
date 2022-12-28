@@ -51,9 +51,21 @@ function EvaluationScore() {
     "2 yıldız ve üzeri",
     "1 yıldız ve üzeri",
   ];
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const handleChange = (value) => {
-    console.log("value change ");
+    setTimeout(() => {
+      setSearchParams({ pr: value });
+
+      tags.forEach(function (t) {
+        if (t.endsWith("yıldız ve üzeri")) {
+          setTags((oldValues) => {
+            return oldValues.filter((tag) => tag !== t);
+          });
+        }
+      });
+    }, 50);
+
+    setTags([...tags, value]);
   };
 
   const { getRootProps, getRadioProps } = useRadioGroup({

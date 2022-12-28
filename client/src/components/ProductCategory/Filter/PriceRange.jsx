@@ -11,13 +11,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-import {
-  Flex,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 import {
   RangeSlider,
@@ -29,9 +23,8 @@ import {
 import { useSearchParams, useLocation } from "react-router-dom";
 import { MainContext, useContext } from "../../../contexts/MainContext";
 
-function PriceRange() {
-  const minPrice = 100;
-  const maxPrice = 250;
+function PriceRange(props) {
+  const { minPrice, maxPrice } = props.prices;
 
   const [sliderValue, setSliderValue] = React.useState([minPrice, maxPrice]);
 
@@ -70,7 +63,6 @@ function PriceRange() {
     }, 50);
 
     setTags([...tags, `${sliderValue[0]} - ${sliderValue[1]} arası ürün`]);
-
   }, [sliderValue]);
 
   return (
@@ -82,7 +74,7 @@ function PriceRange() {
           min={minPrice}
           max={maxPrice}
           value={sliderValue}
-          step={1}
+          step={5}
           onChange={onChanged}
         >
           <RangeSliderTrack bg="red.100">
