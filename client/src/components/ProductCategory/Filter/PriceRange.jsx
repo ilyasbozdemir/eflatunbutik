@@ -8,6 +8,7 @@ import {
   NumberDecrementStepper,
   Text,
   Box,
+  Stack,
 } from "@chakra-ui/react";
 
 import {
@@ -52,7 +53,7 @@ function PriceRange() {
     setSliderValue([sliderValue[0], val]);
   };
   const [searchParams, setSearchParams] = useSearchParams();
-  
+
   React.useEffect(() => {
     setSearchParams({ fiyat: `${sliderValue[0]},${sliderValue[1]}` });
   }, [sliderValue]);
@@ -63,11 +64,10 @@ function PriceRange() {
         <Text fontWeight={"semibold"}>Fiyat Aralığı</Text>
 
         <RangeSlider
+          min={minPrice}
+          max={maxPrice}
           value={sliderValue}
-          min={0}
-          max={300}
-          step={10}
-          onChangeEnd={onChanged}
+          step={1}
           onChange={onChanged}
         >
           <RangeSliderTrack bg="red.100">
@@ -76,24 +76,45 @@ function PriceRange() {
           <RangeSliderThumb boxSize={4} index={0} bg="red" />
           <RangeSliderThumb boxSize={4} index={1} bg="red" />
         </RangeSlider>
-        <Flex direction={"row"}>
-          <NumberInput
-            value={value}
-            onChange={handleChange}
-            allowMouseWheel
-            size={"sm"}
-          >
-            <NumberInputField />
-          </NumberInput>
-          <NumberInput
-            maxW="90px"
-            value={value2}
-            onChange={handleChange2}
-            allowMouseWheel
-            size={"sm"}
-          >
-            <NumberInputField />
-          </NumberInput>
+        <Flex direction={"column"} gap={2}>
+          <Stack direction={"row"}>
+            <Text>Min:</Text>{" "}
+            <NumberInput
+              min={minPrice}
+              max={maxPrice}
+              value={value}
+              onChange={handleChange}
+              allowMouseWheel
+              size={"sm"}
+              keepWithinRange={false}
+              clampValueOnBlur={false}
+            >
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Stack>
+          <Stack direction={"row"}>
+            <Text>Max:</Text>{" "}
+            <NumberInput
+              min={minPrice}
+              max={maxPrice}
+              value={value2}
+              onChange={handleChange2}
+              allowMouseWheel
+              size={"sm"}
+              keepWithinRange={false}
+              clampValueOnBlur={false}
+            >
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Stack>
         </Flex>
       </Box>
     </>
