@@ -5,6 +5,8 @@ import { Tooltip } from "@chakra-ui/react";
 import { useCheckbox, useCheckboxGroup } from "@chakra-ui/react";
 
 import { AiOutlineCheck } from "react-icons/ai";
+import { MainContext, useContext } from "../../../contexts/MainContext";
+import { useSearchParams, useLocation } from "react-router-dom";
 
 const CategoryName = ({ name }) => {
   return (
@@ -47,13 +49,13 @@ function CustomCheckbox(props) {
         <Text color="gray.700" {...getLabelProps()} userSelect={"none"} pl={1}>
           {props.value}
         </Text>
-
       </chakra.label>
     </Tooltip>
   );
 }
-
 const BodySize = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const values = [
     "36",
     "38",
@@ -68,9 +70,25 @@ const BodySize = () => {
     "L",
     "XL",
   ];
+
+  const [bodies, setBodies] = React.useState([]);
+
+  const { tags, setTags } = useContext(MainContext);
+
   const handleChange = (value) => {
-    //alert(value);
+    /* setBodies((oldValues) => {
+      return oldValues.filter((tag) => tag !== value);
+    });
+    */
+
+
+
+   // setSearchParams({ pb: bodies });
+   // setTags([...tags, bodies]);
   };
+
+  console.table(searchParams.get("pb"));
+
   const { value, getCheckboxProps } = useCheckboxGroup({
     name: "BodySize",
     onChange: handleChange,

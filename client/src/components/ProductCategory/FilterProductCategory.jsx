@@ -64,13 +64,14 @@ function FilterProductCategory(props) {
 
   const { tags, setTags } = useContext(MainContext);
 
- 
-
   const deleteByValue = (value) => {
     setTags((oldValues) => {
       return oldValues.filter((tag) => tag !== value);
     });
+    if (searchParams.has("fiyat")) searchParams.delete("fiyat");
+    if (searchParams.has("fiyat")) alert('dans');
   };
+
   return (
     <>
       <Flex direction={"row"}>
@@ -141,7 +142,7 @@ function FilterProductCategory(props) {
               </HStack>
             </Box>
           )}
-          
+
           {tags.length > 0 ? (
             <Box
               ml={3}
@@ -182,7 +183,7 @@ function FilterProductCategory(props) {
               </Wrap>
             </Box>
           ) : (
-         ''
+            ""
           )}
           <Box>{children}</Box>
         </Box>
