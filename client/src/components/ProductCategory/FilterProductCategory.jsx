@@ -6,9 +6,7 @@ import {
   Spacer,
   Text,
   HStack,
-  Center,
   Button,
-  SimpleGrid,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -30,6 +28,8 @@ import { encode, decode } from "html-entities";
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 
 import { useWindowDimensions } from "../../../src/hooks/";
+
+import { MainContext, useContext } from "../../contexts/MainContext";
 
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
@@ -62,25 +62,9 @@ function FilterProductCategory(props) {
 
   const windowDimensions = useWindowDimensions();
 
-  const [tags, setTags] = useState(["150-300 arası ürün", "😜"]);
+  const { tags, setTags } = useContext(MainContext);
 
-  React.useEffect(() => {}, []);
-
-  if (searchParams.has("fiyat")) {
-    let prices = searchParams.get("fiyat");
-    prices = prices.split(",");
-    // alert(prices[0] + " " + prices[1]);
-
-    //setTags([...tags, `arası ürün`]);
-  } else {
-    tags.forEach(function (t, i) {
-      if (t.endsWith("arası ürün")) {
-        setTags((oldValues) => {
-          return oldValues.filter((tag) => tag !== t);
-        });
-      }
-    });
-  }
+ 
 
   const deleteByValue = (value) => {
     setTags((oldValues) => {
@@ -157,6 +141,7 @@ function FilterProductCategory(props) {
               </HStack>
             </Box>
           )}
+          
           {tags.length > 0 ? (
             <Box
               ml={3}
@@ -197,7 +182,7 @@ function FilterProductCategory(props) {
               </Wrap>
             </Box>
           ) : (
-            ""
+         ''
           )}
           <Box>{children}</Box>
         </Box>

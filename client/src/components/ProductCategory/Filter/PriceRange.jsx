@@ -35,6 +35,7 @@ function PriceRange(props) {
 
   const onChanged = ([min, max]) => {
     setSliderValue([min, max]);
+    
   };
 
   React.useEffect(() => {

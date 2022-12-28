@@ -110,6 +110,7 @@ const SidebarContent = (props) => {
           <EvaluationScore />
           <BodySize />
           <Colors colors={colors} />
+          
           <CouponProduct />
           <DiscountedProduct />
           <DiscountInCart />

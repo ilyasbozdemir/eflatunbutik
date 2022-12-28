@@ -6,43 +6,30 @@ import { selectLoginState } from "./store/selectors";
 import React, { Suspense } from "react";
 
 import LazyComponentsSkeleton from "./components/LazyComponentsSkeleton";
+import { MainContext } from "./contexts/MainContext";
 
 const Router = React.lazy(() => import("./Router"));
-/*
-function MyComponent() {
-  const [dimensions, setDimensions] = React.useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
-  React.useLayoutEffect(() => {
-    function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    }
-
-    window.addEventListener("resize", handleResize);
-  });
-  return (
-    <div>
-      Rendered at width:{dimensions.width} height:{dimensions.height}
-    </div>
-  );
-}
-*/
 
 function App() {
   let baslik = document.title;
-  
   window.onblur = () => (document.title = "Alışverişe devam et");
   window.onfocus = () => (document.title = baslik);
 
+  const [tags, setTags] = React.useState([]);
+  const [basket, setBasket] = React.useState([]);
+
+  const data = {
+    tags,
+    setTags,
+    basket,
+    setBasket,
+  };
+
   return (
     <Suspense fallback={<LazyComponentsSkeleton />}>
-      <div>{/*<MyComponent />*/}</div>
-
-      <Router />
+      <MainContext.Provider value={data}>
+        <Router />
+      </MainContext.Provider>
     </Suspense>
   );
 }

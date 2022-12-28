@@ -73,7 +73,6 @@ const BodySize = () => {
   };
   const { value, getCheckboxProps } = useCheckboxGroup({
     name: "BodySize",
-    defaultValue: [values[0]],
     onChange: handleChange,
   });
 

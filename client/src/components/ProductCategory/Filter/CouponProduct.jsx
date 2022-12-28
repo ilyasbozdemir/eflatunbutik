@@ -17,8 +17,8 @@ const CouponProduct = () => {
   return (
     <Text >
       <FormControl display="flex" alignItems="center">
-        <Switch id="coupon-products" colorScheme="pink" />{" "}
-        <FormLabel htmlFor="coupon-products" mb="0" userSelect={'none'}>
+        <Switch id="coupon-products" colorScheme="pink" />
+        <FormLabel htmlFor="coupon-products"  userSelect={'none'}>
           Kuponlu Ürünler
         </FormLabel>
       </FormControl>
