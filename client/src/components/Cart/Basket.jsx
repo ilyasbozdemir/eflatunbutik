@@ -11,9 +11,11 @@ import {
 } from "@chakra-ui/react";
 import { CartItem } from "./CartItem";
 import { CartOrderSummary } from "./CartOrderSummary";
-import { cartData } from "./_data";
+import { MainContext, useContext } from "../../contexts/MainContext";
 
 function Basket() {
+  const { basket, setBasket } = useContext(MainContext);
+
   return (
     <>
       <Box maxW={{ base: "3xl", lg: "7xl" }}>
@@ -42,12 +44,18 @@ function Basket() {
               fontWeight="extrabold"
               fontFamily={"Open Sans"}
             >
-              Alışveriş Sepeti ({ cartData.length} Ürün)
+              Alışveriş Sepeti ({basket.length} Ürün)
             </Heading>
 
             <Stack spacing="6">
-              {cartData.map((item) => (
-                <CartItem key={item.id} {...item} />
+              {basket.map((item) => (
+                <CartItem
+                  key={item.id}
+                  {...item}
+                  onChangeQuantity={(v) => {
+                   
+                  }}
+                />
               ))}
             </Stack>
           </Stack>

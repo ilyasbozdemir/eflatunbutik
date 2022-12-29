@@ -2,15 +2,15 @@ import { Box, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 import EmptyBasket from "./EmptyBasket";
 import Basket from "./Basket";
+import { MainContext, useContext } from "../../contexts/MainContext";
 
 function CardWrapper() {
-  const [count, setCount] = useState(1);
+  const { basket } = useContext(MainContext);
 
   return (
     <>
       <Flex direction={"column"} textAlign={"center"} px={3} py={3}>
-        {count > 0 ? <Basket /> : <EmptyBasket />}
-        <Box>{"{En Çok Satanlar componenti gelcek}"}</Box>
+        {basket.length > 0 ? <Basket /> : <EmptyBasket />}
       </Flex>
     </>
   );

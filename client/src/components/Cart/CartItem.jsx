@@ -3,24 +3,23 @@ import {
   Flex,
   Link,
   Select,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
 const QuantitySelect = (props) => {
+  const [selectValue, setSelectValue] = React.useState("");
+
   return (
-    <Select
-      maxW="64px"
-      aria-label="Select quantity"
-      focusBorderColor={useColorModeValue("pink.500", "pink.200")}
-      {...props}
-    >
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </Select>
+    <>
+      <Select maxW="64px" size={"md"} name="quantity" {...props}>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </Select>
+    </>
   );
 };
 
@@ -64,7 +63,7 @@ export const CartItem = (props) => {
         <QuantitySelect
           value={quantity}
           onChange={(e) => {
-            onChangeQuantity?.(+ e.currentTarget.value);
+            onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
         <PriceTag price={price} currency={currency} />
@@ -85,12 +84,18 @@ export const CartItem = (props) => {
           md: "none",
         }}
       >
-        <Link fontSize="sm" textDecor="underline">
+        <Link
+          fontSize="sm"
+          textDecor="underline"
+          aria-label={`Delete ${name} from cart`}
+          onClick={onClickDelete}
+        >
           Sil
         </Link>
         <QuantitySelect
           value={quantity}
           onChange={(e) => {
+           
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />

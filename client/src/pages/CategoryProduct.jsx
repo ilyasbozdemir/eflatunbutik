@@ -25,7 +25,7 @@ function CategoryProduct(props) {
 
   React.useEffect(() => {
     setCategoryDaya(products);
-  }, [categoryData]);
+  }, [products]);
 
   const smVariant = { isCenter: false };
   const mdVariant = { isCenter: true };
