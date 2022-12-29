@@ -118,6 +118,7 @@ function IGStory() {
 
   const MotionBox = motion(Box);
   const [x, setX] = React.useState(0);
+  const [dragX, setDragX] = React.useState(0);
   React.useEffect(() => {}, [x]);
 
   //  dragConstraints={{ left: -width, right: 0 }}
@@ -127,8 +128,6 @@ function IGStory() {
     }
   };
 
-  //const back = -itemLength + item.current.scrollWidth < x;
-
   const backHandled = () => {
     const itemLength = item.current.scrollWidth * images.length;
     if (-itemLength + item.current.scrollWidth < x) {
@@ -136,21 +135,34 @@ function IGStory() {
     }
   };
 
-  //alert(item.current.scrollWidth * images.length);
+  const onDragStart = (event, info) => {
+    //info.point.x
+    setDragX(info.point.x);
+  };
+  const onDragEnd = (event, info) => {
+    //info.point.x
+    if (dragX > info.point.x) {
+      alert("direction left " + x);
+      setX(x - (dragX - info.point.x));
+    } else {
+      alert("direction right " + x);
+      setX(x - (dragX - info.point.x));
+    }
+  };
 
   console.log(width);
 
   return (
-    <Box pos={"relative"}>
+    <Box pos={"relative"} userSelect={'none'}>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
-          initial={30}
-          drag={"x"}
           dragConstraints={{ left: -width, right: 0 }}
           className={styles.inner_carousel}
           onDrag={(event, info) => {
-            console.log(info.point.x + " xy " + info.point.y);
+            //console.log(info.point.x + " xy " + info.point.y);
           }}
+          onDragStart={onDragStart}
+          onDragEnd={onDragEnd}
           animate={{ x: x }}
         >
           {images.map((image, index) => {
