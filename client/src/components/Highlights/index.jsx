@@ -26,7 +26,7 @@ function index() {
           as={Link}
           to={to}
           fontSize={{ base: 14, md: 16}}
-          p={{ base: 8 }}
+          p={{ base: 2 , md: 8}}
           color={"white"}
           bgGradient={"linear(to-l, #7928CA, #FF0080)"}
           _hover={{

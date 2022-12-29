@@ -17,7 +17,7 @@ import styles from "./index.module.css";
 
 import useWindowDimensions from "../../../src/hooks/useWindowDimensions";
 
-import { motion, useDragControls, useMotionValue } from "framer-motion";
+import { motion, useDragControls, useMotionValue,useAnimation } from "framer-motion";
 
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
@@ -109,14 +109,17 @@ function IGStory() {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, [WindowDimensions.width]);
 
+  const x = useMotionValue(100);
+
+  const box2Control = useAnimation();
   return (
     <Box pos={"relative"}>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
+          initial={{ x: 20 }}
           drag={"x"}
           dragConstraints={{ left: -width, right: 0 }}
           className={styles.inner_carousel}
-          
         >
           {images.map((image, index) => {
             return (
