@@ -3,6 +3,7 @@ import {
   Button,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 function ShoppingButton() {
   return (
     <>
@@ -15,6 +16,8 @@ function ShoppingButton() {
           bg: UseColorModeValue("gray.800", "gray.500"),
           bgGradient: "linear(to-r, #ac28ca, #ff1060)",
         }}
+        as={Link}
+        to={"/"}
       >
         Alışverişe Başla
       </Button>

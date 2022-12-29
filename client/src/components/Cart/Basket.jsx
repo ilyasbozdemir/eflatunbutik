@@ -5,16 +5,17 @@ import {
   HStack,
   Flex,
   Heading,
-  Link,
   Stack,
   useColorModeValue as mode,
+  Text,
 } from "@chakra-ui/react";
 import { CartItem } from "./CartItem";
 import { CartOrderSummary } from "./CartOrderSummary";
 import { MainContext, useContext } from "../../contexts/MainContext";
+import { Link } from "react-router-dom";
 
 function Basket() {
-  const { basket, setBasket } = useContext(MainContext);
+  const { basket } = useContext(MainContext);
 
   return (
     <>
@@ -52,9 +53,7 @@ function Basket() {
                 <CartItem
                   key={item.id}
                   {...item}
-                  onChangeQuantity={(v) => {
-                   
-                  }}
+                  onChangeQuantity={(v) => {}}
                 />
               ))}
             </Stack>
@@ -64,8 +63,10 @@ function Basket() {
             <CartOrderSummary />
             <HStack mt="6" fontWeight="semibold">
               <p>veya</p>
-              <Link color={mode("pink.500", "pink.200")}>
-                Alışverişe devam et
+              <Link to={"/"}>
+                <Text color={mode("pink.500", "pink.200")}>
+                  Alışverişe devam et
+                </Text>
               </Link>
             </HStack>
           </Flex>

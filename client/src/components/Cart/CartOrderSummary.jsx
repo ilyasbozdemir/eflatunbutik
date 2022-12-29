@@ -19,7 +19,7 @@ import {
   InputRightElement,
   IconButton,
 } from "@chakra-ui/react";
-
+import { MainContext, useContext } from "../../contexts/MainContext";
 import * as React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { formatPrice } from "./PriceTag";
@@ -38,6 +38,36 @@ const OrderSummaryItem = (props) => {
 };
 
 export const CartOrderSummary = () => {
+  const { basket } = useContext(MainContext);
+
+  console.table(basket);
+
+  const totalPrice = () => {
+    return basket.reduce((prev, product) => {
+      return (prev += product.price);
+    }, 0);
+  };
+
+  const taxRate = 8;
+
+  const [subtotal, setSubtotal] = React.useState(Math.ceil(totalPrice()));
+  //X Rakamının Yüzde Y 'si
+
+  //FORMÜL: X * (Y/100)
+  const percentageCalculation = () => {
+    return subtotal * (taxRate / 100);
+  };
+
+  const [kdvtotal, setKdvtotal] = React.useState(
+    Math.ceil(percentageCalculation())
+  );
+
+  const [subtotalTaxFree, setSubtotalTaxFree] = React.useState(
+    subtotal - kdvtotal
+  );
+
+  const [cargo, setCargo] = React.useState(25);
+
   const {
     isOpen: isOpenCoupon,
     onOpen: onOpenCoupon,
@@ -65,11 +95,7 @@ export const CartOrderSummary = () => {
               <TermsOfUseComponent />
             </ModalBody>
             <ModalFooter>
-              <Button
-                colorScheme="pink"
-                mr={3}
-                onClick={onCloseConditions}
-              >
+              <Button colorScheme="pink" mr={3} onClick={onCloseConditions}>
                 Onayla ve Kapat
               </Button>
             </ModalFooter>
@@ -145,15 +171,15 @@ export const CartOrderSummary = () => {
         <Heading size="md">Sipariş Özeti</Heading>
 
         <Stack spacing="6">
-          <OrderSummaryItem
-            label="Ara Toplam"
-            value={formatPrice(190.99 + 290.99 + 390.99)}
-          />
+          <OrderSummaryItem label="Ara Toplam" value={formatPrice(subtotal)} />
           <OrderSummaryItem
             label="Kdv Toplam"
-            value="₺69,8376"
+            value={`₺${kdvtotal}`}
           ></OrderSummaryItem>
-          <OrderSummaryItem label="Kargo" value="₺25"></OrderSummaryItem>
+          <OrderSummaryItem
+            label="Kargo"
+            value={`₺${cargo}`}
+          ></OrderSummaryItem>
           <OrderSummaryItem label="Kupon Kodu">
             <Text
               as={"span"}
@@ -170,7 +196,7 @@ export const CartOrderSummary = () => {
               Toplam
             </Text>
             <Text fontSize="xl" fontWeight="extrabold">
-              {formatPrice(190.99 + 290.99 + 390.99)}
+              {formatPrice(subtotal)}
             </Text>
           </Flex>
         </Stack>

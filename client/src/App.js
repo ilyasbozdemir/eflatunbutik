@@ -10,10 +10,12 @@ import { MainContext } from "./contexts/MainContext";
 import { _products } from "./components/Product/_data";
 import { cartData } from "./components/Cart/_data";
 
+
 const Router = React.lazy(() => import("./Router"));
 
 function App() {
   let baslik = document.title;
+
 
   window.onblur = () => (document.title = "Alışverişe devam et");
   window.onfocus = () => (document.title = baslik);

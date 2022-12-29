@@ -4,16 +4,16 @@ import {
   Spacer,
   Box,
   Heading,
-  HStack,
   useDisclosure as UseDisclosure,
   Icon,
+  Stack,
 } from "@chakra-ui/react";
 
 import Logo from "../Logo";
 
-import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 
-import { MdOutlineShoppingCart, MdShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 import SearchBox from "./SearchBox";
 
@@ -27,7 +27,7 @@ function HeaderBrand() {
   const [userIsShown, setUserIsShown] = React.useState(false);
   return (
     <>
-      <Flex justifyContent={"flex-start"} mt={5}>
+      <Flex justifyContent={"flex-start"} mt={5}  mb={2}>
         <Heading size="md">
           <Link to="/">
             <Logo />
@@ -42,9 +42,10 @@ function HeaderBrand() {
 
         <Spacer />
 
-        <HStack>
-          <UserMenu isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-
+        <Stack direction={"row"} textAlign={'center'}>
+      
+            <UserMenu isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+          
           <Link
             to="/favorilerim/"
             bg={"transparent"}
@@ -54,29 +55,19 @@ function HeaderBrand() {
             mx={1}
             px={2}
           >
-            {isFavoriShown ? (
-              <Icon as={MdFavorite} fontSize={25} />
-            ) : (
-              <Icon as={MdOutlineFavoriteBorder} fontSize={25} />
-            )}
+            <Icon as={MdOutlineFavoriteBorder} fontSize={25} />
           </Link>
 
           <Link
             bg={"transparent"}
             aria-label="product basket button"
-            onMouseEnter={() => setShoppingCartIsShown(true)}
-            onMouseLeave={() => setShoppingCartIsShown(false)}
             to="/sepetim/"
             mx={1}
             px={2}
           >
-            {shoppingCartisShown ? (
-              <Icon as={MdShoppingCart} fontSize={25} />
-            ) : (
-              <Icon as={MdOutlineShoppingCart} fontSize={25} />
-            )}
+            <Icon as={MdOutlineShoppingCart} fontSize={25} />
           </Link>
-        </HStack>
+        </Stack>
       </Flex>
     </>
   );

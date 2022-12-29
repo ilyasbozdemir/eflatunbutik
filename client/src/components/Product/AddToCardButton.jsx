@@ -9,8 +9,30 @@ import {
 
 import { BiShoppingBag } from "react-icons/bi";
 
+import { MainContext, useContext } from "../../contexts/MainContext";
+
 function AddToCardButton({ product }) {
-  const { id } = product;
+  const { basket, setBasket } = useContext(MainContext);
+
+  const { id, name, price, salePrice, imageUrl, description, currency } =
+    product;
+
+  const clickHandled = () => {
+    setBasket([
+      ...basket,
+      {
+        id: id,
+        price: price,
+        salePrice: salePrice,
+        currency: currency,
+        name: name,
+        description: description,
+        quantity: 1,
+        imageUrl: imageUrl,
+      },
+    ]);
+  };
+
   return (
     <>
       <Button
@@ -22,7 +44,7 @@ function AddToCardButton({ product }) {
         _hover={{
           opacity: 0.9,
         }}
-        onClick={() => alert(id)}
+        onClick={clickHandled}
       >
         <Flex
           justifyContent={"space-between"}
