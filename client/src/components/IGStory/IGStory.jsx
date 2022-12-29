@@ -107,12 +107,18 @@ function IGStory() {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, [WindowDimensions.width]);
 
+  let [isSwiping, setIsSwiping] = useState(0);
+  let onDrag = (event, info) => setIsSwiping(info.offset.x > 10);
+
   return (
     <>
-      <motion.div ref={carousel} className={styles.carousel} width={'100%'}>
+      <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
           drag={"x"}
+          animate={isSwiping ? "swiping" : "static"}
+          onDrag={onDrag}
           dragConstraints={{ left: -width, right: 0 }}
+          dragDirectionLock
           className={styles.inner_carousel}
         >
           {images.map((image, index) => {

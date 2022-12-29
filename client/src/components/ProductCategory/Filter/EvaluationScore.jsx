@@ -52,6 +52,7 @@ function EvaluationScore() {
     "1 yıldız ve üzeri",
   ];
   const [searchParams, setSearchParams] = useSearchParams();
+  
   const handleChange = (value) => {
     setTimeout(() => {
       setSearchParams({ pr: value });

@@ -32,7 +32,10 @@ import PriceTag from "./PriceTag";
 import { Tooltip } from "@chakra-ui/react";
 import AddToCardButton from "./AddToCardButton";
 
-import { Badge } from "@chakra-ui/react";
+import { cardVariant } from "../../motion";
+
+import { motion } from "framer-motion";
+const MotionStack = motion(Stack);
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
@@ -92,7 +95,8 @@ export const ProductCard = (props) => {
 
   return (
     <Stack w={w}>
-      <Stack
+      <MotionStack
+        variants={cardVariant}
         textDecoration="none"
         cursor={"pointer"}
         border={"1px #ccc solid"}
@@ -213,7 +217,7 @@ export const ProductCard = (props) => {
         <Stack align="center" mt={2}>
           <Text onClick={onOpen}>Hızlı Gözat</Text>
         </Stack>
-      </Stack>
+      </MotionStack>
 
       <QuickProductDetailModal
         isOpen={isOpen}
