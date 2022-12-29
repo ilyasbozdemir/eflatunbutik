@@ -25,7 +25,8 @@ export const images = [
     src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=420&q=80",
   },
 ];
-export const products = [
+
+export const _products = [
   {
     id: "1",
     name: "Muhteşem Tasarım Elbise - Kahve",

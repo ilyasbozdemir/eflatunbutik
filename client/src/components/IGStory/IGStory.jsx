@@ -176,7 +176,7 @@ function IGStory() {
 
         <Icon
           pos={"absolute"}
-          left={5}
+          left={2}
           top={"35%"}
           as={BsChevronLeft}
           bg={"white"}
@@ -190,7 +190,7 @@ function IGStory() {
         {x < 0 ? (
           <Icon
             pos={"absolute"}
-            right={5}
+            right={2}
             top={"35%"}
             as={BsChevronRight}
             bg={"white"}

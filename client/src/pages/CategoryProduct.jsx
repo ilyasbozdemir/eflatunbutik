@@ -14,10 +14,13 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 
-import { products } from "../components/Product/_data";
+import { MainContext, useContext } from "../contexts/MainContext";
 
 function CategoryProduct(props) {
   const { breadcrumbs, isSearchPage } = props;
+
+  const { products } = useContext(MainContext);
+
   const [categoryData, setCategoryDaya] = React.useState(products);
 
   React.useEffect(() => {

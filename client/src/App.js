@@ -7,22 +7,27 @@ import React, { Suspense } from "react";
 
 import LazyComponentsSkeleton from "./components/LazyComponentsSkeleton";
 import { MainContext } from "./contexts/MainContext";
+import { _products } from "./components/Product/_data";
 
 const Router = React.lazy(() => import("./Router"));
 
 function App() {
   let baslik = document.title;
+
   window.onblur = () => (document.title = "Alışverişe devam et");
   window.onfocus = () => (document.title = baslik);
 
-  const [tags, setTags] = React.useState(['arası ürün']);
+  const [tags, setTags] = React.useState(["arası ürün"]);
   const [basket, setBasket] = React.useState([]);
+  const [products, setProducts] = React.useState(_products);
 
   const data = {
     tags,
     setTags,
     basket,
     setBasket,
+    products,
+    setProducts,
   };
 
   return (
