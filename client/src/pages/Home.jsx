@@ -13,9 +13,9 @@ function Home() {
         <IGStory />
       </HStack>
 
-      <HStack mt={4}>
+      <Flex direction={"row"} justifyContent={{base:"space-between",md:'space-around'}} mt={4}>
         <Highlights />
-      </HStack>
+      </Flex>
 
       <HStack mt={4}>
         <Showcase />

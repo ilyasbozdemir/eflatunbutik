@@ -1,5 +1,5 @@
 import React from "react";
-import {  Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 function index() {
@@ -21,9 +21,12 @@ function index() {
   const HighlightButton = (props) => {
     const { name, to } = props;
     return (
-      <Link to={to} ml={"33%"}>
+      <>
         <Button
-          fontSize={{ base: 12, md: 14, xl: 15, lg: 16 }}
+          as={Link}
+          to={to}
+          fontSize={{ base: 14, md: 16}}
+          p={{ base: 8 }}
           color={"white"}
           bgGradient={"linear(to-l, #7928CA, #FF0080)"}
           _hover={{
@@ -32,16 +35,16 @@ function index() {
         >
           {name}
         </Button>
-      </Link>
+      </>
     );
   };
 
   return (
-    <Flex direction={"row"} >
+    <>
       {buttons.map((button, index) => (
         <HighlightButton key={index} {...button} />
       ))}
-    </Flex>
+    </>
   );
 }
 

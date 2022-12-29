@@ -107,31 +107,12 @@ function IGStory() {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, [WindowDimensions.width]);
 
-  let [isSwiping, setIsSwiping] = useState(0);
-  const [allowScroll, setAllowScroll] = useState(false);
-  let onDrag = (event, info) => setIsSwiping(info.offset.x > 10);
-  let onDragStart = (event, info) =>
-    setAllowScroll(Math.abs(info.delta.y) > Math.abs(info.delta.x));
-
-  React.useEffect(() => {
-    if (allowScroll) {
-      const handleTouch = (event) => {
-        event.stopPropagation();
-      };
-      document.documentElement.addEventListener("touchmove", handleTouch);
-      return () => {
-        document.documentElement.removeEventListener("touchmove", handleTouch);
-      };
-    }
-  }, [allowScroll]);
   return (
     <>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
           drag={"x"}
-          onDragStart={onDragStart}
           dragConstraints={{ left: -width, right: 0 }}
-          dragDirectionLock
           className={styles.inner_carousel}
         >
           {images.map((image, index) => {
