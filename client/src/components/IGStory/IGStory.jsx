@@ -8,6 +8,7 @@ import {
   Box,
   Icon,
   background,
+  Button,
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -17,7 +18,12 @@ import styles from "./index.module.css";
 
 import useWindowDimensions from "../../../src/hooks/useWindowDimensions";
 
-import { motion, useDragControls, useMotionValue,useAnimation } from "framer-motion";
+import {
+  motion,
+  useDragControls,
+  useMotionValue,
+  useAnimation,
+} from "framer-motion";
 
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
@@ -108,18 +114,44 @@ function IGStory() {
   React.useLayoutEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, [WindowDimensions.width]);
+  const ref = React.useRef();
 
-  const x = useMotionValue(100);
+  const MotionBox = motion(Box);
+  const [x, setX] = React.useState(0);
+  React.useEffect(() => {}, [x]);
 
-  const box2Control = useAnimation();
+  //  dragConstraints={{ left: -width, right: 0 }}
+  const forwardHandled = () => {
+    if (x < 0) {
+      setX(x + item.current.scrollWidth);
+    }
+  };
+
+  //const back = -itemLength + item.current.scrollWidth < x;
+
+  const backHandled = () => {
+    const itemLength = item.current.scrollWidth * images.length;
+    if (-itemLength + item.current.scrollWidth < x) {
+      setX(x - item.current.scrollWidth);
+    }
+  };
+
+  //alert(item.current.scrollWidth * images.length);
+
+  console.log(width);
+
   return (
     <Box pos={"relative"}>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
-          initial={{ x: 20 }}
+          initial={30}
           drag={"x"}
           dragConstraints={{ left: -width, right: 0 }}
           className={styles.inner_carousel}
+          onDrag={(event, info) => {
+            console.log(info.point.x + " xy " + info.point.y);
+          }}
+          animate={{ x: x }}
         >
           {images.map((image, index) => {
             return (
@@ -140,20 +172,25 @@ function IGStory() {
           w={5}
           h={5}
           cursor={"pointer"}
-          onClick={() => alert("hi")}
+          onClick={backHandled}
         />
-        <Icon
-          pos={"absolute"}
-          right={5}
-          top={"35%"}
-          as={BsChevronRight}
-          bg={"white"}
-          rounded={"full"}
-          w={5}
-          h={5}
-          cursor={"pointer"}
-          onClick={() => alert("hi")}
-        />
+
+        {x < 0 ? (
+          <Icon
+            pos={"absolute"}
+            right={5}
+            top={"35%"}
+            as={BsChevronRight}
+            bg={"white"}
+            rounded={"full"}
+            w={5}
+            h={5}
+            cursor={"pointer"}
+            onClick={forwardHandled}
+          />
+        ) : (
+          ""
+        )}
       </motion.div>
     </Box>
   );
