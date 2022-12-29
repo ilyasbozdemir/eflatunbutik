@@ -1,4 +1,4 @@
-import { Flex, HStack, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, HStack, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 
 const Showcase = React.lazy(() => import("../components/Showcase"));
@@ -9,9 +9,9 @@ const MySlider = React.lazy(() => import("../components/MySlider"));
 function Home() {
   return (
     <>
-      <HStack mt={4}>
+      <Box mt={4}>
         <IGStory />
-      </HStack>
+      </Box>
 
       <Flex direction={"row"} justifyContent={{base:"space-between",md:'space-around'}} mt={4}>
         <Highlights />

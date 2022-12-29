@@ -1,6 +1,5 @@
 .carousel {
   overflow:hidden;
-  cursor:grab;
 }
 .inner_carousel {
   display: flex;

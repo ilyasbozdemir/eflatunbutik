@@ -17,7 +17,9 @@ import styles from "./index.module.css";
 
 import useWindowDimensions from "../../../src/hooks/useWindowDimensions";
 
-import { motion } from "framer-motion";
+import { motion, useDragControls, useMotionValue } from "framer-motion";
+
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const images = [
   {
@@ -108,12 +110,13 @@ function IGStory() {
   }, [WindowDimensions.width]);
 
   return (
-    <>
+    <Box pos={"relative"}>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
           drag={"x"}
           dragConstraints={{ left: -width, right: 0 }}
           className={styles.inner_carousel}
+          
         >
           {images.map((image, index) => {
             return (
@@ -123,8 +126,33 @@ function IGStory() {
             );
           })}
         </motion.div>
+
+        <Icon
+          pos={"absolute"}
+          left={5}
+          top={"35%"}
+          as={BsChevronLeft}
+          bg={"white"}
+          rounded={"full"}
+          w={5}
+          h={5}
+          cursor={"pointer"}
+          onClick={() => alert("hi")}
+        />
+        <Icon
+          pos={"absolute"}
+          right={5}
+          top={"35%"}
+          as={BsChevronRight}
+          bg={"white"}
+          rounded={"full"}
+          w={5}
+          h={5}
+          cursor={"pointer"}
+          onClick={() => alert("hi")}
+        />
       </motion.div>
-    </>
+    </Box>
   );
 }
 
