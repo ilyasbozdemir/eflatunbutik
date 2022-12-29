@@ -12,8 +12,14 @@ function Home() {
       <Box mt={4}>
         <IGStory />
       </Box>
-
-      <Flex direction={"row"} justifyContent={{base:"space-between",md:'space-around'}} mt={4}>
+      <Box mt={4} >
+        <MySlider />
+      </Box>
+      <Flex
+        direction={"row"}
+        justifyContent={{ base: "space-between", md: "space-around" }}
+        mt={4}
+      >
         <Highlights />
       </Flex>
 

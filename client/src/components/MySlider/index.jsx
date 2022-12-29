@@ -27,21 +27,19 @@ function index() {
   ];
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false,
+    arrows: true,
     pauseOnDotsHover: true,
-    rtl: true,
   };
 
 
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.xl" mb={4}>
       <Slider {...settings}>
         {data.map((item) => (
           <SliderItem key={item.id} src={item.url} alt={item.alt} />
