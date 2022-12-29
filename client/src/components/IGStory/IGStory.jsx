@@ -102,7 +102,6 @@ const ImageItem = (props) => {
 };
 
 const PreviousBtn = (props) => {
- 
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
@@ -120,26 +119,66 @@ const NextBtn = (props) => {
 };
 
 function IGStory() {
+  var settings = {
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
-    <>
-      <Slider 
-      slidesToShow={6}
-      lazyLoad={true}
-      initialSlide={2}
-      infinite
-      prevArrow={<PreviousBtn />}
-      nextArrow={<NextBtn />}
-      >
-        {images.map((image, index) => {
-          return (
-            <Box as={"span"} key={index} cursor={"pointer"}>
-              <ImageItem {...image} />
-            </Box>
-          );
-        })}
-      </Slider>
-    </>
+    <Flex justifyContent={'center'}>
+      <Box maxW={"90%"} >
+        <Slider
+          slidesToShow={6}
+          lazyLoad={true}
+          initialSlide={2}
+          infinite
+          prevArrow={<PreviousBtn />}
+          nextArrow={<NextBtn />}
+          {...settings}
+        >
+          {images.map((image, index) => {
+            return (
+              <Box as={"span"} key={index} cursor={"pointer"}>
+                <ImageItem {...image} />
+              </Box>
+            );
+          })}
+        </Slider>
+      </Box>
+    </Flex>
   );
 }
 
