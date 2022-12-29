@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Flex, tokenToCSSVar, Spacer } from "@chakra-ui/react";
+import {  Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 function index() {
