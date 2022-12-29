@@ -114,6 +114,7 @@ function IGStory() {
     <>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
+          drag={"x"}
           animate={isSwiping ? "swiping" : "static"}
           onDrag={onDrag}
           dragConstraints={{ left: -width, right: 0 }}
