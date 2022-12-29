@@ -19,43 +19,59 @@ import SearchBox from "./SearchBox";
 
 import { Link } from "react-router-dom";
 
+import { MainContext, useContext } from "../../../src/contexts/MainContext";
+
 import UserMenu from "./UserMenu";
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
-  const [isFavoriShown, setIsFavoriShown] = React.useState(false);
-  const [shoppingCartisShown, setShoppingCartIsShown] = React.useState(false);
-  const [userIsShown, setUserIsShown] = React.useState(false);
+ 
+  const { basket, wishlist } = useContext(MainContext);
+
   return (
     <>
-      <Flex justifyContent={"flex-start"} mt={5}  mb={2}>
+      <Flex justifyContent={"space-between"} mt={5} mb={2}>
         <Heading size="md">
           <Link to="/">
             <Logo />
           </Link>
         </Heading>
 
-        <Spacer />
-
         <Box borderRadius={"50px 50px 50px 50px"}>
           <SearchBox />
         </Box>
 
-        <Spacer />
+        <Box>
+          <UserMenu
+            isOpen={isOpen}
+            onOpen={onOpen}
+            onClose={onClose}
+            fontSize={31}
+          />
 
-        <Stack direction={"row"} textAlign={'center'}>
-      
-            <UserMenu isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-          
           <Link
             to="/favorilerim/"
             bg={"transparent"}
             aria-label="product favorite"
-            onMouseEnter={() => setIsFavoriShown(true)}
-            onMouseLeave={() => setIsFavoriShown(false)}
             mx={1}
-            px={2}
+            pl={2}
+            pos={"relative"}
           >
-            <Icon as={MdOutlineFavoriteBorder} fontSize={25} />
+            <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
+            <Box
+              as={"span"}
+              bg={"#a020f0"}
+              color={"white"}
+              pos={"absolute"}
+              top={9}
+              right={8}
+              fontSize={12}
+              h={4}
+              w={4}
+              rounded={"full"}
+              textAlign={"center"}
+            >
+              {wishlist.length}
+            </Box>
           </Link>
 
           <Link
@@ -63,11 +79,27 @@ function HeaderBrand() {
             aria-label="product basket button"
             to="/sepetim/"
             mx={1}
-            px={2}
+            ml={4}
+            pos={"relative"}
           >
-            <Icon as={MdOutlineShoppingCart} fontSize={25} />
+            <Icon as={MdOutlineShoppingCart} fontSize={31} />
+            <Box
+              as={"span"}
+              bg={"#a020f0"}
+              color={"white"}
+              pos={"absolute"}
+              top={9}
+              right={0}
+              fontSize={12}
+              h={4}
+              w={4}
+              rounded={"full"}
+              textAlign={"center"}
+            >
+              {basket.length}
+            </Box>
           </Link>
-        </Stack>
+        </Box>
       </Flex>
     </>
   );

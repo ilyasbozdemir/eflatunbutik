@@ -70,7 +70,8 @@ function index() {
                     onClose={onClose}
                     color={"#fff"}
                     bg={"transparent"}
-                    _hover={{ bg: "transparent", color: "gray.500" }}
+                    w={6}
+                    h={6}
                   />
                 ) : (
                   <Link to={nav.to}>

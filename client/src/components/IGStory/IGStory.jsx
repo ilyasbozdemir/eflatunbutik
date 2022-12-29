@@ -92,9 +92,9 @@ const PreviousBtn = (props) => {
       <BsChevronLeft
         style={{
           color: "black",
-          fontSize: "30px",
+          fontSize: "25px",
           position: "absolute",
-          top: "-10px",
+          top: "-5px",
         }}
       />
     </div>
@@ -107,9 +107,9 @@ const NextBtn = (props) => {
       <BsChevronRight
         style={{
           color: "black",
-          fontSize: "30px",
+          fontSize: "25px",
           position: "absolute",
-          top: "-10px",
+          top: "-5px",
         }}
       />
     </div>

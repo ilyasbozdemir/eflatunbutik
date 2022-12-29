@@ -1,9 +1,9 @@
 import React from 'react'
 
-function index() {
+function Showcase3() {
   return (
     <></>
   )
 }
 
-export default index
+export default Showcase3

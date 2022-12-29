@@ -1,10 +1,8 @@
 import React from "react";
 import {
-  Box,
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
   MenuDivider,
   HStack,
   Icon,
@@ -19,7 +17,6 @@ import { Link } from "react-router-dom";
 
 function UserMenu(props) {
   const { isOpen, onOpen, onClose, ...rest } = props;
-  const userRef = React.useRef();
   const [isLogin, setIsLogin] = React.useState(false);
   const [isAdmin, setIsAdmin] = React.useState(false);
 
@@ -27,21 +24,15 @@ function UserMenu(props) {
     <>
       <Menu isOpen={isOpen}>
         <MenuButton
-          ref={userRef}
-          mx={1}
-          px={2}
+          mt={3}
           borderRadius={5}
-          _hover={{ bg: UseColorModeValue("gray.100", "gray.700") }}
           aria-label={"user button"}
-          fontWeight="normal"
           onMouseEnter={onOpen}
           onMouseLeave={onClose}
           bg={"transparent"}
-          rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-          {...rest}
         >
           <HStack>
-            <Icon as={AiOutlineUser} fontSize={25} />
+            <Icon as={AiOutlineUser} {...rest} />
           </HStack>
         </MenuButton>
 
@@ -51,13 +42,12 @@ function UserMenu(props) {
               ? menuAnon.map((menu, index) => (
                   <>
                     <ItemMenu key={index} {...menu} />
-                    <MenuDivider/>
                   </>
                 ))
               : menuUser.map((menu, index) => (
                   <>
                     <ItemMenu key={index} {...menu} />
-                    <MenuDivider/>
+                    <MenuDivider />
                   </>
                 ))}
 
@@ -65,7 +55,7 @@ function UserMenu(props) {
               ? menuAdmin.map((menu, index) => (
                   <>
                     <ItemMenu key={index} {...menu} />
-                    <MenuDivider/>
+                    <MenuDivider />
                   </>
                 ))
               : ""}
@@ -122,7 +112,7 @@ const menuAdmin = [
 const ItemMenu = ({ title, to }) => {
   return (
     <>
-      <Text as={Link} to={to} >
+      <Text as={Link} to={to}>
         <Flex
           as="span"
           textAlign={"center"}
