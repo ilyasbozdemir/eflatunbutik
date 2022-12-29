@@ -37,11 +37,7 @@ function index() {
   };
 
   return (
-    <Flex
-      direction={"row"}
-      justifyContent={"space-around"}
-      textAlign={"center"}
-    >
+    <Flex direction={"row"} >
       {buttons.map((button, index) => (
         <HighlightButton key={index} {...button} />
       ))}
