@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   Flex,
   Image,
@@ -12,12 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
-import styles from "./index.module.css";
-
-import useWindowDimensions from "../../../src/hooks/useWindowDimensions";
-
 import {
   motion,
   useDragControls,
@@ -26,7 +22,7 @@ import {
 } from "framer-motion";
 
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const images = [
   {
     name: "Yeni Gelenler",
@@ -79,7 +75,6 @@ const ImageItem = (props) => {
       <Stack
         display={"flex !important"}
         direction={"column"}
-        w={110}
         alignItems={"center"}
         overflow={"auto"}
         {...rest}
@@ -106,105 +101,45 @@ const ImageItem = (props) => {
   );
 };
 
+const PreviousBtn = (props) => {
+ 
+  const { className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      <BsChevronLeft style={{ color: "blue", fontSize: "30px" }} />
+    </div>
+  );
+};
+const NextBtn = (props) => {
+  const { className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      <BsChevronRight style={{ color: "blue", fontSize: "30px" }} />
+    </div>
+  );
+};
+
 function IGStory() {
-  const [width, setWidth] = React.useState(0);
-  const carousel = React.useRef();
-  const item = React.useRef();
-  const WindowDimensions = useWindowDimensions();
-  React.useLayoutEffect(() => {
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-  }, [WindowDimensions.width]);
-  const ref = React.useRef();
-
-  const MotionBox = motion(Box);
-  const [x, setX] = React.useState(0);
-  const [dragX, setDragX] = React.useState(0);
-  React.useEffect(() => {}, [x]);
-
-  //  dragConstraints={{ left: -width, right: 0 }}
-  const forwardHandled = () => {
-    if (x < 0) {
-      setX(x + item.current.scrollWidth);
-    }
-  };
-
-  const backHandled = () => {
-    const itemLength = item.current.scrollWidth * images.length;
-    if (-itemLength + item.current.scrollWidth < x) {
-      setX(x - item.current.scrollWidth);
-    }
-  };
-
-  const onDragStart = (event, info) => {
-    //info.point.x
-    setDragX(info.point.x);
-  };
-  const onDragEnd = (event, info) => {
-    //info.point.x
-    if (dragX > info.point.x) {
-      alert("direction left " + x);
-      setX(x - (dragX - info.point.x));
-    } else {
-      alert("direction right " + x);
-      setX(x - (dragX - info.point.x));
-    }
-  };
-
-  console.log(width);
 
   return (
-    <Box pos={"relative"} userSelect={'none'}>
-      <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
-        <motion.div
-          dragConstraints={{ left: -width, right: 0 }}
-          className={styles.inner_carousel}
-          onDrag={(event, info) => {
-            //console.log(info.point.x + " xy " + info.point.y);
-          }}
-          onDragStart={onDragStart}
-          onDragEnd={onDragEnd}
-          animate={{ x: x }}
-        >
-          {images.map((image, index) => {
-            return (
-              <motion.div key={index} ref={item} className={styles.item}>
-                <ImageItem {...image} />
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        <Icon
-          pos={"absolute"}
-          left={2}
-          top={"35%"}
-          as={BsChevronLeft}
-          bg={"white"}
-          rounded={"full"}
-          w={5}
-          h={5}
-          cursor={"pointer"}
-          onClick={backHandled}
-        />
-
-        {x < 0 ? (
-          <Icon
-            pos={"absolute"}
-            right={2}
-            top={"35%"}
-            as={BsChevronRight}
-            bg={"white"}
-            rounded={"full"}
-            w={5}
-            h={5}
-            cursor={"pointer"}
-            onClick={forwardHandled}
-          />
-        ) : (
-          ""
-        )}
-      </motion.div>
-    </Box>
+    <>
+      <Slider 
+      slidesToShow={6}
+      lazyLoad={true}
+      initialSlide={2}
+      infinite
+      prevArrow={<PreviousBtn />}
+      nextArrow={<NextBtn />}
+      >
+        {images.map((image, index) => {
+          return (
+            <Box as={"span"} key={index} cursor={"pointer"}>
+              <ImageItem {...image} />
+            </Box>
+          );
+        })}
+      </Slider>
+    </>
   );
 }
 
