@@ -159,7 +159,7 @@ function IGStory() {
 
   return (
     <Flex justifyContent={'center'}>
-      <Box maxW={"90%"} >
+      <Box maxW={"85%"} >
         <Slider
           slidesToShow={6}
           lazyLoad={true}
