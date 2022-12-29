@@ -27,7 +27,6 @@ const images = [
   },
   {
     name: "Elbise",
-
     to: "/elbise/",
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
@@ -62,6 +61,7 @@ const images = [
     src: "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   },
 ];
+
 const ImageItem = (props) => {
   const { src, to, name, ...rest } = props;
   const navigate = useNavigate();
@@ -114,7 +114,6 @@ function IGStory() {
     <>
       <motion.div ref={carousel} className={styles.carousel} width={"100%"}>
         <motion.div
-          drag={"x"}
           animate={isSwiping ? "swiping" : "static"}
           onDrag={onDrag}
           dragConstraints={{ left: -width, right: 0 }}
