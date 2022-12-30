@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
+
 import {
+  Box,
   Button,
   Flex,
   Icon,
   Text,
   useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
+import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 
 import { BiShoppingBag } from "react-icons/bi";
 
@@ -18,10 +21,13 @@ function AddToCardButton({ product }) {
   const { id, name, price, salePrice, imageUrls, description, currency } =
     product;
 
+  const [show, setShow] = React.useState(false);
+  const [duration, setDuration] = React.useState(1000);
+  const [isDisabled, setIsDisabled] = React.useState(false);
+
   const toast = useToast();
 
-
-  const clickHandled = () => {
+  const addToCart = () => {
     setBasket([
       ...basket,
       {
@@ -35,13 +41,27 @@ function AddToCardButton({ product }) {
         imageUrl: imageUrls[0].src,
       },
     ]);
-    toast({
-      title: 'Ürün Sepete Eklendi',
-      status: "success",
-      position: "top",
-      duration: 500,
-      isClosable: true,
-    });
+  };
+
+  const clickHandled = () => {
+    setIsDisabled(true);
+    setShow(true);
+
+    setTimeout(() => {
+      setIsDisabled(false);
+      setShow(false);
+    }, duration);
+
+    setTimeout(() => {
+      toast({
+        title: "Ürün Sepete Eklendi",
+        status: "success",
+        position: "top",
+        duration: duration,
+        isClosable: true,
+      });
+      addToCart();
+    }, duration);
   };
 
   return (
@@ -56,7 +76,13 @@ function AddToCardButton({ product }) {
           opacity: 0.9,
         }}
         onClick={clickHandled}
-        cursor={'pointer'}
+        cursor={"pointer"}
+        disabled={isDisabled}
+        _disabled={{
+          cursor: "progress",
+          bg: "purple",
+          color: "white",
+        }}
       >
         <Flex
           justifyContent={"space-between"}
@@ -64,8 +90,17 @@ function AddToCardButton({ product }) {
           justifyItems={"center"}
           fontSize={{ base: 12, md: 14, lg: 15 }}
         >
-          <Icon as={BiShoppingBag} />
-          <Text>Sepete Ekle</Text>
+          {show === false ? (
+            <>
+              <Icon as={BiShoppingBag} />
+              <Text>Sepete Ekle</Text>
+            </>
+          ) : (
+            <Flex as="span" textAlign={"center"} justifyContent={"center"}>
+              <Text>Sipariş Ekleniyor.</Text>
+              <CircularProgress size={"4"} isIndeterminate color="red.500" />
+            </Flex>
+          )}
         </Flex>
       </Button>
     </>
