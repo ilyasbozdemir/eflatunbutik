@@ -24,8 +24,11 @@ import { MainContext, useContext } from "../../../src/contexts/MainContext";
 import UserMenu from "./UserMenu";
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
- 
+
   const { basket, wishlist } = useContext(MainContext);
+
+  const wishlistLength = React.useMemo(() => wishlist.length, [wishlist.length]);
+  const basketLength = React.useMemo(() => basket.length, [basket.length]);
 
   return (
     <>
@@ -70,7 +73,7 @@ function HeaderBrand() {
               rounded={"full"}
               textAlign={"center"}
             >
-              {wishlist.length}
+              {wishlistLength}
             </Box>
           </Link>
 
@@ -96,7 +99,7 @@ function HeaderBrand() {
               rounded={"full"}
               textAlign={"center"}
             >
-              {basket.length}
+              {basketLength}
             </Box>
           </Link>
         </Box>

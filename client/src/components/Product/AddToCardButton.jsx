@@ -10,12 +10,16 @@ import {
 import { BiShoppingBag } from "react-icons/bi";
 
 import { MainContext, useContext } from "../../contexts/MainContext";
+import { useToast } from "@chakra-ui/react";
 
 function AddToCardButton({ product }) {
   const { basket, setBasket } = useContext(MainContext);
 
   const { id, name, price, salePrice, imageUrls, description, currency } =
     product;
+
+  const toast = useToast();
+
 
   const clickHandled = () => {
     setBasket([
@@ -31,6 +35,13 @@ function AddToCardButton({ product }) {
         imageUrl: imageUrls[0].src,
       },
     ]);
+    toast({
+      title: 'Ürün Sepete Eklendi',
+      status: "success",
+      position: "top",
+      duration: 500,
+      isClosable: true,
+    });
   };
 
   return (
@@ -45,6 +56,7 @@ function AddToCardButton({ product }) {
           opacity: 0.9,
         }}
         onClick={clickHandled}
+        cursor={'pointer'}
       >
         <Flex
           justifyContent={"space-between"}
