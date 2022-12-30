@@ -1,12 +1,10 @@
 import React from "react";
 import {
   Flex,
-  Spacer,
   Box,
   Heading,
   useDisclosure as UseDisclosure,
   Icon,
-  Stack,
 } from "@chakra-ui/react";
 
 import Logo from "../Logo";
@@ -20,14 +18,24 @@ import SearchBox from "./SearchBox";
 import { Link } from "react-router-dom";
 
 import { MainContext, useContext } from "../../../src/contexts/MainContext";
-
 import UserMenu from "./UserMenu";
+import BasketView from "./BasketView";
+
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
 
+  const {
+    isOpen: isBasketOpen,
+    onOpen: onBasketOpen,
+    onClose: onBasketClose,
+  } = UseDisclosure();
+
   const { basket, wishlist } = useContext(MainContext);
 
-  const wishlistLength = React.useMemo(() => wishlist.length, [wishlist.length]);
+  const wishlistLength = React.useMemo(
+    () => wishlist.length,
+    [wishlist.length]
+  );
   const basketLength = React.useMemo(() => basket.length, [basket.length]);
 
   return (
@@ -51,57 +59,58 @@ function HeaderBrand() {
             fontSize={31}
           />
 
-          <Link
+          <Box
+            as={Link}
             to="/favorilerim/"
             bg={"transparent"}
             aria-label="product favorite"
             mx={1}
             pl={2}
             pos={"relative"}
+            transformOrigin="top"
+            _before={{
+              content: `"${wishlistLength}"`,
+              position: "absolute",
+              top: "-5%",
+              right: "0",
+              width: "5px",
+              height: "5px",
+              display: "grid",
+              placeItems: "center",
+            }}
           >
             <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
-            <Box
-              as={"span"}
-              bg={"#a020f0"}
-              color={"white"}
-              pos={"absolute"}
-              top={9}
-              right={8}
-              fontSize={12}
-              h={4}
-              w={4}
-              rounded={"full"}
-              textAlign={"center"}
-            >
-              {wishlistLength}
-            </Box>
-          </Link>
+          </Box>
 
-          <Link
+          <Box
+            as="span"
             bg={"transparent"}
             aria-label="product basket button"
-            to="/sepetim/"
             mx={1}
             ml={4}
+            cursor={"pointer"}
+            onClick={onBasketOpen}
+            transformOrigin="top"
             pos={"relative"}
+            _before={{
+              content: `"${basketLength}"`,
+              position: "absolute",
+              top: "-5%",
+              right: "0",
+              display: "grid",
+              placeItems: "center",
+              width: "5px",
+              height: "5px",
+            }}
           >
             <Icon as={MdOutlineShoppingCart} fontSize={31} />
-            <Box
-              as={"span"}
-              bg={"#a020f0"}
-              color={"white"}
-              pos={"absolute"}
-              top={9}
-              right={0}
-              fontSize={12}
-              h={4}
-              w={4}
-              rounded={"full"}
-              textAlign={"center"}
-            >
-              {basketLength}
-            </Box>
-          </Link>
+
+            <BasketView
+              placement={"right"}
+              onClose={onBasketClose}
+              isOpen={isBasketOpen}
+            />
+          </Box>
         </Box>
       </Flex>
     </>

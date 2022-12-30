@@ -19,6 +19,7 @@ export const CartProductMeta = (props) => {
       <Box>
         <>
           <Image
+            w={120}
             rounded="lg"
             src={image}
             alt={name}
