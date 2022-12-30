@@ -96,8 +96,13 @@ function AddToCardButton({ product }) {
               <Text>Sepete Ekle</Text>
             </>
           ) : (
-            <Flex as="span" textAlign={"center"} justifyContent={"center"}>
-              <Text>Sipariş Ekleniyor.</Text>
+            <Flex
+              as="span"
+              textAlign={"center"}
+              justifyContent={"center"}
+              gap={1}
+            >
+              <Text>Sepete Ekleniyor</Text>
               <CircularProgress size={"4"} isIndeterminate color="red.500" />
             </Flex>
           )}
