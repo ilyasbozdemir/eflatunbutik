@@ -28,7 +28,7 @@ function AddToCardButton({ product }) {
         name: name,
         description: description,
         quantity: 1,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl.src,
       },
     ]);
   };
