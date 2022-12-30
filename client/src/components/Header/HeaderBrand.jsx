@@ -70,6 +70,7 @@ function HeaderBrand() {
             transformOrigin="top"
             _before={{
               content: `"${wishlistLength}"`,
+              color: "#A020F0",
               position: "absolute",
               top: "-5%",
               right: "0",
@@ -77,6 +78,7 @@ function HeaderBrand() {
               height: "5px",
               display: "grid",
               placeItems: "center",
+              fontWeight: "semibold",
             }}
           >
             <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
@@ -94,6 +96,7 @@ function HeaderBrand() {
             pos={"relative"}
             _before={{
               content: `"${basketLength}"`,
+              color: "#A020F0",
               position: "absolute",
               top: "-5%",
               right: "0",
@@ -101,6 +104,7 @@ function HeaderBrand() {
               placeItems: "center",
               width: "5px",
               height: "5px",
+              fontWeight: "semibold",
             }}
           >
             <Icon as={MdOutlineShoppingCart} fontSize={31} />
