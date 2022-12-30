@@ -1,31 +1,3 @@
-export const images = [
-  {
-    id: "01",
-    src: "https://www.eflatunmoda.com/i/l/000/0000464_muhtesem-tasarim-elbise-kahve.jpeg",
-    alt: "muhtesem-tasarim-elbise",
-  },
-  {
-    id: "02",
-    src: "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    alt: "Awesome watch",
-  },
-  {
-    id: "03",
-    src: "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    alt: "Awesome watch",
-  },
-  {
-    id: "04",
-    src: "https://images.unsplash.com/photo-1585487000143-9bcec9b8e483?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=391&q=80",
-    alt: "Awesome watch",
-  },
-  {
-    id: "04",
-    alt: "Awesome watch",
-    src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=420&q=80",
-  },
-];
-
 export const _products = [
   {
     id: "1",
@@ -36,9 +8,14 @@ export const _products = [
     flag: "Yeni✨",
     rating: 4,
     ratingCount: 1,
-    description:
-      "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
-    imageUrl: images[0],
+    description: "test description",
+    imageUrls: [
+      {
+        id: "01",
+        src: "https://www.eflatunmoda.com/i/l/000/0000464_muhtesem-tasarim-elbise-kahve.jpeg",
+        alt: "muhtesem-tasarim-elbise",
+      },
+    ],
   },
   {
     id: "2",
@@ -52,7 +29,13 @@ export const _products = [
     ratingCount: 3,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
-    imageUrl: images[1],
+    imageUrls: [
+      {
+        id: "02",
+        src: "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        alt: "Awesome watch",
+      },
+    ],
   },
   {
     id: "3",
@@ -65,7 +48,13 @@ export const _products = [
     ratingCount: 5,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
-    imageUrl: images[2],
+    imageUrls: [
+      {
+        id: "03",
+        src: "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        alt: "Awesome watch",
+      },
+    ],
   },
   {
     id: "4",
@@ -77,7 +66,13 @@ export const _products = [
     ratingCount: 3,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
-    imageUrl: images[3],
+    imageUrls: [
+      {
+        id: "04",
+        src: "https://images.unsplash.com/photo-1585487000143-9bcec9b8e483?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=391&q=80",
+        alt: "Awesome watch",
+      },
+    ],
   },
   {
     id: "5",
@@ -89,6 +84,12 @@ export const _products = [
     ratingCount: 3,
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
-    imageUrl: images[4],
+    imageUrls: [
+      {
+        id: "04",
+        alt: "Awesome watch",
+        src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=420&q=80",
+      },
+    ],
   },
 ];

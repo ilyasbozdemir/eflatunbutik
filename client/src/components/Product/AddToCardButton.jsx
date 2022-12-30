@@ -14,7 +14,7 @@ import { MainContext, useContext } from "../../contexts/MainContext";
 function AddToCardButton({ product }) {
   const { basket, setBasket } = useContext(MainContext);
 
-  const { id, name, price, salePrice, imageUrl, description, currency } =
+  const { id, name, price, salePrice, imageUrls, description, currency } =
     product;
 
   const clickHandled = () => {
@@ -28,7 +28,7 @@ function AddToCardButton({ product }) {
         name: name,
         description: description,
         quantity: 1,
-        imageUrl: imageUrl.src,
+        imageUrl: imageUrls[0].src,
       },
     ]);
   };

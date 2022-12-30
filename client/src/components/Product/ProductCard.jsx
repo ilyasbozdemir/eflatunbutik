@@ -39,9 +39,10 @@ const MotionStack = motion(Stack);
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, price, salePrice, rating, ratingCount, slug, imageUrl, flag } =
+  const { name, price, salePrice, rating, ratingCount, slug, imageUrls, flag } =
     product;
-  const { id, src, alt } = imageUrl;
+
+  const { id, src, alt } = imageUrls[0];
 
   const [ratingSize, setRatingSize] = React.useState(10);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -230,9 +231,9 @@ export const ProductCard = (props) => {
 
 const QuickProductDetailModal = (props) => {
   const { isOpen, onClose, product } = props;
-  const { name, price, salePrice, rating, ratingCount, slug, imageUrl } =
+  const { name, price, salePrice, rating, ratingCount, slug, imageUrls } =
     product;
-  const { id, src, alt } = imageUrl;
+  const { id, src, alt } = imageUrls[0];
   return (
     <>
       <Modal
