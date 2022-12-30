@@ -78,13 +78,13 @@ function HeaderBrand() {
               whiteSpace:'pre',
               placeItems: "center",
               fontWeight: "semibold",
-              width: "20px",
-              height: "20px",
+              width: "18px",
+              height: "18px",
               backgroundColor:'#fff',
               border:'1px #090909 solid',
               borderRadius:'50%',
               textAlign:'center',
-              fontSize:'12px'
+              fontSize:'11px'
 
             }}
           >
@@ -107,15 +107,17 @@ function HeaderBrand() {
               position: "absolute",
               top: "0",
               right: "0",
-              display: "grid",
+              display: "inline",
+              whiteSpace:'pre',
               placeItems: "center",
               fontWeight: "semibold",
-              width: "20px",
-              height: "20px",
+              width: "18px",
+              height: "18px",
               backgroundColor:'#fff',
               border:'1px #090909 solid',
               borderRadius:'50%',
-              fontSize:'12px'
+              textAlign:'center',
+              fontSize:'11px'
 
             }}
           >
