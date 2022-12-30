@@ -22,7 +22,7 @@ export const _products = [
     name: "Iconic Turquoise",
     slug: "iconic-turquoise",
     currency: "TRY",
-    price: 125,
+    price: 149.99,
     salePrice: 189.99,
     flag: "Yeni✨",
     rating: 5,
@@ -71,24 +71,6 @@ export const _products = [
         id: "04",
         src: "https://images.unsplash.com/photo-1585487000143-9bcec9b8e483?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=391&q=80",
         alt: "Awesome watch",
-      },
-    ],
-  },
-  {
-    id: "5",
-    name: "Sleek design",
-    slug: "sleek-design",
-    currency: "TRY",
-    price: 159.99,
-    rating: 5,
-    ratingCount: 3,
-    description:
-      "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
-    imageUrls: [
-      {
-        id: "04",
-        alt: "Awesome watch",
-        src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=420&q=80",
       },
     ],
   },

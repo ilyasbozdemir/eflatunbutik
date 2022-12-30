@@ -23,8 +23,17 @@ import {
 import { useSearchParams, useLocation } from "react-router-dom";
 import { MainContext, useContext } from "../../../contexts/MainContext";
 
-function PriceRange(props) {
-  const { minPrice, maxPrice } = props.prices;
+function PriceRange() {
+  const { tags, setTags, products } = useContext(MainContext);
+
+  const getPrices = (item) =>
+    {return item.price}
+  ;
+
+  const prices = products.map(getPrices);
+
+  const minPrice = Math.ceil(Math.min(...prices));
+  const maxPrice = Math.ceil(Math.max(...prices));
 
   const [sliderValue, setSliderValue] = React.useState([minPrice, maxPrice]);
 
@@ -47,7 +56,6 @@ function PriceRange(props) {
     setSliderValue([sliderValue[0], val]);
   };
   const [searchParams, setSearchParams] = useSearchParams();
-  const { tags, setTags } = useContext(MainContext);
 
   React.useEffect(() => {
     setTimeout(() => {

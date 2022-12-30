@@ -106,7 +106,7 @@ const SidebarContent = (props) => {
       <Box {...rest}>
         <VStack my={3}>
           <Categories />
-          <PriceRange prices={{ minPrice: 125, maxPrice: 300 }} />
+          <PriceRange  />
           <EvaluationScore />
           <BodySize />
           <Colors colors={colors} />
