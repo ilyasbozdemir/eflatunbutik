@@ -21,6 +21,8 @@ import { MainContext, useContext } from "../../../src/contexts/MainContext";
 import UserMenu from "./UserMenu";
 import BasketView from "./BasketView";
 
+import { keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
+
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
 
@@ -38,6 +40,14 @@ function HeaderBrand() {
   );
   const basketLength = React.useMemo(() => basket.length, [basket.length]);
 
+  const spin = keyframes`
+  0%   {rotate: 15deg;}
+  25%  {rotate: -15deg;}
+  75%  {rotate: 15deg;}
+  100% {rotate: 0deg;}
+`;
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const animation = prefersReducedMotion ? undefined : `${spin} 1s forwards`;
   return (
     <>
       <Flex justifyContent={"space-between"} mt={5} mb={2}>
@@ -75,17 +85,17 @@ function HeaderBrand() {
               top: "0",
               right: "0",
               display: "inline",
-              whiteSpace:'pre',
+              whiteSpace: "pre",
               placeItems: "center",
               fontWeight: "semibold",
               width: "18px",
               height: "18px",
-              backgroundColor:'#fff',
-              border:'1px #090909 solid',
-              borderRadius:'50%',
-              textAlign:'center',
-              fontSize:'11px'
-
+              backgroundColor: "#fff",
+              border: "1px #090909 solid",
+              borderRadius: "50%",
+              textAlign: "center",
+              fontSize: "11px",
+              animation: animation,
             }}
           >
             <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
@@ -108,17 +118,17 @@ function HeaderBrand() {
               top: "0",
               right: "0",
               display: "inline",
-              whiteSpace:'pre',
+              whiteSpace: "pre",
               placeItems: "center",
               fontWeight: "semibold",
               width: "18px",
               height: "18px",
-              backgroundColor:'#fff',
-              border:'1px #090909 solid',
-              borderRadius:'50%',
-              textAlign:'center',
-              fontSize:'11px'
-
+              backgroundColor: "#fff",
+              border: "1px #090909 solid",
+              borderRadius: "50%",
+              textAlign: "center",
+              fontSize: "11px",
+              animation: animation,
             }}
           >
             <Icon as={MdOutlineShoppingCart} fontSize={31} />
