@@ -22,9 +22,9 @@ function AddToCardButton({ product }) {
     product;
 
   const [show, setShow] = React.useState(false);
-  const [duration, setDuration] = React.useState(1000);
   const [isDisabled, setIsDisabled] = React.useState(false);
 
+  const [duration, setDuration] = React.useState(1000);
   const toast = useToast();
 
   const addToCart = () => {
@@ -80,7 +80,7 @@ function AddToCardButton({ product }) {
         disabled={isDisabled}
         _disabled={{
           cursor: "progress",
-          bg: "purple",
+          bg: "orange.400",
           color: "white",
         }}
       >
@@ -102,7 +102,9 @@ function AddToCardButton({ product }) {
               justifyContent={"center"}
               gap={1}
             >
-              <Text>Sepete Ekleniyor</Text>
+              <Text fontFamily={"Arial, Helvetica, sans-serif"}>
+                Sepete Ekleniyor
+              </Text>
               <CircularProgress size={"4"} isIndeterminate color="red.500" />
             </Flex>
           )}
