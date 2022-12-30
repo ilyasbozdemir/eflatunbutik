@@ -13,10 +13,10 @@ export const cartData = [
     id: "2",
     price: 149.99,
     currency: "TRY",
-    name: "Iconic Turquoise",
+    name: "Silve wolf",
     description: "test description",
     quantity: 2,
     imageUrl:
-      "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      "https://images.unsplash.com/photo-1585487000143-9bcec9b8e483?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=391&q=80",
   }
 ];
