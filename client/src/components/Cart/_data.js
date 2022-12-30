@@ -1,32 +1,22 @@
 export const cartData = [
   {
-    id: '1',
-    price: 190.99,
-    currency: 'TRY',
-    name: 'Ferragamo bag',
-    description: 'Tan, 40mm',
+    id: "1",
+    price: 299.99,
+    currency: "TRY",
+    name: "Muhteşem Tasarım Elbise - Kahve",
+    description: "test description",
     quantity: 1,
     imageUrl:
-      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80',
+      "https://www.eflatunmoda.com/i/l/000/0000464_muhtesem-tasarim-elbise-kahve.jpeg",
   },
   {
-    id: '2',
-    price: 290.99,
-    currency: 'TRY',
-    name: 'Bamboo Tan',
-    description: 'Tan, 40mm',
+    id: "2",
+    price: 149.99,
+    currency: "TRY",
+    name: "Iconic Turquoise",
+    description: "test description",
     quantity: 2,
     imageUrl:
-      'https://images.unsplash.com/photo-1591561954557-26941169b49e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80',
-  },
-  {
-    id: '3',
-    price: 390.99,
-    currency: 'TRY',
-    name: 'Yeezy Sneakers',
-    description: 'Tan, 40mm,',
-    quantity: 3,
-    imageUrl:
-      'https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80',
-  },
-]
+      "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+  }
+];

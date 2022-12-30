@@ -27,8 +27,7 @@ export const _products = [
     flag: "Yeni✨",
     rating: 5,
     ratingCount: 3,
-    description:
-      "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
+    description: "",
     imageUrls: [
       {
         id: "02",
@@ -46,8 +45,7 @@ export const _products = [
     salePrice: 299.99,
     rating: 4,
     ratingCount: 5,
-    description:
-      "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
+    description: "",
     imageUrls: [
       {
         id: "03",
