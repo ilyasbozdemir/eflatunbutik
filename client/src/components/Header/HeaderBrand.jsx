@@ -72,13 +72,20 @@ function HeaderBrand() {
               content: `"${wishlistLength}"`,
               color: "#A020F0",
               position: "absolute",
-              top: "-5%",
+              top: "0",
               right: "0",
-              width: "5px",
-              height: "5px",
-              display: "grid",
+              display: "inline",
+              whiteSpace:'pre',
               placeItems: "center",
               fontWeight: "semibold",
+              width: "20px",
+              height: "20px",
+              backgroundColor:'#fff',
+              border:'1px #090909 solid',
+              borderRadius:'50%',
+              textAlign:'center',
+              fontSize:'12px'
+
             }}
           >
             <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
@@ -98,13 +105,18 @@ function HeaderBrand() {
               content: `"${basketLength}"`,
               color: "#A020F0",
               position: "absolute",
-              top: "-5%",
+              top: "0",
               right: "0",
               display: "grid",
               placeItems: "center",
-              width: "5px",
-              height: "5px",
               fontWeight: "semibold",
+              width: "20px",
+              height: "20px",
+              backgroundColor:'#fff',
+              border:'1px #090909 solid',
+              borderRadius:'50%',
+              fontSize:'12px'
+
             }}
           >
             <Icon as={MdOutlineShoppingCart} fontSize={31} />
