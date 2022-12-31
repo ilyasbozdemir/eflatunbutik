@@ -12,7 +12,7 @@ const theme = extendTheme({
   },
   config: {
     initialColorMode: "system",
-    useSystemColorMode: false,
+    useSystemColorMode: true,
     cssVarPrefix: "eflatun-butik",
   },
   colors: {

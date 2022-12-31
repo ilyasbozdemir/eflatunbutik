@@ -4,24 +4,25 @@ import { BiArrowFromLeft, BiArrowToLeft } from "react-icons/bi";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React, { useState as UseState } from "react";
 import {
-  IconButton,
   Flex,
   useColorMode as UseColorMode,
   Drawer,
   DrawerContent,
   DrawerOverlay,
   DrawerBody,
-  ButtonGroup,
-  Text,
   HStack,
   Stack,
   CloseButton,
   Badge,
   Tooltip,
+  Box,
+  useRadioGroup,
+  useRadio,
+  Text,
 } from "@chakra-ui/react";
 
-function index({ isOpen, onOpen, onClose }) {
-  const { setColorMode,colorMode, toggleColorMode } = UseColorMode();
+function SettingSidebarButton({ isOpen, onOpen, onClose }) {
+  const { setColorMode, colorMode, toggleColorMode } = UseColorMode();
   const [selected, setSelected] = UseState("TR");
 
   const setDarkMode = () => {
@@ -34,7 +35,28 @@ function index({ isOpen, onOpen, onClose }) {
       toggleColorMode();
     }
   };
-  const setSystemMode = () => {setColorMode('system')};
+  const setSystemMode = () => {
+    setColorMode("system");
+  };
+
+  const options = ["light", "system", "dark"];
+
+  const onChangeHandled = (value) => {
+    if (value !== "light") {
+      setLightMode();
+    } else if (value === "light") {
+      setDarkMode();
+    } else {
+      setSystemMode();
+    }
+  };
+
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: "dark-mode",
+    defaultValue: "system",
+    onChange: onChangeHandled,
+  });
+  const group = getRootProps();
 
   return (
     <>
@@ -62,35 +84,17 @@ function index({ isOpen, onOpen, onClose }) {
                   <Text fontWeight="semibold">{"Tema : "}</Text>
                 </Tooltip>
               </Stack>
-              <ButtonGroup size="xl" isAttached variant="outline" p="5">
-                <Tooltip label="Gündüz moduna uyarla">
-                  <IconButton
-                    onClick={setDarkMode}
-                    aria-label="Gündüz moduna uyarla"
-                    icon={<SunIcon />}
-                    size="md"
-                    bg="transparent"
-                  />
-                </Tooltip>
-                <Tooltip label="System moduna uyarla">
-                  <IconButton
-                    onClick={setSystemMode}
-                    aria-label="set system mode"
-                    icon={<GrSystem />}
-                    size="md"
-                    bg="transparent"
-                  />
-                </Tooltip>
-                <Tooltip label="Koyu moduna uyarla">
-                  <IconButton
-                    onClick={setLightMode}
-                    aria-label="set light mode"
-                    icon={<MoonIcon />}
-                    size="md"
-                    bg="transparent"
-                  />
-                </Tooltip>
-              </ButtonGroup>
+
+              <HStack {...group}>
+                {options.map((value) => {
+                  const radio = getRadioProps({ value });
+                  return (
+                    <RadioCard key={value} {...radio}>
+                      {value}
+                    </RadioCard>
+                  );
+                })}
+              </HStack>
             </HStack>
 
             <HStack>
@@ -115,4 +119,36 @@ function index({ isOpen, onOpen, onClose }) {
   );
 }
 
-export default index;
+function RadioCard(props) {
+  const { getInputProps, getCheckboxProps } = useRadio(props);
+
+  const input = getInputProps();
+  const checkbox = getCheckboxProps();
+
+  return (
+    <Box as="label">
+      <input {...input} />
+      <Box
+        {...checkbox}
+        cursor="pointer"
+        borderWidth="1px"
+        borderRadius="md"
+        boxShadow="md"
+        _checked={{
+          bg: "teal.500",
+          color: "white",
+          borderColor: "teal.500",
+        }}
+        _focus={{
+          boxShadow: "outline",
+        }}
+        px={5}
+        py={3}
+      >
+        {props.children}
+      </Box>
+    </Box>
+  );
+}
+
+export default SettingSidebarButton;
