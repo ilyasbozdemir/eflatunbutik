@@ -1,0 +1,15 @@
+/*
+html[data-theme="dark"] .slick-prev:before {
+  color: white;
+}
+html[data-theme="dark"] .slick-next:before {
+  color: white;
+}
+html[data-theme="light"] .slick-prev:before {
+  color: black;
+}
+html[data-theme="light"] .slick-next:before {
+  color: black;
+}
+
+*/

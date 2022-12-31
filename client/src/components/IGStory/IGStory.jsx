@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Flex, Image, Stack, Text, Box } from "@chakra-ui/react";
+import { Flex, Image, Stack, Text, Box, Icon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import "./index.css";
 
 const images = [
   {
@@ -85,37 +85,6 @@ const ImageItem = (props) => {
   );
 };
 
-const PreviousBtn = (props) => {
-  const { className, onClick } = props;
-  return (
-    <div className={className} onClick={onClick}>
-      <BsChevronLeft
-        style={{
-          color: "black",
-          fontSize: "25px",
-          position: "absolute",
-          top: "-5px",
-        }}
-      />
-    </div>
-  );
-};
-const NextBtn = (props) => {
-  const { className, onClick } = props;
-  return (
-    <div className={className} onClick={onClick}>
-      <BsChevronRight
-        style={{
-          color: "black",
-          fontSize: "25px",
-          position: "absolute",
-          top: "-5px",
-        }}
-      />
-    </div>
-  );
-};
-
 function IGStory() {
   var settings = {
     responsive: [
@@ -163,8 +132,7 @@ function IGStory() {
           lazyLoad={true}
           initialSlide={2}
           infinite
-          prevArrow={<PreviousBtn />}
-          nextArrow={<NextBtn />}
+          arrows={true}
           {...settings}
         >
           {images.map((image, index) => {

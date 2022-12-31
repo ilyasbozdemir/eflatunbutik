@@ -1,6 +1,4 @@
-import ReactFlagsSelect from "react-flags-select";
-import { GrSystem } from "react-icons/gr";
-import { BiArrowFromLeft, BiArrowToLeft } from "react-icons/bi";
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React, { useState as UseState } from "react";
 import {
@@ -13,13 +11,16 @@ import {
   HStack,
   Stack,
   CloseButton,
-  Badge,
   Tooltip,
   Box,
   useRadioGroup,
   useRadio,
   Text,
+  Select,
+  Badge,
 } from "@chakra-ui/react";
+
+import "./index.css";
 
 function SettingSidebarButton({ isOpen, onOpen, onClose }) {
   const { setColorMode, colorMode, toggleColorMode } = UseColorMode();
@@ -39,7 +40,23 @@ function SettingSidebarButton({ isOpen, onOpen, onClose }) {
     setColorMode("system");
   };
 
-  const options = ["light", "system", "dark"];
+  const options = [
+    {
+      value: "light",
+      icon: <SunIcon />,
+      label: "Gündüz moduna uyarla",
+    },
+    {
+      value: "system",
+      icon: <MdOutlineSystemUpdateAlt />,
+      label: "Sistem moduna uyarla",
+    },
+    {
+      value: "dark",
+      icon: <MoonIcon />,
+      label: "Gece moduna uyarla",
+    },
+  ];
 
   const onChangeHandled = (value) => {
     if (value !== "light") {
@@ -86,31 +103,36 @@ function SettingSidebarButton({ isOpen, onOpen, onClose }) {
               </Stack>
 
               <HStack {...group}>
-                {options.map((value) => {
-                  const radio = getRadioProps({ value });
+                {options.map((option) => {
+                  const radio = getRadioProps({ value: option.value });
                   return (
-                    <RadioCard key={value} {...radio}>
-                      {value}
+                    <RadioCard
+                      key={option.value}
+                      {...radio}
+                      label={option.label}
+                    >
+                      {option.icon}
                     </RadioCard>
                   );
                 })}
               </HStack>
             </HStack>
 
-            <HStack>
-              <Tooltip label="varsayılan site dilini ayarlayın.">
-                <Text fontWeight="semibold">
-                  {"Dil : "}
-                  <Badge colorScheme="purple"></Badge>
-                </Text>
-              </Tooltip>
-              <ReactFlagsSelect
-                countries={["TR"]}
-                selected={selected}
-                onSelect={(code) => {
-                  setSelected(code);
-                }}
-              />
+            <HStack mt={3}>
+              <Flex
+                direction={"row"}
+                textAlign={"center"}
+                justifyContent={"center"}
+                gap={2}
+              >
+                <Tooltip label="varsayılan site dilini ayarlayın.">
+                  <Text fontWeight="semibold">
+                    {"Dil : "}
+                    <Badge colorScheme="purple"></Badge>
+                  </Text>
+                </Tooltip>
+                <SelectFlag onChange={() => {}} />
+              </Flex>
             </HStack>
           </DrawerBody>
         </DrawerContent>
@@ -126,29 +148,45 @@ function RadioCard(props) {
   const checkbox = getCheckboxProps();
 
   return (
-    <Box as="label">
-      <input {...input} />
-      <Box
-        {...checkbox}
-        cursor="pointer"
-        borderWidth="1px"
-        borderRadius="md"
-        boxShadow="md"
-        _checked={{
-          bg: "teal.500",
-          color: "white",
-          borderColor: "teal.500",
-        }}
-        _focus={{
-          boxShadow: "outline",
-        }}
-        px={5}
-        py={3}
-      >
-        {props.children}
+    <Tooltip label={props.label}>
+      <Box as="label">
+        <input {...input} />
+        <Box
+          {...checkbox}
+          cursor="pointer"
+          borderWidth="1px"
+          borderRadius="md"
+          boxShadow="md"
+          _checked={{
+            bg: "teal.500",
+            color: "white",
+            borderColor: "teal.500",
+          }}
+          px={5}
+          py={3}
+          aria-label={`set ${props.label}`}
+        >
+          {props.children}
+        </Box>
       </Box>
-    </Box>
+    </Tooltip>
   );
 }
+
+const SelectFlag = ({ onChange }) => {
+  return (
+    <Tooltip label={"Dil seçimi yapın"}>
+      <Select
+        pointer={"cursor"}
+        size={"sm"}
+        w={"100%"}
+        name="siralama"
+        onChange={onChange}
+      >
+        <option value="tr">Türkçe</option>
+      </Select>
+    </Tooltip>
+  );
+};
 
 export default SettingSidebarButton;
