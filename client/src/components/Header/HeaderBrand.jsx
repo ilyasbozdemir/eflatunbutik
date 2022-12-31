@@ -16,7 +16,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 import SearchBox from "./SearchBox";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { MainContext, useContext } from "../../../src/contexts/MainContext";
 import UserMenu from "./UserMenu";
@@ -26,6 +26,7 @@ import { keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
 
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
+
 
   const {
     isOpen: isBasketOpen,

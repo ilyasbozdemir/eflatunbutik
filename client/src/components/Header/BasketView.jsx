@@ -48,7 +48,7 @@ function BasketView(props) {
             </Stack>
 
           </DrawerBody>
-          <DrawerFooter>
+          <DrawerFooter gap={5}>
             <Button
               width={"full"}
               variant="primary"
@@ -67,6 +67,25 @@ function BasketView(props) {
               }}
             >
               Sepete Git
+            </Button>
+            <Button
+              width={"full"}
+              variant="primary"
+              color={"white"}
+              bg={useColorModeValue("gray.100", "gray.700")}
+              bgGradient={"linear(to-l, #7928CA, #FF0080)"}
+              _hover={{
+                bg: useColorModeValue("gray.800", "gray.500"),
+                bgGradient: "linear(to-r, #ac28ca, #ff1060)",
+              }}
+              onClick={() => {
+                setTimeout(() => {
+                  onClose();
+                }, 300);
+                //navigate("sepetim/");
+              }}
+            >
+              Alışverişi Tamamla
             </Button>
           </DrawerFooter>
         </DrawerContent>

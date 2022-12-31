@@ -1,5 +1,5 @@
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { Icon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React, { useState as UseState } from "react";
 import {
   Flex,
@@ -18,7 +18,11 @@ import {
   Text,
   Select,
   Badge,
+  DrawerFooter,
 } from "@chakra-ui/react";
+
+
+import { VscSignOut } from 'react-icons/vsc';
 
 import "./index.css";
 
@@ -135,6 +139,11 @@ function SettingSidebarButton({ isOpen, onOpen, onClose }) {
               </Flex>
             </HStack>
           </DrawerBody>
+          <DrawerFooter>
+            <Flex>
+              <Icon as={VscSignOut}/>
+              </Flex>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
