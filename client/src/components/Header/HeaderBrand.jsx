@@ -16,7 +16,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 import SearchBox from "./SearchBox";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { MainContext, useContext } from "../../../src/contexts/MainContext";
 import UserMenu from "./UserMenu";
@@ -26,6 +26,7 @@ import { keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
 
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
+  const navigate = useNavigate();
 
   const {
     isOpen: isBasketOpen,
@@ -70,7 +71,11 @@ function HeaderBrand() {
             onClose={onClose}
             fontSize={31}
           />
-          <Tooltip openDelay={500} aria-label='A tooltip' label={`Favori listende ${wishlistLength} ürün var`}>
+          <Tooltip
+            openDelay={500}
+            aria-label="A tooltip"
+            label={`Favori listende ${wishlistLength} ürün var`}
+          >
             <Box
               as="span"
               bg={"transparent"}
@@ -80,6 +85,7 @@ function HeaderBrand() {
               cursor={"pointer"}
               transformOrigin="top"
               pos={"relative"}
+              onClick={() => navigate("/favorilerim/")}
               _before={{
                 content: `"${wishlistLength}"`,
                 color: "red",
@@ -104,7 +110,11 @@ function HeaderBrand() {
             </Box>
           </Tooltip>
 
-          <Tooltip openDelay={500} aria-label='A tooltip' label={`Sepette ${basketLength} ürün var`}>
+          <Tooltip
+            openDelay={500}
+            aria-label="A tooltip"
+            label={`Sepette ${basketLength} ürün var`}
+          >
             <Box
               as="span"
               bg={"transparent"}

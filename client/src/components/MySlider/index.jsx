@@ -5,26 +5,70 @@ import SliderItem from "./SliderItem";
 
 import { useMediaQuery as UseMediaQuery } from "@chakra-ui/react";
 
-function index() {
-  const isDesktop = UseMediaQuery("(min-width: 768px)");
+import UseWindowDimensions from "../../../src/hooks/useWindowDimensions";
 
-  let data = [
+const SliderData = () => {
+  const windowDimensions = UseWindowDimensions();
+
+  let dataD = [
     {
       id: 1,
-      url: "https://picsum.photos/1170/400?random=25",
+      url: "https://picsum.photos/1024/450?random=25",
       alt: "random 1",
     },
     {
       id: 2,
-      url: "https://picsum.photos/1170/400?random=70",
+      url: "https://picsum.photos/1024/450?random=70",
       alt: "random 1",
     },
     {
       id: 3,
-      url: "https://picsum.photos/1170/400?random=35",
+      url: "https://picsum.photos/1024/450?random=35",
       alt: "random 1",
     },
   ];
+  let dataT = [
+    {
+      id: 1,
+      url: "https://picsum.photos/750/400?random=25",
+      alt: "random 1",
+    },
+    {
+      id: 2,
+      url: "https://picsum.photos/750/400?random=70",
+      alt: "random 1",
+    },
+    {
+      id: 3,
+      url: "https://picsum.photos/750/400?random=35",
+      alt: "random 1",
+    },
+  ];
+
+  let dataM = [
+    {
+      id: 1,
+      url: "https://picsum.photos/280/400?random=25",
+      alt: "random 1",
+    },
+    {
+      id: 2,
+      url: "https://picsum.photos/280/400?random=70",
+      alt: "random 1",
+    },
+    {
+      id: 3,
+      url: "https://picsum.photos/280/400?random=35",
+      alt: "random 1",
+    },
+  ];
+
+  const [data, setData] = React.useState([]);
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+  window.addEventListener("resize", () => {
+  
+  });
 
   const settings = {
     infinite: true,
@@ -37,14 +81,19 @@ function index() {
     pauseOnDotsHover: true,
   };
 
-
   return (
-    <Container maxW="container.xl" mb={4} w={'95%'}>
-      <Slider {...settings}>
-        {data.map((item) => (
-          <SliderItem key={item.id} src={item.url} alt={item.alt} />
-        ))}
-      </Slider>
+    <Slider {...settings}>
+      {data.map((item) => (
+        <SliderItem key={item.id} src={item.url} alt={item.alt} />
+      ))}
+    </Slider>
+  );
+};
+
+function index() {
+  return (
+    <Container maxW="container.xl" mb={4} w={"98%"}>
+      <SliderData />
     </Container>
   );
 }

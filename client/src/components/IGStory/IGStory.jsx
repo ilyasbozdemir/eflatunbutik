@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -65,6 +65,7 @@ const ImageItem = (props) => {
         onClick={() => {
           navigate(to);
         }}
+       
       >
         <Image
           css={{
@@ -94,7 +95,6 @@ function IGStory() {
           slidesToShow: 5,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -103,7 +103,6 @@ function IGStory() {
           slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
         },
       },
       {

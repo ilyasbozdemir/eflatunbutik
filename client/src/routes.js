@@ -600,6 +600,16 @@ const router = [
         path: "/p/:productId-:productDetail/",
         element: <ProductDetail />,
       },
+      {
+        path: "/favorilerim/",
+        element: (
+          <>
+            <>
+              <Favorite />
+            </>
+          </>
+        ),
+      },
       ...categories,
     ],
   },
@@ -619,16 +629,16 @@ const router = [
       </AuthLayout>
     ),
   },
-  {
+  /*{
     path: "/favorilerim/",
     element: (
-      <ProtectedRoute>
-        <AuthLayout>
+      <>
+        <>
           <Favorite />
-        </AuthLayout>
-      </ProtectedRoute>
+        </>
+      </>
     ),
-  },
+  },*/
 
   {
     path: "/admin/",
