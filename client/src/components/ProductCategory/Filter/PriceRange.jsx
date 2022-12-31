@@ -9,6 +9,7 @@ import {
   Text,
   Box,
   Stack,
+  Tooltip,
 } from "@chakra-ui/react";
 
 import { Flex } from "@chakra-ui/react";
@@ -26,10 +27,9 @@ import { MainContext, useContext } from "../../../contexts/MainContext";
 function PriceRange() {
   const { tags, setTags, products } = useContext(MainContext);
 
-  const getPrices = (item) =>
-    {return item.price}
-  ;
-
+  const getPrices = (item) => {
+    return item.price;
+  };
   const prices = products.map(getPrices);
 
   const minPrice = Math.ceil(Math.min(...prices));
@@ -88,8 +88,14 @@ function PriceRange() {
           <RangeSliderTrack bg="red.100">
             <RangeSliderFilledTrack bg="tomato" />
           </RangeSliderTrack>
-          <RangeSliderThumb boxSize={4} index={0} bg="red" />
-          <RangeSliderThumb boxSize={4} index={1} bg="red" />
+
+          <Tooltip label={sliderValue[0]} bg={"red.400"}>
+            <RangeSliderThumb boxSize={4} index={0} bg="red" />
+          </Tooltip>
+
+          <Tooltip label={sliderValue[1]} bg={"red.400"}>
+            <RangeSliderThumb boxSize={4} index={1} bg="red" />
+          </Tooltip>
         </RangeSlider>
         <Flex direction={"column"} gap={2}>
           <Stack direction={"row"}>

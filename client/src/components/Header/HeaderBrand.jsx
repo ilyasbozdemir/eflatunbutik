@@ -21,7 +21,7 @@ import { Link, useLocation } from "react-router-dom";
 import { MainContext, useContext } from "../../../src/contexts/MainContext";
 import UserMenu from "./UserMenu";
 import BasketView from "./BasketView";
-
+import { Tooltip } from "@chakra-ui/react";
 import { keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
 
 function HeaderBrand() {
@@ -70,80 +70,83 @@ function HeaderBrand() {
             onClose={onClose}
             fontSize={31}
           />
+          <Tooltip openDelay={500} aria-label='A tooltip' label={`Favori listende ${wishlistLength} ürün var`}>
+            <Box
+              as="span"
+              bg={"transparent"}
+              aria-label="product basket button"
+              mx={1}
+              ml={4}
+              cursor={"pointer"}
+              transformOrigin="top"
+              pos={"relative"}
+              _before={{
+                content: `"${wishlistLength}"`,
+                color: "red",
+                position: "absolute",
+                top: "0",
+                right: "0",
+                display: "inline",
+                whiteSpace: "pre",
+                placeItems: "center",
+                fontWeight: "semibold",
+                width: "17px",
+                height: "17px",
+                backgroundColor: "#fff",
+                border: "2px #090909 solid",
+                borderRadius: "50%",
+                textAlign: "center",
+                fontSize: "10px",
+                animation: animation,
+              }}
+            >
+              <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
+            </Box>
+          </Tooltip>
 
-          <Box
-            as="span"
-            bg={"transparent"}
-            aria-label="product basket button"
-            mx={1}
-            ml={4}
-            cursor={"pointer"}
-            transformOrigin="top"
-            pos={"relative"}
-            _before={{
-              content: `"${wishlistLength}"`,
-              color: "red",
-              position: "absolute",
-              top: "0",
-              right: "0",
-              display: "inline",
-              whiteSpace: "pre",
-              placeItems: "center",
-              fontWeight: "semibold",
-              width: "17px",
-              height: "17px",
-              backgroundColor: "#fff",
-              border: "2px #090909 solid",
-              borderRadius: "50%",
-              textAlign: "center",
-              fontSize: "10px",
-              animation: animation,
-            }}
-          >
-            <Icon as={MdOutlineFavoriteBorder} fontSize={31} />
-          </Box>
-
-          <Box
-            as="span"
-            bg={"transparent"}
-            aria-label="product basket button"
-            mx={1}
-            ml={4}
-            cursor={"pointer"}
-            onClick={basket.length > 0 ? onBasketOpen : ""}
-            transformOrigin="top"
-            pos={"relative"}
-            _before={{
-              content: `"${basketLength}"`,
-              color: "red",
-              position: "absolute",
-              top: "0",
-              right: "0",
-              display: "inline",
-              whiteSpace: "pre",
-              placeItems: "center",
-              fontWeight: "semibold",
-              width: "17px",
-              height: "17px",
-              backgroundColor: "#fff",
-              border: "2px #090909 solid",
-              borderRadius: "50%",
-              textAlign: "center",
-              fontSize: "10px",
-              animation: animation,
-            }}
-          >
-            <Icon as={MdOutlineShoppingCart} fontSize={31} />
-            {basket.length > 0 ? (
-              <BasketView
-                placement={"right"}
-                onClose={onBasketClose}
-                isOpen={isBasketOpen}
-              />
-            ) : (
-              ""
-            )}
-          </Box>
+          <Tooltip openDelay={500} aria-label='A tooltip' label={`Sepette ${basketLength} ürün var`}>
+            <Box
+              as="span"
+              bg={"transparent"}
+              aria-label="product basket button"
+              mx={1}
+              ml={4}
+              cursor={"pointer"}
+              onClick={basket.length > 0 ? onBasketOpen : ""}
+              transformOrigin="top"
+              pos={"relative"}
+              _before={{
+                content: `"${basketLength}"`,
+                color: "red",
+                position: "absolute",
+                top: "0",
+                right: "0",
+                display: "inline",
+                whiteSpace: "pre",
+                placeItems: "center",
+                fontWeight: "semibold",
+                width: "17px",
+                height: "17px",
+                backgroundColor: "#fff",
+                border: "2px #090909 solid",
+                borderRadius: "50%",
+                textAlign: "center",
+                fontSize: "10px",
+                animation: animation,
+              }}
+            >
+              <Icon as={MdOutlineShoppingCart} fontSize={31} />
+              {basket.length > 0 ? (
+                <BasketView
+                  placement={"right"}
+                  onClose={onBasketClose}
+                  isOpen={isBasketOpen}
+                />
+              ) : (
+                ""
+              )}
+            </Box>
+          </Tooltip>
         </Box>
       </Flex>
     </>

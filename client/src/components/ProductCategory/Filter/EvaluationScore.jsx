@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Flex } from "@chakra-ui/react";
+import { Text, Flex, Tooltip } from "@chakra-ui/react";
 
 import { Icon, Stack, Box } from "@chakra-ui/react";
 
@@ -19,6 +19,7 @@ function EvaluationScoreRadioCard(props) {
   const checkbox = getCheckboxProps();
 
   return (
+    <Tooltip label={props.children} bg={"pink.600"}>
     <Box as="label">
       <input {...input} />
       <Box
@@ -39,6 +40,7 @@ function EvaluationScoreRadioCard(props) {
         {props.children}
       </Box>
     </Box>
+    </Tooltip>
   );
 }
 
