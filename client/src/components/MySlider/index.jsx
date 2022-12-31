@@ -48,27 +48,35 @@ const SliderData = () => {
   let dataM = [
     {
       id: 1,
-      url: "https://picsum.photos/280/400?random=25",
+      url: "https://picsum.photos/300/400?random=25",
       alt: "random 1",
     },
     {
       id: 2,
-      url: "https://picsum.photos/280/400?random=70",
+      url: "https://picsum.photos/300/400?random=70",
       alt: "random 1",
     },
     {
       id: 3,
-      url: "https://picsum.photos/280/400?random=35",
+      url: "https://picsum.photos/300/400?random=35",
       alt: "random 1",
     },
   ];
 
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState(dataM);
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-  window.addEventListener("resize", () => {
-  
-  });
+  const [width, setWidth] = React.useState(0);
+
+  React.useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
 
   const settings = {
     infinite: true,
