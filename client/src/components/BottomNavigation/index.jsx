@@ -1,6 +1,6 @@
 import React, { useState as UseState } from "react";
-import { AiOutlineHome, AiOutlineSearch, AiOutlineStar } from "react-icons/ai";
-
+import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import {
   Box,
   Flex,
@@ -27,7 +27,7 @@ const navs = [
   },
   {
     to: "/favorilerim",
-    icon: AiOutlineStar,
+    icon: MdOutlineFavoriteBorder,
     label: "favorilerim",
   },
   {

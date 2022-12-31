@@ -8,10 +8,7 @@ import {
   Icon,
   Text,
   Flex,
-  useColorModeValue as UseColorModeValue,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
-
 import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
