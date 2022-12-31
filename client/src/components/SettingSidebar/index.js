@@ -20,13 +20,9 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 
-import { IconContext } from "react-icons";
-
 function index({ isOpen, onOpen, onClose }) {
-  const { colorMode, toggleColorMode } = UseColorMode();
+  const { setColorMode,colorMode, toggleColorMode } = UseColorMode();
   const [selected, setSelected] = UseState("TR");
-  const arrowFromLeft = () => {};
-  const arrowToLeft = () => {};
 
   const setDarkMode = () => {
     if (colorMode !== "light") {
@@ -38,7 +34,8 @@ function index({ isOpen, onOpen, onClose }) {
       toggleColorMode();
     }
   };
-  const setSystemMode = () => {};
+  const setSystemMode = () => {setColorMode('system')};
+
   return (
     <>
       <Drawer placement={"right"} isOpen={isOpen} onClose={onClose}>
@@ -51,7 +48,6 @@ function index({ isOpen, onOpen, onClose }) {
             justifyContent="space-between"
           >
             <Text fontWeight="bold" fontSize={25}>
-              {" "}
               Ayarlar
             </Text>
             <CloseButton
@@ -63,12 +59,7 @@ function index({ isOpen, onOpen, onClose }) {
             <HStack textAlign={"center"}>
               <Stack direction="row">
                 <Tooltip label="Site tema rengini ayarlayın">
-                  <Text fontWeight="semibold">
-                    {"Tema : "}
-                    <Badge variant="outline" colorScheme="green">
-                      Yeni
-                    </Badge>
-                  </Text>
+                  <Text fontWeight="semibold">{"Tema : "}</Text>
                 </Tooltip>
               </Stack>
               <ButtonGroup size="xl" isAttached variant="outline" p="5">
@@ -88,7 +79,6 @@ function index({ isOpen, onOpen, onClose }) {
                     icon={<GrSystem />}
                     size="md"
                     bg="transparent"
-                    disabled
                   />
                 </Tooltip>
                 <Tooltip label="Koyu moduna uyarla">
@@ -118,7 +108,6 @@ function index({ isOpen, onOpen, onClose }) {
                 }}
               />
             </HStack>
-            
           </DrawerBody>
         </DrawerContent>
       </Drawer>
