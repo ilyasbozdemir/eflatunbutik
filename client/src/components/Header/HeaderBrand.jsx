@@ -27,7 +27,6 @@ import { keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
 function HeaderBrand() {
   const { isOpen, onOpen, onClose } = UseDisclosure();
 
-
   const {
     isOpen: isBasketOpen,
     onOpen: onBasketOpen,
@@ -79,7 +78,6 @@ function HeaderBrand() {
             mx={1}
             ml={4}
             cursor={"pointer"}
-            onClick={onBasketOpen}
             transformOrigin="top"
             pos={"relative"}
             _before={{
@@ -112,7 +110,7 @@ function HeaderBrand() {
             mx={1}
             ml={4}
             cursor={"pointer"}
-            onClick={onBasketOpen}
+            onClick={basket.length > 0 ? onBasketOpen : ""}
             transformOrigin="top"
             pos={"relative"}
             _before={{
@@ -136,12 +134,15 @@ function HeaderBrand() {
             }}
           >
             <Icon as={MdOutlineShoppingCart} fontSize={31} />
-
-            <BasketView
-              placement={"right"}
-              onClose={onBasketClose}
-              isOpen={isBasketOpen}
-            />
+            {basket.length > 0 ? (
+              <BasketView
+                placement={"right"}
+                onClose={onBasketClose}
+                isOpen={isBasketOpen}
+              />
+            ) : (
+              ""
+            )}
           </Box>
         </Box>
       </Flex>

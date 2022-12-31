@@ -39,7 +39,7 @@ function index() {
 
 
   return (
-    <Container maxW="container.xl" mb={4}>
+    <Container maxW="container.xl" mb={4} w={'95%'}>
       <Slider {...settings}>
         {data.map((item) => (
           <SliderItem key={item.id} src={item.url} alt={item.alt} />

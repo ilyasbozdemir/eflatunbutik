@@ -6,6 +6,7 @@ import {
   MenuItem,
   MenuButton,
   MenuList,
+  Text,
 } from "@chakra-ui/react";
 
 import { Link, useNavigate as UseNavigate } from "react-router-dom";
@@ -50,7 +51,9 @@ function index({ link }) {
                     bgGradient: "linear(to-l, #7928CA, #FF0080)",
                   }}
                 >
-                  {link.label}
+                  <Text as={"span"} userSelect={"none"}>
+                    {link.label}
+                  </Text>
                 </MenuItem>
               </Link>
             ))}

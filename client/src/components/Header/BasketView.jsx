@@ -63,11 +63,12 @@ function BasketView(props) {
                 setTimeout(() => {
                   onClose();
                 }, 300);
-                navigate("sepetim/");
+                navigate("/sepetim/");
               }}
             >
               Sepete Git
             </Button>
+          
             <Button
               width={"full"}
               variant="primary"
@@ -82,7 +83,7 @@ function BasketView(props) {
                 setTimeout(() => {
                   onClose();
                 }, 300);
-                //navigate("sepetim/");
+                //navigate("odeme/");
               }}
             >
               Alışverişi Tamamla

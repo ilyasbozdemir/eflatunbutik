@@ -21,14 +21,12 @@ import {
   DrawerFooter,
 } from "@chakra-ui/react";
 
-
-import { VscSignOut } from 'react-icons/vsc';
+import { VscSignOut } from "react-icons/vsc";
 
 import "./index.css";
 
 function SettingSidebarButton({ isOpen, onOpen, onClose }) {
   const { setColorMode, colorMode, toggleColorMode } = UseColorMode();
-  const [selected, setSelected] = UseState("TR");
 
   const setDarkMode = () => {
     if (colorMode !== "light") {
@@ -141,8 +139,8 @@ function SettingSidebarButton({ isOpen, onOpen, onClose }) {
           </DrawerBody>
           <DrawerFooter>
             <Flex>
-              <Icon as={VscSignOut}/>
-              </Flex>
+              <Icon as={VscSignOut} />
+            </Flex>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
