@@ -26,7 +26,8 @@ function index() {
       as="footer"
       maxW={"container.lg"}
       bg={"black.300"}
-      color={"black"}
+      _light={{ color: "black" }}
+      _dark={{ color: "white" }}
       marginTop={10}
     >
       <Divider marginBottom={3} />

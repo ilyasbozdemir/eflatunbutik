@@ -5,6 +5,7 @@ import {
   Heading,
   useDisclosure as UseDisclosure,
   Icon,
+  PseudoBox,
 } from "@chakra-ui/react";
 
 import Logo from "../Logo";
@@ -46,6 +47,7 @@ function HeaderBrand() {
   75%  {rotate: 15deg;}
   100% {rotate: 0deg;}
 `;
+
   const prefersReducedMotion = usePrefersReducedMotion();
   const animation = prefersReducedMotion ? undefined : `${spin} 1s forwards`;
   return (
@@ -70,17 +72,18 @@ function HeaderBrand() {
           />
 
           <Box
-            as={Link}
-            to="/favorilerim/"
+            as="span"
             bg={"transparent"}
-            aria-label="product favorite"
+            aria-label="product basket button"
             mx={1}
-            pl={2}
-            pos={"relative"}
+            ml={4}
+            cursor={"pointer"}
+            onClick={onBasketOpen}
             transformOrigin="top"
+            pos={"relative"}
             _before={{
               content: `"${wishlistLength}"`,
-              color: "#A020F0",
+              color: "red",
               position: "absolute",
               top: "0",
               right: "0",
@@ -88,13 +91,13 @@ function HeaderBrand() {
               whiteSpace: "pre",
               placeItems: "center",
               fontWeight: "semibold",
-              width: "18px",
-              height: "18px",
+              width: "17px",
+              height: "17px",
               backgroundColor: "#fff",
-              border: "1px #090909 solid",
+              border: "2px #090909 solid",
               borderRadius: "50%",
               textAlign: "center",
-              fontSize: "11px",
+              fontSize: "10px",
               animation: animation,
             }}
           >
@@ -113,7 +116,7 @@ function HeaderBrand() {
             pos={"relative"}
             _before={{
               content: `"${basketLength}"`,
-              color: "#A020F0",
+              color: "red",
               position: "absolute",
               top: "0",
               right: "0",
@@ -121,13 +124,13 @@ function HeaderBrand() {
               whiteSpace: "pre",
               placeItems: "center",
               fontWeight: "semibold",
-              width: "18px",
-              height: "18px",
+              width: "17px",
+              height: "17px",
               backgroundColor: "#fff",
-              border: "1px #090909 solid",
+              border: "2px #090909 solid",
               borderRadius: "50%",
               textAlign: "center",
-              fontSize: "11px",
+              fontSize: "10px",
               animation: animation,
             }}
           >
