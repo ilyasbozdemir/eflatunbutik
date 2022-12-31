@@ -19,7 +19,6 @@ import styles from "./index.module.css";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
-import { useMediaQuery } from "@chakra-ui/react";
 
 function SearchBox(props) {
   const [searchHistory, setSearchHistory] = React.useState([

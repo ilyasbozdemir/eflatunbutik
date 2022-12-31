@@ -24,7 +24,6 @@ function UserMenu(props) {
     <>
       <Menu isOpen={isOpen}>
         <MenuButton
-          mt={3}
           borderRadius={5}
           aria-label={"user button"}
           onMouseEnter={onOpen}
