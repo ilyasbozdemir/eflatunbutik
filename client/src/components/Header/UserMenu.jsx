@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 
 function UserMenu(props) {
   const { isOpen, onOpen, onClose, ...rest } = props;
-  const [isLogin, setIsLogin] = React.useState(false);
-  const [isAdmin, setIsAdmin] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(true);
+  const [isAdmin, setIsAdmin] = React.useState(true);
 
   return (
     <>
