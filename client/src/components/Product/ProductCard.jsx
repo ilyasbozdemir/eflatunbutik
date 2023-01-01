@@ -211,12 +211,32 @@ export const ProductCard = (props) => {
             </Link>
           </Stack>
         </>
-
+        {/*
         <Stack align="center" mt={2}>
+
           <AddToCardButton product={product} />
         </Stack>
+       */}
+
         <Stack align="center" mt={2}>
-          <Text onClick={onOpen}>Hızlı Gözat</Text>
+          <Button
+            width="95%"
+            variant="primary"
+            color={"white"}
+            bgGradient={"linear(to-l, #7928CA, #FF0080)"}
+            _hover={{
+              opacity: 0.9,
+            }}
+            onClick={onOpen}
+            cursor={"pointer"}
+            _disabled={{
+              cursor: "progress",
+              bg: "orange.400",
+              color: "white",
+            }}
+          >
+            Hızlı Gözat
+          </Button>
         </Stack>
       </MotionStack>
 
