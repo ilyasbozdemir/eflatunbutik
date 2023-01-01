@@ -60,7 +60,7 @@ function Basket() {
                   key={item.id}
                   {...item}
                   onClickDelete={() => {
-                    deleteByValue(item.id);
+                    deleteByValue(item);
                   }}
                 />
               ))}

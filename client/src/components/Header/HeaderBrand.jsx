@@ -71,10 +71,7 @@ function HeaderBrand() {
             onClose={onClose}
             fontSize={31}
           />
-          <Tooltip
-            aria-label="A tooltip"
-            label={`Favori listende ${wishlistLength} ürün var`}
-          >
+          <Tooltip>
             <Box
               as="span"
               bg={"transparent"}
@@ -109,10 +106,7 @@ function HeaderBrand() {
             </Box>
           </Tooltip>
 
-          <Tooltip
-            aria-label="A tooltip"
-            label={`Sepette ${basketLength} ürün var`}
-          >
+          <Tooltip>
             <Box
               as="span"
               bg={"transparent"}
@@ -120,7 +114,7 @@ function HeaderBrand() {
               mx={1}
               ml={4}
               cursor={"pointer"}
-              onClick={basket.length > 0 ? onBasketOpen : ""}
+              onClick={onBasketOpen}
               transformOrigin="top"
               pos={"relative"}
               _before={{
@@ -144,15 +138,11 @@ function HeaderBrand() {
               }}
             >
               <Icon as={MdOutlineShoppingCart} fontSize={31} />
-              {basket.length > 0 ? (
-                <BasketView
-                  placement={"right"}
-                  onClose={onBasketClose}
-                  isOpen={isBasketOpen}
-                />
-              ) : (
-                ""
-              )}
+              <BasketView
+                placement={"right"}
+                onClose={onBasketClose}
+                isOpen={isBasketOpen}
+              />
             </Box>
           </Tooltip>
         </Box>

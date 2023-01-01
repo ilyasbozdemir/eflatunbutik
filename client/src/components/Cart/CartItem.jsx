@@ -1,9 +1,4 @@
-import {
-  CloseButton,
-  Flex,
-  Link,
-  Select,
-} from "@chakra-ui/react";
+import { CloseButton, Flex, Text, Select } from "@chakra-ui/react";
 import * as React from "react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
@@ -84,18 +79,13 @@ export const CartItem = (props) => {
           md: "none",
         }}
       >
-        <Link
-          fontSize="sm"
-          textDecor="underline"
+        <CloseButton
           aria-label={`Delete ${name} from cart`}
           onClick={onClickDelete}
-        >
-          Sil
-        </Link>
+        />
         <QuantitySelect
           value={quantity}
           onChange={(e) => {
-           
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
