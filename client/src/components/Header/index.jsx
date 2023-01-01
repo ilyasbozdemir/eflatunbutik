@@ -40,7 +40,7 @@ function index({ onOpen, ...rest }) {
         display={"flex"}
         position="sticky"
         top="0"
-        zIndex="150"
+        zIndex="250"
         boxShadow={`rgba(0, 0, 0, 0.07) 0px 1px 1px,
           rgba(0, 0, 0, 0.07) 0px 2px 2px,
           rgba(0, 0, 0, 0.07) 0px 4px 4px,

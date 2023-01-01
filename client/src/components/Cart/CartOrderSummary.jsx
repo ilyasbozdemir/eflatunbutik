@@ -25,6 +25,8 @@ import { FaArrowRight } from "react-icons/fa";
 import { formatPrice } from "./PriceTag";
 import TermsOfUseComponent from "../TermsOfUseComponent";
 import { AiOutlineClose } from "react-icons/ai";
+import CartNote from "./CartNote";
+import { useNavigate } from "react-router";
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props;
   return (
@@ -40,17 +42,15 @@ const OrderSummaryItem = (props) => {
 export const CartOrderSummary = () => {
   const { basket } = useContext(MainContext);
 
-  console.table(basket);
-
   const totalPrice = () => {
     return basket.reduce((prev, product) => {
-      return (prev += product.price);
+      return (prev += product.price * product.quantity);
     }, 0);
   };
 
   const taxRate = 8;
 
-  const [subtotal, setSubtotal] = React.useState(Math.ceil(totalPrice()));
+  const [subtotal, setSubtotal] = React.useState(totalPrice());
   //X Rakamının Yüzde Y 'si
 
   //FORMÜL: X * (Y/100)
@@ -82,6 +82,7 @@ export const CartOrderSummary = () => {
   const finalRef = React.useRef(null);
 
   const [couponCode, setCouponCode] = React.useState("");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -199,13 +200,16 @@ export const CartOrderSummary = () => {
               {formatPrice(subtotal)}
             </Text>
           </Flex>
+          <CartNote />
         </Stack>
         <Button
           colorScheme="pink"
           size="lg"
           fontSize="md"
+          onClick={() => {
+            navigate("/siparis/adres/");
+          }}
           rightIcon={<FaArrowRight />}
-          ref={finalRef}
         >
           Alışverişi Tamamla
         </Button>

@@ -12,7 +12,7 @@ export const ProductGrid = (props) => {
       animate="animate"
       variants={parentVariant}
       ml={1}
-      columns={[2, 3, 4]}
+      columns={[2, 2, 4]}
       gap={[1, 2, 3, 4]}
     >
       {child.map((c, i) => (
