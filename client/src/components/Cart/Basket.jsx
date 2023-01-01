@@ -22,6 +22,7 @@ function Basket() {
       return oldValues.filter((p) => p.id !== v.id);
     });
   };
+  
 
   return (
     <>

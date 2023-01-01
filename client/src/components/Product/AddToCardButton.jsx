@@ -24,23 +24,31 @@ function AddToCardButton({ product }) {
   const [show, setShow] = React.useState(false);
   const [isDisabled, setIsDisabled] = React.useState(false);
 
-  const [duration, setDuration] = React.useState(1000);
+  const [duration, setDuration] = React.useState(500);
   const toast = useToast();
+  const basketItem = basket.find((item) => item.id === id);
+  const basketItemIndex = basket.findIndex((item) => item.id === id);
 
   const addToCart = () => {
-    setBasket([
-      ...basket,
-      {
-        id: id,
-        price: price,
-        salePrice: salePrice,
-        currency: currency,
-        name: name,
-        description: description,
-        quantity: 1,
-        imageUrl: imageUrls[0].src,
-      },
-    ]);
+    const checkBasket = basket.find((item) => item.id === id);
+    if (checkBasket) {
+      checkBasket.quantity += 1;
+      setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
+    } else {
+      setBasket([
+        ...basket,
+        {
+          id: id,
+          price: price,
+          salePrice: salePrice,
+          currency: currency,
+          name: name,
+          description: description,
+          quantity: 1,
+          imageUrl: imageUrls[0].src,
+        },
+      ]);
+    }
   };
 
   const clickHandled = () => {

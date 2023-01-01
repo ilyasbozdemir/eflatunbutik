@@ -1,30 +1,12 @@
-import {
-  CloseButton,
-  Flex,
-  Link,
-  Select,
-} from "@chakra-ui/react";
+import { CloseButton, Flex, Link, Select } from "@chakra-ui/react";
 import * as React from "react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
-const QuantitySelect = (props) => {
-  const [selectValue, setSelectValue] = React.useState("");
-
-  return (
-    <>
-      <Select maxW="64px" size={"md"} name="quantity" {...props}>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </Select>
-    </>
-  );
-};
+import { MainContext, useContext } from "../../contexts/MainContext";
 
 export const CartItem = (props) => {
   const {
+    id,
     isGiftWrapping,
     name,
     description,
@@ -35,6 +17,24 @@ export const CartItem = (props) => {
     onChangeQuantity,
     onClickDelete,
   } = props;
+
+  const [pQuantity, setPQuantity] = React.useState(quantity);
+  const { basket, setBasket } = useContext(MainContext);
+
+  const checkBasket = basket.find((item) => item.id === id);
+
+  React.useEffect(() => {
+
+    if (checkBasket) {
+      checkBasket.quantity = pQuantity;
+      setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
+    }
+
+    setBasket((oldValues) => {
+      return oldValues.filter((p) => p.id !== 25);
+    });
+  }, [pQuantity, checkBasket]);
+
   return (
     <Flex
       direction={{
@@ -60,12 +60,25 @@ export const CartItem = (props) => {
           md: "flex",
         }}
       >
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        />
+        <>
+          <Select
+            maxW="64px"
+            size={"md"}
+            name="quantity"
+            value={pQuantity}
+            onChange={(e) => {
+              setPQuantity(e.currentTarget.value);
+              onChangeQuantity?.(+e.currentTarget.value);
+            }}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </Select>
+        </>
+
         <PriceTag price={price} currency={currency} />
         <CloseButton
           aria-label={`Delete ${name} from cart`}
@@ -92,14 +105,28 @@ export const CartItem = (props) => {
         >
           Sil
         </Link>
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-           
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        />
-        <PriceTag price={price} currency={currency} />
+
+        <>
+          <Select
+            maxW="64px"
+            size={"md"}
+            name="quantity"
+            value={pQuantity}
+            onChange={(e) => {
+              setPQuantity(e.currentTarget.value);
+
+              onChangeQuantity?.(+e.currentTarget.value);
+            }}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </Select>
+        </>
+
+        <PriceTag price={ price} currency={currency} />
       </Flex>
     </Flex>
   );
