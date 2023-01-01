@@ -1,5 +1,18 @@
-import { Box, Button, Flex, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Input,
+  Stack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import React from "react";
+import { BsSearch } from "react-icons/bs";
+
+import AddressCard from "../components/AddressCard";
+import CartOrderSummaryAddress from "../components/CartOrderSummaryAddress";
 
 function ProductAddress() {
   return (
@@ -25,22 +38,61 @@ function ProductAddress() {
             }}
             flex="2"
           >
-            <Stack spacing="6">
-              <Box>
+            <Stack spacing="6" w={"full"}>
+              <Stack
+                direction={{
+                  sm: "row",
+                }}
+                justifyContent={'center'}
+              >
                 <Button
                   variant={"ghost"}
                   color={"white"}
-                  bg={"green.500"}
-                  _hover={{ color: "white", bg: "green.700" }}
+                  bg={"pink.500"}
+                  _hover={{ color: "white", bg: "pink.700" }}
                 >
                   Yeni Adres Ekle
                 </Button>
-              </Box>
+                <Stack
+                  direction={{
+                    sm: "row",
+                  }}
+                  maxW={{
+                    lg: "360px",
+                  }}
+                >
+                  <Input placeholder="Ara" type="text" w={"full"} />
+                  <IconButton
+                    color="pink.500"
+                    type="submit"
+                    flexShrink={0}
+                    icon={<BsSearch />}
+                  />
+                </Stack>
+              </Stack>
+              <Wrap>
+                <WrapItem>
+                  <AddressCard
+                    title={"test title"}
+                    addressContent={
+                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae aperiam nobis adipisci cum nemo amet aliquam aut dicta voluptate necessitatibus, molestias hic ipsam mollitia fuga ipsum repellendus ducimus alias incidunt?"
+                    }
+                  />
+                </WrapItem>
+                <WrapItem>
+                  <AddressCard
+                    title={"test title"}
+                    addressContent={
+                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae aperiam nobis adipisci cum nemo amet aliquam aut dicta voluptate necessitatibus, molestias hic ipsam mollitia fuga ipsum repellendus ducimus alias incidunt?"
+                    }
+                  />
+                </WrapItem>
+              </Wrap>
             </Stack>
           </Stack>
 
           <Flex direction="column" flex="1">
-            Sipariş Özeti
+            <CartOrderSummaryAddress />
           </Flex>
         </Stack>
       </Box>
