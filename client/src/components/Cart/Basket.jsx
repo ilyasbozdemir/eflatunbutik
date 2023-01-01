@@ -15,7 +15,13 @@ import { MainContext, useContext } from "../../contexts/MainContext";
 import { Link } from "react-router-dom";
 
 function Basket() {
-  const { basket } = useContext(MainContext);
+  const { basket, setBasket } = useContext(MainContext);
+
+  const deleteByValue = (v) => {
+    setBasket((oldValues) => {
+      return oldValues.filter((p) => p.id !== v.id);
+    });
+  };
 
   return (
     <>
@@ -53,7 +59,9 @@ function Basket() {
                 <CartItem
                   key={item.id}
                   {...item}
-                  onChangeQuantity={(v) => {}}
+                  onClickDelete={() => {
+                    deleteByValue(item.id);
+                  }}
                 />
               ))}
             </Stack>

@@ -72,7 +72,6 @@ function HeaderBrand() {
             fontSize={31}
           />
           <Tooltip
-            openDelay={500}
             aria-label="A tooltip"
             label={`Favori listende ${wishlistLength} ürün var`}
           >
@@ -111,7 +110,6 @@ function HeaderBrand() {
           </Tooltip>
 
           <Tooltip
-            openDelay={500}
             aria-label="A tooltip"
             label={`Sepette ${basketLength} ürün var`}
           >
