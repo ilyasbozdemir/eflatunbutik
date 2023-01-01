@@ -100,6 +100,7 @@ function ProductAddress() {
                     addressContent={
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae aperiam nobis adipisci cum nemo amet aliquam aut dicta voluptate necessitatibus, molestias hic ipsam mollitia fuga ipsum repellendus ducimus alias incidunt?"
                     }
+                    editButtonClick={onOpen}
                   />
                 </WrapItem>
                 <WrapItem>
@@ -108,6 +109,7 @@ function ProductAddress() {
                     addressContent={
                       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae aperiam nobis adipisci cum nemo amet aliquam aut dicta voluptate necessitatibus, molestias hic ipsam mollitia fuga ipsum repellendus ducimus alias incidunt?"
                     }
+                    editButtonClick={onOpen}
                   />
                 </WrapItem>
               </Wrap>
@@ -148,7 +150,7 @@ function SetModal({ isOpen, onClose }) {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>jkllkjlj</ModalBody>
+          <ModalBody></ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>

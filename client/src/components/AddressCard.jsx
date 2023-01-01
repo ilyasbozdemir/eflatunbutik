@@ -18,7 +18,7 @@ import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { BiEdit } from "react-icons/bi";
 import { IconButton } from "@chakra-ui/react";
 function AddressCard(props) {
-  const { title, addressContent } = props;
+  const { title, addressContent, editButtonClick } = props;
   return (
     <>
       <Card
@@ -35,6 +35,7 @@ function AddressCard(props) {
               aria-label="edit address"
               icon={<BiEdit />}
               variant={"ghost"}
+              onClick={editButtonClick}
             />
           </Flex>
         </CardHeader>
