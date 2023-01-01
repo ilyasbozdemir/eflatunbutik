@@ -6,6 +6,8 @@ import {
   FormLabel,
   IconButton,
   Input,
+  InputGroup,
+  InputLeftAddon,
   Stack,
   useColorModeValue,
   useDisclosure,
@@ -14,6 +16,8 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { BsSearch } from "react-icons/bs";
+import { Textarea } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 
 import {
   Modal,
@@ -156,33 +160,68 @@ function SetModal(props) {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl isRequired>
-              <FormLabel>Adres Başlığı :</FormLabel>
-              <Input ref={initialRef} placeholder="Örn. Ev Adresim" />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel>Ad :</FormLabel>
-              <Input />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel>Soyad :</FormLabel>
-              <Input />
-            </FormControl>
+            <Stack spacing={4}>
+              <FormControl isRequired>
+                <FormLabel>Adres Başlığı :</FormLabel>
+                <Input ref={initialRef} placeholder="Örn. Ev Adresim" />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Ad :</FormLabel>
+                <Input />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Soyad :</FormLabel>
+                <Input />
+              </FormControl>
 
-            <FormControl>
-              <FormLabel>E-Posta Adresi :</FormLabel>
-              <Input type={"email"} />
-            </FormControl>
+              <FormControl>
+                <FormLabel>E-Posta Adresi :</FormLabel>
+                <Input type={"email"} />
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>Telefon :</FormLabel>
+                <InputGroup>
+                  <InputLeftAddon children="+90" />
+                  <Input type="tel" placeholder="Telefon" />
+                </InputGroup>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Ülke :</FormLabel>
+                <Select>
+                  <option value="TR">Türkiye</option>
+                </Select>
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>İl :</FormLabel>
+                <Select placeholder="İl Seçiniz">
+                  <option value="option1">Option 1</option>
+                </Select>
+              </FormControl>
+
+              <FormControl>
+                <FormLabel>İlçe :</FormLabel>
+                <Select placeholder="İlçe Seçiniz">
+                  <option value="option1">Option 1</option>
+                </Select>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Adres :</FormLabel>
+                <Textarea
+                  placeholder="Here is a sample placeholder"
+                  size="sm"
+                />
+              </FormControl>
+            </Stack>
           </ModalBody>
 
           <ModalFooter>
-            <Button
-              variant={"outline"}
-              colorScheme="green"
-              mr={3}
-              onClick={onClose}
-            >
+            <Button colorScheme="green" mr={3} onClick={onClose}>
               Kaydet
+            </Button>
+            <Button colorScheme="red" mr={3} onClick={onClose}>
+              Kapat
             </Button>
           </ModalFooter>
         </ModalContent>
