@@ -19,7 +19,7 @@ import styles from "./index.module.css";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
-
+import { Highlight } from "@chakra-ui/react";
 function SearchBox(props) {
   const [searchHistory, setSearchHistory] = React.useState([
     { id: 1, name: "Elbise", to: "/elbise/" },
@@ -277,7 +277,6 @@ function SearchBox(props) {
     setInputValue(e.target.value);
   };
 
-
   return (
     <>
       <form autocomplete="off" onSubmit={handleSubmit}>
@@ -285,7 +284,7 @@ function SearchBox(props) {
           ref={searchRef}
           className={styles.search}
           {...props}
-          w={{ base: '14.5em', md: "30em" }}
+          w={{ base: "14.5em", md: "30em" }}
           maxWidth={{ base: "30em" }}
         >
           <Flex
@@ -357,7 +356,14 @@ function SearchBox(props) {
                       pl={3}
                       pr={3}
                     >
-                      <Box>{item.title}</Box>
+                      <Text fontWeight="normal">
+                        <Highlight
+                          query={inputValue}
+                          styles={{ fontWeight: "semibold" }}
+                        >
+                          {item.title}
+                        </Highlight>
+                      </Text>
 
                       {item.type === "Kategori" ? (
                         <Box>

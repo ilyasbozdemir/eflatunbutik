@@ -2,6 +2,8 @@ import {
   Box,
   Button,
   Flex,
+  FormControl,
+  FormLabel,
   IconButton,
   Input,
   Stack,
@@ -70,7 +72,7 @@ function ProductAddress() {
                   Yeni Adres Ekle
                 </Button>
 
-                <SetModal isOpen={isOpen} onClose={onClose} />
+                <SetModal isOpen={isOpen} onClose={onClose} isNewAddress />
 
                 <Stack
                   direction={{
@@ -94,15 +96,6 @@ function ProductAddress() {
                 </Stack>
               </Stack>
               <Wrap>
-                <WrapItem>
-                  <AddressCard
-                    title={"test title"}
-                    addressContent={
-                      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae aperiam nobis adipisci cum nemo amet aliquam aut dicta voluptate necessitatibus, molestias hic ipsam mollitia fuga ipsum repellendus ducimus alias incidunt?"
-                    }
-                    editButtonClick={onOpen}
-                  />
-                </WrapItem>
                 <WrapItem>
                   <AddressCard
                     title={"test title"}
@@ -142,21 +135,55 @@ function ProductAddress() {
   );
 }
 
-function SetModal({ isOpen, onClose }) {
+function SetModal(props) {
+  const { isOpen, onClose, isNewAddress } = props;
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+        blockScrollOnMount
+        scrollBehavior={"inside"}
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>
+            {isNewAddress === true ? <>Yeni Adres Ekle</> : <>Adres Düzenle</>}
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody></ModalBody>
+          <ModalBody>
+            <FormControl isRequired>
+              <FormLabel>Adres Başlığı :</FormLabel>
+              <Input ref={initialRef} placeholder="Örn. Ev Adresim" />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Ad :</FormLabel>
+              <Input />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Soyad :</FormLabel>
+              <Input />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>E-Posta Adresi :</FormLabel>
+              <Input type={"email"} />
+            </FormControl>
+          </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
+            <Button
+              variant={"outline"}
+              colorScheme="green"
+              mr={3}
+              onClick={onClose}
+            >
+              Kaydet
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
