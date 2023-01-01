@@ -12,7 +12,7 @@ import {
   useColorModeValue,
   Stack,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { MainContext, useContext } from "../../contexts/MainContext";
 import { CartItem } from "../Cart/CartItem";
@@ -30,7 +30,7 @@ function BasketView(props) {
   return (
     <>
       <Drawer
-        size={"sm"}
+        w={"250px"}
         placement={placement}
         onClose={onClose}
         isOpen={isOpen}
@@ -43,20 +43,22 @@ function BasketView(props) {
           </DrawerHeader>
           <DrawerBody>
             <Stack>
-              {basket.map((item) => (
-                <CartItem
-                  key={item.id}
-                  {...item}
-                  onChangeQuantity={(v) => {}}
-                  onClickDelete={() => {
-                    deleteByValue(item);
-                  }}
-                />
-              ))}
+              {/*basket.map((item) => (
+                <>
+                  <CartItem
+                    key={item.id}
+                    {...item}
+                    onClickDelete={() => {
+                      deleteByValue(item);
+                    }}
+                  />
+                </>
+              ))*/}
             </Stack>
           </DrawerBody>
-          <DrawerFooter gap={5}>
+          <DrawerFooter gap={3}>
             <Button
+              fontSize={"md"}
               width={"full"}
               variant="primary"
               color={"white"}
@@ -77,6 +79,7 @@ function BasketView(props) {
             </Button>
 
             <Button
+              fontSize={"sm"}
               width={"full"}
               variant="primary"
               color={"white"}

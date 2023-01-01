@@ -16,6 +16,7 @@ export const CartItem = (props) => {
     price,
     onChangeQuantity,
     onClickDelete,
+    linkTo,
   } = props;
 
   const [pQuantity, setPQuantity] = React.useState(quantity);
@@ -24,7 +25,6 @@ export const CartItem = (props) => {
   const checkBasket = basket.find((item) => item.id === id);
 
   React.useEffect(() => {
-
     if (checkBasket) {
       checkBasket.quantity = pQuantity;
       setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
@@ -44,13 +44,14 @@ export const CartItem = (props) => {
       justify="space-between"
       align="center"
     >
-      <CartProductMeta
-        name={name}
-        description={description}
-        image={imageUrl}
-        isGiftWrapping={isGiftWrapping}
-      />
-
+      <>
+        <CartProductMeta
+          name={name}
+          description={description}
+          image={imageUrl}
+          isGiftWrapping={isGiftWrapping}
+        />
+      </>
       {/* Desktop */}
       <Flex
         width="full"
@@ -126,7 +127,7 @@ export const CartItem = (props) => {
           </Select>
         </>
 
-        <PriceTag price={ price} currency={currency} />
+        <PriceTag price={price} currency={currency} />
       </Flex>
     </Flex>
   );

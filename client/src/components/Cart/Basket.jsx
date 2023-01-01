@@ -22,7 +22,6 @@ function Basket() {
       return oldValues.filter((p) => p.id !== v.id);
     });
   };
-  
 
   return (
     <>
@@ -57,13 +56,15 @@ function Basket() {
 
             <Stack spacing="6">
               {basket.map((item) => (
-                <CartItem
-                  key={item.id}
-                  {...item}
-                  onClickDelete={() => {
-                    deleteByValue(item);
-                  }}
-                />
+                <>
+                  <CartItem
+                    key={item.id}
+                    {...item}
+                    onClickDelete={() => {
+                      deleteByValue(item);
+                    }}
+                  />
+                </>
               ))}
             </Stack>
           </Stack>

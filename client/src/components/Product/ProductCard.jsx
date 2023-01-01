@@ -211,13 +211,12 @@ export const ProductCard = (props) => {
             </Link>
           </Stack>
         </>
-        {/*
-        <Stack align="center" mt={2}>
 
+        {/* 
+        <Stack align="center" mt={2}>
           <AddToCardButton product={product} />
         </Stack>
-       */}
-
+*/}
         <Stack align="center" mt={2}>
           <Button
             width="95%"
