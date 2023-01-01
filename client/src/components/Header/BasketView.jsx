@@ -20,8 +20,13 @@ import { CartItem } from "../Cart/CartItem";
 function BasketView(props) {
   const { placement, onClose, isOpen } = props;
   const navigate = useNavigate();
-  const { basket } = useContext(MainContext);
+  const { basket, setBasket } = useContext(MainContext);
 
+  const deleteByValue = (v) => {
+    setBasket((oldValues) => {
+      return oldValues.filter((p) => p.id !== v.id);
+    });
+  };
   return (
     <>
       <Drawer
@@ -37,16 +42,18 @@ function BasketView(props) {
             Sepetim: ({basket.length}) Ürün
           </DrawerHeader>
           <DrawerBody>
-          <Stack spacing="6">
+            <Stack>
               {basket.map((item) => (
                 <CartItem
                   key={item.id}
                   {...item}
                   onChangeQuantity={(v) => {}}
+                  onClickDelete={() => {
+                    deleteByValue(item);
+                  }}
                 />
               ))}
             </Stack>
-
           </DrawerBody>
           <DrawerFooter gap={5}>
             <Button
@@ -68,7 +75,7 @@ function BasketView(props) {
             >
               Sepete Git
             </Button>
-          
+
             <Button
               width={"full"}
               variant="primary"
