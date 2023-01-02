@@ -77,7 +77,7 @@ function ProductPayment() {
                 onChange={(index) => setTabIndex(index)}
                 colorScheme="pink"
                 isFitted
-                variant="enclosed"
+                variant="enclosed-colored"
               >
                 <TabList mb="1em">
                   <Tab>Kapıda Ödeme</Tab>
