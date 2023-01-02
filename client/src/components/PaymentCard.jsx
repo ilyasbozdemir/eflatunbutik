@@ -21,9 +21,8 @@ function PaymentCard(props) {
   return (
     <>
       <Card
-        w={{ base: "100%", md: 150 }}
-        maxW={{ base: "100%", md: 200 }}
-        maxH={{ base: "100%", md: 300 }}
+        w={{ base: "100%", md: 195 }}
+        h={{ base: "100%", md: 250 }}
         m={1}
       >
         <CardHeader fontWeight={"semibold"}>

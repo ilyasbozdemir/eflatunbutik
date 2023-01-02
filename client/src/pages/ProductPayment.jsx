@@ -11,15 +11,21 @@ import {
 import React from "react";
 import CartOrderSummaryPayment from "../components/CartOrderSummaryPayment";
 import { useNavigate } from "react-router";
-import { FaArrowRight } from "react-icons/fa";
 
 import PaymentCard from "../components/PaymentCard";
-
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import CreditCardPayment from "../components/CreditCardPayment";
+import PayAtTheDoor from "../components/PayAtTheDoor";
 function ProductPayment() {
   const navigate = useNavigate();
+
+  const [tabIndex, setTabIndex] = React.useState(0);
+
+  React.useEffect(() => {}, [tabIndex]);
+
   return (
     <>
-      <Box maxW={{ base: "3xl", lg: "7xl" }}>
+      <Box maxW={{ base: "3xl", lg: "7xl" }} py={3}>
         <Stack
           direction={{
             base: "column",
@@ -40,31 +46,53 @@ function ProductPayment() {
             }}
             flex="2"
           >
-            <Stack spacing="6">
+            <>
               <Wrap>
                 <WrapItem>
                   <PaymentCard
-                    title={"title"}
-                    addressContent={"addressContent"}
+                    title={"Fatura Adresi"}
+                    addressContent={"Test adres, Gölbaşı, Adıyaman"}
                     editButtonClick={"editButtonClick"}
                   />
                 </WrapItem>
                 <WrapItem>
                   <PaymentCard
-                    title={"title"}
-                    addressContent={"addressContent"}
+                    title={"Teslimat Adresi"}
+                    addressContent={"Test adres, Gölbaşı, Adıyaman"}
                     editButtonClick={"editButtonClick"}
                   />
                 </WrapItem>
                 <WrapItem>
                   <PaymentCard
-                    title={"title"}
-                    addressContent={"addressContent"}
+                    title={"Kargo Bilgileri"}
+                    addressContent={"Test adres, Gölbaşı, Adıyaman"}
                     editButtonClick={"editButtonClick"}
                   />
                 </WrapItem>
               </Wrap>
-            </Stack>
+            </>
+            <>
+              <Tabs
+                my={2}
+                onChange={(index) => setTabIndex(index)}
+                colorScheme="pink"
+                isFitted
+                variant="enclosed"
+              >
+                <TabList mb="1em">
+                  <Tab>Kapıda Ödeme</Tab>
+                  <Tab>Kredi Kartı</Tab>
+                </TabList>
+                <TabPanels>
+                  <TabPanel>
+                    <PayAtTheDoor />
+                  </TabPanel>
+                  <TabPanel>
+                    <CreditCardPayment />
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
+            </>
           </Stack>
 
           <Flex direction="column" flex="1">

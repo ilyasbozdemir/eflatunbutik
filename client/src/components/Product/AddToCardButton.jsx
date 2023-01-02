@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 
-import { BiShoppingBag } from "react-icons/bi";
+import { BiLoader, BiShoppingBag } from "react-icons/bi";
 
 import { MainContext, useContext } from "../../contexts/MainContext";
 import { useToast } from "@chakra-ui/react";
@@ -85,12 +85,9 @@ function AddToCardButton({ product }) {
         }}
         onClick={clickHandled}
         cursor={"pointer"}
-        disabled={isDisabled}
-        _disabled={{
-          cursor: "progress",
-          bg: "orange.400",
-          color: "white",
-        }}
+        isLoading={isDisabled}
+        loadingText="Sepete Ekleniyor"
+        //spinner={<BiLoader color="white" />}
       >
         <Flex
           justifyContent={"space-between"}
@@ -98,24 +95,10 @@ function AddToCardButton({ product }) {
           justifyItems={"center"}
           fontSize={{ base: 12, md: 14, lg: 15 }}
         >
-          {show === false ? (
-            <>
-              <Icon as={BiShoppingBag} />
-              <Text>Sepete Ekle</Text>
-            </>
-          ) : (
-            <Flex
-              as="span"
-              textAlign={"center"}
-              justifyContent={"center"}
-              gap={1}
-            >
-              <Text fontFamily={"Arial, Helvetica, sans-serif"}>
-                Sepete Ekleniyor
-              </Text>
-              <CircularProgress size={"4"} isIndeterminate color="red.500" />
-            </Flex>
-          )}
+          <>
+            <Icon as={BiShoppingBag} />
+            <Text>Sepete Ekle</Text>
+          </>
         </Flex>
       </Button>
     </>
