@@ -13,29 +13,78 @@
 .card {
   width: 352px;
   height: 223px;
-  position:relative;
-  perspective:800px;
+  position: relative;
+  perspective: 800px;
 }
+
 .card .back,
 .card .front {
   width: inherit;
   height: inherit;
   background: linear-gradient(31.58deg, #93278f -2.49%, #29abe2 67.92%);
-  position:absolute;
-  top:0;
-  left:0;
-  border-radius:15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
   backface-visibility: hidden;
-  transition:1s all;
+  transition: 1s all;
+  padding: 31px 27px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .card .back {
   transform: rotateY(180deg);
 }
 
-.card:hover .back {
+.card.flip .back {
   transform: rotateY(0);
 }
-.card:hover .front {
+.card.flip .front {
   transform: rotateY(-180deg);
+}
+
+.card .front .card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card .front .card-number {
+  font-size: 25px;
+  margin-top: 25px;
+  font-family: monospace;
+  letter-spacing: -0.1px;
+  color: #fff;
+}
+.card .front .card-bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.card .front .card-bottom .key {
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.card .front .card-bottom .value {
+  font-size: 19px;
+  font-weight: 600;
+  font-family: monospace;
+}
+.card .back .card-back {
+  background: #fff;
+  padding: 20px;
+  margin-top: auto;
+  display: flex;
+  justify-content: end;
+}
+.card .back .card-back em {
+  font-weight: 500;
+  margin-left: 15px;
 }

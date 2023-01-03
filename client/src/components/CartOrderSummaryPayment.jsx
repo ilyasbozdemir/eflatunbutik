@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Table,
@@ -13,6 +12,8 @@ import {
   Stack,
   Heading,
   Center,
+  useColorModeValue,
+  Button,
 } from "@chakra-ui/react";
 
 function CartOrderSummaryPayment() {
@@ -34,19 +35,33 @@ function CartOrderSummaryPayment() {
               <Tbody>
                 <Tr>
                   <Td>Birim Fiyat</Td>
-                  <Td isNumeric>{'price' + " TL"}</Td>
+                  <Td isNumeric>{"price" + " TL"}</Td>
                 </Tr>
                 <Tr>
                   <Td>Adet</Td>
-                  <Td isNumeric>{'quantity'}</Td>
+                  <Td isNumeric>{"quantity"}</Td>
                 </Tr>
                 <Tr>
                   <Td>Toplam Fiyat</Td>
-                  <Td isNumeric>{'price' * 'quantity' + " TL"}</Td>
+                  <Td isNumeric>{"price" * "quantity" + " TL"}</Td>
                 </Tr>
               </Tbody>
             </Table>
           </TableContainer>
+          <Button
+            width="95%"
+            variant="primary"
+            color={"white"}
+            bg={useColorModeValue("gray.100", "gray.700")}
+            bgGradient={"linear(to-l, #7928CA, #FF0080)"}
+            _hover={{
+              opacity: 0.9,
+            }}
+            cursor={"pointer"}
+            onClick={() => {}}
+          >
+            Siparişi Tamamla
+          </Button>
         </Stack>
       </Stack>
     </>

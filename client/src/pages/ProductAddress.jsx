@@ -28,14 +28,13 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router";
-import { FaArrowRight } from "react-icons/fa";
+
 import AddressCard from "../components/AddressCard";
 import CartOrderSummaryAddress from "../components/CartOrderSummaryAddress";
 
 function ProductAddress() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate();
+
   return (
     <>
       <Box maxW={{ base: "3xl", lg: "7xl" }} py={3}>
@@ -115,23 +114,6 @@ function ProductAddress() {
 
           <Flex direction="column" flex="1">
             <CartOrderSummaryAddress />
-            <Button
-              width="95%"
-              variant="primary"
-              color={"white"}
-              bg={useColorModeValue("gray.100", "gray.700")}
-              bgGradient={"linear(to-l, #7928CA, #FF0080)"}
-              _hover={{
-                opacity: 0.9,
-              }}
-              cursor={"pointer"}
-              onClick={() => {
-                navigate("/siparis/odeme/");
-              }}
-              rightIcon={<FaArrowRight />}
-            >
-              Devam Et
-            </Button>
           </Flex>
         </Stack>
       </Box>

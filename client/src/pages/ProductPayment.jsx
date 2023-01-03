@@ -106,20 +106,6 @@ function ProductPayment() {
 
           <Flex direction="column" flex="1">
             <CartOrderSummaryPayment />
-            <Button
-              width="95%"
-              variant="primary"
-              color={"white"}
-              bg={useColorModeValue("gray.100", "gray.700")}
-              bgGradient={"linear(to-l, #7928CA, #FF0080)"}
-              _hover={{
-                opacity: 0.9,
-              }}
-              cursor={"pointer"}
-              onClick={() => {}}
-            >
-              Siparişi Tamamla
-            </Button>
           </Flex>
         </Stack>
       </Box>

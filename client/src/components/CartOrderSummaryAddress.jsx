@@ -12,9 +12,14 @@ import {
   Stack,
   Heading,
   Center,
+  useColorModeValue,
+  Button,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
+import { FaArrowRight } from "react-icons/fa";
 
 function CartOrderSummaryAddress() {
+  const navigate = useNavigate();
   return (
     <>
       <Stack
@@ -46,6 +51,23 @@ function CartOrderSummaryAddress() {
               </Tbody>
             </Table>
           </TableContainer>
+          <Button
+              width="95%"
+              variant="primary"
+              color={"white"}
+              bg={useColorModeValue("gray.100", "gray.700")}
+              bgGradient={"linear(to-l, #7928CA, #FF0080)"}
+              _hover={{
+                opacity: 0.9,
+              }}
+              cursor={"pointer"}
+              onClick={() => {
+                navigate("/siparis/odeme/");
+              }}
+              rightIcon={<FaArrowRight />}
+            >
+              Devam Et
+            </Button>
         </Stack>
       </Stack>
     </>
