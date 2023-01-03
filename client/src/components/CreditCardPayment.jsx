@@ -16,12 +16,23 @@ import ReactInputMask from "react-input-mask";
 import { CiCalendarDate } from "react-icons/ci";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
+import creditCardType from "credit-card-type";
+
+import PaymentIcon from "react-payment-icons";
+
 function CreditCardPayment() {
   const [backface, setBackface] = React.useState(false);
   const [name, setName] = React.useState("");
   const [cardNumber, setCardNumber] = React.useState("");
   const [expire, setExpire] = React.useState("");
   const [cvc, setCvc] = React.useState("");
+  const [cardType, setCardType] = React.useState("");
+
+  const cardNumberOnChange = (e) => {
+    setTimeout(() => {
+      setCardNumber(e.target.value);
+    }, 300);
+  };
 
   return (
     <>
@@ -46,7 +57,7 @@ function CreditCardPayment() {
               placeholder={"Kart Numarası"}
               leftIcon={AiOutlineCreditCard}
               value={cardNumber}
-              onChange={(e) => setCardNumber(e.target.value)}
+              onChange={cardNumberOnChange}
             />
             <MaskedInput
               mask={"99/99"}
@@ -65,12 +76,19 @@ function CreditCardPayment() {
               onBlur={() => setBackface(false)}
             />
           </Stack>
-          <Stack mb={3} ml={15} display={{ base: "none", md: "block" }}>
+          <Stack mb={3} ml={15} display={{ base: "block", md: "block" }}>
             <div className={`card ${backface === true ? "flip" : ""}`}>
               <div className="front">
                 <div className="card-top">
                   <Chip />
-                  'kart_logo'
+
+                  {/*
+                   <PaymentIcon
+                    id={cardType}
+                    style={{ width: 50, pointerEvents: "none" }}
+                    className="payment-icon"
+                  />
+*/}
                 </div>
 
                 <div className="card-number">
@@ -79,12 +97,12 @@ function CreditCardPayment() {
 
                 <div className="card-bottom">
                   <div>
-                    <div class="key">Kart Sahibinin Adı</div>
+                    <div class="key">CARD HOLDER'S NAME</div>
                     <div className="value">{name || "***"}</div>
                   </div>
                   <div>
                     <div class="key">Expiry Date</div>
-                    <div className="value">{expire || "***"}</div>
+                    <div className="value">{expire || "*/*"}</div>
                   </div>
                 </div>
               </div>
