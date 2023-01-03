@@ -12,21 +12,23 @@ import {
   Image,
   Center,
   Flex,
+  Box,
 } from "@chakra-ui/react";
 
 import { BiEdit } from "react-icons/bi";
 import { IconButton } from "@chakra-ui/react";
 function PaymentCard(props) {
   const { title, addressContent, editButtonClick } = props;
+  const { addressTitle, addressProvince } = addressContent;
   return (
     <>
-      <Card
-        w={{ base: "100%", md: 195 }}
-        h={{ base: "100%", md: 250 }}
-        m={1}
-      >
+      <Card w={{ base: "100%", md: 195 }} h={{ base: "100%", md: 200 }} m={1}>
         <CardHeader fontWeight={"semibold"}>
-          <Flex justifyContent={"space-between"}>
+          <Flex
+            justifyContent={"space-between"}
+            textAlign={"center"}
+            alignContent={"center"}
+          >
             <Text> {title}</Text>
             <IconButton
               colorScheme="pink"
@@ -53,7 +55,10 @@ function PaymentCard(props) {
             },
           }}
         >
-          {addressContent}
+          <Stack spacing={3} direction={"column"}>
+            <Box>{addressTitle}</Box>
+            <Box>{addressProvince}</Box>
+          </Stack>
         </CardBody>
       </Card>
     </>

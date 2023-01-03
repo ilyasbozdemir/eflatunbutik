@@ -51,21 +51,30 @@ function ProductPayment() {
                 <WrapItem>
                   <PaymentCard
                     title={"Fatura Adresi"}
-                    addressContent={"Test adres, Gölbaşı, Adıyaman"}
+                    addressContent={{
+                      addressTitle: "test title ",
+                      addressProvince: "Gölbaşı, Adıyaman",
+                    }}
                     editButtonClick={"editButtonClick"}
                   />
                 </WrapItem>
                 <WrapItem>
                   <PaymentCard
                     title={"Teslimat Adresi"}
-                    addressContent={"Test adres, Gölbaşı, Adıyaman"}
+                    addressContent={{
+                      addressTitle: "test title ",
+                      addressProvince: "Gölbaşı, Adıyaman",
+                    }}
                     editButtonClick={"editButtonClick"}
                   />
                 </WrapItem>
                 <WrapItem>
                   <PaymentCard
                     title={"Kargo Bilgileri"}
-                    addressContent={"Test adres, Gölbaşı, Adıyaman"}
+                    addressContent={{
+                      addressTitle: "test title ",
+                      addressProvince: "Gölbaşı, Adıyaman",
+                    }}
                     editButtonClick={"editButtonClick"}
                   />
                 </WrapItem>

@@ -9,36 +9,41 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-import InputMask from 'react-input-mask';
-import creditCardType from 'credit-card-type';
-
+import InputMask from "react-input-mask";
+import creditCardType from "credit-card-type";
 
 function CreditCardPayment() {
+  const [cardName, setCardName] = React.useState("");
 
   var visaCards = creditCardType("4543");
   //alert(visaCards[0].type); // 'visa'
+
+  //expiration date
+
+  const InputMasked = (props) => (
+    <InputMask
+      mask={props.mask}
+      value={props.value}
+      placeholder={" "}
+      onChange={props.onChange}
+    >
+      {(inputProps) => (
+        <Input placeholder={props.placeholder} {...inputProps} type="text" />
+      )}
+    </InputMask>
+  );
 
   return (
     <>
       <Flex direction={"column"}>
         <Stack direction={"row"} spacing={5}>
           <VStack>
-            <FormControl>
-              <Input size="sm" placeholder="Kart Sahibi" />
-            </FormControl>
-            <FormControl>
-              <Input size="sm" placeholder="Kart Numarası" />
-            </FormControl>
-            <FormControl>
-              <Input size="sm" placeholder="Son Kullanma Tarihi" />
-            </FormControl>
-            <FormControl>
-              <Input size="sm" placeholder="CVV" />
-            </FormControl>
+            <FormControl></FormControl>
+            <FormControl></FormControl>
+            <FormControl></FormControl>
+            <FormControl></FormControl>
           </VStack>
-          <VStack>
-            <Text></Text>
-          </VStack>
+          <VStack></VStack>
         </Stack>
         <Box as="small" my="4">
           <Box fontWeight={"semibold"} as="p">
