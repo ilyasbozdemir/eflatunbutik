@@ -34,26 +34,38 @@ function CreditCardPayment() {
                   pointerEvents="none"
                   children={<Icon as={VscAccount} color="gray.500" />}
                 />
-                <Input placeholder="Kart Sahibi" />
+                <Input
+                  placeholder="Kart Sahibi"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </InputGroup>
             </FormControl>
             <MaskedInput
               mask={"9999 9999 9999 9999"}
               placeholder={"Kart Numarası"}
               leftIcon={AiOutlineCreditCard}
+              value={cardNumber}
+              onChange={(e) => setCardNumber(e.target.value)}
             />
             <MaskedInput
               mask={"99/99"}
               placeholder={"Son Kullanma Tarihi"}
               leftIcon={CiCalendarDate}
+              value={expire}
+              onChange={(e) => setExpire(e.target.value)}
             />
             <MaskedInput
               mask={"999"}
               placeholder={"CVC"}
               leftIcon={VscWorkspaceTrusted}
+              value={cvc}
+              onChange={(e) => setCvc(e.target.value)}
+              onFocus={() => setBackface(true)}
+              onBlur={() => setBackface(false)}
             />
           </Stack>
-          <Stack mb={3} ml={15}>
+          <Stack mb={3} ml={15} display={{ base: "none", md: "block" }}>
             <div className={`card ${backface === true ? "flip" : ""}`}>
               <div className="front">
                 <div className="card-top">
@@ -103,7 +115,14 @@ const MaskedInput = (props) => {
   return (
     <>
       <FormControl w={props.w}>
-        <ReactInputMask mask={props.mask} maskChar=" ">
+        <ReactInputMask
+          mask={props.mask}
+          maskChar={" "}
+          value={props.value}
+          onChange={props.onChange}
+          onFocus={props.onFocus}
+          onBlur={props.onBlur}
+        >
           {() => (
             <InputGroup>
               <InputLeftElement

@@ -16,7 +16,6 @@
   position: relative;
   perspective: 800px;
 }
-
 .card .back,
 .card .front {
   width: inherit;
