@@ -5,6 +5,11 @@ import ProductAddress from "./pages/ProductAddress";
 import ProductPayment from "./pages/ProductPayment";
 import OrderCompleted from "./pages/OrderCompleted";
 
+import MyAddressInformation from "./pages/User/MyAddressInformation";
+import MyUserInformation from "./pages/User/MyUserInformation";
+import MyOrders from "./pages/User/MyOrders";
+import UserWrapper from "./pages/User/UserWrapper";
+
 const Home = React.lazy(() => import("./pages/Home"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Page404 = React.lazy(() => import("./pages/ErrorPage/Page404"));
@@ -615,11 +620,42 @@ const router = [
         path: "/siparis/tamamlandi/:orderNumber",
         element: <OrderCompleted />,
       },
+
       {
         path: "/favorilerim/",
         element: (
           <>
             <Favorite />
+          </>
+        ),
+      },
+      {
+        path: "hesabim/bilgilerim/",
+        element: (
+          <>
+            <ProtectedRoute user>
+              <MyUserInformation />
+            </ProtectedRoute>
+          </>
+        ),
+      },
+      {
+        path: "hesabim/adreslerim/",
+        element: (
+          <>
+            <ProtectedRoute user>
+              <MyAddressInformation />
+            </ProtectedRoute>
+          </>
+        ),
+      },
+      {
+        path: "hesabim/siparislerim/",
+        element: (
+          <>
+            <ProtectedRoute user>
+              <MyOrders />
+            </ProtectedRoute>
           </>
         ),
       },
@@ -642,20 +678,10 @@ const router = [
       </AuthLayout>
     ),
   },
-  /*{
-    path: "/favorilerim/",
-    element: (
-      <>
-        <>
-          <Favorite />
-        </>
-      </>
-    ),
-  },*/
 
   {
     path: "/admin/",
-    element: <ProtectedRoute user={true} />,
+    element: <ProtectedRoute isAdmin={true} />,
     children: [
       {
         index: true,

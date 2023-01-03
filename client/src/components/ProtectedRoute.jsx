@@ -1,12 +1,13 @@
-import { Navigate,Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
 
-const ProtectedRoute = ({ user,isAdmin }) => {
-  if (!user) {
+const ProtectedRoute = ({ user, isAdmin, children  }) => {
+  if (!user && isAdmin === undefined) {
     return <Navigate to="/giris/" replace />;
   }
-  if (!isAdmin) {
+  if (!isAdmin && user === undefined) {
     return <Navigate to="/admin/giris/" replace />;
   }
+
   return <Outlet />;
 };
 export default ProtectedRoute;

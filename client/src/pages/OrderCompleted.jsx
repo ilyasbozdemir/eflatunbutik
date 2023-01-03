@@ -40,16 +40,10 @@ function OrderCompleted() {
           </Text>
           <Flex justifyContent={"center"}>
             <Stack spacing={5} direction={"row"}>
-              <Button
-                colorScheme={'blue'}
-                onClick={() => navigate("/")}
-              >
+              <Button colorScheme={"blue"} onClick={() => navigate("/")}>
                 Alışverişe Devam Et
               </Button>
-              <Button
-                colorScheme={'green'}
-                onClick={() => navigate("/")}
-              >
+              <Button colorScheme={"green"} onClick={() => navigate("/")}>
                 Sipariş Detayı
               </Button>
             </Stack>
