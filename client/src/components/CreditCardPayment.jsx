@@ -2,49 +2,53 @@ import {
   Box,
   Flex,
   FormControl,
-  Text,
   Input,
   Stack,
   VStack,
+  InputGroup,
+  InputLeftElement,
+  Icon,
 } from "@chakra-ui/react";
 import React from "react";
-
-import InputMask from "react-input-mask";
-import creditCardType from "credit-card-type";
+import CardNumberInput from "./CardNumberInput";
+import CVCInput from "./CVCInput";
+import DateInput from "./DateInput";
+import { VscAccount } from "react-icons/vsc";
 
 function CreditCardPayment() {
-  const [cardName, setCardName] = React.useState("");
-
-  var visaCards = creditCardType("4543");
-  //alert(visaCards[0].type); // 'visa'
-
-  //expiration date
-
-  const InputMasked = (props) => (
-    <InputMask
-      mask={props.mask}
-      value={props.value}
-      placeholder={" "}
-      onChange={props.onChange}
-    >
-      {(inputProps) => (
-        <Input placeholder={props.placeholder} {...inputProps} type="text" />
-      )}
-    </InputMask>
-  );
-
   return (
     <>
       <Flex direction={"column"}>
-        <Stack direction={"row"} spacing={5}>
+        <Flex direction={"row"} spacing={7}>
           <VStack>
-            <FormControl></FormControl>
-            <FormControl></FormControl>
-            <FormControl></FormControl>
-            <FormControl></FormControl>
+            <FormControl>
+              <InputGroup>
+                <InputLeftElement
+                  pointerEvents="none"
+                  children={<Icon as={VscAccount} color="gray.500" />}
+                />
+                <Input placeholder="Kart Sahibi" />
+              </InputGroup>
+            </FormControl>
+            <FormControl>
+              <CardNumberInput />
+            </FormControl>
+            <FormControl>
+              <DateInput />
+            </FormControl>
+            <FormControl>
+              <CVCInput />
+            </FormControl>
           </VStack>
-          <VStack></VStack>
-        </Stack>
+          <VStack>
+            <Box className="card">
+              <Box className="front">
+                
+              </Box>
+              <Box className="back">arka</Box>
+            </Box>
+          </VStack>
+        </Flex>
         <Box as="small" my="4">
           <Box fontWeight={"semibold"} as="p">
             Bilgilendirme,

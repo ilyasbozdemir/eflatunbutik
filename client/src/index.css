@@ -10,4 +10,32 @@
   margin: 0;
 }
 
+.card {
+  width: 352px;
+  height: 223px;
+  position:relative;
+  perspective:800px;
+}
+.card .back,
+.card .front {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(31.58deg, #93278f -2.49%, #29abe2 67.92%);
+  position:absolute;
+  top:0;
+  left:0;
+  border-radius:15px;
+  backface-visibility: hidden;
+  transition:1s all;
+}
 
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(0);
+}
+.card:hover .front {
+  transform: rotateY(-180deg);
+}
