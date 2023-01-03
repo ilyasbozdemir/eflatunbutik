@@ -29,15 +29,16 @@ function CreditCardPayment() {
   const [cardType, setCardType] = React.useState("");
 
   const cardNumberOnChange = (e) => {
-    setTimeout(() => {
-      setCardNumber(e.target.value);
-    }, 300);
+    setCardNumber(e.target.value);
   };
 
   return (
     <>
       <Flex direction={"column"} justifyContent={"center"}>
-        <Flex direction={{ base: "column-reverse", md: "row" }}>
+        <Flex
+          direction={{ base: "column-reverse", md: "row" }}
+          justifyContent={"center"}
+        >
           <Stack w={280} spacing={5}>
             <FormControl>
               <InputGroup>

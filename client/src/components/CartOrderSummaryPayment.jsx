@@ -15,8 +15,12 @@ import {
   useColorModeValue,
   Button,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 
 function CartOrderSummaryPayment() {
+  const [orderNumber, setOrderNumber] = React.useState("");
+
+  const navigate = useNavigate();
   return (
     <>
       <Stack
@@ -58,7 +62,9 @@ function CartOrderSummaryPayment() {
               opacity: 0.9,
             }}
             cursor={"pointer"}
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/siparis/tamamlandi/" + orderNumber);
+            }}
           >
             Siparişi Tamamla
           </Button>

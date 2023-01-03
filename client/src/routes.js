@@ -3,7 +3,7 @@ import ProtectedRoute from "../src/components/ProtectedRoute";
 import ProductDetail from "./pages/ProductDetail";
 import ProductAddress from "./pages/ProductAddress";
 import ProductPayment from "./pages/ProductPayment";
-
+import OrderCompleted from "./pages/OrderCompleted";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Contact = React.lazy(() => import("./pages/Contact"));
@@ -604,19 +604,22 @@ const router = [
         element: <ProductDetail />,
       },
       {
-        path:'/siparis/adres/',
+        path: "/siparis/adres/",
         element: <ProductAddress />,
-      },{
-        path:'/siparis/odeme/',
+      },
+      {
+        path: "/siparis/odeme/",
         element: <ProductPayment />,
+      },
+      {
+        path: "/siparis/tamamlandi/:orderNumber",
+        element: <OrderCompleted />,
       },
       {
         path: "/favorilerim/",
         element: (
           <>
-            <>
-              <Favorite />
-            </>
+            <Favorite />
           </>
         ),
       },
