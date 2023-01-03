@@ -1,6 +1,6 @@
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import { Icon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import React, { useState as UseState } from "react";
+import React, { useState  } from "react";
 import {
   Flex,
   useColorMode as UseColorMode,

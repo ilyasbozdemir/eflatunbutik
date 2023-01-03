@@ -1,4 +1,3 @@
-import ReactFlagsSelect from "react-flags-select";
 import { GrSystem } from "react-icons/gr";
 import { BiArrowFromLeft, BiArrowToLeft } from "react-icons/bi";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
@@ -19,8 +18,6 @@ import {
   Badge,
   Tooltip,
 } from "@chakra-ui/react";
-
-import { IconContext } from "react-icons";
 
 function index({ isOpen, onOpen, onClose }) {
   const { colorMode, toggleColorMode } = UseColorMode();
@@ -104,21 +101,13 @@ function index({ isOpen, onOpen, onClose }) {
             </HStack>
 
             <HStack>
-              <Tooltip label="varsayılan site dilini ayarlayın.">
+              {/*   <Tooltip label="varsayılan site dilini ayarlayın.">
                 <Text fontWeight="semibold">
                   {"Dil : "}
                   <Badge colorScheme="purple"></Badge>
                 </Text>
-              </Tooltip>
-              <ReactFlagsSelect
-                countries={["TR"]}
-                selected={selected}
-                onSelect={(code) => {
-                  setSelected(code);
-                }}
-              />
+              </Tooltip>*/}
             </HStack>
-            
           </DrawerBody>
         </DrawerContent>
       </Drawer>

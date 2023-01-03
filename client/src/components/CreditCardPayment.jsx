@@ -2,8 +2,6 @@ import {
   Box,
   Flex,
   FormControl,
-  FormHelperText,
-  FormLabel,
   Text,
   Input,
   Stack,
@@ -11,7 +9,15 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
+import InputMask from 'react-input-mask';
+import creditCardType from 'credit-card-type';
+
+
 function CreditCardPayment() {
+
+  var visaCards = creditCardType("4543");
+  //alert(visaCards[0].type); // 'visa'
+
   return (
     <>
       <Flex direction={"column"}>
@@ -34,7 +40,7 @@ function CreditCardPayment() {
             <Text></Text>
           </VStack>
         </Stack>
-        <Box as="small" my='4'>
+        <Box as="small" my="4">
           <Box fontWeight={"semibold"} as="p">
             Bilgilendirme,
           </Box>
