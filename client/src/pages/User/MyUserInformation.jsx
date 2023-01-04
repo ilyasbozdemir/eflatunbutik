@@ -9,26 +9,45 @@ import {
   Box,
   Stack,
   Button,
+  Checkbox,
 } from "@chakra-ui/react";
 
 function MyUserInformation() {
   return (
-    <Stack spacing={2} p={5} >
+    <Stack spacing={2} p={5} userSelect={"none"}>
       <FormControl>
-        <FormLabel>Ad :</FormLabel>
-        <Input type="text" />
+        <FormLabel for={"name"}>Ad :</FormLabel>
+        <Input id={"name"} type="text" />
         <FormHelperText></FormHelperText>
       </FormControl>
       <FormControl>
-        <FormLabel>Soyad :</FormLabel>
-        <Input type="text" />
+        <FormLabel for={"surname"}>Soyad :</FormLabel>
+        <Input id={"surname"} type="text" />
         <FormHelperText></FormHelperText>
       </FormControl>
       <FormControl>
-        <FormLabel>Email Adresi</FormLabel>
-        <Input type="email" />
+        <FormLabel for={"email"}>Email Adresi :</FormLabel>
+        <Input id={"email"} type="email" />
         <FormHelperText></FormHelperText>
       </FormControl>
+      <FormControl>
+        <FormLabel for={"tel"}>Telefon :</FormLabel>
+        <Input id={"tel"} type="tel" />
+        <FormHelperText></FormHelperText>
+      </FormControl>
+      <FormControl>
+        <FormLabel for={"date"}>Doğum Tarihi :</FormLabel>
+        <Input id={"date"} type="date" />
+        <FormHelperText></FormHelperText>
+      </FormControl>
+      <FormControl>
+        <FormLabel>Cinsiyet :</FormLabel>
+        <Stack spacing={5} direction="row">
+          <Checkbox colorScheme="green">Erkek</Checkbox>
+          <Checkbox colorScheme="green">Kadın</Checkbox>
+        </Stack>
+      </FormControl>
+
       <Button colorScheme={"green"}>Kaydet</Button>
     </Stack>
   );

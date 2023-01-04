@@ -65,6 +65,9 @@ function UserWrapper(props) {
   const [activePage, setActivePage] = React.useState("");
 
   const onClickHandled = (e) => {
+    
+    //alert(e.target.getAttribute("data-is-active"));
+
     const values = pages.filter((page) => {
       return page.title === e.target.textContent;
     });
@@ -84,7 +87,7 @@ function UserWrapper(props) {
         "çıkış yapılıyor"
       ) : (
         <>
-          <Box maxW={{ base: "3xl", lg: "7xl" }} py={3} bg={"gray.100"}> 
+          <Box maxW={{ base: "3xl", lg: "7xl" }} py={3} bg={"gray.100"}>
             <Stack
               direction={{
                 base: "column",
@@ -116,9 +119,11 @@ function UserWrapper(props) {
                           <>
                             <NavItem
                               pageName={page.title}
+                              name={page.name}
                               icon={page.icon}
                               py={index === pages.length - 1 ? 2 : 3}
                               onClick={onClickHandled}
+
                             />
                             {index === pages.length - 1 ? "" : <Divider />}
                           </>
@@ -131,7 +136,7 @@ function UserWrapper(props) {
               <Stack
                 spacing={{
                   base: "8",
-                  md: "10",
+                  md: "8",
                 }}
                 flex="2"
               >
@@ -139,7 +144,7 @@ function UserWrapper(props) {
                   <Box as="aside" rounded={10} p={3} w={"auto"} bg={"white"}>
                     <Text as="div" p={2} borderBottom={"2px gray solid"}>
                       {pages.map((page, i) =>
-                        page.name === pageName ? <>{page.title} </> : ""
+                        page.name === pageName ? <>{page.title}</> : ""
                       )}
                     </Text>
                     <Box w={{ base: "full", md: "container.sm" }}>
@@ -159,10 +164,12 @@ const NavItem = (props) => {
   return (
     <>
       <ListItem
+        as={"li"}
         py={props.py}
         _hover={{ bg: "purple", color: "#fff" }}
         cursor="pointer"
         onClick={props.onClick}
+        data-is-active={props.name}
       >
         <Stack direction={"row"} spacing={3}>
           <ListIcon as={props?.icon} color="red.500" />
