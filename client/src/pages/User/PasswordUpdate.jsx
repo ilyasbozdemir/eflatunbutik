@@ -14,24 +14,9 @@ function PasswordUpdate() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   return (
-    <Box my='4'>
+    <Box my="4">
       <FormControl>
-        <FormLabel for={"current-password"}>Email Adresi :</FormLabel>
-        <InputGroup size="md">
-          <Input
-            pr="4.5rem"
-            type={show ? "text" : "password"}
-          />
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? "Gizle" : "Göster"}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-        <FormHelperText></FormHelperText>
-      </FormControl>
-      <FormControl>
-        <FormLabel for={"email"}>Email Adresi :</FormLabel>
+        <FormLabel>Mevcut Şifre :</FormLabel>
         <InputGroup size="md">
           <Input pr="4.5rem" type={show ? "text" : "password"} />
           <InputRightElement width="4.5rem">
@@ -43,7 +28,19 @@ function PasswordUpdate() {
         <FormHelperText></FormHelperText>
       </FormControl>
       <FormControl>
-        <FormLabel for={"email"}>Email Adresi :</FormLabel>
+        <FormLabel>Yeni Şifre :</FormLabel>
+        <InputGroup size="md">
+          <Input pr="4.5rem" type={show ? "text" : "password"} />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? "Gizle" : "Göster"}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        <FormHelperText></FormHelperText>
+      </FormControl>
+      <FormControl>
+        <FormLabel>Yeni Şifre (Tekrar) :</FormLabel>
         <InputGroup size="md">
           <Input pr="4.5rem" type={show ? "text" : "password"} />
           <InputRightElement width="4.5rem">
