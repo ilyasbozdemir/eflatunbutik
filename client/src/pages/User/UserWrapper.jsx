@@ -65,7 +65,6 @@ function UserWrapper(props) {
   const [activePage, setActivePage] = React.useState("");
 
   const onClickHandled = (e) => {
-    
     //alert(e.target.getAttribute("data-is-active"));
 
     const values = pages.filter((page) => {
@@ -123,7 +122,6 @@ function UserWrapper(props) {
                               icon={page.icon}
                               py={index === pages.length - 1 ? 2 : 3}
                               onClick={onClickHandled}
-
                             />
                             {index === pages.length - 1 ? "" : <Divider />}
                           </>
@@ -133,6 +131,7 @@ function UserWrapper(props) {
                   </List>
                 </Box>
               </Flex>
+
               <Stack
                 spacing={{
                   base: "8",
@@ -166,13 +165,12 @@ const NavItem = (props) => {
       <ListItem
         as={"li"}
         py={props.py}
-        _hover={{ bg: "purple", color: "#fff" }}
+        _hover={{ color: "pink.500" }}
         cursor="pointer"
         onClick={props.onClick}
-        data-is-active={props.name}
       >
         <Stack direction={"row"} spacing={3}>
-          <ListIcon as={props?.icon} color="red.500" />
+          <ListIcon as={props?.icon} />
           <Text>{props?.pageName}</Text>
         </Stack>
       </ListItem>

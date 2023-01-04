@@ -6,19 +6,25 @@ import {
   CardBody,
   CardFooter,
   Text,
-  Heading,
-  Stack,
   Divider,
-  Button,
-  Image,
   Center,
   Flex,
+  Stack,
 } from "@chakra-ui/react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { BiEdit } from "react-icons/bi";
 import { IconButton } from "@chakra-ui/react";
+import { RiDeleteBin7Line } from "react-icons/ri";
+
 function AddressCard(props) {
-  const { title, addressContent, editButtonClick } = props;
+  const {
+    title,
+    addressContent,
+    editButtonClick,
+    delButtonClick,
+    isEditMode = false,
+  } = props;
+
   return (
     <>
       <Card
@@ -30,13 +36,26 @@ function AddressCard(props) {
         <CardHeader fontWeight={"semibold"}>
           <Flex justifyContent={"space-between"}>
             <Text> {title}</Text>
-            <IconButton
-              colorScheme="pink"
-              aria-label="edit address"
-              icon={<BiEdit />}
-              variant={"ghost"}
-              onClick={editButtonClick}
-            />
+            <Stack direction={"row"}>
+              <IconButton
+                colorScheme="pink"
+                aria-label="edit address"
+                icon={<BiEdit />}
+                variant={"ghost"}
+                onClick={editButtonClick}
+              />
+              {isEditMode === true ? (
+                <IconButton
+                  colorScheme="pink"
+                  aria-label="delete address"
+                  icon={<RiDeleteBin7Line />}
+                  variant={"ghost"}
+                  onClick={delButtonClick}
+                />
+              ) : (
+                ""
+              )}
+            </Stack>
           </Flex>
         </CardHeader>
         <Divider />
@@ -54,25 +73,30 @@ function AddressCard(props) {
               borderRadius: "12px",
             },
           }}
+          fontSize={13}
         >
           {addressContent}
         </CardBody>
         <Divider />
-        <CardFooter>
-          <CheckboxGroup spacing="2">
-            <Checkbox size="sm" colorScheme="pink">
-              Fatura Adresi
-            </Checkbox>
+        {isEditMode !== true ? (
+          <CardFooter>
+            <CheckboxGroup spacing="2">
+              <Checkbox size="sm" colorScheme="pink">
+                Fatura Adresi
+              </Checkbox>
 
-            <Center height="50px" p={1}>
-              <Divider orientation="vertical" />
-            </Center>
+              <Center height="50px" p={1}>
+                <Divider orientation="vertical" />
+              </Center>
 
-            <Checkbox size="sm" colorScheme="pink">
-              Teslimat Adresi
-            </Checkbox>
-          </CheckboxGroup>
-        </CardFooter>
+              <Checkbox size="sm" colorScheme="pink">
+                Teslimat Adresi
+              </Checkbox>
+            </CheckboxGroup>
+          </CardFooter>
+        ) : (
+          ""
+        )}
       </Card>
     </>
   );
