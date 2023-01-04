@@ -10,6 +10,7 @@ import MyUserInformation from "./pages/User/MyUserInformation";
 import MyRefundRequests from "./pages/User/MyRefundRequests";
 import MyProductReviews from "./pages/User/MyProductReviews";
 
+import OrderDetail from "./pages/OrderDetail";
 
 import MyOrders from "./pages/User/MyOrders";
 import UserWrapper from "./pages/User/UserWrapper";
@@ -714,11 +715,19 @@ const router = [
             <UserWrapper
               pageName={"urun-yorumlarim"}
               children={<MyProductReviews />}
-              
             />
           </HomeLayout>
         ),
       },
+      {
+        path: "/hesabim/siparis/:generalOrderNumber/",
+        element: (
+          <HomeLayout>
+            <OrderDetail />
+          </HomeLayout>
+        ),
+      },
+
       {
         path: "/hesabim/cikis/",
         element: (

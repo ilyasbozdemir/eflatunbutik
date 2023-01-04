@@ -12,23 +12,20 @@ import {
   Flex,
   Stack,
   Box,
+  Icon,
 } from "@chakra-ui/react";
-import { Navigate, useNavigate } from "react-router";
-function OrderCard(props) {
- 
-  const navigate = useNavigate();
+function RetunCard(props) {
   return (
     <>
       <Card w={{ base: "100%", md: 300 }} m={1}>
         <CardHeader fontWeight={"semibold"}>
           <Flex justifyContent={"space-between"}>
-            <Text> #{props.orderNumber}</Text>
-            <IconButton
+            <Text> İade Talebi #{props.id}</Text>
+            <Icon
               colorScheme="pink"
               aria-label="edit address"
-              icon={<BsInfoSquare />}
+              as={BsInfoSquare}
               variant={"ghost"}
-              onClick={() => navigate(props.detailPageLink)}
             />
           </Flex>
         </CardHeader>
@@ -51,24 +48,29 @@ function OrderCard(props) {
         >
           <Stack direction={"column"} spacing={4} w="90%">
             <Flex direction={"row"} justifyContent={"space-between "}>
-              <Text>Adı Soyadı :</Text>
-              <Text>{props.name + " " + props.surname}</Text>
+              <Text>Ürün :</Text>
+              <Text>{props.productName}</Text>
             </Flex>
             <Flex direction={"row"} justifyContent={"space-between "}>
-              <Text>Sipariş Durumu :</Text>
-              <Text>{props.orderState}</Text>
+              <Text>Miktar :</Text>
+              <Text>{props.amount}</Text>
+            </Flex>
+
+            <Flex direction={"row"} justifyContent={"space-between "}>
+              <Text>Tarih :</Text>
+              <Text>{props.date}</Text>
             </Flex>
             <Flex direction={"row"} justifyContent={"space-between "}>
-              <Text>Kargo Durumu :</Text>
-              <Text>{props.cargoState}</Text>
+              <Text>İade Nedeni :</Text>
+              <Text fontWeight={"semibold"}>{props.reasonForReturn}</Text>
             </Flex>
             <Flex direction={"row"} justifyContent={"space-between "}>
-              <Text>Sipariş Tarihi :</Text>
-              <Text>{props.orderDate}</Text>
+              <Text>İade Şekli :</Text>
+              <Text>{props.returnType}</Text>
             </Flex>
             <Flex direction={"row"} justifyContent={"space-between "}>
-              <Text>Toplam :</Text>
-              <Text fontWeight={"semibold"}>{props.total}</Text>
+              <Text>Durum :</Text>
+              <Text>{props.state}</Text>
             </Flex>
           </Stack>
         </CardBody>
@@ -77,4 +79,4 @@ function OrderCard(props) {
   );
 }
 
-export default OrderCard;
+export default RetunCard;

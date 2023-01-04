@@ -71,17 +71,17 @@ function MyOrders() {
       cargoState: "Kargo Bekliyor",
       orderDate: "4.01.2023 19:41:01",
       total: "95,00 TL",
-      detailPageLink:'/hesabim/siparis/:generalOrderNumber/'
+      detailPageLink: "/hesabim/siparis/123324234/",
     },
     {
-      orderNumber: "123324234",
+      orderNumber: "534534534",
       name: "ilyas",
       surname: "bozdemir",
       orderState: "İptal Edildi",
       cargoState: "Kargo Bekliyor",
-      orderDate: "4.01.2023 19:41:01",
-      total: "95,00 TL",
-      detailPageLink:'/hesabim/siparis/:generalOrderNumber/'
+      orderDate: "3.01.2023 20:23:04",
+      total: "123,00 TL",
+      detailPageLink: "/hesabim/siparis/534534534/",
     },
   ]);
 
@@ -168,8 +168,8 @@ function MyOrders() {
         <Button colorScheme={"green"}>Ara</Button>
          */}
       </Stack>
-      
-      <Stack spacing={2} p={5}>
+
+      <Stack py={5}>
         <Wrap>
           {ordersSummary.map((orderSummary, index) => (
             <>
