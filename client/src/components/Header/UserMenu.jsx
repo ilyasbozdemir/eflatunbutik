@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 function UserMenu(props) {
   const { isOpen, onOpen, onClose, ...rest } = props;
-  
+
   const [isLogin, setIsLogin] = React.useState(true);
   const [isAdmin, setIsAdmin] = React.useState(true);
 
@@ -52,7 +52,6 @@ function UserMenu(props) {
               ? menuAdmin.map((menu, index) => (
                   <>
                     <ItemMenu key={index} {...menu} />
-                    <MenuDivider />
                   </>
                 ))
               : ""}
@@ -116,10 +115,8 @@ const ItemMenu = ({ title, to }) => {
           justifyContent={"center"}
           direction={"row"}
           _hover={{
-            bgGradient: "linear(to-l, #7928CA, #FF0080)",
-            color: "#fff",
+            opacity:'.8'
           }}
-          p={1}
         >
           <Text ml={1}>{title}</Text>
         </Flex>

@@ -72,7 +72,7 @@ function UserWrapper(props) {
               p={3}
               bg={"white"}
             >
-              <Text p={2} borderBottom={"2px pink solid"}>
+              <Text p={2} borderBottom={"2px gray solid"}>
                 Hesabım
               </Text>
               <List>
@@ -97,7 +97,9 @@ function UserWrapper(props) {
             </Box>
             <Box as="aside" rounded={10} p={3} w={"auto"} bg={"white"}>
               <Text as="div" p={2} borderBottom={"2px gray solid"}>
-                {pageName}
+                {pages.map((page, i) =>
+                  page.name === pageName ? <>{page.title} </> : ""
+                )}
               </Text>
             </Box>
           </Stack>
