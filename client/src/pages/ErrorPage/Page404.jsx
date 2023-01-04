@@ -13,7 +13,8 @@ import Logo from "../../components/Logo";
 import "./style.css";
 import SearchBox from "../../components/Header/SearchBox";
 
-function Page404() {
+function Page404(props) {
+  const { from, to } = props;
   return (
     <>
       <Stack
@@ -46,7 +47,7 @@ function Page404() {
               <>
                 <Button
                   as={Link}
-                  to="/"
+                  to={to || "/"}
                   mt={3}
                   w={250}
                   fontSize={18}

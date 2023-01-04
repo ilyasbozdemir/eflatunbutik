@@ -26,7 +26,7 @@ const UserLogin = React.lazy(() => import("./pages/Dashboard/UserLogin"));
 const RequireAuth = React.lazy(() => import("../src/components/RequireAuth"));
 const CategoryProduct = React.lazy(() => import("./pages/CategoryProduct"));
 const AuthLayout = React.lazy(() => import("./Layout/AuthLayout"));
-const Layout = React.lazy(() => import("./Layout"));
+const HomeLayout = React.lazy(() => import("./Layout"));
 
 const categories = [
   {
@@ -579,14 +579,14 @@ const router = [
     element: (
       <AuthLayout>
         {/* AuthLayout boş bir layout vermesi adına  */}
-        <Page404 />
+        <Page404 to="/" from="index" />
       </AuthLayout>
     ),
   },
 
   {
     path: "/",
-    element: <Layout />,
+    element: <HomeLayout />,
     children: [
       {
         index: true,
@@ -629,36 +629,7 @@ const router = [
           </>
         ),
       },
-      {
-        path: "hesabim/bilgilerim/",
-        element: (
-          <>
-            <ProtectedRoute user>
-              <MyUserInformation />
-            </ProtectedRoute>
-          </>
-        ),
-      },
-      {
-        path: "hesabim/adreslerim/",
-        element: (
-          <>
-            <ProtectedRoute user>
-              <MyAddressInformation />
-            </ProtectedRoute>
-          </>
-        ),
-      },
-      {
-        path: "hesabim/siparislerim/",
-        element: (
-          <>
-            <ProtectedRoute user>
-              <MyOrders />
-            </ProtectedRoute>
-          </>
-        ),
-      },
+
       ...categories,
     ],
   },
@@ -678,10 +649,67 @@ const router = [
       </AuthLayout>
     ),
   },
-
+  {
+    path: "/hesabim/",
+    element: <ProtectedRoute user={true} isAdmin={true} />,
+    children: [
+      {
+        index: true,
+        element: (
+          <HomeLayout>
+            <UserWrapper pageName={"index"} />
+          </HomeLayout>
+        ),
+      },
+      {
+        path: "/hesabim/adreslerim/",
+        element: (
+          <HomeLayout>
+            <UserWrapper pageName={"adreslerim"} />
+          </HomeLayout>
+        ),
+      },
+      {
+        path: "/hesabim/siparislerim/",
+        element: (
+          <HomeLayout>
+            <UserWrapper pageName={"siparislerim"} />
+          </HomeLayout>
+        ),
+      },
+      {
+        path: "/hesabim/iade-taleplerim/",
+        element: (
+          <HomeLayout>
+            <UserWrapper pageName={"iade-taleplerim"} />
+          </HomeLayout>
+        ),
+      },
+      {
+        path: "/hesabim/sifre-guncelleme/",
+        element: (
+          <HomeLayout>
+            <UserWrapper pageName={"sifre-guncelleme"} />
+          </HomeLayout>
+        ),
+      },
+      {
+        path: "/hesabim/cikis/",
+        element: (
+          <HomeLayout>
+            <UserWrapper pageName={"cikis"} />
+          </HomeLayout>
+        ),
+      },
+      {
+        path: "*",
+        element: <Page404 to="/" from="hesabim" />,
+      },
+    ],
+  },
   {
     path: "/admin/",
-    element: <ProtectedRoute isAdmin={true} />,
+    element: <ProtectedRoute user={false} isAdmin={true} />,
     children: [
       {
         index: true,
@@ -706,17 +734,9 @@ const router = [
       },
       {
         path: "*",
-        element: <Page404 />,
+        element: <Page404 to="/" from="admin" />,
       },
     ],
-  },
-  {
-    path: "*",
-    element: (
-      <AuthLayout>
-        <Page404 />
-      </AuthLayout>
-    ),
   },
 ];
 export default router;

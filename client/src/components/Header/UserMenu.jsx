@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 
 function UserMenu(props) {
   const { isOpen, onOpen, onClose, ...rest } = props;
+  
   const [isLogin, setIsLogin] = React.useState(true);
   const [isAdmin, setIsAdmin] = React.useState(true);
 
@@ -74,28 +75,28 @@ const menuAnon = [
 ];
 const menuUser = [
   {
-    title: "Kullanıcı Bilgilerim",
-    to: "//",
+    title: "Hesabım",
+    to: "/hesabim/",
   },
   {
     title: "Adres Bilgilerim",
-    to: "//",
+    to: "/hesabim/adreslerim/",
   },
   {
     title: "Siparişlerim",
-    to: "//",
+    to: "/hesabim/siparislerim/",
   },
   {
     title: "İade Taleplerim",
-    to: "//",
+    to: "/hesabim/iade-taleplerim/",
   },
   {
     title: "Şifre Güncelleme",
-    to: "//",
+    to: "/hesabim/sifre-guncelleme/",
   },
   {
     title: "Çıkış",
-    to: "//",
+    to: "/hesabim/cikis/",
   },
 ];
 const menuAdmin = [

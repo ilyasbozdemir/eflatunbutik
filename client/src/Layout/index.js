@@ -18,7 +18,7 @@ const CookieContainer = React.lazy(() =>
   import("../components/CookieContainer")
 );
 
-function index() {
+function index(props) {
   const { isOpen, onOpen, onClose } = UseDisclosure();
 
   return (
@@ -49,6 +49,7 @@ function index() {
           <ScrollToTop />
           <CookieContainer />
           <Outlet />
+          {props.children}
           <Footer />
         </Box>
       </Box>
