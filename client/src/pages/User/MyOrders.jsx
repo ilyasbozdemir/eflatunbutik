@@ -7,12 +7,15 @@ import {
   Input,
   Stack,
   Button,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import OrderCard from "../../components/OrderCard";
 const animatedComponents = makeAnimated();
 
 //import { colourOptions }/
@@ -59,6 +62,29 @@ function MyOrders() {
     },
   ]);
 
+  const [ordersSummary, setOrdersSummary] = React.useState([
+    {
+      orderNumber: "123324234",
+      name: "ilyas",
+      surname: "bozdemir",
+      orderState: "İptal Edildi",
+      cargoState: "Kargo Bekliyor",
+      orderDate: "4.01.2023 19:41:01",
+      total: "95,00 TL",
+      detailPageLink:'/hesabim/siparis/:generalOrderNumber/'
+    },
+    {
+      orderNumber: "123324234",
+      name: "ilyas",
+      surname: "bozdemir",
+      orderState: "İptal Edildi",
+      cargoState: "Kargo Bekliyor",
+      orderDate: "4.01.2023 19:41:01",
+      total: "95,00 TL",
+      detailPageLink:'/hesabim/siparis/:generalOrderNumber/'
+    },
+  ]);
+
   return (
     <>
       <Stack
@@ -68,16 +94,20 @@ function MyOrders() {
         pos={"relative"}
         zIndex={151}
       >
-        <FormControl>
-          <FormLabel for={"name"}>Ad :</FormLabel>
-          <Input id={"name"} type="text" />
-          <FormHelperText></FormHelperText>
-        </FormControl>
-        <FormControl>
-          <FormLabel for={"surname"}>Soyad :</FormLabel>
-          <Input id={"surname"} type="text" />
-          <FormHelperText></FormHelperText>
-        </FormControl>
+        {/*<Stack direction={"row"} spacing={5}>
+          
+          <FormControl>
+            <FormLabel for={"name"}>Ad :</FormLabel>
+            <Input id={"name"} type="text" />
+            <FormHelperText></FormHelperText>
+          </FormControl>
+          <FormControl>
+            <FormLabel for={"surname"}>Soyad :</FormLabel>
+            <Input id={"surname"} type="text" />
+            <FormHelperText></FormHelperText>
+          </FormControl>
+        </Stack>
+
         <FormControl>
           <FormLabel for={"email"}>Email Adresi :</FormLabel>
           <Input id={"email"} type="email" />
@@ -136,8 +166,20 @@ function MyOrders() {
         </FormControl>
 
         <Button colorScheme={"green"}>Ara</Button>
+         */}
       </Stack>
-      <Stack spacing={2} p={5}></Stack>
+      
+      <Stack spacing={2} p={5}>
+        <Wrap>
+          {ordersSummary.map((orderSummary, index) => (
+            <>
+              <WrapItem key={index}>
+                <OrderCard {...orderSummary} />
+              </WrapItem>
+            </>
+          ))}
+        </Wrap>
+      </Stack>
     </>
   );
 }

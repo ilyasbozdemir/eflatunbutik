@@ -23,7 +23,7 @@ function MyAddressInformation() {
         <Wrap>
           {addresses.map((address, index) => (
             <>
-              <WrapItem>
+              <WrapItem key={index}>
                 <AddressCard
                   title={address.title}
                   addressContent={
