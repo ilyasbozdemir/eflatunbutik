@@ -694,11 +694,19 @@ const router = [
         ),
       },
       {
-        path: "/hesabim/cikis/",
+        path: "/hesabim/urun-yorumlarim/",
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"cikis"} />
+            <UserWrapper pageName={"urun-yorumlarim"} />
           </HomeLayout>
+        ),
+      },
+      {
+        path: "/hesabim/cikis/",
+        element: (
+          <>
+            <UserWrapper pageName={"cikis"} />
+          </>
         ),
       },
       {
