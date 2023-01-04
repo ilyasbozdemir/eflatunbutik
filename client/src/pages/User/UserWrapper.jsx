@@ -26,10 +26,14 @@ import { GiCargoCrate, GiReturnArrow } from "react-icons/gi";
 import { VscCommentDiscussion } from "react-icons/vsc";
 
 import { RiLockPasswordLine } from "react-icons/ri";
-
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react";
 function UserWrapper(props) {
   const { pageName } = props;
-  const [asideTitleName, setAsideTitleName] = React.useState("");
 
   const [pages, setPages] = React.useState([
     { name: "index", title: "Kullanıcı Bilgilerim", icon: AiOutlineUser },
@@ -48,10 +52,18 @@ function UserWrapper(props) {
     },
   ]);
 
-  const navigate = useNavigate();
+  const onClickHandled = (e) => {
+    const values = pages.filter((page) => {
+      return page.title === e.target.textContent;
+    });
+    if ("index" === values[0].name) {
+      navigate(`/hesabim/`);
+    } else {
+      navigate(`/hesabim/${values[0].name}/`);
+    }
+  };
 
-  if (pageName) {
-  }
+  const navigate = useNavigate();
 
   return (
     <>
@@ -84,6 +96,8 @@ function UserWrapper(props) {
                           pageName={page.title}
                           icon={page.icon}
                           py={index === pages.length - 1 ? 2 : 3}
+                          data-value={page.title}
+                          onClick={onClickHandled}
                         />
                         {index === pages.length - 1 ? "" : <Divider />}
                       </>
@@ -92,7 +106,6 @@ function UserWrapper(props) {
                     )}
                   </>
                 ))}
-                <NavItem />
               </List>
             </Box>
             <Box as="aside" rounded={10} p={3} w={"auto"} bg={"white"}>
@@ -101,6 +114,7 @@ function UserWrapper(props) {
                   page.name === pageName ? <>{page.title} </> : ""
                 )}
               </Text>
+              {props.children}
             </Box>
           </Stack>
         </Stack>
@@ -111,16 +125,19 @@ function UserWrapper(props) {
 const NavItem = (props) => {
   return (
     <>
-      <ListItem py={props.py} cursor="pointer">
+      <ListItem
+        py={props.py}
+        _hover={{ bg: "purple", color: "#fff" }}
+        cursor="pointer"
+        onClick={props.onClick}
+      >
         <Stack direction={"row"} spacing={3}>
           {props.pageName ? (
             <>
               <Icon as={props?.icon} />
               <Text>{props?.pageName}</Text>
             </>
-          ) : (
-            ""
-          )}
+          ) : null}
         </Stack>
       </ListItem>
     </>

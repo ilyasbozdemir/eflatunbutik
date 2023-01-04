@@ -2,7 +2,7 @@ import React from 'react'
 
 function MyRefundRequests() {
   return (
-    <div>MyRefundRequests iade taleplerim</div>
+    <div>MyRefundRequests</div>
   )
 }
 

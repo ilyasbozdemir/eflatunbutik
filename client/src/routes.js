@@ -7,8 +7,13 @@ import OrderCompleted from "./pages/OrderCompleted";
 
 import MyAddressInformation from "./pages/User/MyAddressInformation";
 import MyUserInformation from "./pages/User/MyUserInformation";
+import MyRefundRequests from "./pages/User/MyRefundRequests";
+import MyProductReviews from "./pages/User/MyProductReviews";
+
+
 import MyOrders from "./pages/User/MyOrders";
 import UserWrapper from "./pages/User/UserWrapper";
+import PasswordUpdate from "./pages/User/PasswordUpdate";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Contact = React.lazy(() => import("./pages/Contact"));
@@ -657,7 +662,7 @@ const router = [
         index: true,
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"index"} />
+            <UserWrapper pageName={"index"} children={<MyUserInformation />} />
           </HomeLayout>
         ),
       },
@@ -665,7 +670,10 @@ const router = [
         path: "/hesabim/adreslerim/",
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"adreslerim"} />
+            <UserWrapper
+              pageName={"adreslerim"}
+              children={<MyAddressInformation />}
+            />
           </HomeLayout>
         ),
       },
@@ -673,7 +681,7 @@ const router = [
         path: "/hesabim/siparislerim/",
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"siparislerim"} />
+            <UserWrapper pageName={"siparislerim"} children={<MyOrders />} />
           </HomeLayout>
         ),
       },
@@ -681,7 +689,10 @@ const router = [
         path: "/hesabim/iade-taleplerim/",
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"iade-taleplerim"} />
+            <UserWrapper
+              pageName={"iade-taleplerim"}
+              children={<MyRefundRequests />}
+            />
           </HomeLayout>
         ),
       },
@@ -689,7 +700,10 @@ const router = [
         path: "/hesabim/sifre-guncelleme/",
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"sifre-guncelleme"} />
+            <UserWrapper
+              pageName={"sifre-guncelleme"}
+              children={<PasswordUpdate />}
+            />
           </HomeLayout>
         ),
       },
@@ -697,7 +711,11 @@ const router = [
         path: "/hesabim/urun-yorumlarim/",
         element: (
           <HomeLayout>
-            <UserWrapper pageName={"urun-yorumlarim"} />
+            <UserWrapper
+              pageName={"urun-yorumlarim"}
+              children={<MyProductReviews />}
+              
+            />
           </HomeLayout>
         ),
       },
