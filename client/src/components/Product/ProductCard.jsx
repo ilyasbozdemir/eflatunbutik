@@ -49,6 +49,8 @@ export const ProductCard = (props) => {
 
   const { id, src, alt } = imageUrls[0];
 
+  const [showAddToCardButton, setShowAddToCardButton] = React.useState(false);
+
   const [ratingSize, setRatingSize] = React.useState(10);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -92,7 +94,7 @@ export const ProductCard = (props) => {
 
   const linkVariants = {
     as: "a",
-    href: `/p/${id}-${slug}`,
+    href: `/p/${id}/${slug}`,
     target: "_blank",
     _hover: {
       textDecoration: "none",
@@ -217,13 +219,15 @@ export const ProductCard = (props) => {
               </Link>
             </Stack>
           </>
-          <Stack align="center" mt={2}>
-            <AddToCardButton product={product} />
-          </Stack>
 
-          {/* 
-   
-*/}
+          {showAddToCardButton === true ? (
+            <Stack align="center" mt={2}>
+              <AddToCardButton product={product} />
+            </Stack>
+          ) : (
+            <></>
+          )}
+
           <Stack align="center" mt={2}>
             <Button
               width="95%"
@@ -271,16 +275,7 @@ const QuickProductDetailModal = (props) => {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalBody>
-            <AspectRatio ratio={1}>
-              <Image
-                src={src}
-                alt={alt}
-                draggable={false}
-                fallback={<Skeleton />}
-              />
-            </AspectRatio>
-          </ModalBody>
+          <ModalBody></ModalBody>
 
           {/* 
 <AddToCardButton product={product} />
