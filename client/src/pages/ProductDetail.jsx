@@ -15,8 +15,6 @@ import Carousel from "../components/Carousel";
 import { Breadcrumb, BreadcrumbItem, useRadioGroup } from "@chakra-ui/react";
 import { Rating } from "../components/Product/Rating";
 
-
-
 import { IoShareOutline } from "react-icons/io5";
 
 import AddToCardButton from "../components/Product/AddToCardButton";
@@ -62,6 +60,10 @@ function ProductDetail() {
   const [isProduct, setIsProduct] = React.useState(
     () => getProduct().id === productId && getProduct().slug === productSlug
   );
+
+  if (!isProduct) {
+    navigate('*', { replace: true });
+  }
 
   return (
     <>
@@ -220,7 +222,7 @@ function ProductDetail() {
           </Box>
         </>
       ) : (
-       ''
+        ""
       )}
     </>
   );
