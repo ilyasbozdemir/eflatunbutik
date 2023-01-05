@@ -39,6 +39,7 @@ function Carousel(props) {
 
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "50px" });
+  const sizeW = useBreakpointValue({ base: 300, md: 400 });
 
   const isMobile = useBreakpointValue({ base: true, md: false });
 
@@ -46,7 +47,7 @@ function Carousel(props) {
     <Box
       position={"relative"}
       overflow={"hidden"}
-      w={400}
+      w={sizeW}
       onMouseEnter={() => {
         setShow(true);
       }}

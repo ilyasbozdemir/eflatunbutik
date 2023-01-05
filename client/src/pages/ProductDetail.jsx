@@ -7,8 +7,8 @@ import {
   Text,
   useBreakpointValue,
   useRadio,
-  Icon,
   IconButton,
+  Tooltip,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
@@ -16,15 +16,14 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  getRadioProps,
   useRadioGroup,
 } from "@chakra-ui/react";
 import { Rating } from "../components/Product/Rating";
 
-import { AiOutlineHeart } from "react-icons/ai";
+import { IoShareOutline } from "react-icons/io5";
 
 import AddToCardButton from "../components/Product/AddToCardButton";
-import { Tooltip } from "chart.js";
+
 import { FavouriteButton } from "../components/Product/FavouriteButton";
 function ProductDetail() {
   const [product, setProduct] = React.useState({
@@ -49,13 +48,20 @@ function ProductDetail() {
       },
     ],
     bodies: ["36", "38", "40", "42", "44", "46"],
+    colors: [
+      {
+        label: "Beyaz",
+      },
+      {
+        label: "Siyah",
+      },
+      {
+        label: "Mavi",
+      },
+    ],
   });
 
   const isMobile = useBreakpointValue({ base: true, md: false });
-
-  const [icon, setIcon] = React.useState(
-    <Icon as={AiOutlineHeart} transition="all 0.15s ease" />
-  );
 
   const [bodyValue, setBodyValue] = React.useState("");
   const handleChange = (value) => {
@@ -68,6 +74,12 @@ function ProductDetail() {
     onChange: handleChange,
   });
   const group = getRootProps();
+
+  const shareData = {
+    title: document.title,
+    text: product.name,
+    url: window.location.href,
+  };
 
   return (
     <Box bg={"gray"}>
@@ -98,8 +110,28 @@ function ProductDetail() {
             <Carousel carousels={product.imageUrls} />
           </Stack>
           <Stack className="product-right-container">
-            <Text fontSize={{ base: 18, md: 20, lg: 25 }}>{product.name}</Text>
+            <Flex direction={"row"} justifyContent={"space-between"}>
+              <Text fontSize={{ base: 18, md: 20, lg: 25 }}>
+                {product.name}
+              </Text>
 
+              {isMobile === true ? (
+                <Tooltip label={"Paylaş"}>
+                  <IconButton
+                    onClick={async () => {
+                      try {
+                        await navigator.share(shareData);
+                      } catch (err) {}
+                    }}
+                    fontSize={22}
+                    variant={"ghost"}
+                    icon={<IoShareOutline />}
+                  />
+                </Tooltip>
+              ) : (
+                ""
+              )}
+            </Flex>
             <Flex direction={"row"}>
               <Rating defaultValue={product.rating} size={15} />
               <Text fontSize={{ base: 16 }}>
@@ -150,6 +182,22 @@ function ProductDetail() {
                 </Stack>
               </HStack>
             </Flex>
+            <Flex direction={"column"}>
+              <HStack>
+                <Text fontWeight={"semibold"}>Renk :</Text> <Text></Text>
+              </HStack>
+
+              <HStack></HStack>
+            </Flex>
+
+            <Flex direction={"column"}>
+              <HStack>
+                <Text fontWeight={"semibold"}>Miktar :</Text> <Text></Text>
+              </HStack>
+
+              <HStack></HStack>
+            </Flex>
+
             <Divider />
             <HStack spacing={3}>
               <AddToCardButton product={product} />
@@ -158,6 +206,7 @@ function ProductDetail() {
                   <FavouriteButton
                     aria-label={`Add ${product.name} to your favourites`}
                     fontSize={25}
+                    m={2}
                   />
                 ) : (
                   ""
