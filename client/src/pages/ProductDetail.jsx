@@ -9,6 +9,7 @@ import {
   useRadio,
   IconButton,
   Tooltip,
+  Icon,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
@@ -25,6 +26,7 @@ import { IoShareOutline } from "react-icons/io5";
 import AddToCardButton from "../components/Product/AddToCardButton";
 
 import { FavouriteButton } from "../components/Product/FavouriteButton";
+import { IoMdArrowDropright } from "react-icons/io";
 function ProductDetail() {
   const [product, setProduct] = React.useState({
     id: "1",
@@ -48,6 +50,7 @@ function ProductDetail() {
       },
     ],
     bodies: ["36", "38", "40", "42", "44", "46"],
+    category: "Elbise",
     colors: [
       {
         label: "Beyaz",
@@ -62,6 +65,7 @@ function ProductDetail() {
   });
 
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const [categoryUrl,SetCategoryUrl]=React.useState('')
 
   const [bodyValue, setBodyValue] = React.useState("");
   const handleChange = (value) => {
@@ -85,17 +89,21 @@ function ProductDetail() {
     <Box bg={"gray"}>
       <Box p={3} bg={"white"}>
         <>
-          <Breadcrumb fontSize="sm">
+          <Breadcrumb
+            fontSize="sm"
+            separator={<Icon as={IoMdArrowDropright} color="gray.500" />}
+            my={2}
+          >
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/">Anasayfa</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">About</BreadcrumbLink>
+              <BreadcrumbLink href="#">{categoryUrl}</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">Current</BreadcrumbLink>
+              <Text>{product.name}</Text>
             </BreadcrumbItem>
           </Breadcrumb>
         </>

@@ -14,15 +14,7 @@ import {
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+
 import { FavouriteButton } from "./Product/FavouriteButton";
 
 const settings = {
