@@ -10,6 +10,7 @@ import {
   IconButton,
   Icon,
   Image,
+  Tooltip,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
@@ -65,11 +66,9 @@ function ProductDetail() {
 
   const [linkedProducts, setLinkedProducts] = React.useState([]);
 
-  const location = useLocation();
-
-  
 
   React.useEffect(() => {
+
     setIsProduct(
       () => getProduct().id === productId && getProduct().slug === productSlug
     );
@@ -80,7 +79,7 @@ function ProductDetail() {
       product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
     );
   }, []);
-  
+
 
   return (
     <>
@@ -209,6 +208,7 @@ function ProductDetail() {
                     <HStack>
                       {linkedProducts.map((p, i) => (
                         <Box key={i}>
+                          <Tooltip label={p.name}>
                           <Image
                             src={p.imageUrls[0].src}
                             alt={p.imageUrls[0].alt}
@@ -223,6 +223,7 @@ function ProductDetail() {
                             }}
                             cursor={"pointer"}
                           />
+                          </Tooltip>
                         </Box>
                       ))}
                     </HStack>
