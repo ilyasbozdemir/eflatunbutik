@@ -2,6 +2,7 @@ export const _products = [
   {
     id: "1",
     name: "Muhteşem Tasarım Elbise - Kahve",
+    color: "Kahve",
     slug: "muhtesem-tasarim-elbise-kahve",
     currency: "TRY",
     price: 300,
@@ -18,21 +19,12 @@ export const _products = [
     ],
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
-    colors: [
-      {
-        label: "Zümrüt",
-      },
-      {
-        label: "Siyah",
-      },
-      {
-        label: "Kırmızı",
-      },
-    ],
+    linkedProducts: ["2", "3", "4"],
   },
   {
     id: "2",
     name: "Muhteşem Tasarım Elbise - Kırmızı",
+    color: "Kırmızı",
     slug: "muhtesem-tasarim-elbise-kirmizi",
     currency: "TRY",
     price: 300,
@@ -49,21 +41,12 @@ export const _products = [
     ],
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
-    colors: [
-      {
-        label: "Zümrüt",
-      },
-      {
-        label: "Siyah",
-      },
-      {
-        label: "Kahve",
-      },
-    ],
+    linkedProducts: ["1", "3", "4"],
   },
   {
     id: "3",
     name: "Muhteşem Tasarım Elbise - Siyah",
+    color: "Siyah",
     slug: "muhtesem-tasarim-elbise-siyah",
     currency: "TRY",
     price: 300,
@@ -80,21 +63,12 @@ export const _products = [
     ],
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
-    colors: [
-      {
-        label: "Yeşil",
-      },
-      {
-        label: "Zümrüt",
-      },
-      {
-        label: "Kahve",
-      },
-    ],
+    linkedProducts: ["1", "2", "4"],
   },
   {
     id: "4",
     name: "Muhteşem Tasarım Elbise - Zümrüt",
+    color: "Zümrüt",
     slug: "muhtesem-tasarim-elbise-zumrut",
     currency: "TRY",
     price: 300,
@@ -111,16 +85,6 @@ export const _products = [
     ],
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
-    colors: [
-      {
-        label: "Kırmızı",
-      },
-      {
-        label: "Siyah",
-      },
-      {
-        label: "Kahve",
-      },
-    ],
+    linkedProducts: ["1", "2", "3"],
   },
 ];

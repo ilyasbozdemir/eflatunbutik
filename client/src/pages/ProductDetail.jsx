@@ -9,6 +9,7 @@ import {
   useRadio,
   IconButton,
   Icon,
+  Image,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
@@ -27,6 +28,7 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 import { MainContext, useContext } from "../contexts/MainContext";
+import { generatePath } from "react-router";
 
 function ProductDetail() {
   const { products } = useContext(MainContext);
@@ -44,6 +46,7 @@ function ProductDetail() {
   );
 
   const [bodyValue, setBodyValue] = React.useState("");
+
   const handleChange = (value) => {
     setBodyValue(value);
   };
@@ -62,8 +65,13 @@ function ProductDetail() {
   );
 
   if (!isProduct) {
-    navigate('*', { replace: true });
+    navigate("*", { replace: true });
   }
+
+  const [linkedProducts, setLinkedProducts] = React.useState(() =>
+    product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
+  );
+
 
   return (
     <>
@@ -163,7 +171,7 @@ function ProductDetail() {
                   <Divider />
                   <Flex direction={"column"}>
                     <HStack>
-                      <Text fontWeight={"semibold"}>Beden :</Text>{" "}
+                      <Text fontWeight={"semibold"}>Beden :</Text>
                       <Text>{bodyValue}</Text>
                     </HStack>
 
@@ -186,10 +194,27 @@ function ProductDetail() {
                   </Flex>
                   <Flex direction={"column"}>
                     <HStack>
-                      <Text fontWeight={"semibold"}>Renk :</Text> <Text></Text>
+                      <Text fontWeight={"semibold"}>Renk :</Text>
                     </HStack>
 
-                    <HStack></HStack>
+                    <HStack>
+                      {linkedProducts.map((p, i) => (
+                        <Link
+                          key={i}
+                          to={generatePath("/p/:productId/:productSlug", {
+                            productId: p.id,
+                            productSlug: p.slug,
+                          })}
+                        >
+                          <Image
+                            src={p.imageUrls[0].src}
+                            alt={p.imageUrls[0].alt}
+                            w={10}
+                            _active={{borderBlock:'1px solid'}}
+                          />
+                        </Link>
+                      ))}
+                    </HStack>
                   </Flex>
 
                   <Flex direction={"column"}>
