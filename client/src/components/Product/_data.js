@@ -16,7 +16,7 @@ export const _products = [
         alt: "muhtesem-tasarim-elbise",
       },
     ],
-    bodies: ["36", "38", "40", "42", "44", "46"],
+    bodies: ["S", "M", "L", "XL", "XXL"],
     category: "Elbise",
     colors: [
       {
