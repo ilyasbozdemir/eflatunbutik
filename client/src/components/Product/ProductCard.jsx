@@ -93,7 +93,7 @@ export const ProductCard = (props) => {
 
   const linkVariants = {
     as: "a",
-    href: `/p/${id}/${slug}`,
+    href: `/p/${product.id}/${slug}`,
     target: "_blank",
     _hover: {
       textDecoration: "none",

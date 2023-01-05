@@ -611,7 +611,7 @@ const router = [
         element: <Basket />,
       },
       {
-        path: "/p/:productId/:productDetail/",
+        path: "/p/:productId/:productSlug/",
         element: <ProductDetail />,
       },
       {
