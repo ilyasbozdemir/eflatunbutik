@@ -9,6 +9,7 @@ export const _products = [
     rating: 4,
     ratingCount: 1,
     description: "test description",
+    bodies: [36, 38, 40, 42, 44, 46],
     imageUrls: [
       {
         id: "01",
@@ -28,6 +29,7 @@ export const _products = [
     rating: 5,
     ratingCount: 3,
     description: "",
+    bodies: ["36", "38", "40", "42", "44", "46"],
     imageUrls: [
       {
         id: "02",
@@ -45,6 +47,7 @@ export const _products = [
     salePrice: 299.99,
     rating: 4,
     ratingCount: 5,
+    bodies: ["36", "38", "40", "42", "44", "46"],
     description: "",
     imageUrls: [
       {
@@ -62,6 +65,7 @@ export const _products = [
     price: 200,
     rating: 5,
     ratingCount: 3,
+    bodies: ["36", "38", "40", "42", "44", "46"],
     description:
       "With a sleek design and a captivating essence, this is a modern Classic made for every occasion.",
     imageUrls: [

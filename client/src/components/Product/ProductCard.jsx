@@ -35,7 +35,6 @@ import PriceTag from "./PriceTag";
 import { Tooltip } from "@chakra-ui/react";
 import AddToCardButton from "./AddToCardButton";
 
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 
 import { cardVariant } from "../../motion";
 
@@ -228,7 +227,7 @@ export const ProductCard = (props) => {
             <></>
           )}
 
-          <Stack align="center" mt={2}>
+          {/*  <Stack align="center" mt={2}>
             <Button
               width="95%"
               variant="primary"
@@ -248,6 +247,7 @@ export const ProductCard = (props) => {
               Hızlı Gözat
             </Button>
           </Stack>
+          */}
         </MotionStack>
 
         <QuickProductDetailModal
