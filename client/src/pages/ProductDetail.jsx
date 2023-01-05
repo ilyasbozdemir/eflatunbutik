@@ -29,6 +29,7 @@ import { Link } from "react-router-dom";
 
 import { MainContext, useContext } from "../contexts/MainContext";
 import { generatePath } from "react-router";
+import { useLocation } from "react-router";
 
 function ProductDetail() {
   const { products } = useContext(MainContext);
@@ -60,18 +61,26 @@ function ProductDetail() {
 
   const navigate = useNavigate();
 
-  const [isProduct, setIsProduct] = React.useState(
-    () => getProduct().id === productId && getProduct().slug === productSlug
-  );
+  const [isProduct, setIsProduct] = React.useState([]);
 
-  if (!isProduct) {
-    navigate("*", { replace: true });
-  }
+  const [linkedProducts, setLinkedProducts] = React.useState([]);
 
-  const [linkedProducts, setLinkedProducts] = React.useState(() =>
-    product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
-  );
+  const location = useLocation();
 
+  
+
+  React.useEffect(() => {
+    setIsProduct(
+      () => getProduct().id === productId && getProduct().slug === productSlug
+    );
+    if (!isProduct) {
+      navigate("*", { replace: true });
+    }
+    setLinkedProducts(() =>
+      product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
+    );
+  }, []);
+  
 
   return (
     <>
@@ -199,20 +208,22 @@ function ProductDetail() {
 
                     <HStack>
                       {linkedProducts.map((p, i) => (
-                        <Link
-                          key={i}
-                          to={generatePath("/p/:productId/:productSlug", {
-                            productId: p.id,
-                            productSlug: p.slug,
-                          })}
-                        >
+                        <Box key={i}>
                           <Image
                             src={p.imageUrls[0].src}
                             alt={p.imageUrls[0].alt}
                             w={10}
-                            _active={{borderBlock:'1px solid'}}
+                            onClick={() => {
+                              navigate(
+                                generatePath("/p/:productId/:productSlug", {
+                                  productId: p.id,
+                                  productSlug: p.slug,
+                                })
+                              );
+                            }}
+                            cursor={"pointer"}
                           />
-                        </Link>
+                        </Box>
                       ))}
                     </HStack>
                   </Flex>
