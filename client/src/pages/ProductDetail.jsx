@@ -27,6 +27,11 @@ import AddToCardButton from "../components/Product/AddToCardButton";
 
 import { FavouriteButton } from "../components/Product/FavouriteButton";
 import { IoMdArrowDropright } from "react-icons/io";
+
+import { linkItems } from "../constants/LinkItems";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+
 function ProductDetail() {
   const [product, setProduct] = React.useState({
     id: "1",
@@ -50,7 +55,7 @@ function ProductDetail() {
       },
     ],
     bodies: ["36", "38", "40", "42", "44", "46"],
-    category: "Elbise",
+    category: "Üst Giyim",
     colors: [
       {
         label: "Beyaz",
@@ -65,7 +70,10 @@ function ProductDetail() {
   });
 
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const [categoryUrl,SetCategoryUrl]=React.useState('')
+
+  const [category, SetCategory] = React.useState(
+    () => linkItems.filter((item) => item.label === product.category)[0]
+  );
 
   const [bodyValue, setBodyValue] = React.useState("");
   const handleChange = (value) => {
@@ -85,6 +93,8 @@ function ProductDetail() {
     url: window.location.href,
   };
 
+  const navigate = useNavigate();
+
   return (
     <Box bg={"gray"}>
       <Box p={3} bg={"white"}>
@@ -95,11 +105,11 @@ function ProductDetail() {
             my={2}
           >
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Anasayfa</BreadcrumbLink>
+              <Link to="/">Anasayfa</Link>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">{categoryUrl}</BreadcrumbLink>
+              <Link to={category.href}>{category.label}</Link>
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>
