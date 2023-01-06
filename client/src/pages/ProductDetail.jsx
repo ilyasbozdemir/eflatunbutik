@@ -142,7 +142,11 @@ function ProductDetail() {
                           icon={<IoShareOutline />}
                         />
                         <>
-                          <Stack spacing={2} direction={'row'} color={'gray'}>
+                          <Stack
+                            spacing={2}
+                            direction={"row"}
+                            color={"gray.500"}
+                          >
                             <AiOutlineHeart />
                             <Text as="small">{favCount} favori</Text>
                           </Stack>
@@ -269,7 +273,7 @@ function ProductDetail() {
                       <Text>3 gün içinde</Text>
                     </HStack>
                     {isMobile === false ? (
-                      <Stack spacing={2} direction={'row'} color={'gray'}>
+                      <Stack spacing={2} direction={"row"} color={"gray.500"}>
                         <AiOutlineHeart />
                         <Text as="small">{favCount} favori</Text>
                       </Stack>
@@ -296,6 +300,9 @@ function ProductDetail() {
                     </Text>
                   </Stack>
                 </Stack>
+              </Stack>
+              <Stack>
+                <>Benzer Ürünler</>
               </Stack>
             </Box>
           </Box>
