@@ -12,6 +12,9 @@ import {
   Image,
   Tooltip,
   VStack,
+  useNumberInput,
+  Button,
+  Input,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
@@ -80,6 +83,19 @@ function ProductDetail() {
       product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
     );
   }, [getProduct, product]);
+
+  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
+    useNumberInput({
+      step: 1,
+      defaultValue: 1,
+      min: 1,
+      max: 10,
+      precision: 0,
+    });
+
+  const inc = getIncrementButtonProps();
+  const dec = getDecrementButtonProps();
+  const input = getInputProps();
 
   return (
     <>
@@ -243,7 +259,15 @@ function ProductDetail() {
                       <Text></Text>
                     </HStack>
 
-                    <HStack>miktar componenti</HStack>
+                    <HStack spacing={0}>
+                      <Button {...dec} color={"pink"} size={"sm"}>
+                        -
+                      </Button>
+                      <Input {...input} w="50px" size={"sm"} />
+                      <Button {...inc} color={"pink"} size={"sm"}>
+                        +
+                      </Button>
+                    </HStack>
                   </Flex>
                   <HStack spacing={3}>
                     <AddToCardButton product={product} />
@@ -303,6 +327,12 @@ function ProductDetail() {
               </Stack>
               <Stack>
                 <>Benzer Ürünler</>
+
+                <>Bu Ürünü Alanlar Bunları da Aldı</>
+
+                <>Ürün Değerlendirmeleri</>
+
+                <>Ürün Soru ve Cevapları</>
               </Stack>
             </Box>
           </Box>
