@@ -84,10 +84,17 @@ function ProductDetail() {
     );
   }, [getProduct, product]);
 
+  const [quantity, setQuantity] = React.useState(1);
+
+  
+  const quantityOnChange = (value) => {
+    setQuantity(value)
+   
+  };
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
       step: 1,
-      defaultValue: 1,
+      defaultValue: quantity,
       min: 1,
       max: 10,
       precision: 0,
@@ -96,6 +103,9 @@ function ProductDetail() {
   const inc = getIncrementButtonProps();
   const dec = getDecrementButtonProps();
   const input = getInputProps();
+
+
+
 
   return (
     <>
@@ -263,14 +273,18 @@ function ProductDetail() {
                       <Button {...dec} color={"pink"} size={"sm"}>
                         -
                       </Button>
-                      <Input {...input} w="50px" size={"sm"} />
+                      <Input
+                        {...input}
+                        w="50px"
+                        size={"sm"}
+                      />
                       <Button {...inc} color={"pink"} size={"sm"}>
                         +
                       </Button>
                     </HStack>
                   </Flex>
                   <HStack spacing={3}>
-                    <AddToCardButton product={product} />
+                    <AddToCardButton quantity={quantity} product={product} />
                     <>
                       {isMobile === false ? (
                         <>
