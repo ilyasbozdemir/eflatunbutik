@@ -11,12 +11,13 @@ import {
   Icon,
   Image,
   Tooltip,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
 import { Breadcrumb, BreadcrumbItem, useRadioGroup } from "@chakra-ui/react";
 import { Rating } from "../components/Product/Rating";
-
+import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
 
 import AddToCardButton from "../components/Product/AddToCardButton";
@@ -48,6 +49,7 @@ function ProductDetail() {
   );
 
   const [bodyValue, setBodyValue] = React.useState("");
+  const [favCount, setFavCount] = React.useState(0);
 
   const handleChange = (value) => {
     setBodyValue(value);
@@ -56,6 +58,7 @@ function ProductDetail() {
   const { getRootProps, getRadioProps } = useRadioGroup({
     id: "Beden",
     name: "EvaluationScore",
+    defaultValue: product.bodies[0],
     onChange: handleChange,
   });
   const group = getRootProps();
@@ -66,9 +69,7 @@ function ProductDetail() {
 
   const [linkedProducts, setLinkedProducts] = React.useState([]);
 
-
   React.useEffect(() => {
-
     setIsProduct(
       () => getProduct().id === productId && getProduct().slug === productSlug
     );
@@ -78,8 +79,7 @@ function ProductDetail() {
     setLinkedProducts(() =>
       product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
     );
-  }, []);
-
+  }, [getProduct, product]);
 
   return (
     <>
@@ -123,7 +123,7 @@ function ProductDetail() {
                     </Text>
 
                     {isMobile === true ? (
-                      <>
+                      <VStack>
                         <IconButton
                           onClick={async () => {
                             try {
@@ -141,7 +141,13 @@ function ProductDetail() {
                           variant={"ghost"}
                           icon={<IoShareOutline />}
                         />
-                      </>
+                        <>
+                          <Stack spacing={2} direction={'row'} color={'gray'}>
+                            <AiOutlineHeart />
+                            <Text as="small">{favCount} favori</Text>
+                          </Stack>
+                        </>
+                      </VStack>
                     ) : (
                       ""
                     )}
@@ -152,7 +158,6 @@ function ProductDetail() {
                       {product.ratingCount} Değerlendirme
                     </Text>
                   </Flex>
-
                   <HStack>
                     {product.salePrice === undefined ? null : (
                       <Text
@@ -209,50 +214,87 @@ function ProductDetail() {
                       {linkedProducts.map((p, i) => (
                         <Box key={i}>
                           <Tooltip label={p.name}>
-                          <Image
-                            src={p.imageUrls[0].src}
-                            alt={p.imageUrls[0].alt}
-                            w={10}
-                            onClick={() => {
-                              navigate(
-                                generatePath("/p/:productId/:productSlug", {
-                                  productId: p.id,
-                                  productSlug: p.slug,
-                                })
-                              );
-                            }}
-                            cursor={"pointer"}
-                          />
+                            <Image
+                              src={p.imageUrls[0].src}
+                              alt={p.imageUrls[0].alt}
+                              w={10}
+                              onClick={() => {
+                                navigate(
+                                  generatePath("/p/:productId/:productSlug", {
+                                    productId: p.id,
+                                    productSlug: p.slug,
+                                  })
+                                );
+                              }}
+                              cursor={"pointer"}
+                            />
                           </Tooltip>
                         </Box>
                       ))}
                     </HStack>
                   </Flex>
-
                   <Flex direction={"column"}>
                     <HStack>
                       <Text fontWeight={"semibold"}>Miktar :</Text>{" "}
                       <Text></Text>
                     </HStack>
 
-                    <HStack></HStack>
+                    <HStack>miktar componenti</HStack>
                   </Flex>
-
-                  <Divider />
                   <HStack spacing={3}>
                     <AddToCardButton product={product} />
                     <>
                       {isMobile === false ? (
-                        <FavouriteButton
-                          aria-label={`Add ${product.name} to your favourites`}
-                          fontSize={25}
-                          m={2}
-                        />
+                        <>
+                          <FavouriteButton
+                            aria-label={`Add ${product.name} to your favourites`}
+                            fontSize={25}
+                            m={2}
+                          />
+                        </>
                       ) : (
                         ""
                       )}
                     </>
-                  </HStack>
+                  </HStack>{" "}
+                  <Flex
+                    direction={"row"}
+                    w={"auto"}
+                    justifyContent={"space-between"}
+                  >
+                    <HStack fontSize={"sm"}>
+                      <Text fontWeight={"semibold"}>
+                        Tahmini Kargoya Teslim:
+                      </Text>{" "}
+                      <Text>3 gün içinde</Text>
+                    </HStack>
+                    {isMobile === false ? (
+                      <Stack spacing={2} direction={'row'} color={'gray'}>
+                        <AiOutlineHeart />
+                        <Text as="small">{favCount} favori</Text>
+                      </Stack>
+                    ) : (
+                      <></>
+                    )}
+                  </Flex>
+                  <Divider />
+                  <Stack fontSize={"sm"} direction={"column"}>
+                    <Text fontWeight={"semibold"}>Ürün Açıklaması</Text>
+                    <Text
+                      as="textarea"
+                      h={200}
+                      style={{
+                        overflow: "hidden",
+                        width: "inherit",
+                        maxHeight: "300px",
+                        resize: "none",
+                        backgroundColor: "transparent",
+                      }}
+                      disabled
+                    >
+                      {product.description}
+                    </Text>
+                  </Stack>
                 </Stack>
               </Stack>
             </Box>

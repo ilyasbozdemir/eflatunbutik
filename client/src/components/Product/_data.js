@@ -9,7 +9,13 @@ export const _products = [
     flag: "Yeni✨",
     rating: 4,
     ratingCount: 1,
-    description: "test description",
+    description:`test title
+    -özellik 1
+    -özellik 2
+    -özellik 3
+    -özellik 4
+    -özellik 5
+    `,
     imageUrls: [
       {
         id: "01",
@@ -20,6 +26,7 @@ export const _products = [
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
     linkedProducts: ["2", "3", "4"],
+    isActive: true,
   },
   {
     id: "2",
@@ -31,7 +38,13 @@ export const _products = [
     flag: "Yeni✨",
     rating: 4,
     ratingCount: 1,
-    description: "test description",
+    description: `test title
+    -özellik 1
+    -özellik 2
+    -özellik 3
+    -özellik 4
+    -özellik 5
+    `,
     imageUrls: [
       {
         id: "01",
@@ -42,6 +55,7 @@ export const _products = [
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
     linkedProducts: ["1", "3", "4"],
+    isActive: true,
   },
   {
     id: "3",
@@ -53,7 +67,13 @@ export const _products = [
     flag: "Yeni✨",
     rating: 4,
     ratingCount: 1,
-    description: "test description",
+    description: `test title
+    -özellik 1
+    -özellik 2
+    -özellik 3
+    -özellik 4
+    -özellik 5
+    `,
     imageUrls: [
       {
         id: "01",
@@ -64,6 +84,7 @@ export const _products = [
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
     linkedProducts: ["1", "2", "4"],
+    isActive: true,
   },
   {
     id: "4",
@@ -75,7 +96,13 @@ export const _products = [
     flag: "Yeni✨",
     rating: 4,
     ratingCount: 1,
-    description: "test description",
+    description: `test title
+    -özellik 1
+    -özellik 2
+    -özellik 3
+    -özellik 4
+    -özellik 5
+    `,
     imageUrls: [
       {
         id: "01",
@@ -86,5 +113,6 @@ export const _products = [
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
     linkedProducts: ["1", "2", "3"],
+    isActive: true,
   },
 ];
