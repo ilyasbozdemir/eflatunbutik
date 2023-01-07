@@ -12,9 +12,11 @@ import {
   Image,
   Tooltip,
   VStack,
-  useNumberInput,
-  Button,
-  Input,
+  NumberInputField,
+  NumberInput,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInputStepper,
 } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "../components/Carousel";
@@ -24,6 +26,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
 
 import AddToCardButton from "../components/Product/AddToCardButton";
+import { motion } from "framer-motion";
 
 import { FavouriteButton } from "../components/Product/FavouriteButton";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -34,7 +37,7 @@ import { Link } from "react-router-dom";
 
 import { MainContext, useContext } from "../contexts/MainContext";
 import { generatePath } from "react-router";
-import { useLocation } from "react-router";
+import { ProductCard } from "../components/Product/ProductCard";
 
 function ProductDetail() {
   const { products } = useContext(MainContext);
@@ -71,6 +74,7 @@ function ProductDetail() {
   const [isProduct, setIsProduct] = React.useState([]);
 
   const [linkedProducts, setLinkedProducts] = React.useState([]);
+  const [similarProducts, setSimilarProducts] = React.useState([]);
 
   React.useEffect(() => {
     setIsProduct(
@@ -82,37 +86,31 @@ function ProductDetail() {
     setLinkedProducts(() =>
       product.linkedProducts.map((p) => products.find((p2) => p2.id === p))
     );
+    setSimilarProducts(() =>
+      product.similarProducts.map((p) => products.find((p2) => p2.id === p))
+    );
   }, [getProduct, product]);
 
   const [quantity, setQuantity] = React.useState(1);
 
-  
   const quantityOnChange = (value) => {
-    setQuantity(value)
-   
+    setQuantity(value);
   };
-  const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
-    useNumberInput({
-      step: 1,
-      defaultValue: quantity,
-      min: 1,
-      max: 10,
-      precision: 0,
-    });
 
-  const inc = getIncrementButtonProps();
-  const dec = getDecrementButtonProps();
-  const input = getInputProps();
-
-
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
       {isProduct === true ? (
         <>
-          <Box bg={"gray"}>
-            <Box p={3} bg={"white"}>
+          <Box>
+            <Box p={3}>
               <>
                 <Breadcrumb
                   fontSize="sm"
@@ -266,21 +264,24 @@ function ProductDetail() {
                   <Flex direction={"column"}>
                     <HStack>
                       <Text fontWeight={"semibold"}>Miktar :</Text>{" "}
-                      <Text></Text>
+                      <Text>{quantity}</Text>
                     </HStack>
 
-                    <HStack spacing={0}>
-                      <Button {...dec} color={"pink"} size={"sm"}>
-                        -
-                      </Button>
-                      <Input
-                        {...input}
-                        w="50px"
-                        size={"sm"}
-                      />
-                      <Button {...inc} color={"pink"} size={"sm"}>
-                        +
-                      </Button>
+                    <HStack spacing={4}>
+                      <NumberInput
+                        defaultValue={1}
+                        min={1}
+                        max={10}
+                        value={quantity}
+                        onChange={quantityOnChange}
+                        allowMouseWheel
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
                     </HStack>
                   </Flex>
                   <HStack spacing={3}>
@@ -339,14 +340,19 @@ function ProductDetail() {
                   </Stack>
                 </Stack>
               </Stack>
-              <Stack>
-                <>Benzer Ürünler</>
-
-                <>Bu Ürünü Alanlar Bunları da Aldı</>
-
-                <>Ürün Değerlendirmeleri</>
-
-                <>Ürün Soru ve Cevapları</>
+              <Stack direction={"row"}>
+                <Stack direction={"column"}>
+                  <Text fontWeight={"semibold"}>Benzer Ürünler</Text>
+                  <motion.div className={"carousel"}>
+                    <motion.div drag={'x'} dragConstraints={{}} className={"inner-carousel"}>
+                      {similarProducts.map((p, i) => (
+                        <motion.div className={"item"} key={i}>
+                          <ProductCard key={i} product={p} />
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </motion.div>
+                </Stack>
               </Stack>
             </Box>
           </Box>

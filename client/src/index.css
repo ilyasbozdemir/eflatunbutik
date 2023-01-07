@@ -132,3 +132,14 @@
     justify-content: end;
   }
 }
+
+.carousel {
+  cursor: grab;
+  overflow: hidden;
+}
+.inner-carousel {
+  display: flex;
+}
+.item {
+  padding: 15px;
+}

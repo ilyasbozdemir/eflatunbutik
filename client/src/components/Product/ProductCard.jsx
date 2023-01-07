@@ -35,7 +35,6 @@ import PriceTag from "./PriceTag";
 import { Tooltip } from "@chakra-ui/react";
 import AddToCardButton from "./AddToCardButton";
 
-
 import { cardVariant } from "../../motion";
 
 import { motion } from "framer-motion";
@@ -100,6 +99,12 @@ export const ProductCard = (props) => {
     },
   };
 
+  const [pointerEvents, setPointerEvents] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log(pointerEvents);
+  }, [pointerEvents]);
+
   return (
     <>
       <Stack w={w}>
@@ -118,7 +123,10 @@ export const ProductCard = (props) => {
         >
           <>
             <Box position="relative">
-              <Link {...linkVariants}>
+              <Link
+                onClick={"return false;"}
+                {...linkVariants}
+              >
                 <AspectRatio ratio={2 / 3} overflow={"hidden"}>
                   <Image
                     src={src}
@@ -133,6 +141,8 @@ export const ProductCard = (props) => {
                     _hover={{
                       transform: "scale(1.02)",
                     }}
+                    onMouseDown={() => setPointerEvents(true)}
+                    onMouseUp={() => setPointerEvents(false)}
                   />
                 </AspectRatio>
               </Link>

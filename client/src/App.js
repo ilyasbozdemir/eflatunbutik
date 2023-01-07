@@ -22,7 +22,9 @@ function App() {
   const [wishlist, setWishlist] = React.useState([]);
 
   const [basket, setBasket] = React.useState([]);
+
   const [products, setProducts] = React.useState(_products);
+  React.useEffect(()=>{},[_products])
 
   const [carts, setCarts] = React.useState(cart);
 
