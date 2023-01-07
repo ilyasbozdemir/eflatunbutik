@@ -312,7 +312,7 @@ function ProductDetail() {
                       <NumberInput
                         defaultValue={1}
                         min={1}
-                        max={10}
+                        max={5}
                         value={quantity}
                         onChange={quantityOnChange}
                         allowMouseWheel
@@ -326,7 +326,7 @@ function ProductDetail() {
                     </HStack>
                   </Flex>
                   <HStack spacing={3}>
-                    <AddToCardButton quantity={quantity} product={product} />
+                    <AddToCardButton body={bodyValue} quantity={quantity} product={product} />
                     <>
                       {isMobile === false ? (
                         <>

@@ -1,7 +1,5 @@
-import React, { useRef } from "react";
-
+import React from "react";
 import {
-  Box,
   Button,
   Flex,
   Icon,
@@ -15,10 +13,10 @@ import { BiLoader, BiShoppingBag } from "react-icons/bi";
 import { MainContext, useContext } from "../../contexts/MainContext";
 import { useToast } from "@chakra-ui/react";
 
-function AddToCardButton({ product, quantity }) {
+function AddToCardButton({ product, bodyValue, quantity }) {
   const { basket, setBasket } = useContext(MainContext);
 
-  const { id, name, price, salePrice, imageUrls, description, currency,slug } =
+  const { id, name, price, salePrice, imageUrls, description, currency, slug } =
     product;
 
   const [show, setShow] = React.useState(false);
@@ -31,9 +29,27 @@ function AddToCardButton({ product, quantity }) {
 
   const addToCart = () => {
     const checkBasket = basket.find((item) => item.id === id);
+
     if (checkBasket) {
-      checkBasket.quantity += 1;
-      setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
+      if (checkBasket.quantity + Number(quantity) > 5) {
+        toast({
+          title: "Üründen en fazla 5 tane eklenebilir.",
+          status: "error",
+          position: "top-right",
+          duration: duration,
+          isClosable: true,
+        });
+      } else {
+        checkBasket.quantity += Number(quantity);
+        setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
+        toast({
+          title: "Ürün Sepete Eklendi",
+          status: "success",
+          position: "top",
+          duration: duration,
+          isClosable: true,
+        });
+      }
     } else {
       setBasket([
         ...basket,
@@ -44,9 +60,9 @@ function AddToCardButton({ product, quantity }) {
           currency: currency,
           name: name,
           description: description,
-          quantity: 1,
+          quantity: Number(quantity),
           imageUrl: imageUrls[0].src,
-          slug:slug
+          slug: slug,
         },
       ]);
     }
@@ -62,13 +78,6 @@ function AddToCardButton({ product, quantity }) {
     }, duration);
 
     setTimeout(() => {
-      toast({
-        title: "Ürün Sepete Eklendi",
-        status: "success",
-        position: "top",
-        duration: duration,
-        isClosable: true,
-      });
       addToCart();
     }, duration);
   };

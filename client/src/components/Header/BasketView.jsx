@@ -24,7 +24,7 @@ import { CartItem } from "../Cart/CartItem";
 function BasketView(props) {
   const { placement, onClose, isOpen } = props;
   const navigate = useNavigate();
-  const { basket, setBasket } = useContext(MainContext);
+  const { basket, setBasket ,products} = useContext(MainContext);
 
   const totalPrice = () => {
     return basket.reduce((prev, product) => {
@@ -39,6 +39,7 @@ function BasketView(props) {
       return oldValues.filter((p) => p.id !== v.id);
     });
   };
+  
   return (
     <>
       <Drawer
