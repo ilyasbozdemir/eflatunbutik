@@ -46,11 +46,11 @@ export const _products = [
     flag: "Yeni✨",
 
     ratings: [{
-      oneRatingCount: 3,
-      twoRatingCount: 2,
-      threeRatingCount: 7,
-      fourRatingCount: 6,
-      fiveRatingCount: 35,
+      oneRatingCount: 0,
+      twoRatingCount: 0,
+      threeRatingCount: 0,
+      fourRatingCount: 5,
+      fiveRatingCount: 21,
     }],
 
     description: `test title
@@ -83,11 +83,11 @@ export const _products = [
     price: 300,
     flag: "Yeni✨",
     ratings: [{
-      oneRatingCount: 3,
-      twoRatingCount: 2,
-      threeRatingCount: 7,
-      fourRatingCount: 6,
-      fiveRatingCount: 35,
+      oneRatingCount: 2,
+      twoRatingCount: 4,
+      threeRatingCount: 6,
+      fourRatingCount: 12,
+      fiveRatingCount: 34,
     }],
     description: `test title
     -özellik 1
@@ -119,11 +119,11 @@ export const _products = [
     price: 300,
     flag: "Yeni✨",
     ratings: [{
-      oneRatingCount: 3,
-      twoRatingCount: 2,
-      threeRatingCount: 7,
-      fourRatingCount: 6,
-      fiveRatingCount: 35,
+      oneRatingCount: 10,
+      twoRatingCount: 1,
+      threeRatingCount: 3,
+      fourRatingCount: 21,
+      fiveRatingCount: 32,
     }],
     description: `test title
     -özellik 1
