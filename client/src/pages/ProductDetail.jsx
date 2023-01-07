@@ -39,9 +39,7 @@ import { MainContext, useContext } from "../contexts/MainContext";
 import { generatePath } from "react-router";
 import { ProductCard } from "../components/Product/ProductCard";
 
-import ReactStars from "react-rating-stars-component";
-
-
+import { ImStarHalf, ImStarFull, ImStarEmpty } from "react-icons/im";
 
 function ProductDetail() {
   const { products } = useContext(MainContext);
@@ -202,8 +200,8 @@ function ProductDetail() {
                   </Flex>
                   <Flex direction={"row"}>
                     <Rating defaultValue={product.rating} size={15} />
-                    <Text fontSize={{ base: 16 }}>
-                      {product.ratingCount} Değerlendirme
+                    <Text fontSize={{ base: 14 }} pl={1}>
+                      {product.ratingCount|| 0} Değerlendirme
                     </Text>
                   </Flex>
                   <HStack>
@@ -409,14 +407,30 @@ function ProductDetail() {
                 <Stack direction={"column"} w={"auto"}>
                   <Text fontWeight={"semibold"}>Ürün Değerlendirmeleri</Text>
                   <Flex
-                    as={motion.div}
-                    bg={"gray.100"}
                     css={{
                       overflow: "hidden",
                     }}
                     direction={"column"}
                   >
-                    <Flex></Flex>
+                    <Flex justifyContent="center">
+                      <Text
+                        userSelect={"none"}
+                      >{`${product.rating || 0} Değerlendirme | ${product.ratingCount|| 0} Yorum `}</Text>
+                     
+                    </Flex>
+                  </Flex>
+                </Stack>
+                <Stack direction={"column"} w={"auto"}>
+                  <Text fontWeight={"semibold"}>Ürün Soru ve Cevapları</Text>
+                  <Flex
+                    css={{
+                      overflow: "hidden",
+                    }}
+                    direction={"column"}
+                  >
+                    <Flex justifyContent="center">
+                    
+                    </Flex>
                   </Flex>
                 </Stack>
               </Stack>

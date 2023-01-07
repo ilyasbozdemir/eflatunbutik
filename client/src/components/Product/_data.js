@@ -7,8 +7,9 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4,
-    ratingCount: 2,
+    ratings:[
+
+    ],
     description: `test title
     -özellik 1
     -özellik 2
@@ -38,8 +39,11 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4.3,
-    ratingCount: 5,
+ 
+    ratings:[
+
+    ],
+
     description: `test title
     -özellik 1
     -özellik 2
@@ -69,8 +73,9 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4.1,
-    ratingCount: 3,
+    ratings:[
+
+    ],
     description: `test title
     -özellik 1
     -özellik 2
@@ -100,8 +105,9 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4.5,
-    ratingCount: 2,
+    ratings:[
+
+    ],
     description: `test title
     -özellik 1
     -özellik 2

@@ -36,8 +36,11 @@ const MotionStack = motion(Stack);
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, price, salePrice, rating, ratingCount, slug, imageUrls, flag } =
-    product;
+  const { name, price, salePrice, slug, imageUrls, flag } = product;
+
+  const [rating, setRating] = React.useState(5);
+  const [ratingCount, setRatingCount] = React.useState(0);
+  
 
   const { id, src, alt } = imageUrls[0];
 
