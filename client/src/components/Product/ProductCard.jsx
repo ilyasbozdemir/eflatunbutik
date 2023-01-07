@@ -36,13 +36,35 @@ const MotionStack = motion(Stack);
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const { name, price, salePrice, slug, imageUrls, flag } = product;
 
-  const [rating, setRating] = React.useState(5);
-  const [ratingCount, setRatingCount] = React.useState(0);
-  
+  const { name, price, salePrice, ratings, slug, imageUrls, flag } = product;
 
   const { id, src, alt } = imageUrls[0];
+
+  const {
+    oneRatingCount,
+    twoRatingCount,
+    threeRatingCount,
+    fourRatingCount,
+    fiveRatingCount,
+  } = ratings[0];
+
+  const [ratingCount, setRatingCount] = React.useState(
+    oneRatingCount +
+      twoRatingCount +
+      threeRatingCount +
+      fourRatingCount +
+      fiveRatingCount
+  );
+
+  const [avgRating, setAavgRating] = React.useState(
+    (fiveRatingCount * 5 +
+      fourRatingCount * 4 +
+      threeRatingCount * 3 +
+      twoRatingCount * 2 +
+      oneRatingCount * 1) /
+      ratingCount
+  );
 
   const [showAddToCardButton, setShowAddToCardButton] = React.useState(false);
 
@@ -194,7 +216,7 @@ export const ProductCard = (props) => {
                 </Stack>
 
                 <HStack>
-                  <Rating defaultValue={rating} size={ratingSize} />
+                  <Rating defaultValue={avgRating} size={ratingSize} />
 
                   {ratingCount === 0 ? null : (
                     <>

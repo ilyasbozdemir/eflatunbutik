@@ -124,6 +124,29 @@ function ProductDetail() {
     }
   }, []);
 
+  const {
+    oneRatingCount,
+    twoRatingCount,
+    threeRatingCount,
+    fourRatingCount,
+    fiveRatingCount,
+  } = product.ratings[0];
+  const [ratingCount, setRatingCount] = React.useState(
+    oneRatingCount +
+      twoRatingCount +
+      threeRatingCount +
+      fourRatingCount +
+      fiveRatingCount
+  );
+
+  const [avgRating, setAavgRating] = React.useState(
+    (fiveRatingCount * 5 +
+      fourRatingCount * 4 +
+      threeRatingCount * 3 +
+      twoRatingCount * 2 +
+      oneRatingCount * 1) /
+      ratingCount
+  );
   return (
     <>
       {isProduct === true ? (
@@ -199,9 +222,9 @@ function ProductDetail() {
                     )}
                   </Flex>
                   <Flex direction={"row"}>
-                    <Rating defaultValue={product.rating} size={15} />
+                    <Rating defaultValue={avgRating} size={15} />
                     <Text fontSize={{ base: 14 }} pl={1}>
-                      {product.ratingCount|| 0} Değerlendirme
+                      {ratingCount || 0} Değerlendirme
                     </Text>
                   </Flex>
                   <HStack>
@@ -413,10 +436,9 @@ function ProductDetail() {
                     direction={"column"}
                   >
                     <Flex justifyContent="center">
-                      <Text
-                        userSelect={"none"}
-                      >{`${product.rating || 0} Değerlendirme | ${product.ratingCount|| 0} Yorum `}</Text>
-                     
+                      <Text userSelect={"none"}>{`${
+                        ratingCount || 0
+                      } Değerlendirme | ${0} Yorum `}</Text>
                     </Flex>
                   </Flex>
                 </Stack>
@@ -428,9 +450,7 @@ function ProductDetail() {
                     }}
                     direction={"column"}
                   >
-                    <Flex justifyContent="center">
-                    
-                    </Flex>
+                    <Flex justifyContent="center"></Flex>
                   </Flex>
                 </Stack>
               </Stack>

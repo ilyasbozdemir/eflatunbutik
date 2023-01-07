@@ -7,9 +7,14 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    ratings:[
+    ratings: [{
+      oneRatingCount: 3,
+      twoRatingCount: 2,
+      threeRatingCount: 7,
+      fourRatingCount: 6,
+      fiveRatingCount: 35,
+    }],
 
-    ],
     description: `test title
     -özellik 1
     -özellik 2
@@ -22,7 +27,7 @@ export const _products = [
         id: "01",
         src: "https://www.eflatunmoda.com/i/l/000/0000464_muhtesem-tasarim-elbise-kahve.jpeg",
         alt: "muhtesem-tasarim-elbise",
-      }
+      },
     ],
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
@@ -39,10 +44,14 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
- 
-    ratings:[
 
-    ],
+    ratings: [{
+      oneRatingCount: 3,
+      twoRatingCount: 2,
+      threeRatingCount: 7,
+      fourRatingCount: 6,
+      fiveRatingCount: 35,
+    }],
 
     description: `test title
     -özellik 1
@@ -73,9 +82,13 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    ratings:[
-
-    ],
+    ratings: [{
+      oneRatingCount: 3,
+      twoRatingCount: 2,
+      threeRatingCount: 7,
+      fourRatingCount: 6,
+      fiveRatingCount: 35,
+    }],
     description: `test title
     -özellik 1
     -özellik 2
@@ -105,9 +118,13 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    ratings:[
-
-    ],
+    ratings: [{
+      oneRatingCount: 3,
+      twoRatingCount: 2,
+      threeRatingCount: 7,
+      fourRatingCount: 6,
+      fiveRatingCount: 35,
+    }],
     description: `test title
     -özellik 1
     -özellik 2
