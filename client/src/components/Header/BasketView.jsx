@@ -13,10 +13,12 @@ import {
   Stack,
   Flex,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import BasketDrawerItem from "../Cart/BasketDrawerItem";
+
 
 import { MainContext, useContext } from "../../contexts/MainContext";
 import { CartItem } from "../Cart/CartItem";
@@ -24,7 +26,7 @@ import { CartItem } from "../Cart/CartItem";
 function BasketView(props) {
   const { placement, onClose, isOpen } = props;
   const navigate = useNavigate();
-  const { basket, setBasket ,products} = useContext(MainContext);
+  const { basket, setBasket, products } = useContext(MainContext);
 
   const totalPrice = () => {
     return basket.reduce((prev, product) => {
@@ -34,14 +36,9 @@ function BasketView(props) {
 
   const [subtotal, setSubtotal] = React.useState(totalPrice());
 
-  const deleteByValue = (v) => {
-    setBasket((oldValues) => {
-      return oldValues.filter((p) => p.id !== v.id);
-    });
-  };
-  
   return (
     <>
+    
       <Drawer
         size={"sm"}
         placement={placement}
@@ -61,9 +58,7 @@ function BasketView(props) {
                   <BasketDrawerItem
                     key={item.id}
                     {...item}
-                    onClickDelete={() => {
-                      deleteByValue(item);
-                    }}
+                    
                   />
                 </>
               ))}

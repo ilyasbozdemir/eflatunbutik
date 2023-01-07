@@ -8,20 +8,38 @@ import {
   Stack,
   useColorModeValue as mode,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { CartItem } from "./CartItem";
 import { CartOrderSummary } from "./CartOrderSummary";
 import { MainContext, useContext } from "../../contexts/MainContext";
 import { Link } from "react-router-dom";
 
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+} from '@chakra-ui/react'
+
 function Basket() {
   const { basket, setBasket } = useContext(MainContext);
-
+  const {
+    isOpen: alertIsOpen,
+    onOpen: alertOnOpen,
+    onClose: alertonClose,
+  } = useDisclosure();
+  const cancelRef = React.useRef()
 
   const deleteByValue = (v) => {
+
+
     setBasket((oldValues) => {
       return oldValues.filter((p) => p.id !== v.id);
     });
+
   };
 
   return (
@@ -62,6 +80,7 @@ function Basket() {
                     key={item.id}
                     {...item}
                     onClickDelete={() => {
+
                       deleteByValue(item);
                     }}
                   />

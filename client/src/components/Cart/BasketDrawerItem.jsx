@@ -5,10 +5,15 @@ import {
   Image,
   Stack,
   Icon,
-  Box,
-  VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import { Button } from "@chakra-ui/react";
+
+import { MdDelete } from "react-icons/md";
+
+import { MainContext, useContext } from "../../contexts/MainContext";
+
 import {
   Table,
   Thead,
@@ -21,10 +26,6 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 
-import { MdDelete } from "react-icons/md";
-
-import { MainContext, useContext } from "../../contexts/MainContext";
-
 function BasketDrawerItem(props) {
   const { id, name, quantity, imageUrl, price } = props;
   const { setBasket } = useContext(MainContext);
@@ -36,62 +37,64 @@ function BasketDrawerItem(props) {
   };
 
   return (
-    <Flex direction={"column"}>
-      <>
-        <Text
-          css={{
-            whiteSpace: "nowrap",
-            textAlign: "center",
-            textTransform: "uppercase",
-          }}
-          pb={1}
-        >
-          {name}
-        </Text>
-      </>
-      <Stack direction={"row"}>
+    <>
+      <Flex direction={"column"}>
         <>
-          <Image
-            w={75}
-            src={imageUrl}
-            alt={name}
-            draggable="false"
-            loading="lazy"
-            aspectRatio={2 / 3}
-          />
+          <Text
+            css={{
+              whiteSpace: "nowrap",
+              textAlign: "center",
+              textTransform: "uppercase",
+            }}
+            pb={1}
+          >
+            {name}
+          </Text>
         </>
         <Stack direction={"row"}>
-          <TableContainer>
-            <Table size="sm">
-              <Tbody>
-                <Tr>
-                  <Td>Birim Fiyat</Td>
-                  <Td isNumeric>{price + " TL"}</Td>
-                </Tr>
-                <Tr>
-                  <Td>Adet</Td>
-                  <Td isNumeric>{quantity}</Td>
-                </Tr>
-                <Tr>
-                  <Td>Toplam Fiyat</Td>
-                  <Td isNumeric>{price * quantity + " TL"}</Td>
-                </Tr>
-              </Tbody>
-            </Table>
-          </TableContainer>
-          <Text pos={"relative"} top={"35%"} left={15} cursor={"pointer"}>
-            <Icon
-              as={MdDelete}
-              fontSize={25}
-              onClick={() => {
-                deleteByValue(id);
-              }}
+          <>
+            <Image
+              w={75}
+              src={imageUrl}
+              alt={name}
+              draggable="false"
+              loading="lazy"
+              aspectRatio={2 / 3}
             />
-          </Text>
+          </>
+          <Stack direction={"row"}>
+            <TableContainer>
+              <Table size="sm">
+                <Tbody>
+                  <Tr>
+                    <Td>Birim Fiyat</Td>
+                    <Td isNumeric>{price + " TL"}</Td>
+                  </Tr>
+                  <Tr>
+                    <Td>Adet</Td>
+                    <Td isNumeric>{quantity}</Td>
+                  </Tr>
+                  <Tr>
+                    <Td>Toplam Fiyat</Td>
+                    <Td isNumeric>{price * quantity + " TL"}</Td>
+                  </Tr>
+                </Tbody>
+              </Table>
+            </TableContainer>
+            <Text pos={"relative"} top={"35%"} left={15} cursor={"pointer"}>
+              <Icon
+                as={MdDelete}
+                fontSize={25}
+                onClick={() => {
+                  deleteByValue(id);
+                }}
+              />
+            </Text>
+          </Stack>
         </Stack>
-      </Stack>
-      <Divider my={2} orientation="horizontal" />
-    </Flex>
+        <Divider my={2} orientation="horizontal" />
+      </Flex>
+    </>
   );
 }
 

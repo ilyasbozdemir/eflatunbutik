@@ -19,6 +19,7 @@ export const CartItem = (props) => {
     linkTo,
   } = props;
 
+
   const [pQuantity, setPQuantity] = React.useState(quantity);
   const { basket, setBasket } = useContext(MainContext);
 
@@ -51,6 +52,7 @@ export const CartItem = (props) => {
           description={description}
           image={imageUrl}
           isGiftWrapping={isGiftWrapping}
+        
         />
       </>
       {/* Desktop */}

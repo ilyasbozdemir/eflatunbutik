@@ -63,6 +63,7 @@ function AddToCardButton({ product, bodyValue, quantity }) {
           quantity: Number(quantity),
           imageUrl: imageUrls[0].src,
           slug: slug,
+          bodyValue:bodyValue,
         },
       ]);
     }

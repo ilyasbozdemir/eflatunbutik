@@ -13,7 +13,7 @@ import * as React from "react";
 import { FiGift } from "react-icons/fi";
 
 export const CartProductMeta = (props) => {
-  const { isGiftWrapping = false, image, name, description } = props;
+  const { isGiftWrapping = false, image, name, description, bodyValue } = props;
   return (
     <Stack direction="row" spacing="5" width={"full"}>
       <Box>
