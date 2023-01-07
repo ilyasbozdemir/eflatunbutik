@@ -346,8 +346,15 @@ function ProductDetail() {
                   </Stack>
                 </Stack>
               </Stack>
-              <Stack direction={"row"}>
-                <Stack direction={"column"}>
+              <Stack direction={"column"}>
+                <Stack
+                  as={"span"}
+                  direction={"column"}
+                  css={{
+                    overflow: "hidden",
+                  }}
+                  w={window.innerWidth}
+                >
                   <Text fontWeight={"semibold"}>Benzer Ürünler</Text>
                   <Flex
                     as={motion.div}
@@ -355,7 +362,6 @@ function ProductDetail() {
                     css={{
                       overflow: "hidden",
                     }}
-                    w={{base:'container.sm',lg:'container.lg'}}
                     direction={"column"}
                   >
                     <Flex as={motion.div} drag={"x"} dragConstraints={{}}>
@@ -379,6 +385,22 @@ function ProductDetail() {
                         </Box>
                       ))}
                     </Flex>
+                  </Flex>
+                </Stack>
+                <Stack
+                  direction={"column"}
+                  w={'auto'}
+                >
+                  <Text fontWeight={"semibold"}>Ürün Değerlendirmeleri</Text>
+                  <Flex
+                    as={motion.div}
+                    bg={"gray.100"}
+                    css={{
+                      overflow: "hidden",
+                    }}
+                    direction={"column"}
+                  >
+                    <Flex></Flex>
                   </Flex>
                 </Stack>
               </Stack>
