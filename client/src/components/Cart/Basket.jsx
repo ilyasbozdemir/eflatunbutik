@@ -26,6 +26,9 @@ import {
 
 function Basket() {
   const { basket, setBasket } = useContext(MainContext);
+
+console.table(basket)
+
   const {
     isOpen: alertIsOpen,
     onOpen: alertOnOpen,
@@ -34,12 +37,9 @@ function Basket() {
   const cancelRef = React.useRef()
 
   const deleteByValue = (v) => {
-
-
     setBasket((oldValues) => {
       return oldValues.filter((p) => p.id !== v.id);
     });
-
   };
 
   return (

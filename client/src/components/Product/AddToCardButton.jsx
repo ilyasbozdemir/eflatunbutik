@@ -24,8 +24,6 @@ function AddToCardButton({ product, bodyValue, quantity }) {
 
   const [duration, setDuration] = React.useState(500);
   const toast = useToast();
-  const basketItem = basket.find((item) => item.id === id);
-  const basketItemIndex = basket.findIndex((item) => item.id === id);
 
   const addToCart = () => {
     const checkBasket = basket.find((item) => item.id === id);
@@ -63,7 +61,7 @@ function AddToCardButton({ product, bodyValue, quantity }) {
           quantity: Number(quantity),
           imageUrl: imageUrls[0].src,
           slug: slug,
-          bodyValue:bodyValue,
+          bodyValue: bodyValue,
         },
       ]);
     }

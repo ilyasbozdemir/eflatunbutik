@@ -17,6 +17,7 @@ export const CartItem = (props) => {
     onChangeQuantity,
     onClickDelete,
     linkTo,
+    bodyValue
   } = props;
 
 
@@ -52,7 +53,7 @@ export const CartItem = (props) => {
           description={description}
           image={imageUrl}
           isGiftWrapping={isGiftWrapping}
-        
+          bodyValue={bodyValue}
         />
       </>
       {/* Desktop */}
