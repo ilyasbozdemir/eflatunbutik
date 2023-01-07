@@ -93,31 +93,9 @@ export const ProductCard = (props) => {
     },
   };
 
-  const [pointerEvents, setPointerEvents] = React.useState(false);
-
-  const handleDrag=(e)=>{
-    e.target.href = '';
-    setPointerEvents(true);
-  }
- const handleDragStart=(e)=>{
-  e.target.href = '';
-  setPointerEvents(true)
-  }
-  const handleonDragEnd=(e)=>{
-    e.target.href = '';
-    setPointerEvents(false)
-  }
   return (
     <>
-      <Stack
-        w={w}
-        onDrag={handleDrag}
-        onDragStart={handleDragStart}
-        onDragEnd={handleonDragEnd}
-        pointerEvents={pointerEvents === true ? "none" : "all"}
-        cursor={pointerEvents === true ? "default" : "pointer"}
-        draggable={true}
-      >
+      <Stack w={w}>
         <MotionStack
           variants={cardVariant}
           textDecoration="none"
@@ -133,11 +111,7 @@ export const ProductCard = (props) => {
         >
           <>
             <Box position="relative">
-              <Link
-                {...linkVariants}
-                pointerEvents={pointerEvents === true ? "none" : "all"}
-                cursor={pointerEvents === true ? "default" : "pointer"}
-              >
+              <Link {...linkVariants}>
                 <AspectRatio ratio={2 / 3} overflow={"hidden"}>
                   <Image
                     src={src}
@@ -185,11 +159,7 @@ export const ProductCard = (props) => {
               )}
             </Box>
             <Stack>
-              <Link
-                {...linkVariants}
-                pointerEvents={pointerEvents === true ? "none" : "all"}
-                cursor={pointerEvents === true ? "default" : "pointer"}
-              >
+              <Link {...linkVariants}>
                 <Stack spacing="1">
                   <Link>
                     <Text

@@ -97,6 +97,21 @@ function ProductDetail() {
     setQuantity(value);
   };
 
+  const [pointerEvents, setPointerEvents] = React.useState(false);
+
+  const handleDrag = (e) => {
+    e.target.href = "";
+    setPointerEvents(true);
+  };
+  const handleDragStart = (e) => {
+    e.target.href = "";
+    setPointerEvents(true);
+  };
+  const handleonDragEnd = (e) => {
+    e.target.href = "";
+    setPointerEvents(false);
+  };
+
   return (
     <>
       {isProduct === true ? (
@@ -340,19 +355,28 @@ function ProductDetail() {
                     css={{
                       overflow: "hidden",
                     }}
-                    w={"max-content"}
+                    w={{base:'container.sm',lg:'container.lg'}}
                     direction={"column"}
                   >
-                    <Flex
-                      as={motion.div}
-                      drag={"x"}
-                      dragConstraints={{}}
-             
-                    >
+                    <Flex as={motion.div} drag={"x"} dragConstraints={{}}>
                       {similarProducts.map((p, i) => (
-                        <motion.div key={i} style={{ padding: "15px" }}>
+                        <Box
+                          as={motion.div}
+                          key={i}
+                          style={{ padding: "15px" }}
+                          onDrag={handleDrag}
+                          onDragStart={handleDragStart}
+                          onDragEnd={handleonDragEnd}
+                          pointerEvents={
+                            pointerEvents === true ? "none" : "all"
+                          }
+                          cursor={
+                            pointerEvents === true ? "default" : "pointer"
+                          }
+                          draggable={true}
+                        >
                           <ProductCard product={p} />
-                        </motion.div>
+                        </Box>
                       ))}
                     </Flex>
                   </Flex>
