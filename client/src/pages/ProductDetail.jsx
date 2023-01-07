@@ -112,6 +112,15 @@ function ProductDetail() {
     setPointerEvents(false);
   };
 
+  const [w, setW] = React.useState(0);
+  const carousel = React.useRef();
+
+  React.useEffect(() => {
+
+    console.log(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    setW(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  }, []);
+
   return (
     <>
       {isProduct === true ? (
@@ -358,13 +367,17 @@ function ProductDetail() {
                   <Text fontWeight={"semibold"}>Benzer Ürünler</Text>
                   <Flex
                     as={motion.div}
-                    bg={"gray.100"}
                     css={{
                       overflow: "hidden",
                     }}
                     direction={"column"}
+                    ref={carousel}
                   >
-                    <Flex as={motion.div} drag={"x"} dragConstraints={{}}>
+                    <Flex
+                      as={motion.div}
+                      drag={"x"}
+                      dragConstraints={{ right: 0, left: -w }}
+                    >
                       {similarProducts.map((p, i) => (
                         <Box
                           as={motion.div}
@@ -380,6 +393,7 @@ function ProductDetail() {
                             pointerEvents === true ? "default" : "pointer"
                           }
                           draggable={true}
+                          bg={"gray.100"}
                         >
                           <ProductCard product={p} />
                         </Box>
@@ -387,10 +401,7 @@ function ProductDetail() {
                     </Flex>
                   </Flex>
                 </Stack>
-                <Stack
-                  direction={"column"}
-                  w={'auto'}
-                >
+                <Stack direction={"column"} w={"auto"}>
                   <Text fontWeight={"semibold"}>Ürün Değerlendirmeleri</Text>
                   <Flex
                     as={motion.div}
