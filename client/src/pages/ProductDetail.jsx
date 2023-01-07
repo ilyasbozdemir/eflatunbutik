@@ -39,6 +39,10 @@ import { MainContext, useContext } from "../contexts/MainContext";
 import { generatePath } from "react-router";
 import { ProductCard } from "../components/Product/ProductCard";
 
+import ReactStars from "react-rating-stars-component";
+
+
+
 function ProductDetail() {
   const { products } = useContext(MainContext);
 

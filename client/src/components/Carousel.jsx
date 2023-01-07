@@ -14,7 +14,6 @@ import {
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 
-
 import { FavouriteButton } from "./Product/FavouriteButton";
 
 const settings = {
@@ -67,45 +66,51 @@ function Carousel(props) {
       />
       {show === true ? (
         <>
-          <IconButton
-            aria-label="left-arrow"
-            variant="ghost"
-            position="absolute"
-            left={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickPrev()}
-            icon={
-              <Icon
-                as={BsFillArrowLeftCircleFill}
-                fontSize={40}
-                color={"white"}
+          {props.carousels.length > 1 ? (
+            <>
+              <IconButton
+                aria-label="left-arrow"
+                variant="ghost"
+                position="absolute"
+                left={side}
+                top={top}
+                transform={"translate(0%, -50%)"}
+                zIndex={2}
+                onClick={() => slider?.slickPrev()}
+                icon={
+                  <Icon
+                    as={BsFillArrowLeftCircleFill}
+                    fontSize={40}
+                    color={"white"}
+                  />
+                }
+                _hover={{ bg: "transparent", opacity: "1" }}
+                opacity={".7"}
               />
-            }
-            _hover={{ bg: "transparent", opacity: "1" }}
-            opacity={".7"}
-          />
 
-          <IconButton
-            aria-label="right-arrow"
-            variant="ghost"
-            position="absolute"
-            right={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickNext()}
-            icon={
-              <Icon
-                as={BsFillArrowRightCircleFill}
-                fontSize={40}
-                color={"white"}
+              <IconButton
+                aria-label="right-arrow"
+                variant="ghost"
+                position="absolute"
+                right={side}
+                top={top}
+                transform={"translate(0%, -50%)"}
+                zIndex={2}
+                onClick={() => slider?.slickNext()}
+                icon={
+                  <Icon
+                    as={BsFillArrowRightCircleFill}
+                    fontSize={40}
+                    color={"white"}
+                  />
+                }
+                _hover={{ bg: "transparent", opacity: "1" }}
+                opacity={".7"}
               />
-            }
-            _hover={{ bg: "transparent", opacity: "1" }}
-            opacity={".7"}
-          />
+            </>
+          ) : (
+            ""
+          )}
         </>
       ) : (
         ""
@@ -124,13 +129,20 @@ function Carousel(props) {
 
       {/* Slider */}
 
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {props.carousels.map((carousel, index) => (
-          <div key={carousel.id}>
-            <Image src={carousel.src} alt={carousel.alt} rounded={10} />
-          </div>
-        ))}
-      </Slider>
+      <>
+        <Slider {...settings} ref={(slider) => setSlider(slider)}>
+          {props.carousels.map((carousel, index) => (
+            <div key={carousel.id}>
+              <Image
+                src={carousel.src}
+                alt={carousel.alt}
+                rounded={10}
+                draggable={false}
+              />
+            </div>
+          ))}
+        </Slider>
+      </>
     </Box>
   );
 }

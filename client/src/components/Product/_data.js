@@ -8,7 +8,7 @@ export const _products = [
     price: 300,
     flag: "Yeni✨",
     rating: 4,
-    ratingCount: 1,
+    ratingCount: 2,
     description: `test title
     -özellik 1
     -özellik 2
@@ -21,7 +21,7 @@ export const _products = [
         id: "01",
         src: "https://www.eflatunmoda.com/i/l/000/0000464_muhtesem-tasarim-elbise-kahve.jpeg",
         alt: "muhtesem-tasarim-elbise",
-      },
+      }
     ],
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
@@ -38,8 +38,8 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4,
-    ratingCount: 1,
+    rating: 4.3,
+    ratingCount: 5,
     description: `test title
     -özellik 1
     -özellik 2
@@ -57,7 +57,7 @@ export const _products = [
     bodies: ["36", "38", "40", "42", "44"],
     category: "Elbise",
     linkedProducts: ["1", "3", "4"],
-    similarProducts: ["1", "3", "4","3","1","2"], //benzer ürünler Aynı kategori veya aynı markada bulunan benzer ürünleri belirtebilirsiniz.
+    similarProducts: ["1", "3", "4"], //benzer ürünler Aynı kategori veya aynı markada bulunan benzer ürünleri belirtebilirsiniz.
     complementaryProducts: [], //Bu ürünle birlikte alınabilecek diğer ürünleri burada belirtebilirsiniz. Eklediğiniz ürünler sepette öneri olarak gösterilecektir.
     isActive: true,
   },
@@ -69,8 +69,8 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4,
-    ratingCount: 1,
+    rating: 4.1,
+    ratingCount: 3,
     description: `test title
     -özellik 1
     -özellik 2
@@ -100,8 +100,8 @@ export const _products = [
     currency: "TRY",
     price: 300,
     flag: "Yeni✨",
-    rating: 4,
-    ratingCount: 1,
+    rating: 4.5,
+    ratingCount: 2,
     description: `test title
     -özellik 1
     -özellik 2
