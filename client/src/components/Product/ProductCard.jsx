@@ -7,20 +7,14 @@ import {
   Skeleton,
   Stack,
   Text,
-  Button,
   useBreakpointValue,
   useColorModeValue,
-  Heading,
-  Divider,
-  ButtonGroup,
 } from "@chakra-ui/react";
 
 import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -101,13 +95,29 @@ export const ProductCard = (props) => {
 
   const [pointerEvents, setPointerEvents] = React.useState(false);
 
-  React.useEffect(() => {
-    console.log(pointerEvents);
-  }, [pointerEvents]);
-
+  const handleDrag=(e)=>{
+    e.target.href = '';
+    setPointerEvents(true);
+  }
+ const handleDragStart=(e)=>{
+  e.target.href = '';
+  setPointerEvents(true)
+  }
+  const handleonDragEnd=(e)=>{
+    e.target.href = '';
+    setPointerEvents(false)
+  }
   return (
     <>
-      <Stack w={w}>
+      <Stack
+        w={w}
+        onDrag={handleDrag}
+        onDragStart={handleDragStart}
+        onDragEnd={handleonDragEnd}
+        pointerEvents={pointerEvents === true ? "none" : "all"}
+        cursor={pointerEvents === true ? "default" : "pointer"}
+        draggable={true}
+      >
         <MotionStack
           variants={cardVariant}
           textDecoration="none"
@@ -124,8 +134,9 @@ export const ProductCard = (props) => {
           <>
             <Box position="relative">
               <Link
-                onClick={"return false;"}
                 {...linkVariants}
+                pointerEvents={pointerEvents === true ? "none" : "all"}
+                cursor={pointerEvents === true ? "default" : "pointer"}
               >
                 <AspectRatio ratio={2 / 3} overflow={"hidden"}>
                   <Image
@@ -141,8 +152,6 @@ export const ProductCard = (props) => {
                     _hover={{
                       transform: "scale(1.02)",
                     }}
-                    onMouseDown={() => setPointerEvents(true)}
-                    onMouseUp={() => setPointerEvents(false)}
                   />
                 </AspectRatio>
               </Link>
@@ -176,7 +185,11 @@ export const ProductCard = (props) => {
               )}
             </Box>
             <Stack>
-              <Link {...linkVariants}>
+              <Link
+                {...linkVariants}
+                pointerEvents={pointerEvents === true ? "none" : "all"}
+                cursor={pointerEvents === true ? "default" : "pointer"}
+              >
                 <Stack spacing="1">
                   <Link>
                     <Text

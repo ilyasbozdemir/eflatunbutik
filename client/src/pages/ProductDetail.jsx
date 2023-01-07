@@ -97,14 +97,6 @@ function ProductDetail() {
     setQuantity(value);
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <>
       {isProduct === true ? (
@@ -130,7 +122,6 @@ function ProductDetail() {
                   </BreadcrumbItem>
                 </Breadcrumb>
               </>
-
               <Stack
                 direction={{ base: "column", md: "row" }}
                 spacing={3}
@@ -343,15 +334,28 @@ function ProductDetail() {
               <Stack direction={"row"}>
                 <Stack direction={"column"}>
                   <Text fontWeight={"semibold"}>Benzer Ürünler</Text>
-                  <motion.div className={"carousel"}>
-                    <motion.div drag={'x'} dragConstraints={{}} className={"inner-carousel"}>
+                  <Flex
+                    as={motion.div}
+                    bg={"gray.100"}
+                    css={{
+                      overflow: "hidden",
+                    }}
+                    w={"max-content"}
+                    direction={"column"}
+                  >
+                    <Flex
+                      as={motion.div}
+                      drag={"x"}
+                      dragConstraints={{}}
+             
+                    >
                       {similarProducts.map((p, i) => (
-                        <motion.div className={"item"} key={i}>
-                          <ProductCard key={i} product={p} />
+                        <motion.div key={i} style={{ padding: "15px" }}>
+                          <ProductCard product={p} />
                         </motion.div>
                       ))}
-                    </motion.div>
-                  </motion.div>
+                    </Flex>
+                  </Flex>
                 </Stack>
               </Stack>
             </Box>
