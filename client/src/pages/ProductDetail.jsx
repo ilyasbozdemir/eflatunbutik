@@ -114,11 +114,12 @@ function ProductDetail() {
 
   const [w, setW] = React.useState(0);
   const carousel = React.useRef();
+  const c = useBreakpointValue({ base: 200, md: 200, lg: 150 });
 
   React.useEffect(() => {
-
-    console.log(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    setW(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    if (carousel.current) {
+      setW(carousel.current.scrollWidth - carousel.current.offsetWidth + c);
+    }
   }, []);
 
   return (
@@ -371,6 +372,7 @@ function ProductDetail() {
                       overflow: "hidden",
                     }}
                     direction={"column"}
+                    whileTab={"grabbing"}
                     ref={carousel}
                   >
                     <Flex
@@ -393,7 +395,6 @@ function ProductDetail() {
                             pointerEvents === true ? "default" : "pointer"
                           }
                           draggable={true}
-                          bg={"gray.100"}
                         >
                           <ProductCard product={p} />
                         </Box>

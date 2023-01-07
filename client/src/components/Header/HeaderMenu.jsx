@@ -9,7 +9,7 @@ function HeaderMenu() {
     <>
       <Flex w={'100%'} h={50}>
         {linkItems.map((link, i) => (
-          <Navbar key={i} link={link} />
+          <Navbar key={'eb_'+i} link={link} />
         ))}
       </Flex>
     </>

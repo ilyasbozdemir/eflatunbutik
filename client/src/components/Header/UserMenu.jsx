@@ -38,12 +38,12 @@ function UserMenu(props) {
             {isLogin === false
               ? menuAnon.map((menu, index) => (
                   <>
-                    <ItemMenu key={index} {...menu} />
+                    <ItemMenu key={'menuAnon_'+index} {...menu} />
                   </>
                 ))
               : menuUser.map((menu, index) => (
                   <>
-                    <ItemMenu key={index} {...menu} />
+                    <ItemMenu key={'menuUser'+index} {...menu} />
                     <MenuDivider />
                   </>
                 ))}
@@ -51,7 +51,7 @@ function UserMenu(props) {
             {isAdmin === true
               ? menuAdmin.map((menu, index) => (
                   <>
-                    <ItemMenu key={index} {...menu} />
+                    <ItemMenu key={'menuAdmin'+index} {...menu} />
                   </>
                 ))
               : ""}

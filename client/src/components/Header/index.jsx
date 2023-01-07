@@ -7,10 +7,7 @@ import {
   Box,
   Flex,
   Spacer,
-  Divider,
   useDisclosure as UseDisclosure,
-  useColorModeValue as UseColorModeValue,
-  useBreakpointValue as UseBreakpointValue,
 } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
