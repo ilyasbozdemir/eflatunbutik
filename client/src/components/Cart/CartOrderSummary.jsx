@@ -66,7 +66,13 @@ export const CartOrderSummary = () => {
     subtotal - kdvtotal
   );
 
-  const [cargo, setCargo] = React.useState(25);
+  React.useEffect(() => {
+    setSubtotal(totalPrice());
+    setKdvtotal(Math.ceil(percentageCalculation()));
+    setSubtotalTaxFree(subtotal - kdvtotal);
+  }, [basket]);
+
+  const [cargo, setCargo] = React.useState(30);
 
   const {
     isOpen: isOpenCoupon,

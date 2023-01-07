@@ -27,6 +27,7 @@ export const CartItem = (props) => {
   React.useEffect(() => {
     if (checkBasket) {
       checkBasket.quantity = pQuantity;
+      
       setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
     }
 

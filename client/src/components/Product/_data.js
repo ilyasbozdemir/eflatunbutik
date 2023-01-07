@@ -89,6 +89,7 @@ export const _products = [
       fourRatingCount: 12,
       fiveRatingCount: 34,
     }],
+    
     description: `test title
     -özellik 1
     -özellik 2

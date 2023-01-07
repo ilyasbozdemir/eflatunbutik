@@ -18,7 +18,7 @@ import { useToast } from "@chakra-ui/react";
 function AddToCardButton({ product, quantity }) {
   const { basket, setBasket } = useContext(MainContext);
 
-  const { id, name, price, salePrice, imageUrls, description, currency } =
+  const { id, name, price, salePrice, imageUrls, description, currency,slug } =
     product;
 
   const [show, setShow] = React.useState(false);
@@ -46,6 +46,7 @@ function AddToCardButton({ product, quantity }) {
           description: description,
           quantity: 1,
           imageUrl: imageUrls[0].src,
+          slug:slug
         },
       ]);
     }

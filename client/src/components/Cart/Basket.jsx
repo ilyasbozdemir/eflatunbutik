@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 function Basket() {
   const { basket, setBasket } = useContext(MainContext);
 
+
   const deleteByValue = (v) => {
     setBasket((oldValues) => {
       return oldValues.filter((p) => p.id !== v.id);
