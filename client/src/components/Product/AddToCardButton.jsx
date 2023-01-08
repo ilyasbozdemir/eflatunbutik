@@ -19,7 +19,6 @@ function AddToCardButton({ product, body, quantity }) {
   const { id, name, price, salePrice, imageUrls, description, currency, slug } =
     product;
 
-  const [show, setShow] = React.useState(false);
   const [isDisabled, setIsDisabled] = React.useState(false);
 
   const [duration, setDuration] = React.useState(500);
@@ -28,7 +27,9 @@ function AddToCardButton({ product, body, quantity }) {
   const addToCart = () => {
     const checkBasket = basket.find((item) => item.id === id);
 
+
     if (checkBasket) {
+
       if (checkBasket.quantity + Number(quantity) > 5) {
         toast({
           title: "Üründen en fazla 5 tane eklenebilir.",
@@ -40,6 +41,7 @@ function AddToCardButton({ product, body, quantity }) {
       } else {
         checkBasket.quantity += Number(quantity);
         setBasket([...basket.filter((item) => item.id !== id), checkBasket]);
+
         toast({
           title: "Ürün Sepete Eklendi",
           status: "success",
@@ -48,7 +50,9 @@ function AddToCardButton({ product, body, quantity }) {
           isClosable: true,
         });
       }
+      
     } else {
+
       setBasket([
         ...basket,
         {
@@ -68,12 +72,9 @@ function AddToCardButton({ product, body, quantity }) {
   };
 
   const clickHandled = () => {
-    setIsDisabled(true);
-    setShow(true);
-
+    setIsDisabled(true)
     setTimeout(() => {
       setIsDisabled(false);
-      setShow(false);
     }, duration);
 
     setTimeout(() => {

@@ -56,7 +56,7 @@ function ProductDetail() {
     () => linkItems.filter((item) => item.label === product.category)[0]
   );
 
-  const [bodyValue, setBodyValue] = React.useState("");
+  const [bodyValue, setBodyValue] = React.useState(product.bodies[0]);
   const [favCount, setFavCount] = React.useState(0);
 
   const handleChange = (value) => {
@@ -113,6 +113,14 @@ function ProductDetail() {
     e.target.href = "";
     setPointerEvents(false);
   };
+
+  React.useEffect(() => {
+    const newProduct = products.filter((p) => p.id === productId)[0];
+    setProduct(newProduct);
+    setBodyValue(product.bodies[0])
+  }, [productId, products]);
+
+
 
   const [w, setW] = React.useState(0);
   const carousel = React.useRef();
