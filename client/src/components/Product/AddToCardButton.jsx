@@ -13,7 +13,7 @@ import { BiLoader, BiShoppingBag } from "react-icons/bi";
 import { MainContext, useContext } from "../../contexts/MainContext";
 import { useToast } from "@chakra-ui/react";
 
-function AddToCardButton({ product, bodyValue, quantity }) {
+function AddToCardButton({ product, body, quantity }) {
   const { basket, setBasket } = useContext(MainContext);
 
   const { id, name, price, salePrice, imageUrls, description, currency, slug } =
@@ -61,7 +61,7 @@ function AddToCardButton({ product, bodyValue, quantity }) {
           quantity: Number(quantity),
           imageUrl: imageUrls[0].src,
           slug: slug,
-          bodyValue: bodyValue,
+          body: body,
         },
       ]);
     }

@@ -1,6 +1,6 @@
 import {
-  AspectRatio,
   Box,
+  Flex,
   HStack,
   Icon,
   Image,
@@ -13,7 +13,13 @@ import * as React from "react";
 import { FiGift } from "react-icons/fi";
 
 export const CartProductMeta = (props) => {
-  const { isGiftWrapping = false, image, name, description, bodyValue } = props;
+  const {
+    isGiftWrapping = false,
+    image,
+    name,
+    body,
+    description,
+  } = props;
   return (
     <Stack direction="row" spacing="5" width={"full"}>
       <Box>
@@ -31,9 +37,17 @@ export const CartProductMeta = (props) => {
       <Box pt="4">
         <Stack spacing="0.5">
           <Text fontWeight="medium">{name}</Text>
-          <Text color={mode("gray.600", "gray.400")} fontSize="sm">
-            {description}
-          </Text>
+
+          <Flex fontWeight="medium">
+            Beden:{" "}
+            <Text
+              fontWeight="normal"
+              color={mode("gray.600", "gray.400")}
+              fontSize="sm"
+            >
+              {body}
+            </Text>
+          </Flex>
         </Stack>
 
         {isGiftWrapping && (

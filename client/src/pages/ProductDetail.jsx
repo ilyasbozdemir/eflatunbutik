@@ -326,7 +326,11 @@ function ProductDetail() {
                     </HStack>
                   </Flex>
                   <HStack spacing={3}>
-                    <AddToCardButton body={bodyValue} quantity={quantity} product={product} />
+                    <AddToCardButton
+                      body={bodyValue}
+                      quantity={quantity}
+                      product={product}
+                    />
                     <>
                       {isMobile === false ? (
                         <>

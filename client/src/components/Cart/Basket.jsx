@@ -80,7 +80,6 @@ console.table(basket)
                     key={item.id}
                     {...item}
                     onClickDelete={() => {
-
                       deleteByValue(item);
                     }}
                   />

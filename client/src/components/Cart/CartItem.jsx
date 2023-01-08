@@ -14,10 +14,9 @@ export const CartItem = (props) => {
     imageUrl,
     currency,
     price,
-    onChangeQuantity,
     onClickDelete,
     linkTo,
-    bodyValue
+    body
   } = props;
 
 
@@ -53,7 +52,7 @@ export const CartItem = (props) => {
           description={description}
           image={imageUrl}
           isGiftWrapping={isGiftWrapping}
-          bodyValue={bodyValue}
+          body={body}
         />
       </>
       {/* Desktop */}
@@ -73,7 +72,6 @@ export const CartItem = (props) => {
             value={pQuantity}
             onChange={(e) => {
               setPQuantity(e.currentTarget.value);
-              onChangeQuantity?.(+e.currentTarget.value);
             }}
           >
             <option value="1">1</option>
@@ -119,8 +117,6 @@ export const CartItem = (props) => {
             value={pQuantity}
             onChange={(e) => {
               setPQuantity(e.currentTarget.value);
-
-              onChangeQuantity?.(+e.currentTarget.value);
             }}
           >
             <option value="1">1</option>
