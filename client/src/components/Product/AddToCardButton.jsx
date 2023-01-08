@@ -25,11 +25,11 @@ function AddToCardButton({ product, body, quantity }) {
   const toast = useToast();
 
   const addToCart = () => {
-    const checkBasket = basket.find((item) => item.id === id);
-
+    const checkBasket = basket.find(
+      (item) => item.id === id && item.body === body
+    );
 
     if (checkBasket) {
-
       if (checkBasket.quantity + Number(quantity) > 5) {
         toast({
           title: "Üründen en fazla 5 tane eklenebilir.",
@@ -50,9 +50,7 @@ function AddToCardButton({ product, body, quantity }) {
           isClosable: true,
         });
       }
-      
     } else {
-
       setBasket([
         ...basket,
         {
@@ -72,7 +70,7 @@ function AddToCardButton({ product, body, quantity }) {
   };
 
   const clickHandled = () => {
-    setIsDisabled(true)
+    setIsDisabled(true);
     setTimeout(() => {
       setIsDisabled(false);
     }, duration);

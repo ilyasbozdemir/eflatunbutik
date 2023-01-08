@@ -22,25 +22,28 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 function Basket() {
   const { basket, setBasket } = useContext(MainContext);
 
-console.table(basket)
+  console.table(basket);
 
   const {
     isOpen: alertIsOpen,
     onOpen: alertOnOpen,
     onClose: alertonClose,
   } = useDisclosure();
-  const cancelRef = React.useRef()
+  const cancelRef = React.useRef();
 
   const deleteByValue = (v) => {
     setBasket((oldValues) => {
       return oldValues.filter((p) => p.id !== v.id);
     });
   };
+  const bodies = Array.from(new Set(basket.map((item) => item.body)));
+
+  console.table(bodies)
 
   return (
     <>
@@ -74,17 +77,25 @@ console.table(basket)
             </Heading>
 
             <Stack spacing="6">
-              {basket.map((item) => (
-                <>
-                  <CartItem
-                    key={item.id}
-                    {...item}
-                    onClickDelete={() => {
-                      deleteByValue(item);
-                    }}
-                  />
-                </>
-              ))}
+              {bodies.map((body) => {
+                const items = basket.filter((item) => item.body === body);
+
+                return (
+                  <>
+                    {items.map((item) => (
+                      <>
+                        <CartItem
+                          key={`${item.id}_${item.body}`}
+                          {...item}
+                          onClickDelete={() => {
+                            deleteByValue(item);
+                          }}
+                        />
+                      </>
+                    ))}
+                  </>
+                );
+              })}
             </Stack>
           </Stack>
 
