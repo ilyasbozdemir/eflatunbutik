@@ -5,7 +5,7 @@ export const _products = [
     color: "Kahve",
     slug: "muhtesem-tasarim-elbise-kahve",
     currency: "TRY",
-    price: 300,
+    price: 180,
     flag: "Yeni✨",
     ratings: [{
       oneRatingCount: 3,
@@ -42,7 +42,7 @@ export const _products = [
     color: "Kırmızı",
     slug: "muhtesem-tasarim-elbise-kirmizi",
     currency: "TRY",
-    price: 300,
+    price: 190,
     flag: "Yeni✨",
 
     ratings: [{
@@ -80,7 +80,7 @@ export const _products = [
     color: "Siyah",
     slug: "muhtesem-tasarim-elbise-siyah",
     currency: "TRY",
-    price: 300,
+    price: 200,
     flag: "Yeni✨",
     ratings: [{
       oneRatingCount: 2,
@@ -117,7 +117,7 @@ export const _products = [
     color: "Zümrüt",
     slug: "muhtesem-tasarim-elbise-zumrut",
     currency: "TRY",
-    price: 300,
+    price: 185,
     flag: "Yeni✨",
     ratings: [{
       oneRatingCount: 10,
